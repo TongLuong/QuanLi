@@ -40,6 +40,7 @@ namespace QuanLi
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.Menu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
@@ -69,6 +70,7 @@ namespace QuanLi
             // 
             // Menu
             // 
+            this.Menu.Controls.Add(this.button1);
             this.Menu.Controls.Add(this.pictureBox6);
             this.Menu.Controls.Add(this.pictureBox5);
             this.Menu.Controls.Add(this.pictureBox4);
@@ -148,6 +150,16 @@ namespace QuanLi
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "groupBox2";
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(341, 266);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(94, 29);
+            this.button1.TabIndex = 7;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -186,6 +198,7 @@ namespace QuanLi
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button button1;
     }
 }
 
