@@ -136,7 +136,7 @@ namespace QuanLi
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(6, 37);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(151, 28);
+            this.comboBox1.Size = new System.Drawing.Size(299, 28);
             this.comboBox1.TabIndex = 0;
             // 
             // groupBox2
