@@ -4,23 +4,26 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
+
 
 namespace QuanLi
 {
+    
     public enum Type
     {
         Food,
         Drink,
         Topping,      
     }
-    internal class Dish
+    public class Dish
     {
         //Features
-        int id;
-        string name;
-        double price;
-        double profit;
-        int numberOfsells;
+        public int id;
+        public string name;
+        public double price;
+        public double profit;
+        public int numberOfsells;
         Type type;
 
         //Constructor
@@ -76,23 +79,94 @@ namespace QuanLi
 
         }
     }
-    internal class Menu
+    public class Menu
     {
-        List<Dish> dishes;
-        int count;
+        public List<Dish> dishes;
+        public int count;
         public Menu()
         {
             dishes = new List<Dish>();
             count = 0;
         }
         public void addDish(Dish dish) 
-        { 
+        {
+            if (dishes.Contains(dish))
+            {
+                MessageBox.Show("The existing dish !!");
+                return;
+            }
             dishes.Add(dish);
             count++;
         }
 
-        public void sortMenu() { dishes.Sort(); }
+        public void removeDish(Dish dish)
+        {
+            if (!dishes.Contains(dish))
+            {
+                MessageBox.Show("Unavailable dish !!");
+                return;
+            }
+            dishes.Remove(dish);
+            count--;
+        }
 
-        public void increaseSell(Dish dish) { dish++; }
+        public void sortMenu() { dishes.Sort((a, b) => a > b ? -1 : 0); }
+
+        public void increaseSell(Dish dish)
+        {
+            if (dishes.Contains(dish))
+            {
+                dish++;
+            }
+            else
+            {
+                MessageBox.Show("Unvailable dish !!");
+            }
+        }
+
+        public void decreaseSell(Dish dish)
+        {
+            if (dishes.Contains(dish))
+            {
+                dish--;
+            }
+            else
+            {
+                MessageBox.Show("Unvailable dish !!");
+            }
+        }
+
+        public double totalSell()
+        {
+            double total = 0;
+            IEnumerator<Dish> it = dishes.GetEnumerator();
+            while (it.MoveNext())
+            {
+                Dish dish = it.Current;
+                total = (dish.profit)*dish.numberOfsells + total;
+            }
+            return total;
+        }
+        public List<Dish> getMostSelling()
+        {
+            if (count == 0) return dishes;
+            IEnumerator<Dish> it = dishes.GetEnumerator ();
+            List<Dish> mostSellingDishes = new List<Dish>();
+            int mostSelling = 0;
+            while(it.MoveNext())
+            {
+                Dish dish = it.Current;
+                if (dish.numberOfsells >= mostSelling)
+                {
+                    mostSellingDishes.Add(dish);
+                    mostSelling = dish.numberOfsells;
+                }
+                else
+                {
+                    break;
+                }
+            }
+            return mostSellingDishes;
+        }
     }
 }
