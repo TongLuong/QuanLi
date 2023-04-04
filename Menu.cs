@@ -9,7 +9,6 @@ using System.Windows.Forms;
 
 namespace QuanLi
 {
-    
     public enum Type
     {
         Food,
@@ -42,31 +41,54 @@ namespace QuanLi
         {
             return (A.numberOfsells != B.numberOfsells);
         }
+
         public static bool operator ==(Dish A, Dish B)
         {
             return (A.numberOfsells == B.numberOfsells);
         }
+
         public static bool operator >=(Dish A, Dish B)
         {
             return (A.numberOfsells >= B.numberOfsells);
         }
+
         public static bool operator <=(Dish A, Dish B)
         {
              return (A.numberOfsells <= B.numberOfsells);
         }
+
         public static bool operator <(Dish A, Dish B)
         {
             return (A.numberOfsells < B.numberOfsells);
         }
+
         public static bool operator >(Dish A, Dish B)
         {
             return (A.numberOfsells > B.numberOfsells);
         }
+
+        public override bool Equals(Object obj)
+        {
+            Dish d = obj as Dish;
+            if (d != null) 
+            {
+                return d.numberOfsells == this.numberOfsells;
+            }
+
+            return false;
+        }
+
+        public override int GetHashCode()
+        {
+            return numberOfsells + id * 10;
+        }
+
         public static Dish operator ++(Dish dish)
         {
             dish.numberOfsells++;
             return dish;
         }
+
         public static Dish operator --(Dish dish)
         {
             dish.numberOfsells--;
