@@ -29,34 +29,48 @@ namespace QuanLi
         /// </summary>
         private void InitializeComponent()
         {
-            this.Form1Button = new System.Windows.Forms.Button();
-            this.SuspendLayout();
+            Form1Button = new System.Windows.Forms.Button();
+            Form2Button = new System.Windows.Forms.Button();
+            SuspendLayout();
             // 
             // Form1Button
             // 
-            this.Form1Button.Location = new System.Drawing.Point(633, 33);
-            this.Form1Button.Name = "Form1Button";
-            this.Form1Button.Size = new System.Drawing.Size(75, 23);
-            this.Form1Button.TabIndex = 0;
-            this.Form1Button.Text = "Form 1";
-            this.Form1Button.UseVisualStyleBackColor = true;
-            this.Form1Button.Click += new System.EventHandler(this.Form1Button_Click);
-            this.Form1Button.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Form1Button_MouseClick);
+            Form1Button.Location = new System.Drawing.Point(872, 55);
+            Form1Button.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            Form1Button.Name = "Form1Button";
+            Form1Button.Size = new System.Drawing.Size(107, 38);
+            Form1Button.TabIndex = 0;
+            Form1Button.Text = "Form 1";
+            Form1Button.UseVisualStyleBackColor = true;
+            Form1Button.Click += Form1Button_Click;
+            Form1Button.MouseClick += Form1Button_MouseClick;
+            // 
+            // Form2Button
+            // 
+            Form2Button.Location = new System.Drawing.Point(997, 55);
+            Form2Button.Name = "Form2Button";
+            Form2Button.Size = new System.Drawing.Size(112, 38);
+            Form2Button.TabIndex = 1;
+            Form2Button.Text = "Form 2";
+            Form2Button.UseVisualStyleBackColor = true;
+            Form2Button.Click += Form2Button_Click;
             // 
             // FormMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.Form1Button);
-            this.Name = "FormMain";
-            this.Text = "FormMain";
-            this.ResumeLayout(false);
-
+            AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            ClientSize = new System.Drawing.Size(1143, 750);
+            Controls.Add(Form2Button);
+            Controls.Add(Form1Button);
+            Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            Name = "FormMain";
+            Text = "FormMain";
+            ResumeLayout(false);
         }
 
         #endregion
 
         private System.Windows.Forms.Button Form1Button;
+        private System.Windows.Forms.Button Form2Button;
     }
 }
