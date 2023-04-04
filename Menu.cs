@@ -73,7 +73,7 @@ namespace QuanLi
             Dish d = obj as Dish;
             if (d != null) 
             {
-                return d.numberOfsells == this.numberOfsells;
+                return d.NumberOfSells == this.NumberOfSells;
             }
 
             return false;
@@ -81,7 +81,7 @@ namespace QuanLi
 
         public override int GetHashCode()
         {
-            return numberOfsells + id * 10;
+            return NumberOfSells + id * 10;
         }
 
         public static Dish operator ++(Dish dish)
