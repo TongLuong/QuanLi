@@ -17,54 +17,55 @@ namespace QuanLi
     }
     public class Dish
     {
-        //Features
-        public int id;
-        public string name;
-        public double price;
-        public double profit;
-        public int numberOfsells;
+        #region Feature
+        int id; public int ID { get => id; set=> id = value; }
+        string name; public string Name { get => name; set => name = value; }
+        double price; public double Price { get => price; set => price = value; }
+        double profit; public double Profit { get => profit; set => profit = value; }
+        int numberOfSells; public int NumberOfSells { get => numberOfSells; set => numberOfSells = value; }
         Type type;
+        #endregion
 
-        //Constructor
+        #region constructor
         public Dish(int id, string name, double price, double profit, Type type)
         {
             this.id = id;
             this.name = name;
             this.price = price;
             this.profit = profit;
-            this.numberOfsells = 0;
+            this.numberOfSells = 0;
             this.type = type;
         }
-
-        //overloading operator
+        #endregion
+        #region overloading 
         public static bool operator !=(Dish A, Dish B)
         {
-            return (A.numberOfsells != B.numberOfsells);
+            return (A.numberOfSells != B.numberOfSells);
         }
 
         public static bool operator ==(Dish A, Dish B)
         {
-            return (A.numberOfsells == B.numberOfsells);
+            return (A.numberOfSells == B.numberOfSells);
         }
 
         public static bool operator >=(Dish A, Dish B)
         {
-            return (A.numberOfsells >= B.numberOfsells);
+            return (A.numberOfSells >= B.numberOfSells);
         }
 
         public static bool operator <=(Dish A, Dish B)
         {
-             return (A.numberOfsells <= B.numberOfsells);
+             return (A.numberOfSells <= B.numberOfSells);
         }
 
         public static bool operator <(Dish A, Dish B)
         {
-            return (A.numberOfsells < B.numberOfsells);
+            return (A.numberOfSells < B.numberOfSells);
         }
 
         public static bool operator >(Dish A, Dish B)
         {
-            return (A.numberOfsells > B.numberOfsells);
+            return (A.numberOfSells > B.numberOfSells);
         }
 
         public override bool Equals(Object obj)
@@ -85,32 +86,38 @@ namespace QuanLi
 
         public static Dish operator ++(Dish dish)
         {
-            dish.numberOfsells++;
+            dish.numberOfSells++;
             return dish;
         }
 
         public static Dish operator --(Dish dish)
         {
-            dish.numberOfsells--;
+            dish.numberOfSells--;
             return dish;
         }
-
-        //Function
+        #endregion
+        #region
         public void modify() //maybe create a button modify a dish if it exit or create a new dish if it's unavailable ??
         {
 
         }
+        #endregion
     }
     public class Menu
     {
-        public List<Dish> dishes;
-        public int count;
+        #region feature
+        List<Dish> dishes; public List<Dish> Dishes { get => dishes; }
+        int count; public int Count { get => count; set=> count = value; }
+        #endregion
+        #region constructor
         public Menu()
         {
             dishes = new List<Dish>();
             count = 0;
         }
-        public void addDish(Dish dish) 
+        #endregion
+        #region Functions
+        public void AddDish(Dish dish) 
         {
             if (dishes.Contains(dish))
             {
@@ -121,7 +128,7 @@ namespace QuanLi
             count++;
         }
 
-        public void removeDish(Dish dish)
+        public void RemoveDish(Dish dish)
         {
             if (!dishes.Contains(dish))
             {
@@ -132,9 +139,9 @@ namespace QuanLi
             count--;
         }
 
-        public void sortMenu() { dishes.Sort((a, b) => a > b ? -1 : 0); }
+        public void SortMenu() { dishes.Sort((a, b) => a > b ? -1 : 0); }
 
-        public void increaseSell(Dish dish)
+        public void IncreaseSell(Dish dish)
         {
             if (dishes.Contains(dish))
             {
@@ -146,7 +153,7 @@ namespace QuanLi
             }
         }
 
-        public void decreaseSell(Dish dish)
+        public void DecreaseSell(Dish dish)
         {
             if (dishes.Contains(dish))
             {
@@ -158,18 +165,18 @@ namespace QuanLi
             }
         }
 
-        public double totalSell()
+        public double TotalSell()
         {
             double total = 0;
             IEnumerator<Dish> it = dishes.GetEnumerator();
             while (it.MoveNext())
             {
                 Dish dish = it.Current;
-                total = (dish.profit)*dish.numberOfsells + total;
+                total = (dish.Profit)*dish.NumberOfSells + total;
             }
             return total;
         }
-        public List<Dish> getMostSelling()
+        public List<Dish> GetMostSelling()
         {
             if (count == 0) return dishes;
             IEnumerator<Dish> it = dishes.GetEnumerator ();
@@ -178,10 +185,10 @@ namespace QuanLi
             while(it.MoveNext())
             {
                 Dish dish = it.Current;
-                if (dish.numberOfsells >= mostSelling)
+                if (dish.NumberOfSells >= mostSelling)
                 {
                     mostSellingDishes.Add(dish);
-                    mostSelling = dish.numberOfsells;
+                    mostSelling = dish.NumberOfSells;
                 }
                 else
                 {
@@ -190,5 +197,6 @@ namespace QuanLi
             }
             return mostSellingDishes;
         }
+        #endregion
     }
 }
