@@ -44,16 +44,16 @@ namespace QuanLi
             lbTotalIncome = new System.Windows.Forms.Label();
             panel3 = new System.Windows.Forms.Panel();
             panel8 = new System.Windows.Forms.Panel();
-            panel9 = new System.Windows.Forms.Panel();
             lbTopping = new System.Windows.Forms.Label();
             panel6 = new System.Windows.Forms.Panel();
-            panel7 = new System.Windows.Forms.Panel();
             lbDrink = new System.Windows.Forms.Label();
             panel4 = new System.Windows.Forms.Panel();
-            panel5 = new System.Windows.Forms.Panel();
             lbFood = new System.Windows.Forms.Label();
             panel2 = new System.Windows.Forms.Panel();
             panel15 = new System.Windows.Forms.Panel();
+            pictureBox1 = new System.Windows.Forms.PictureBox();
+            pictureBox2 = new System.Windows.Forms.PictureBox();
+            pictureBox3 = new System.Windows.Forms.PictureBox();
             panel1.SuspendLayout();
             panel14.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
@@ -66,6 +66,9 @@ namespace QuanLi
             panel6.SuspendLayout();
             panel4.SuspendLayout();
             panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             SuspendLayout();
             // 
             // panel1
@@ -202,19 +205,12 @@ namespace QuanLi
             // panel8
             // 
             panel8.BackColor = System.Drawing.Color.LightCoral;
-            panel8.Controls.Add(panel9);
+            panel8.Controls.Add(pictureBox3);
             panel8.Controls.Add(lbTopping);
             panel8.Location = new System.Drawing.Point(365, 3);
             panel8.Name = "panel8";
             panel8.Size = new System.Drawing.Size(175, 163);
             panel8.TabIndex = 2;
-            // 
-            // panel9
-            // 
-            panel9.Location = new System.Drawing.Point(85, 25);
-            panel9.Name = "panel9";
-            panel9.Size = new System.Drawing.Size(87, 112);
-            panel9.TabIndex = 1;
             // 
             // lbTopping
             // 
@@ -229,19 +225,12 @@ namespace QuanLi
             // panel6
             // 
             panel6.BackColor = System.Drawing.Color.LightCoral;
-            panel6.Controls.Add(panel7);
+            panel6.Controls.Add(pictureBox2);
             panel6.Controls.Add(lbDrink);
             panel6.Location = new System.Drawing.Point(184, 3);
             panel6.Name = "panel6";
             panel6.Size = new System.Drawing.Size(175, 163);
             panel6.TabIndex = 1;
-            // 
-            // panel7
-            // 
-            panel7.Location = new System.Drawing.Point(85, 25);
-            panel7.Name = "panel7";
-            panel7.Size = new System.Drawing.Size(87, 112);
-            panel7.TabIndex = 1;
             // 
             // lbDrink
             // 
@@ -256,19 +245,12 @@ namespace QuanLi
             // panel4
             // 
             panel4.BackColor = System.Drawing.Color.LightCoral;
-            panel4.Controls.Add(panel5);
+            panel4.Controls.Add(pictureBox1);
             panel4.Controls.Add(lbFood);
             panel4.Location = new System.Drawing.Point(3, 3);
             panel4.Name = "panel4";
             panel4.Size = new System.Drawing.Size(175, 163);
             panel4.TabIndex = 0;
-            // 
-            // panel5
-            // 
-            panel5.Location = new System.Drawing.Point(85, 25);
-            panel5.Name = "panel5";
-            panel5.Size = new System.Drawing.Size(87, 112);
-            panel5.TabIndex = 1;
             // 
             // lbFood
             // 
@@ -297,6 +279,30 @@ namespace QuanLi
             panel15.Size = new System.Drawing.Size(506, 462);
             panel15.TabIndex = 0;
             // 
+            // pictureBox1
+            // 
+            pictureBox1.Location = new System.Drawing.Point(82, 20);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new System.Drawing.Size(90, 117);
+            pictureBox1.TabIndex = 0;
+            pictureBox1.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            pictureBox2.Location = new System.Drawing.Point(82, 20);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new System.Drawing.Size(90, 117);
+            pictureBox2.TabIndex = 1;
+            pictureBox2.TabStop = false;
+            // 
+            // pictureBox3
+            // 
+            pictureBox3.Location = new System.Drawing.Point(85, 20);
+            pictureBox3.Name = "pictureBox3";
+            pictureBox3.Size = new System.Drawing.Size(87, 117);
+            pictureBox3.TabIndex = 1;
+            pictureBox3.TabStop = false;
+            // 
             // Form2
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
@@ -323,6 +329,9 @@ namespace QuanLi
             panel4.ResumeLayout(false);
             panel4.PerformLayout();
             panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             ResumeLayout(false);
         }
 
@@ -343,15 +352,15 @@ namespace QuanLi
         private System.Windows.Forms.Label lbTotalIncome;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel8;
-        private System.Windows.Forms.Panel panel9;
         private System.Windows.Forms.Label lbTopping;
         private System.Windows.Forms.Panel panel6;
-        private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Label lbDrink;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Label lbFood;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel15;
+        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
