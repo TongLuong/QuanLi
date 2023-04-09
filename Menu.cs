@@ -112,7 +112,7 @@ namespace QuanLi
         public List<Dish> DrinkList { get => drinkList; set => drinkList = value; }
         public List<Dish> ToppingList { get => toppingList; set => toppingList = value; }
         public List<Dish> OthersList { get => othersList; set => othersList = value; }
-        int count; public int Count { get => count; set=> count = value; }
+        int count; public int Count { get => count; set => count = value; }
         #endregion
         #region constructor
         public Menu()
@@ -178,7 +178,7 @@ namespace QuanLi
         public void SortMenu(Type type) 
         {
             List<Dish> refList = getListByType(type);
-            refList.Sort((a, b) => a > b ? -1 : 0); 
+            refList.Sort((a, b) => a > b ? 1 : (a == b ? 0 : -1)); 
         }
 
         public void IncreaseSell(Dish dish)
