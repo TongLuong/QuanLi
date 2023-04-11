@@ -85,15 +85,15 @@ namespace QuanLi
             return NumberOfSells + id * 10;
         }
 
-        public static Dish operator ++(Dish dish)
+        public static Dish operator +(Dish dish, int val) //maybe not necessary cause of modifying by using value in textBox GUI
         {
-            dish.numberOfSells++;
+            dish.numberOfSells += val;
             return dish;
         }
 
-        public static Dish operator --(Dish dish)
+        public static Dish operator -(Dish dish, int val)
         {
-            dish.numberOfSells--;
+            dish.numberOfSells-= val;
             return dish;
         }
         #endregion
@@ -168,7 +168,8 @@ namespace QuanLi
             List<Dish> refList = getListByType(dish.Type);
             if (refList.Contains(dish))
             {
-                dish++;
+                refList.Remove(dish);
+                count--;
             }
             else
             {
@@ -181,13 +182,13 @@ namespace QuanLi
             List<Dish> refList = getListByType(type);
             refList.Sort((a, b) => a > b ? -1 : 0); // sort lagest to smallest
         }
-
-        public void IncreaseSell(Dish dish)
+        // 2 functions below maybe useless (remove if useless)
+        public void IncreaseSell(Dish dish, int val)
         {
             List<Dish> refList = getListByType(dish.Type);
             if (refList.Contains(dish))
             {
-                dish++;
+                dish += val;
             }
             else
             {
@@ -195,20 +196,26 @@ namespace QuanLi
             }
         }
 
-        public void DecreaseSell(Dish dish)
+        public void DecreaseSell(Dish dish, int val)
         {
             List<Dish> refList = getListByType(dish.Type);
             if (refList.Contains(dish))
             {
-                dish--;
+                dish -= val;
             }
             else
             {
                 MessageBox.Show("Unvailable dish !!");
             }
         }
+        
+        //instead of increase or decrease Sell, assign new value from textBox
+        public void ModifySell(Dish dish, int newValue)
+        {
+            dish.NumberOfSells = newValue;
+        }
 
-        public double TotalSell()
+        public double TotalProfit()
         {
             double total = 0;
             List<Dish> dishes = foodList.Concat(drinkList).Concat(toppingList).Concat(othersList).ToList();
@@ -220,10 +227,25 @@ namespace QuanLi
             }
             return total;
         }
+
+        public double TotalIncome()
+        {
+            double total = 0;
+            List<Dish> dishes = foodList.Concat(drinkList).Concat(toppingList).Concat(othersList).ToList();
+            IEnumerator<Dish> it = dishes.GetEnumerator();
+            while (it.MoveNext())
+            {
+                Dish dish = it.Current;
+                total = (dish.Price) * dish.NumberOfSells + total;
+            }
+            return total;
+
+        }
         public List<Dish> GetMostSelling()
         {
             if (count == 0) return null;
             List<Dish> dishes = foodList.Concat(drinkList).Concat(toppingList).Concat(othersList).ToList();
+            dishes.Sort((a, b) => a > b ? -1 : 0);
             IEnumerator<Dish> it = dishes.GetEnumerator ();
             List<Dish> mostSellingDishes = new List<Dish>();
             int mostSelling = 0;
@@ -246,6 +268,7 @@ namespace QuanLi
         {
             if (count == 0) return null;
             List<Dish> dishes = getListByType(type);
+            dishes.Sort((a, b) => a > b ? -1 : 0);
             IEnumerator<Dish> it = dishes.GetEnumerator();
             List<Dish> mostSellingDishes = new List<Dish>();
             int mostSelling = 0;
