@@ -105,7 +105,7 @@ namespace QuanLi
         #endregion
     }
     public class Menu
-    {
+    { // test
         #region feature
         public static Menu Instance { get; private set; }
 
