@@ -8,6 +8,6 @@ namespace QuanLi
 {
     public class Statistics
     {
-
+        
     }
 }
