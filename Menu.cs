@@ -184,7 +184,7 @@ namespace QuanLi
             List<Dish> refList = getListByType(type);
             refList.Sort((a, b) => a > b ? -1 : 0); // sort lagest to smallest
         }
-        // 2 functions below maybe useless (remove if useless)
+        // 2 functions below maybe useless (remove if useless !!)
         public void IncreaseSell(Dish dish, int val)
         {
             List<Dish> refList = getListByType(dish.Type);
