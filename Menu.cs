@@ -108,6 +108,8 @@ namespace QuanLi
     {
         //test
         #region feature
+        public static Menu Instance { get; private set; } //singleTon here
+
         List<Dish> foodList, drinkList, toppingList, othersList;
         public List<Dish> FoodList { get => foodList; set => foodList = value; }
         public List<Dish> DrinkList { get => drinkList; set => drinkList = value; }
