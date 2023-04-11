@@ -58,7 +58,6 @@ namespace QuanLi
             Food.TabIndex = 6;
             Food.Text = "Đồ ăn";
             Food.UseVisualStyleBackColor = false;
-            Food.Click += Food_Click;
             // 
             // Drinks
             // 

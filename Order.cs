@@ -39,9 +39,15 @@ namespace QuanLi
 
     }
 
-    public class listBill
+    public class ListBill
     {
-        List<Bill> bills;
+        List<Bill> bills; public List<Bill> Bills { get => bills; set => bills = value; }
+        public static ListBill Instance { get; set; }
         
+        public ListBill()
+        {
+            bills = new List<Bill>();
+            Instance = this;
+        }
     }
 }
