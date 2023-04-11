@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace QuanLi
 {
-    public class Statistics
+    public class Statistics : Menu
     {
         
     }

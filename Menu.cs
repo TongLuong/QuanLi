@@ -11,15 +11,20 @@ namespace QuanLi
 {
     public enum Type
     {
-        Food,
-        Drink,
-        Topping,
-        Others,
+        ALL = 0,
+        FOOD = 100,
+        //Add food type
+        DRINK = 200,
+        //Add drink type
+        TOPPING = 300,
+        //Add topping type
+        OTHERS = 400,
+        //
     }
     public class Dish
     {
         #region Feature
-        int id; public int ID { get => id; set=> id = value; }
+        Type id; public Type ID { get => id; set=> id = value; }
         string name; public string Name { get => name; set => name = value; }
         double price; public double Price { get => price; set => price = value; }
         double profit; public double Profit { get => profit; set => profit = value; }
@@ -28,7 +33,7 @@ namespace QuanLi
         #endregion
 
         #region constructor
-        public Dish(int id, string name, double price, double profit, Type type)
+        public Dish(Type id, string name, double price, double profit, Type type)
         {
             this.id = id;
             this.name = name;
@@ -82,7 +87,7 @@ namespace QuanLi
 
         public override int GetHashCode()
         {
-            return NumberOfSells + id * 10;
+            return NumberOfSells + (int)id * 10;
         }
 
         public static Dish operator +(Dish dish, int val) //maybe not necessary cause of modifying by using value in textBox GUI
@@ -125,33 +130,30 @@ namespace QuanLi
             toppingList = new List<Dish>();
             othersList = new List<Dish>();
             count = 0;
+            Instance = this;
         }
         #endregion
         #region Functions
-        public List<Dish> getListByType(Type type)
+        public List<Dish> GetListByType(Type type)
         {
-            List<Dish> refList = othersList;
             switch (type)
             {
-                case Type.Food:
-                    refList = foodList;
-                    break;
-                case Type.Drink:
-                    refList = drinkList;
-                    break;
-                case Type.Topping:
-                    refList = toppingList;
-                    break;
-                case Type.Others:
-                    refList = othersList;
-                    break;
+                case Type.FOOD:
+                    return foodList;
+                case Type.DRINK:
+                    return drinkList;
+                case Type.TOPPING:
+                    return toppingList;
+                case Type.OTHERS:
+                    return othersList;
+                case Type.ALL:
+                    return foodList.Concat(drinkList).Concat(toppingList).Concat(othersList).ToList();
             }
-            return refList;
-
+            return null;
         }
         public void AddDish(Dish dish) 
         {
-            List<Dish> refList = getListByType(dish.Type);
+            List<Dish> refList = GetListByType(dish.Type);
             if(refList.Contains(dish))
             {
                
@@ -164,10 +166,10 @@ namespace QuanLi
             }
 
         }
-
+        //fix copy list
         public void RemoveDish(Dish dish)
         {
-            List<Dish> refList = getListByType(dish.Type);
+            List<Dish> refList = GetListByType(dish.Type);
             if (refList.Contains(dish))
             {
                 refList.Remove(dish);
@@ -178,16 +180,16 @@ namespace QuanLi
                 MessageBox.Show("Unvailable dish !!");
             }
         }
-
+        //fix copy list
         public void SortMenu(Type type) 
         {
-            List<Dish> refList = getListByType(type);
+            List<Dish> refList = GetListByType(type);
             refList.Sort((a, b) => a > b ? -1 : 0); // sort lagest to smallest
         }
         // 2 functions below maybe useless (remove if useless !!)
         public void IncreaseSell(Dish dish, int val)
         {
-            List<Dish> refList = getListByType(dish.Type);
+            List<Dish> refList = GetListByType(dish.Type);
             if (refList.Contains(dish))
             {
                 dish += val;
@@ -200,7 +202,7 @@ namespace QuanLi
 
         public void DecreaseSell(Dish dish, int val)
         {
-            List<Dish> refList = getListByType(dish.Type);
+            List<Dish> refList = GetListByType(dish.Type);
             if (refList.Contains(dish))
             {
                 dish -= val;
@@ -220,7 +222,7 @@ namespace QuanLi
         public double TotalProfit()
         {
             double total = 0;
-            List<Dish> dishes = foodList.Concat(drinkList).Concat(toppingList).Concat(othersList).ToList();
+            List<Dish> dishes = GetListByType(Type.ALL);
             IEnumerator<Dish> it = dishes.GetEnumerator();
             while (it.MoveNext())
             {
@@ -233,7 +235,7 @@ namespace QuanLi
         public double TotalIncome()
         {
             double total = 0;
-            List<Dish> dishes = foodList.Concat(drinkList).Concat(toppingList).Concat(othersList).ToList();
+            List<Dish> dishes = GetListByType(Type.ALL);
             IEnumerator<Dish> it = dishes.GetEnumerator();
             while (it.MoveNext())
             {
@@ -243,33 +245,33 @@ namespace QuanLi
             return total;
 
         }
-        public List<Dish> GetMostSelling()
-        {
-            if (count == 0) return null;
-            List<Dish> dishes = foodList.Concat(drinkList).Concat(toppingList).Concat(othersList).ToList();
-            dishes.Sort((a, b) => a > b ? -1 : 0);
-            IEnumerator<Dish> it = dishes.GetEnumerator ();
-            List<Dish> mostSellingDishes = new List<Dish>();
-            int mostSelling = 0;
-            while(it.MoveNext())
-            {
-                Dish dish = it.Current;
-                if (dish.NumberOfSells >= mostSelling)
-                {
-                    mostSellingDishes.Add(dish);
-                    mostSelling = dish.NumberOfSells;
-                }
-                else
-                {
-                    break;
-                }
-            }
-            return mostSellingDishes;
-        }
+        //public List<Dish> GetMostSelling()
+        //{
+        //    if (count == 0) return null;
+        //    List<Dish> dishes = foodList.Concat(drinkList).Concat(toppingList).Concat(othersList).ToList();
+        //    dishes.Sort((a, b) => a > b ? -1 : 0);
+        //    IEnumerator<Dish> it = dishes.GetEnumerator ();
+        //    List<Dish> mostSellingDishes = new List<Dish>();
+        //    int mostSelling = 0;
+        //    while(it.MoveNext())
+        //    {
+        //        Dish dish = it.Current;
+        //        if (dish.NumberOfSells >= mostSelling)
+        //        {
+        //            mostSellingDishes.Add(dish);
+        //            mostSelling = dish.NumberOfSells;
+        //        }
+        //        else
+        //        {
+        //            break;
+        //        }
+        //    }
+        //    return mostSellingDishes;
+        //}
         public List<Dish> GetMostSelling(Type type)
         {
             if (count == 0) return null;
-            List<Dish> dishes = getListByType(type);
+            List<Dish> dishes = GetListByType(type);
             dishes.Sort((a, b) => a > b ? -1 : 0);
             IEnumerator<Dish> it = dishes.GetEnumerator();
             List<Dish> mostSellingDishes = new List<Dish>();
