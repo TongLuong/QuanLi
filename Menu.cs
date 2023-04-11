@@ -106,6 +106,7 @@ namespace QuanLi
     }
     public class Menu
     {
+        //test
         #region feature
         List<Dish> foodList, drinkList, toppingList, othersList;
         public List<Dish> FoodList { get => foodList; set => foodList = value; }
