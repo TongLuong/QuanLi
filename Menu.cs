@@ -11,10 +11,10 @@ namespace QuanLi
 {
     public enum Type
     {
-        Food,
-        Drink,
-        Topping,
-        Others,
+        FOOD,
+        DRINK,
+        TOPPING,
+        OTHERS,
     }
     public class Dish
     {
@@ -125,6 +125,7 @@ namespace QuanLi
             toppingList = new List<Dish>();
             othersList = new List<Dish>();
             count = 0;
+            Instance = this;
         }
         #endregion
         #region Functions
@@ -133,16 +134,16 @@ namespace QuanLi
             List<Dish> refList = othersList;
             switch (type)
             {
-                case Type.Food:
+                case Type.FOOD:
                     refList = foodList;
                     break;
-                case Type.Drink:
+                case Type.DRINK:
                     refList = drinkList;
                     break;
-                case Type.Topping:
+                case Type.TOPPING:
                     refList = toppingList;
                     break;
-                case Type.Others:
+                case Type.OTHERS:
                     refList = othersList;
                     break;
             }
