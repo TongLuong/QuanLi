@@ -133,6 +133,7 @@ namespace QuanLi
             // 
             // pbMenu
             // 
+            pbMenu.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
             pbMenu.BackColor = System.Drawing.Color.FromArgb(255, 59, 48);
             pbMenu.Location = new System.Drawing.Point(37, 12);
             pbMenu.Name = "pbMenu";
@@ -154,6 +155,7 @@ namespace QuanLi
             // 
             // pbOrder
             // 
+            pbOrder.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
             pbOrder.BackColor = System.Drawing.Color.FromArgb(128, 255, 128);
             pbOrder.Location = new System.Drawing.Point(806, 12);
             pbOrder.Name = "pbOrder";

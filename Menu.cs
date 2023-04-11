@@ -178,7 +178,7 @@ namespace QuanLi
         public void SortMenu(Type type) 
         {
             List<Dish> refList = getListByType(type);
-            refList.Sort((a, b) => a > b ? 1 : (a == b ? 0 : -1)); 
+            refList.Sort((a, b) => a > b ? -1 : 0); // sort lagest to smallest
         }
 
         public void IncreaseSell(Dish dish)

@@ -32,20 +32,23 @@ namespace QuanLi
             double xRatio = (double)r.Width / (double)originalFormSize.Width;
             double yRatio = (double)r.Height / (double)originalFormSize.Height;
 
-            int newX = (int)(r.X * xRatio);
-            int newY = (int)(r.Y * yRatio);
+            double xLocRatio = (double)r.Width / (double)r.X;
+            double yLocRatio = (double)r.Height / (double)r.Y;
+
+            int newX = (int)(r.X * xLocRatio);
+            int newY = (int)(r.Y * yLocRatio);
 
             int newWidth = (int)(r.Width * xRatio);
             int newHeight = (int)(r.Height * yRatio);
 
-            c.Location = new Point(r.X, r.Y);
-            c.Size = new Size(newWidth, newHeight);
+            //c.Location = new Point(newX, newX);
+            //c.Size = new Size(newWidth, newHeight);
         }
 
         private void Form1_Resize(object sender, EventArgs e)
         {
             resizeControl(pb1, pbMenu);
-            resizeControl(pb1, pbOrder);
+            resizeControl(pb2, pbOrder);
         }
     }
 }
