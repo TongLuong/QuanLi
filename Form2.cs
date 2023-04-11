@@ -14,5 +14,23 @@ namespace QuanLi
         {
             InitializeComponent();
         }
+
+        private void btnBestSellingDrink_Click(object sender, EventArgs e)
+        {
+            fBSDrink f = new fBSDrink();
+            f.ShowDialog();
+        }
+
+        private void btnBestSellingFood_Click(object sender, EventArgs e)
+        {
+            fBSFood f = new fBSFood();
+            f.ShowDialog();
+        }
+
+        private void btnBestSellingTopping_Click(object sender, EventArgs e)
+        {
+            fBSTopping f = new fBSTopping();
+            f.ShowDialog();
+        }
     }
 }
