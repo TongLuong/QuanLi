@@ -50,5 +50,10 @@ namespace QuanLi
             resizeControl(pb1, pbMenu);
             resizeControl(pb2, pbOrder);
         }
+
+        private void Food_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
