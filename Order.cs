@@ -12,12 +12,10 @@ namespace QuanLi
     {
         string name; public string Name { get => name; }
         double price; public double Price { get => price; }
-        double prodExpense;public double ProdExpense { get => prodExpense; }
-        public Order(string name, double price, double prodExpense)
+        public Order(string name, double price)
         {
             this.name = name;
             this.price = price;
-            this.prodExpense = prodExpense;
         }
     }
     public class Bill
@@ -35,20 +33,18 @@ namespace QuanLi
         #endregion
         #region Function
         
-        public void ModifyBill(FlowLayoutPanel listOrderName, FlowLayoutPanel listOrderAmount, FlowLayoutPanel listOrderPrice, FlowLayoutPanel listOrderProdExpense)
+        public void ModifyBill(FlowLayoutPanel listOrderName, FlowLayoutPanel listOrderAmount, FlowLayoutPanel listOrderPrice)
         {
             List<Control> name = listOrderName.Controls.OfType<Control>().ToList();
             List<Control> amount = listOrderAmount.Controls.OfType<Control>().ToList();
             List<Control> price = listOrderPrice.Controls.OfType<Control>().ToList();
-            List<Control> prodExpense = listOrderProdExpense.Controls.OfType<Control>().ToList();
             int size = name.Count();
             for(int i = 0; i < size; i++)
             {
                 string  newName = name[i].Text.ToString();
                 int  newAmount = Convert.ToInt32(amount[i].Text);
                 double newPrice = Convert.ToDouble(price[i].Text);
-                double newProdExpense = Convert.ToDouble(prodExpense[i].Text);
-                Order tmp = new Order(newName, newPrice, newProdExpense);
+                Order tmp = new Order(newName, newPrice);
                 KeyValuePair<Order, int> newOrder = new KeyValuePair<Order, int>(tmp,newAmount);
                 orders.Add(newOrder);
                 total += newAmount * newPrice;
