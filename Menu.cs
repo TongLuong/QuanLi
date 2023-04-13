@@ -14,7 +14,7 @@ namespace QuanLi
         FOOD,
         DRINK,
         TOPPING,
-        OTHERS,
+        SPECIAL,
     }
     public class Dish
     {
@@ -22,18 +22,18 @@ namespace QuanLi
         int id; public int ID { get => id; set=> id = value; }
         string name; public string Name { get => name; set => name = value; }
         double price; public double Price { get => price; set => price = value; }
-        double profit; public double Profit { get => profit; set => profit = value; }
+        double prodExpense; public double ProdExpense { get => prodExpense; set => prodExpense = value; }
         int numberOfSells; public int NumberOfSells { get => numberOfSells; set => numberOfSells = value; }
         Type type; public Type Type { get => type; set => type = value; }
         #endregion
 
         #region constructor
-        public Dish(int id, string name, double price, double profit, Type type)
+        public Dish(int id, string name, double price, double prodExpense, Type type)
         {
             this.id = id;
             this.name = name;
             this.price = price;
-            this.profit = profit;
+            this.prodExpense = prodExpense;
             this.numberOfSells = 0;
             this.type = type;
         }
@@ -68,18 +68,6 @@ namespace QuanLi
         {
             return (A.numberOfSells > B.numberOfSells);
         }
-
-        public override bool Equals(Object obj)
-        {
-            Dish d = obj as Dish;
-            if (d != null) 
-            {
-                return d.NumberOfSells == this.NumberOfSells;
-            }
-
-            return false;
-        }
-
         public override int GetHashCode()
         {
             return NumberOfSells + id * 10;
@@ -97,7 +85,7 @@ namespace QuanLi
             return dish;
         }
         #endregion
-        #region
+        #region Function
         public void modify() //maybe create a button modify a dish if it exit or create a new dish if it's unavailable ??
         {
 
@@ -110,11 +98,11 @@ namespace QuanLi
         #region feature
         public static Menu Instance { get; private set; } //singleTon here
 
-        List<Dish> foodList, drinkList, toppingList, othersList;
+        List<Dish> foodList, drinkList, toppingList, specialList;
         public List<Dish> FoodList { get => foodList; set => foodList = value; }
         public List<Dish> DrinkList { get => drinkList; set => drinkList = value; }
         public List<Dish> ToppingList { get => toppingList; set => toppingList = value; }
-        public List<Dish> OthersList { get => othersList; set => othersList = value; }
+        public List<Dish> SpecialList { get => specialList; set => specialList = value; }
         int count; public int Count { get => count; set => count = value; }
         #endregion
         #region constructor
@@ -123,7 +111,7 @@ namespace QuanLi
             foodList = new List<Dish>();
             drinkList = new List<Dish>();
             toppingList = new List<Dish>();
-            othersList = new List<Dish>();
+            specialList = new List<Dish>();
             count = 0;
             Instance = this;
         }
@@ -131,7 +119,7 @@ namespace QuanLi
         #region Functions
         public List<Dish> getListByType(Type type)
         {
-            List<Dish> refList = othersList;
+            List<Dish> refList = null;
             switch (type)
             {
                 case Type.FOOD:
@@ -143,8 +131,8 @@ namespace QuanLi
                 case Type.TOPPING:
                     refList = toppingList;
                     break;
-                case Type.OTHERS:
-                    refList = othersList;
+                case Type.SPECIAL:
+                    refList = specialList;
                     break;
             }
             return refList;
@@ -218,15 +206,15 @@ namespace QuanLi
             dish.NumberOfSells = newValue;
         }
 
-        public double TotalProfit()
+        public double TotalProdExpense()
         {
             double total = 0;
-            List<Dish> dishes = foodList.Concat(drinkList).Concat(toppingList).Concat(othersList).ToList();
+            List<Dish> dishes = foodList.Concat(drinkList).Concat(toppingList).Concat(specialList).ToList();
             IEnumerator<Dish> it = dishes.GetEnumerator();
             while (it.MoveNext())
             {
                 Dish dish = it.Current;
-                total = (dish.Profit)*dish.NumberOfSells + total;
+                total = (dish.ProdExpense) *dish.NumberOfSells + total;
             }
             return total;
         }
@@ -234,7 +222,7 @@ namespace QuanLi
         public double TotalIncome()
         {
             double total = 0;
-            List<Dish> dishes = foodList.Concat(drinkList).Concat(toppingList).Concat(othersList).ToList();
+            List<Dish> dishes = foodList.Concat(drinkList).Concat(toppingList).Concat(specialList).ToList();
             IEnumerator<Dish> it = dishes.GetEnumerator();
             while (it.MoveNext())
             {
@@ -247,7 +235,7 @@ namespace QuanLi
         public List<Dish> GetMostSelling()
         {
             if (count == 0) return null;
-            List<Dish> dishes = foodList.Concat(drinkList).Concat(toppingList).Concat(othersList).ToList();
+            List<Dish> dishes = foodList.Concat(drinkList).Concat(toppingList).Concat(specialList).ToList();
             dishes.Sort((a, b) => a > b ? -1 : 0);
             IEnumerator<Dish> it = dishes.GetEnumerator ();
             List<Dish> mostSellingDishes = new List<Dish>();
