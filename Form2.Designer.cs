@@ -29,6 +29,7 @@ namespace QuanLi
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form2));
             panel1 = new System.Windows.Forms.Panel();
             btnBestSellingTopping = new System.Windows.Forms.Button();
             btnBestSellingDrink = new System.Windows.Forms.Button();
@@ -46,6 +47,7 @@ namespace QuanLi
             btnBestSellingFood = new System.Windows.Forms.Button();
             panel2 = new System.Windows.Forms.Panel();
             panel15 = new System.Windows.Forms.Panel();
+            pictureBox2 = new System.Windows.Forms.PictureBox();
             panel1.SuspendLayout();
             panel14.SuspendLayout();
             panel13.SuspendLayout();
@@ -53,6 +55,8 @@ namespace QuanLi
             panel11.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             panel2.SuspendLayout();
+            panel15.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
             // 
             // panel1
@@ -70,23 +74,29 @@ namespace QuanLi
             // btnBestSellingTopping
             // 
             btnBestSellingTopping.BackColor = System.Drawing.Color.FromArgb(255, 128, 128);
+            btnBestSellingTopping.BackgroundImage = (System.Drawing.Image)resources.GetObject("btnBestSellingTopping.BackgroundImage");
+            btnBestSellingTopping.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             btnBestSellingTopping.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             btnBestSellingTopping.Location = new System.Drawing.Point(502, 601);
             btnBestSellingTopping.Name = "btnBestSellingTopping";
             btnBestSellingTopping.Size = new System.Drawing.Size(213, 66);
-            btnBestSellingTopping.TabIndex = 4;
+            btnBestSellingTopping.TabIndex = 3;
             btnBestSellingTopping.Text = "           BestSelling\r\n           Topping";
             btnBestSellingTopping.UseVisualStyleBackColor = false;
             btnBestSellingTopping.Click += btnBestSellingTopping_Click;
             // 
             // btnBestSellingDrink
             // 
+            btnBestSellingDrink.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             btnBestSellingDrink.BackColor = System.Drawing.Color.FromArgb(255, 128, 128);
+            btnBestSellingDrink.BackgroundImage = (System.Drawing.Image)resources.GetObject("btnBestSellingDrink.BackgroundImage");
+            btnBestSellingDrink.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             btnBestSellingDrink.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            btnBestSellingDrink.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             btnBestSellingDrink.Location = new System.Drawing.Point(263, 601);
             btnBestSellingDrink.Name = "btnBestSellingDrink";
             btnBestSellingDrink.Size = new System.Drawing.Size(213, 66);
-            btnBestSellingDrink.TabIndex = 3;
+            btnBestSellingDrink.TabIndex = 2;
             btnBestSellingDrink.Text = "           BestSelling\r\n           Drink\r\n";
             btnBestSellingDrink.UseVisualStyleBackColor = false;
             btnBestSellingDrink.Click += btnBestSellingDrink_Click;
@@ -118,7 +128,7 @@ namespace QuanLi
             tbxTotalProfit.Name = "tbxTotalProfit";
             tbxTotalProfit.ReadOnly = true;
             tbxTotalProfit.Size = new System.Drawing.Size(368, 31);
-            tbxTotalProfit.TabIndex = 1;
+            tbxTotalProfit.TabIndex = 7;
             // 
             // lbTotalProfit
             // 
@@ -145,7 +155,7 @@ namespace QuanLi
             tbxTotalInvestment.Name = "tbxTotalInvestment";
             tbxTotalInvestment.ReadOnly = true;
             tbxTotalInvestment.Size = new System.Drawing.Size(368, 31);
-            tbxTotalInvestment.TabIndex = 1;
+            tbxTotalInvestment.TabIndex = 6;
             // 
             // lbTotalInvestment
             // 
@@ -172,7 +182,7 @@ namespace QuanLi
             tbxTotalIncome.Name = "tbxTotalIncome";
             tbxTotalIncome.ReadOnly = true;
             tbxTotalIncome.Size = new System.Drawing.Size(368, 31);
-            tbxTotalIncome.TabIndex = 1;
+            tbxTotalIncome.TabIndex = 5;
             // 
             // lbTotalIncome
             // 
@@ -192,11 +202,13 @@ namespace QuanLi
             dataGridView1.RowHeadersWidth = 62;
             dataGridView1.RowTemplate.Height = 33;
             dataGridView1.Size = new System.Drawing.Size(627, 499);
-            dataGridView1.TabIndex = 3;
+            dataGridView1.TabIndex = 4;
             // 
             // btnBestSellingFood
             // 
             btnBestSellingFood.BackColor = System.Drawing.Color.FromArgb(255, 128, 128);
+            btnBestSellingFood.BackgroundImage = (System.Drawing.Image)resources.GetObject("btnBestSellingFood.BackgroundImage");
+            btnBestSellingFood.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             btnBestSellingFood.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             btnBestSellingFood.Location = new System.Drawing.Point(27, 601);
             btnBestSellingFood.Name = "btnBestSellingFood";
@@ -218,10 +230,19 @@ namespace QuanLi
             // panel15
             // 
             panel15.BackColor = System.Drawing.Color.LightCoral;
+            panel15.Controls.Add(pictureBox2);
             panel15.Location = new System.Drawing.Point(18, 16);
             panel15.Name = "panel15";
             panel15.Size = new System.Drawing.Size(688, 543);
             panel15.TabIndex = 0;
+            // 
+            // pictureBox2
+            // 
+            pictureBox2.Location = new System.Drawing.Point(680, 489);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new System.Drawing.Size(150, 75);
+            pictureBox2.TabIndex = 0;
+            pictureBox2.TabStop = false;
             // 
             // Form2
             // 
@@ -241,6 +262,8 @@ namespace QuanLi
             panel11.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             panel2.ResumeLayout(false);
+            panel15.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ResumeLayout(false);
         }
 
@@ -263,5 +286,6 @@ namespace QuanLi
         private System.Windows.Forms.Button btnBestSellingFood;
         private System.Windows.Forms.Button btnBestSellingTopping;
         private System.Windows.Forms.Button btnBestSellingDrink;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }

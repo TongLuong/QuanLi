@@ -22,11 +22,6 @@ namespace QuanLi
             form1.Show();
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void MenuButton_MouseEnter(object sender, EventArgs e)
         {
             ((Button)sender).FlatAppearance.MouseOverBackColor = ((Button)sender).BackColor;
