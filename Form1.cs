@@ -27,31 +27,31 @@ namespace QuanLi
             temp.AutoSize = true;
 
             flowOrderName.Controls.Add(temp);
-            flowOrderName.SetFlowBreak(temp, true);
+            flowOrderName.SetFlowBreak(temp, true); // set newest control as breakpoint, so that is will appear vertically in the flow panel
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
             //this.BackColor = Color.FromArgb(0, 0, 1);
             //this.TransparencyKey = Color.FromArgb(0, 0, 1);
-            timeThread = new Thread(() => UpdateTime());
+            timeThread = new Thread(() => UpdateTime()); // create thread for updating the time
             timeThread.IsBackground = true;
             timeThread.Start();
         }
 
         private void close_MouseEnter(object sender, EventArgs e)
         {
-            timer1.Start();
+            timer1.Start(); // timer1 handles effect for close button
         }
 
         private void close_MouseMove(object sender, MouseEventArgs e)
         {
-            timer1.Start();
+            timer1.Start(); // timer1 handles effect for close button
         }
 
         private void close_Click(object sender, EventArgs e)
         {
-            this.Close();
+            this.Close(); // close the form
         }
 
         private bool MouseIsOverControl(Control c)
@@ -61,44 +61,44 @@ namespace QuanLi
         {
             if (!MouseIsOverControl(close))
             {
-                close.BorderStyle = BorderStyle.None;
+                close.BorderStyle = BorderStyle.None; // remove effect if mouse leave the control
                 timer1.Stop();
             }
             else
-                close.BorderStyle = BorderStyle.FixedSingle;
+                close.BorderStyle = BorderStyle.FixedSingle; // add effect if mouse leave the control
         }
 
         private void minimize_Click(object sender, EventArgs e)
         {
-            this.WindowState = FormWindowState.Minimized;
+            this.WindowState = FormWindowState.Minimized; // minimized the form
         }
 
         private void minimize_MouseEnter(object sender, EventArgs e)
         {
-            timer2.Start();
+            timer2.Start(); // timer2 handles effect for minimize button
         }
 
         private void minimize_MouseMove(object sender, MouseEventArgs e)
         {
-            timer2.Start();
+            timer2.Start(); // timer2 handles effect for minize button
         }
 
         private void timer2_Tick(object sender, EventArgs e)
         {
             if (!MouseIsOverControl(minimize))
             {
-                minimize.BorderStyle = BorderStyle.None;
+                minimize.BorderStyle = BorderStyle.None; // remove effect if mouse leave the control
                 timer2.Stop();
             }
             else
-                minimize.BorderStyle = BorderStyle.FixedSingle;
+                minimize.BorderStyle = BorderStyle.FixedSingle; // add effect if mouse is in the control
         }
 
         private void Form1_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
             {
-                MouseDownLocation = e.Location;
+                MouseDownLocation = e.Location; // get the current location of mouse if left mouse button is pressed
             }
         }
 
@@ -106,6 +106,7 @@ namespace QuanLi
         {
             if (e.Button == MouseButtons.Left)
             {
+                // calculate new location for form after drag-and-drop operation
                 this.Left = this.Left + (e.X - MouseDownLocation.X);
                 this.Top = this.Top + (e.Y - MouseDownLocation.Y);
             }
@@ -120,12 +121,12 @@ namespace QuanLi
         {
             while (true)
             {
-                if (CurrTime.IsHandleCreated)
+                if (CurrTime.IsHandleCreated) // check if the control was created/existed
                 {
                     CurrTime.Invoke(new Action(() =>
                     {
                         CurrTime.Text = DateTime.Now.ToString("hh:mm:ss tt ") + DateTime.Now.ToString("dd/MM/yyyy");
-                    }));
+                    })); // method for sharing data between threads
                 }
                 Thread.Sleep(100);
             }
