@@ -60,7 +60,7 @@ namespace QuanLi
             MenuButton.Size = new System.Drawing.Size(158, 151);
             MenuButton.TabIndex = 0;
             MenuButton.UseVisualStyleBackColor = false;
-            MenuButton.MouseClick += Form1Button_MouseClick;
+            MenuButton.Click += MenuButton_Click;
             MenuButton.MouseDown += MenuButton_MouseDown;
             MenuButton.MouseEnter += MenuButton_MouseEnter;
             MenuButton.MouseLeave += MenuButton_MouseLeave;
@@ -149,7 +149,7 @@ namespace QuanLi
             RevenueButton.Size = new System.Drawing.Size(158, 151);
             RevenueButton.TabIndex = 8;
             RevenueButton.UseVisualStyleBackColor = false;
-            RevenueButton.MouseClick += RevenueButton_MouseClick;
+            RevenueButton.Click += RevenueButton_Click;
             RevenueButton.MouseDown += RevenueButton_MouseDown;
             RevenueButton.MouseEnter += RevenueButton_MouseEnter;
             RevenueButton.MouseLeave += RevenueButton_MouseLeave;
