@@ -14,6 +14,8 @@ namespace QuanLi
 {
     public partial class Form1 : Form
     {
+        private Point MouseDownLocation;
+
         public Form1() => InitializeComponent();
 
         private void Order_Click(object sender, EventArgs e)
@@ -28,18 +30,80 @@ namespace QuanLi
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            this.BackColor = Color.FromArgb(0, 0, 1);
-            this.TransparencyKey = Color.FromArgb(0, 0, 1);
+            //this.BackColor = Color.FromArgb(0, 0, 1);
+            //this.TransparencyKey = Color.FromArgb(0, 0, 1);
         }
 
-        private void Close_Click(object sender, EventArgs e)
+        private void close_MouseEnter(object sender, EventArgs e)
+        {
+            timer1.Start();
+        }
+
+        private void close_MouseMove(object sender, MouseEventArgs e)
+        {
+            timer1.Start();
+        }
+
+        private void close_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
 
-        private void Minimize_Click(object sender, EventArgs e)
+        private bool MouseIsOverControl(Control c)
+        => c.ClientRectangle.Contains(c.PointToClient(Cursor.Position));
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            if (!MouseIsOverControl(close))
+            {
+                close.BorderStyle = BorderStyle.None;
+                timer1.Stop();
+            }
+            else
+                close.BorderStyle = BorderStyle.FixedSingle;
+        }
+
+        private void minimize_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void minimize_MouseEnter(object sender, EventArgs e)
+        {
+            timer2.Start();
+        }
+
+        private void minimize_MouseMove(object sender, MouseEventArgs e)
+        {
+            timer2.Start();
+        }
+
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            if (!MouseIsOverControl(minimize))
+            {
+                minimize.BorderStyle = BorderStyle.None;
+                timer2.Stop();
+            }
+            else
+                minimize.BorderStyle = BorderStyle.FixedSingle;
+        }
+
+        private void Form1_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                MouseDownLocation = e.Location;
+            }
+        }
+
+        private void Form1_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                this.Left = this.Left + (e.X - MouseDownLocation.X);
+                this.Top = this.Top + (e.Y - MouseDownLocation.Y);
+            }
         }
     }
 }

@@ -29,6 +29,7 @@ namespace QuanLi
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             Food = new System.Windows.Forms.Button();
             Drinks = new System.Windows.Forms.Button();
@@ -38,7 +39,6 @@ namespace QuanLi
             pbMenu = new System.Windows.Forms.PictureBox();
             label1 = new System.Windows.Forms.Label();
             pbOrder = new System.Windows.Forms.PictureBox();
-            pictureBox5 = new System.Windows.Forms.PictureBox();
             Order = new System.Windows.Forms.Button();
             label2 = new System.Windows.Forms.Label();
             pictureBox11 = new System.Windows.Forms.PictureBox();
@@ -48,134 +48,132 @@ namespace QuanLi
             label5 = new System.Windows.Forms.Label();
             flowOrderAmount = new System.Windows.Forms.FlowLayoutPanel();
             flowOrderPrice = new System.Windows.Forms.FlowLayoutPanel();
-            pictureBox3 = new System.Windows.Forms.PictureBox();
-            pictureBox6 = new System.Windows.Forms.PictureBox();
+            close = new System.Windows.Forms.PictureBox();
+            minimize = new System.Windows.Forms.PictureBox();
+            pictureBox7 = new System.Windows.Forms.PictureBox();
+            timer1 = new System.Windows.Forms.Timer(components);
+            timer2 = new System.Windows.Forms.Timer(components);
+            Stat = new System.Windows.Forms.Button();
+            label6 = new System.Windows.Forms.Label();
             pictureBox1 = new System.Windows.Forms.PictureBox();
-            pictureBox2 = new System.Windows.Forms.PictureBox();
-            pictureBox4 = new System.Windows.Forms.PictureBox();
-            Close = new System.Windows.Forms.PictureBox();
-            Minimize = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)pbMenu).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pbOrder).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox5).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox11).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox6).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)close).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)minimize).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox7).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)Close).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)Minimize).BeginInit();
             SuspendLayout();
             // 
             // Food
             // 
-            Food.BackColor = System.Drawing.Color.FromArgb(250, 248, 0);
+            Food.BackColor = System.Drawing.Color.FromArgb(237, 205, 26);
             Food.FlatAppearance.BorderColor = System.Drawing.Color.White;
             Food.FlatAppearance.BorderSize = 0;
             Food.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(128, 255, 128);
             Food.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(128, 255, 128);
             Food.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(255, 128, 128);
             Food.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            Food.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            Food.Font = new System.Drawing.Font("Cambria", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             Food.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            Food.Location = new System.Drawing.Point(8, 192);
+            Food.Location = new System.Drawing.Point(0, 69);
             Food.Name = "Food";
-            Food.Size = new System.Drawing.Size(112, 100);
+            Food.Size = new System.Drawing.Size(90, 40);
             Food.TabIndex = 6;
             Food.Text = "Đồ ăn";
             Food.UseVisualStyleBackColor = false;
             // 
             // Drinks
             // 
-            Drinks.BackColor = System.Drawing.Color.FromArgb(250, 248, 0);
+            Drinks.BackColor = System.Drawing.Color.FromArgb(237, 205, 26);
             Drinks.FlatAppearance.BorderColor = System.Drawing.Color.White;
             Drinks.FlatAppearance.BorderSize = 0;
             Drinks.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(128, 255, 128);
             Drinks.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(128, 255, 128);
             Drinks.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(255, 128, 128);
             Drinks.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            Drinks.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            Drinks.Font = new System.Drawing.Font("Cambria", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             Drinks.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            Drinks.Location = new System.Drawing.Point(8, 332);
+            Drinks.Location = new System.Drawing.Point(0, 109);
             Drinks.Name = "Drinks";
-            Drinks.Size = new System.Drawing.Size(112, 100);
+            Drinks.Size = new System.Drawing.Size(90, 40);
             Drinks.TabIndex = 7;
             Drinks.Text = "Đồ uống";
             Drinks.UseVisualStyleBackColor = false;
             // 
             // Topping
             // 
-            Topping.BackColor = System.Drawing.Color.FromArgb(250, 248, 0);
+            Topping.BackColor = System.Drawing.Color.FromArgb(237, 205, 26);
             Topping.FlatAppearance.BorderColor = System.Drawing.Color.White;
             Topping.FlatAppearance.BorderSize = 0;
             Topping.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(128, 255, 128);
             Topping.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(128, 255, 128);
             Topping.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(255, 128, 128);
             Topping.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            Topping.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            Topping.Font = new System.Drawing.Font("Cambria", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             Topping.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            Topping.Location = new System.Drawing.Point(8, 474);
+            Topping.Location = new System.Drawing.Point(0, 149);
             Topping.Name = "Topping";
-            Topping.Size = new System.Drawing.Size(112, 100);
+            Topping.Size = new System.Drawing.Size(90, 40);
             Topping.TabIndex = 8;
             Topping.Text = "Topping";
             Topping.UseVisualStyleBackColor = false;
             // 
             // Special
             // 
-            Special.BackColor = System.Drawing.Color.FromArgb(250, 248, 0);
+            Special.BackColor = System.Drawing.Color.FromArgb(237, 205, 26);
             Special.FlatAppearance.BorderColor = System.Drawing.Color.White;
             Special.FlatAppearance.BorderSize = 0;
             Special.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(128, 255, 128);
             Special.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(128, 255, 128);
             Special.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(255, 128, 128);
             Special.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            Special.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            Special.Font = new System.Drawing.Font("Cambria", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             Special.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            Special.Location = new System.Drawing.Point(8, 54);
+            Special.Location = new System.Drawing.Point(0, 29);
             Special.Name = "Special";
-            Special.Size = new System.Drawing.Size(112, 100);
+            Special.Size = new System.Drawing.Size(90, 40);
             Special.TabIndex = 9;
             Special.Text = "Đặc biệt";
             Special.UseVisualStyleBackColor = false;
             // 
             // All
             // 
-            All.BackColor = System.Drawing.Color.FromArgb(250, 248, 0);
+            All.BackColor = System.Drawing.Color.FromArgb(237, 205, 26);
             All.FlatAppearance.BorderColor = System.Drawing.Color.White;
             All.FlatAppearance.BorderSize = 0;
             All.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(128, 255, 128);
             All.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(128, 255, 128);
             All.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(255, 128, 128);
             All.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            All.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            All.Font = new System.Drawing.Font("Cambria", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             All.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            All.Location = new System.Drawing.Point(8, 612);
+            All.Location = new System.Drawing.Point(0, 189);
             All.Name = "All";
-            All.Size = new System.Drawing.Size(112, 100);
+            All.Size = new System.Drawing.Size(90, 38);
             All.TabIndex = 10;
             All.Text = "Tất cả";
             All.UseVisualStyleBackColor = false;
             // 
             // pbMenu
             // 
-            pbMenu.BackColor = System.Drawing.Color.FromArgb(255, 59, 48);
-            pbMenu.Location = new System.Drawing.Point(37, 29);
+            pbMenu.BackColor = System.Drawing.Color.FromArgb(247, 23, 59);
+            pbMenu.Location = new System.Drawing.Point(90, 29);
             pbMenu.Name = "pbMenu";
-            pbMenu.Size = new System.Drawing.Size(771, 707);
+            pbMenu.Size = new System.Drawing.Size(718, 707);
             pbMenu.TabIndex = 11;
             pbMenu.TabStop = false;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.BackColor = System.Drawing.Color.FromArgb(250, 248, 0);
-            label1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            label1.Font = new System.Drawing.Font("Arial", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            label1.Location = new System.Drawing.Point(332, -1);
+            label1.BackColor = System.Drawing.Color.FromArgb(247, 23, 59);
+            label1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            label1.Font = new System.Drawing.Font("Cambria", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            label1.ForeColor = System.Drawing.Color.White;
+            label1.Location = new System.Drawing.Point(356, 29);
             label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(149, 30);
+            label1.Size = new System.Drawing.Size(141, 30);
             label1.TabIndex = 12;
             label1.Text = "THỰC ĐƠN";
             // 
@@ -188,15 +186,6 @@ namespace QuanLi
             pbOrder.TabIndex = 13;
             pbOrder.TabStop = false;
             // 
-            // pictureBox5
-            // 
-            pictureBox5.BackColor = System.Drawing.Color.FromArgb(255, 255, 128);
-            pictureBox5.Location = new System.Drawing.Point(144, 380);
-            pictureBox5.Name = "pictureBox5";
-            pictureBox5.Size = new System.Drawing.Size(172, 165);
-            pictureBox5.TabIndex = 17;
-            pictureBox5.TabStop = false;
-            // 
             // Order
             // 
             Order.BackColor = System.Drawing.Color.FromArgb(250, 248, 0);
@@ -205,7 +194,7 @@ namespace QuanLi
             Order.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(128, 255, 128);
             Order.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(255, 128, 128);
             Order.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            Order.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            Order.Font = new System.Drawing.Font("Cambria", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             Order.Location = new System.Drawing.Point(672, 674);
             Order.Name = "Order";
             Order.Size = new System.Drawing.Size(117, 51);
@@ -218,19 +207,19 @@ namespace QuanLi
             // 
             label2.AutoSize = true;
             label2.BackColor = System.Drawing.Color.FromArgb(128, 255, 128);
-            label2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            label2.Location = new System.Drawing.Point(984, 33);
+            label2.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            label2.Location = new System.Drawing.Point(984, 41);
             label2.Name = "label2";
-            label2.Size = new System.Drawing.Size(261, 24);
+            label2.Size = new System.Drawing.Size(243, 23);
             label2.TabIndex = 24;
             label2.Text = "Danh sách các món đã đặt";
             // 
             // pictureBox11
             // 
             pictureBox11.BackColor = System.Drawing.Color.FromArgb(213, 255, 115);
-            pictureBox11.Location = new System.Drawing.Point(840, 60);
+            pictureBox11.Location = new System.Drawing.Point(840, 70);
             pictureBox11.Name = "pictureBox11";
-            pictureBox11.Size = new System.Drawing.Size(536, 637);
+            pictureBox11.Size = new System.Drawing.Size(536, 654);
             pictureBox11.TabIndex = 25;
             pictureBox11.TabStop = false;
             // 
@@ -240,17 +229,17 @@ namespace QuanLi
             flowOrderName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             flowOrderName.Location = new System.Drawing.Point(856, 116);
             flowOrderName.Name = "flowOrderName";
-            flowOrderName.Size = new System.Drawing.Size(233, 556);
+            flowOrderName.Size = new System.Drawing.Size(233, 593);
             flowOrderName.TabIndex = 26;
             // 
             // label3
             // 
             label3.AutoSize = true;
             label3.BackColor = System.Drawing.Color.FromArgb(213, 255, 115);
-            label3.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            label3.Location = new System.Drawing.Point(860, 78);
+            label3.Font = new System.Drawing.Font("Cambria", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            label3.Location = new System.Drawing.Point(860, 79);
             label3.Name = "label3";
-            label3.Size = new System.Drawing.Size(117, 35);
+            label3.Size = new System.Drawing.Size(113, 30);
             label3.TabIndex = 27;
             label3.Text = "Tên món";
             // 
@@ -258,10 +247,10 @@ namespace QuanLi
             // 
             label4.AutoSize = true;
             label4.BackColor = System.Drawing.Color.FromArgb(213, 255, 115);
-            label4.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            label4.Location = new System.Drawing.Point(1088, 78);
+            label4.Font = new System.Drawing.Font("Cambria", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            label4.Location = new System.Drawing.Point(1088, 79);
             label4.Name = "label4";
-            label4.Size = new System.Drawing.Size(121, 35);
+            label4.Size = new System.Drawing.Size(117, 30);
             label4.TabIndex = 28;
             label4.Text = "Số lượng";
             // 
@@ -269,10 +258,10 @@ namespace QuanLi
             // 
             label5.AutoSize = true;
             label5.BackColor = System.Drawing.Color.FromArgb(213, 255, 115);
-            label5.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            label5.Location = new System.Drawing.Point(1303, 78);
+            label5.Font = new System.Drawing.Font("Cambria", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            label5.Location = new System.Drawing.Point(1306, 79);
             label5.Name = "label5";
-            label5.Size = new System.Drawing.Size(53, 35);
+            label5.Size = new System.Drawing.Size(50, 30);
             label5.TabIndex = 29;
             label5.Text = "Giá";
             // 
@@ -283,7 +272,7 @@ namespace QuanLi
             flowOrderAmount.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             flowOrderAmount.Location = new System.Drawing.Point(1086, 116);
             flowOrderAmount.Name = "flowOrderAmount";
-            flowOrderAmount.Size = new System.Drawing.Size(148, 556);
+            flowOrderAmount.Size = new System.Drawing.Size(148, 593);
             flowOrderAmount.TabIndex = 27;
             // 
             // flowOrderPrice
@@ -293,95 +282,113 @@ namespace QuanLi
             flowOrderPrice.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             flowOrderPrice.Location = new System.Drawing.Point(1231, 116);
             flowOrderPrice.Name = "flowOrderPrice";
-            flowOrderPrice.Size = new System.Drawing.Size(129, 556);
+            flowOrderPrice.Size = new System.Drawing.Size(129, 593);
             flowOrderPrice.TabIndex = 27;
             // 
-            // pictureBox3
+            // close
             // 
-            pictureBox3.BackColor = System.Drawing.Color.FromArgb(255, 255, 128);
-            pictureBox3.Location = new System.Drawing.Point(381, 380);
-            pictureBox3.Name = "pictureBox3";
-            pictureBox3.Size = new System.Drawing.Size(172, 165);
-            pictureBox3.TabIndex = 30;
-            pictureBox3.TabStop = false;
+            close.BackColor = System.Drawing.Color.Transparent;
+            close.BackgroundImage = (System.Drawing.Image)resources.GetObject("close.BackgroundImage");
+            close.Image = (System.Drawing.Image)resources.GetObject("close.Image");
+            close.Location = new System.Drawing.Point(1371, -1);
+            close.Name = "close";
+            close.Size = new System.Drawing.Size(33, 30);
+            close.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            close.TabIndex = 35;
+            close.TabStop = false;
+            close.Click += close_Click;
+            close.MouseMove += close_MouseMove;
             // 
-            // pictureBox6
+            // minimize
             // 
-            pictureBox6.BackColor = System.Drawing.Color.FromArgb(255, 255, 128);
-            pictureBox6.Location = new System.Drawing.Point(608, 380);
-            pictureBox6.Name = "pictureBox6";
-            pictureBox6.Size = new System.Drawing.Size(172, 165);
-            pictureBox6.TabIndex = 31;
-            pictureBox6.TabStop = false;
+            minimize.BackColor = System.Drawing.Color.FromArgb(0, 0, 1);
+            minimize.BackgroundImage = (System.Drawing.Image)resources.GetObject("minimize.BackgroundImage");
+            minimize.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            minimize.Image = (System.Drawing.Image)resources.GetObject("minimize.Image");
+            minimize.Location = new System.Drawing.Point(1338, -1);
+            minimize.Name = "minimize";
+            minimize.Size = new System.Drawing.Size(33, 30);
+            minimize.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            minimize.TabIndex = 36;
+            minimize.TabStop = false;
+            minimize.Click += minimize_Click;
+            minimize.MouseEnter += minimize_MouseEnter;
+            minimize.MouseMove += minimize_MouseMove;
+            // 
+            // pictureBox7
+            // 
+            pictureBox7.BackColor = System.Drawing.Color.FromArgb(128, 255, 255);
+            pictureBox7.Location = new System.Drawing.Point(0, 29);
+            pictureBox7.Name = "pictureBox7";
+            pictureBox7.Size = new System.Drawing.Size(90, 707);
+            pictureBox7.TabIndex = 37;
+            pictureBox7.TabStop = false;
+            // 
+            // timer1
+            // 
+            timer1.Interval = 10;
+            timer1.Tick += timer1_Tick;
+            // 
+            // timer2
+            // 
+            timer2.Interval = 10;
+            timer2.Tick += timer2_Tick;
+            // 
+            // Stat
+            // 
+            Stat.BackColor = System.Drawing.Color.FromArgb(255, 192, 128);
+            Stat.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            Stat.FlatAppearance.BorderSize = 0;
+            Stat.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(128, 255, 128);
+            Stat.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(128, 255, 128);
+            Stat.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(255, 128, 128);
+            Stat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            Stat.Font = new System.Drawing.Font("Cambria", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            Stat.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            Stat.Location = new System.Drawing.Point(806, -1);
+            Stat.Name = "Stat";
+            Stat.Size = new System.Drawing.Size(90, 30);
+            Stat.TabIndex = 38;
+            Stat.Text = "Thống kê";
+            Stat.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            Stat.UseVisualStyleBackColor = false;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.BackColor = System.Drawing.Color.White;
+            label6.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            label6.Font = new System.Drawing.Font("Cambria", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            label6.ForeColor = System.Drawing.Color.Black;
+            label6.Location = new System.Drawing.Point(90, 5);
+            label6.Name = "label6";
+            label6.Size = new System.Drawing.Size(146, 20);
+            label6.TabIndex = 39;
+            label6.Text = "Xin chào User123";
             // 
             // pictureBox1
             // 
-            pictureBox1.BackColor = System.Drawing.Color.FromArgb(255, 255, 128);
-            pictureBox1.Location = new System.Drawing.Point(144, 88);
+            pictureBox1.BackgroundImage = (System.Drawing.Image)resources.GetObject("pictureBox1.BackgroundImage");
+            pictureBox1.Image = (System.Drawing.Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new System.Drawing.Point(25, 1);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new System.Drawing.Size(172, 165);
-            pictureBox1.TabIndex = 32;
+            pictureBox1.Size = new System.Drawing.Size(40, 27);
+            pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            pictureBox1.TabIndex = 40;
             pictureBox1.TabStop = false;
-            // 
-            // pictureBox2
-            // 
-            pictureBox2.BackColor = System.Drawing.Color.FromArgb(255, 255, 128);
-            pictureBox2.Location = new System.Drawing.Point(381, 88);
-            pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new System.Drawing.Size(172, 165);
-            pictureBox2.TabIndex = 33;
-            pictureBox2.TabStop = false;
-            // 
-            // pictureBox4
-            // 
-            pictureBox4.BackColor = System.Drawing.Color.FromArgb(255, 255, 128);
-            pictureBox4.Location = new System.Drawing.Point(608, 88);
-            pictureBox4.Name = "pictureBox4";
-            pictureBox4.Size = new System.Drawing.Size(172, 165);
-            pictureBox4.TabIndex = 34;
-            pictureBox4.TabStop = false;
-            // 
-            // Close
-            // 
-            Close.BackColor = System.Drawing.Color.Transparent;
-            Close.BackgroundImage = (System.Drawing.Image)resources.GetObject("Close.BackgroundImage");
-            Close.Image = (System.Drawing.Image)resources.GetObject("Close.Image");
-            Close.Location = new System.Drawing.Point(1371, -1);
-            Close.Name = "Close";
-            Close.Size = new System.Drawing.Size(33, 30);
-            Close.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            Close.TabIndex = 35;
-            Close.TabStop = false;
-            Close.Click += Close_Click;
-            // 
-            // Minimize
-            // 
-            Minimize.BackColor = System.Drawing.Color.FromArgb(0, 0, 1);
-            Minimize.BackgroundImage = (System.Drawing.Image)resources.GetObject("Minimize.BackgroundImage");
-            Minimize.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            Minimize.Image = (System.Drawing.Image)resources.GetObject("Minimize.Image");
-            Minimize.Location = new System.Drawing.Point(1330, -1);
-            Minimize.Name = "Minimize";
-            Minimize.Size = new System.Drawing.Size(33, 30);
-            Minimize.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            Minimize.TabIndex = 36;
-            Minimize.TabStop = false;
-            Minimize.Click += Minimize_Click;
             // 
             // Form1
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            BackColor = System.Drawing.Color.IndianRed;
-            ClientSize = new System.Drawing.Size(1416, 750);
+            BackColor = System.Drawing.Color.White;
+            ClientSize = new System.Drawing.Size(1404, 736);
             ControlBox = false;
-            Controls.Add(Minimize);
-            Controls.Add(Close);
-            Controls.Add(pictureBox4);
-            Controls.Add(pictureBox2);
             Controls.Add(pictureBox1);
-            Controls.Add(pictureBox6);
-            Controls.Add(pictureBox3);
+            Controls.Add(label6);
+            Controls.Add(Stat);
+            Controls.Add(minimize);
+            Controls.Add(close);
             Controls.Add(flowOrderPrice);
             Controls.Add(flowOrderAmount);
             Controls.Add(label5);
@@ -391,7 +398,6 @@ namespace QuanLi
             Controls.Add(pictureBox11);
             Controls.Add(label2);
             Controls.Add(Order);
-            Controls.Add(pictureBox5);
             Controls.Add(label1);
             Controls.Add(pbOrder);
             Controls.Add(All);
@@ -400,23 +406,22 @@ namespace QuanLi
             Controls.Add(Drinks);
             Controls.Add(Food);
             Controls.Add(pbMenu);
+            Controls.Add(pictureBox7);
             FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             MaximizeBox = false;
             Name = "Form1";
             StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             Text = "Form1";
             Load += Form1_Load;
+            MouseDown += Form1_MouseDown;
+            MouseMove += Form1_MouseMove;
             ((System.ComponentModel.ISupportInitialize)pbMenu).EndInit();
             ((System.ComponentModel.ISupportInitialize)pbOrder).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox5).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox11).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox6).EndInit();
+            ((System.ComponentModel.ISupportInitialize)close).EndInit();
+            ((System.ComponentModel.ISupportInitialize)minimize).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox7).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
-            ((System.ComponentModel.ISupportInitialize)Close).EndInit();
-            ((System.ComponentModel.ISupportInitialize)Minimize).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -430,7 +435,6 @@ namespace QuanLi
         private System.Windows.Forms.PictureBox pbMenu;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pbOrder;
-        private System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.Button Order;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.PictureBox pictureBox11;
@@ -440,13 +444,14 @@ namespace QuanLi
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.FlowLayoutPanel flowOrderAmount;
         private System.Windows.Forms.FlowLayoutPanel flowOrderPrice;
-        private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.PictureBox pictureBox6;
+        private System.Windows.Forms.PictureBox close;
+        private System.Windows.Forms.PictureBox minimize;
+        private System.Windows.Forms.PictureBox pictureBox7;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Timer timer2;
+        private System.Windows.Forms.Button Stat;
+        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.PictureBox pictureBox4;
-        private System.Windows.Forms.PictureBox Close;
-        private System.Windows.Forms.PictureBox Minimize;
     }
 }
 
