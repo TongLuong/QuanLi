@@ -25,5 +25,21 @@ namespace QuanLi
             flowOrderName.Controls.Add(temp);
             flowOrderName.SetFlowBreak(temp, true);
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            this.BackColor = Color.FromArgb(0, 0, 1);
+            this.TransparencyKey = Color.FromArgb(0, 0, 1);
+        }
+
+        private void Close_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void Minimize_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
     }
 }

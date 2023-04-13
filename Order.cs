@@ -56,8 +56,6 @@ namespace QuanLi
 
         }
         #endregion
-
-
     }
 
     public class ListBill

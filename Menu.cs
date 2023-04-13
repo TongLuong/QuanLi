@@ -81,7 +81,19 @@ namespace QuanLi
 
         public static Dish operator -(Dish dish, int val)
         {
-            dish.numberOfSells-= val;
+            dish.numberOfSells -= val;
+            return dish;
+        }
+
+        public static Dish operator ++(Dish dish) //maybe not necessary cause of modifying by using value in textBox GUI
+        {
+            dish.numberOfSells++;
+            return dish;
+        }
+
+        public static Dish operator --(Dish dish)
+        {
+            dish.numberOfSells--;
             return dish;
         }
         #endregion
