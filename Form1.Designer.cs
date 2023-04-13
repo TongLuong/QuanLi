@@ -56,6 +56,8 @@ namespace QuanLi
             Stat = new System.Windows.Forms.Button();
             label6 = new System.Windows.Forms.Label();
             pictureBox1 = new System.Windows.Forms.PictureBox();
+            pictureBox2 = new System.Windows.Forms.PictureBox();
+            CurrTime = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)pbMenu).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pbOrder).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox11).BeginInit();
@@ -63,6 +65,7 @@ namespace QuanLi
             ((System.ComponentModel.ISupportInitialize)minimize).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox7).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
             // 
             // Food
@@ -229,7 +232,7 @@ namespace QuanLi
             flowOrderName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             flowOrderName.Location = new System.Drawing.Point(856, 116);
             flowOrderName.Name = "flowOrderName";
-            flowOrderName.Size = new System.Drawing.Size(233, 593);
+            flowOrderName.Size = new System.Drawing.Size(233, 587);
             flowOrderName.TabIndex = 26;
             // 
             // label3
@@ -272,7 +275,7 @@ namespace QuanLi
             flowOrderAmount.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             flowOrderAmount.Location = new System.Drawing.Point(1086, 116);
             flowOrderAmount.Name = "flowOrderAmount";
-            flowOrderAmount.Size = new System.Drawing.Size(148, 593);
+            flowOrderAmount.Size = new System.Drawing.Size(148, 587);
             flowOrderAmount.TabIndex = 27;
             // 
             // flowOrderPrice
@@ -282,7 +285,7 @@ namespace QuanLi
             flowOrderPrice.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             flowOrderPrice.Location = new System.Drawing.Point(1231, 116);
             flowOrderPrice.Name = "flowOrderPrice";
-            flowOrderPrice.Size = new System.Drawing.Size(129, 593);
+            flowOrderPrice.Size = new System.Drawing.Size(129, 587);
             flowOrderPrice.TabIndex = 27;
             // 
             // close
@@ -320,7 +323,7 @@ namespace QuanLi
             pictureBox7.BackColor = System.Drawing.Color.FromArgb(128, 255, 255);
             pictureBox7.Location = new System.Drawing.Point(0, 29);
             pictureBox7.Name = "pictureBox7";
-            pictureBox7.Size = new System.Drawing.Size(90, 707);
+            pictureBox7.Size = new System.Drawing.Size(90, 674);
             pictureBox7.TabIndex = 37;
             pictureBox7.TabStop = false;
             // 
@@ -377,6 +380,25 @@ namespace QuanLi
             pictureBox1.TabIndex = 40;
             pictureBox1.TabStop = false;
             // 
+            // pictureBox2
+            // 
+            pictureBox2.BackColor = System.Drawing.Color.FromArgb(247, 96, 121);
+            pictureBox2.Location = new System.Drawing.Point(111, 70);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new System.Drawing.Size(678, 598);
+            pictureBox2.TabIndex = 41;
+            pictureBox2.TabStop = false;
+            // 
+            // CurrTime
+            // 
+            CurrTime.Font = new System.Drawing.Font("Cambria", 7.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            CurrTime.Location = new System.Drawing.Point(0, 702);
+            CurrTime.Multiline = true;
+            CurrTime.Name = "CurrTime";
+            CurrTime.ReadOnly = true;
+            CurrTime.Size = new System.Drawing.Size(90, 34);
+            CurrTime.TabIndex = 42;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -384,6 +406,8 @@ namespace QuanLi
             BackColor = System.Drawing.Color.White;
             ClientSize = new System.Drawing.Size(1404, 736);
             ControlBox = false;
+            Controls.Add(CurrTime);
+            Controls.Add(pictureBox2);
             Controls.Add(pictureBox1);
             Controls.Add(label6);
             Controls.Add(Stat);
@@ -412,6 +436,7 @@ namespace QuanLi
             Name = "Form1";
             StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             Text = "Form1";
+            FormClosing += Form1_FormClosing;
             Load += Form1_Load;
             MouseDown += Form1_MouseDown;
             MouseMove += Form1_MouseMove;
@@ -422,6 +447,7 @@ namespace QuanLi
             ((System.ComponentModel.ISupportInitialize)minimize).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox7).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -452,6 +478,8 @@ namespace QuanLi
         private System.Windows.Forms.Button Stat;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.TextBox CurrTime;
     }
 }
 

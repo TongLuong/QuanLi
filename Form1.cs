@@ -7,6 +7,7 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -15,6 +16,7 @@ namespace QuanLi
     public partial class Form1 : Form
     {
         private Point MouseDownLocation;
+        private Thread timeThread;
 
         public Form1() => InitializeComponent();
 
@@ -32,6 +34,9 @@ namespace QuanLi
         {
             //this.BackColor = Color.FromArgb(0, 0, 1);
             //this.TransparencyKey = Color.FromArgb(0, 0, 1);
+            timeThread = new Thread(() => UpdateTime());
+            timeThread.IsBackground = true;
+            timeThread.Start();
         }
 
         private void close_MouseEnter(object sender, EventArgs e)
@@ -103,6 +108,23 @@ namespace QuanLi
             {
                 this.Left = this.Left + (e.X - MouseDownLocation.X);
                 this.Top = this.Top + (e.Y - MouseDownLocation.Y);
+            }
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            //timeThread.Interrupt();
+        }
+
+        private void UpdateTime()
+        {
+            while (true)
+            {
+                CurrTime.Invoke(new Action(() =>
+                {
+                    CurrTime.Text = DateTime.Now.ToString("hh:mm:ss tt ") + DateTime.Now.ToString("dd/MM/yyyy");
+                }));
+                Thread.Sleep(100);
             }
         }
     }
