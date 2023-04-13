@@ -51,7 +51,7 @@ namespace QuanLi
 
         private void close_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            this.Close();
         }
 
         private bool MouseIsOverControl(Control c)
@@ -120,10 +120,13 @@ namespace QuanLi
         {
             while (true)
             {
-                CurrTime.Invoke(new Action(() =>
+                if (CurrTime.IsHandleCreated)
                 {
-                    CurrTime.Text = DateTime.Now.ToString("hh:mm:ss tt ") + DateTime.Now.ToString("dd/MM/yyyy");
-                }));
+                    CurrTime.Invoke(new Action(() =>
+                    {
+                        CurrTime.Text = DateTime.Now.ToString("hh:mm:ss tt ") + DateTime.Now.ToString("dd/MM/yyyy");
+                    }));
+                }
                 Thread.Sleep(100);
             }
         }
