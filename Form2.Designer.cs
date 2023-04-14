@@ -47,7 +47,7 @@ namespace QuanLi
             btnBestSellingFood = new System.Windows.Forms.Button();
             plProfitChart = new System.Windows.Forms.Panel();
             panel15 = new System.Windows.Forms.Panel();
-            dtgvBSFood = new System.Windows.Forms.DataGridView();
+            dtgvStatistic = new System.Windows.Forms.DataGridView();
             Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
             Dish = new System.Windows.Forms.DataGridViewTextBoxColumn();
             Type = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -60,7 +60,7 @@ namespace QuanLi
             plTotalInvestment.SuspendLayout();
             plTotalIncome.SuspendLayout();
             plProfitChart.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dtgvBSFood).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dtgvStatistic).BeginInit();
             SuspendLayout();
             // 
             // panel1
@@ -108,7 +108,7 @@ namespace QuanLi
             // plStatistic
             // 
             plStatistic.BackColor = System.Drawing.Color.GreenYellow;
-            plStatistic.Controls.Add(dtgvBSFood);
+            plStatistic.Controls.Add(dtgvStatistic);
             plStatistic.Controls.Add(plTotalProfit);
             plStatistic.Controls.Add(plTotalInvestment);
             plStatistic.Controls.Add(plTotalIncome);
@@ -229,12 +229,12 @@ namespace QuanLi
             panel15.Size = new System.Drawing.Size(790, 626);
             panel15.TabIndex = 0;
             // 
-            // dtgvBSFood
+            // dtgvStatistic
             // 
-            dtgvBSFood.AllowUserToOrderColumns = true;
-            dtgvBSFood.BackgroundColor = System.Drawing.SystemColors.ActiveBorder;
-            dtgvBSFood.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dtgvBSFood.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            dtgvStatistic.AllowUserToOrderColumns = true;
+            dtgvStatistic.BackgroundColor = System.Drawing.SystemColors.ActiveBorder;
+            dtgvStatistic.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            dtgvStatistic.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.Lime;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -242,16 +242,16 @@ namespace QuanLi
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            dtgvBSFood.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            dtgvBSFood.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dtgvBSFood.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { Date, Dish, Type, Sell, Price, Profit });
-            dtgvBSFood.EnableHeadersVisualStyles = false;
-            dtgvBSFood.Location = new System.Drawing.Point(17, 16);
-            dtgvBSFood.Name = "dtgvBSFood";
-            dtgvBSFood.RowHeadersWidth = 62;
-            dtgvBSFood.RowTemplate.Height = 33;
-            dtgvBSFood.Size = new System.Drawing.Size(695, 545);
-            dtgvBSFood.TabIndex = 8;
+            dtgvStatistic.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dtgvStatistic.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dtgvStatistic.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { Date, Dish, Type, Sell, Price, Profit });
+            dtgvStatistic.EnableHeadersVisualStyles = false;
+            dtgvStatistic.Location = new System.Drawing.Point(17, 16);
+            dtgvStatistic.Name = "dtgvStatistic";
+            dtgvStatistic.RowHeadersWidth = 62;
+            dtgvStatistic.RowTemplate.Height = 33;
+            dtgvStatistic.Size = new System.Drawing.Size(695, 545);
+            dtgvStatistic.TabIndex = 8;
             // 
             // Date
             // 
@@ -312,7 +312,7 @@ namespace QuanLi
             plTotalIncome.ResumeLayout(false);
             plTotalIncome.PerformLayout();
             plProfitChart.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dtgvBSFood).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dtgvStatistic).EndInit();
             ResumeLayout(false);
         }
 
@@ -334,7 +334,7 @@ namespace QuanLi
         private System.Windows.Forms.Button btnBestSellingFood;
         private System.Windows.Forms.Button btnBestSellingTopping;
         private System.Windows.Forms.Button btnBestSellingDrink;
-        private System.Windows.Forms.DataGridView dtgvBSFood;
+        private System.Windows.Forms.DataGridView dtgvStatistic;
         private System.Windows.Forms.DataGridViewTextBoxColumn Date;
         private System.Windows.Forms.DataGridViewTextBoxColumn Dish;
         private System.Windows.Forms.DataGridViewTextBoxColumn Type;
