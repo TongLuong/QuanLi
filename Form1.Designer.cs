@@ -58,6 +58,7 @@ namespace QuanLi
             pictureBox1 = new System.Windows.Forms.PictureBox();
             pictureBox2 = new System.Windows.Forms.PictureBox();
             CurrTime = new System.Windows.Forms.TextBox();
+            AddDish = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)pbMenu).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pbOrder).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox11).BeginInit();
@@ -399,6 +400,23 @@ namespace QuanLi
             CurrTime.Size = new System.Drawing.Size(90, 34);
             CurrTime.TabIndex = 42;
             // 
+            // AddDish
+            // 
+            AddDish.BackColor = System.Drawing.Color.FromArgb(250, 248, 0);
+            AddDish.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            AddDish.FlatAppearance.BorderSize = 0;
+            AddDish.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(128, 255, 128);
+            AddDish.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(255, 128, 128);
+            AddDish.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            AddDish.Font = new System.Drawing.Font("Cambria", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            AddDish.Location = new System.Drawing.Point(549, 673);
+            AddDish.Name = "AddDish";
+            AddDish.Size = new System.Drawing.Size(117, 51);
+            AddDish.TabIndex = 43;
+            AddDish.Text = "Thêm món";
+            AddDish.UseVisualStyleBackColor = false;
+            AddDish.Click += AddDish_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -406,6 +424,7 @@ namespace QuanLi
             BackColor = System.Drawing.Color.White;
             ClientSize = new System.Drawing.Size(1404, 736);
             ControlBox = false;
+            Controls.Add(AddDish);
             Controls.Add(CurrTime);
             Controls.Add(pictureBox2);
             Controls.Add(pictureBox1);
@@ -480,6 +499,7 @@ namespace QuanLi
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.TextBox CurrTime;
+        private System.Windows.Forms.Button AddDish;
     }
 }
 

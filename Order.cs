@@ -10,22 +10,24 @@ namespace QuanLi
 {
     public class Order
     {
+        int id; public int Id { get => id; }
         string name; public string Name { get => name; }
         double price; public double Price { get => price; }
-        public Order(string name, double price)
+        public Order(int id, string name, double price)
         {
             this.name = name;
             this.price = price;
+            this.id = id;
         }
     }
     public class Bill
     {
         #region Feature
         List<KeyValuePair<Order, int>> orders; public List<KeyValuePair<Order, int>> Orders { get => orders; set => orders = value; }
-        double total; public double Total { get => total; set => total = value; }
+        double total; public double Total { get => total; set => total = value; } // total money of this Bill
         #endregion
         #region Constructor
-        public Bill() 
+        public Bill()
         {
             orders = new List<KeyValuePair<Order, int>>();
             total = 0;
@@ -44,7 +46,9 @@ namespace QuanLi
                 string  newName = name[i].Text.ToString();
                 int  newAmount = Convert.ToInt32(amount[i].Text);
                 double newPrice = Convert.ToDouble(price[i].Text);
-                Order tmp = new Order(newName, newPrice);
+                int newId = Convert.ToInt32(name[i].Name);
+
+                Order tmp = new Order(newId, newName, newPrice);
                 KeyValuePair<Order, int> newOrder = new KeyValuePair<Order, int>(tmp,newAmount);
                 orders.Add(newOrder);
                 total += newAmount * newPrice;
@@ -57,13 +61,20 @@ namespace QuanLi
     public class ListBill
     {
         List<Bill> bills; public List<Bill> Bills { get => bills; set => bills = value; }
-        public static ListBill Instance { get; set; }
+        private static ListBill instance = null;
         
-        public ListBill()
+        private ListBill()
         {
             bills = new List<Bill>();
-            Instance = this;
         }
+
+        public static ListBill Instance()
+        {
+            instance ??= new ListBill(); // if instance == null then instance = new...
+
+            return instance;
+        }
+
         public void AddBill(Bill bill)
         {
             bills.Add(bill);
