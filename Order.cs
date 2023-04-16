@@ -10,8 +10,8 @@ namespace QuanLi
 {
     public class Order
     {
-        string name;
-        double price;
+        string name; public string Name { get => name; }
+        double price; public double Price { get => price; }
         public Order(string name, double price)
         {
             this.name = name;
@@ -41,17 +41,17 @@ namespace QuanLi
             int size = name.Count();
             for(int i = 0; i < size; i++)
             {
-                Control newName = name[i];
-                Control newAmount = amount[i];
-                Control newPrice = price[i];
-                Order tmp = new Order(newName.Text, Convert.ToDouble(newPrice.Text));
-                KeyValuePair<Order, int> newOrder = new KeyValuePair<Order, int>(tmp, Convert.ToInt32(newAmount.Text));
+                string  newName = name[i].Text.ToString();
+                int  newAmount = Convert.ToInt32(amount[i].Text);
+                double newPrice = Convert.ToDouble(price[i].Text);
+                Order tmp = new Order(newName, newPrice);
+                KeyValuePair<Order, int> newOrder = new KeyValuePair<Order, int>(tmp,newAmount);
+                orders.Add(newOrder);
+                total += newAmount * newPrice;
             }
 
         }
         #endregion
-
-
     }
 
     public class ListBill

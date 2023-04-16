@@ -16,10 +16,9 @@ namespace QuanLi
             timer1.Start();
         }
 
-        private void Form1Button_MouseClick(object sender, MouseEventArgs e)
+        private void label1_Click(object sender, EventArgs e)
         {
-            Form1 form1 = new Form1();
-            form1.Show();
+
         }
 
         private void MenuButton_MouseEnter(object sender, EventArgs e)
@@ -67,7 +66,25 @@ namespace QuanLi
             this.RevenueButton.FlatAppearance.MouseDownBackColor = this.MenuButton.BackColor;
         }
 
-        private void RevenueButton_MouseClick(object sender, MouseEventArgs e)
+        private void MenuButton_Click(object sender, EventArgs e)
+        {
+            OpenMenu();
+        }
+
+        private void RevenueButton_Click(object sender, EventArgs e)
+        {
+            OpenRevenue();
+        }
+
+        //---------------------------func-------------
+
+        private void OpenMenu()
+        {
+            Form1 form1 = new Form1();
+            form1.Show();
+        }
+
+        private void OpenRevenue()
         {
             Form2 form2 = new Form2();
             form2.Show();
