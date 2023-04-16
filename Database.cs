@@ -68,12 +68,9 @@ namespace QuanLi
                     }
                     newLine.Remove(0, 1);
 
-                    //csvStr.AppendLine(newLine.ToString());
                     writer.WriteLine(newLine.ToString());
                 }
             }
-
-            //File.AppendAllText(filePath, csvStr.ToString());
         }
 
         /// <summary>
