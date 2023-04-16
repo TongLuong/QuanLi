@@ -29,88 +29,102 @@ namespace QuanLi
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form2));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             panel1 = new System.Windows.Forms.Panel();
             btnBestSellingTopping = new System.Windows.Forms.Button();
             btnBestSellingDrink = new System.Windows.Forms.Button();
-            panel14 = new System.Windows.Forms.Panel();
-            panel13 = new System.Windows.Forms.Panel();
+            plStatistic = new System.Windows.Forms.Panel();
+            plTotalProfit = new System.Windows.Forms.Panel();
             tbxTotalProfit = new System.Windows.Forms.TextBox();
             lbTotalProfit = new System.Windows.Forms.Label();
-            panel12 = new System.Windows.Forms.Panel();
+            plTotalInvestment = new System.Windows.Forms.Panel();
             tbxTotalInvestment = new System.Windows.Forms.TextBox();
             lbTotalInvestment = new System.Windows.Forms.Label();
-            panel11 = new System.Windows.Forms.Panel();
+            plTotalIncome = new System.Windows.Forms.Panel();
             tbxTotalIncome = new System.Windows.Forms.TextBox();
             lbTotalIncome = new System.Windows.Forms.Label();
-            dataGridView1 = new System.Windows.Forms.DataGridView();
             btnBestSellingFood = new System.Windows.Forms.Button();
-            panel2 = new System.Windows.Forms.Panel();
+            plProfitChart = new System.Windows.Forms.Panel();
             panel15 = new System.Windows.Forms.Panel();
+            dtgvStatistic = new System.Windows.Forms.DataGridView();
+            Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            Dish = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            Type = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            Sell = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            Profit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             panel1.SuspendLayout();
-            panel14.SuspendLayout();
-            panel13.SuspendLayout();
-            panel12.SuspendLayout();
-            panel11.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
-            panel2.SuspendLayout();
+            plStatistic.SuspendLayout();
+            plTotalProfit.SuspendLayout();
+            plTotalInvestment.SuspendLayout();
+            plTotalIncome.SuspendLayout();
+            plProfitChart.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dtgvStatistic).BeginInit();
             SuspendLayout();
             // 
             // panel1
             // 
             panel1.Controls.Add(btnBestSellingTopping);
             panel1.Controls.Add(btnBestSellingDrink);
-            panel1.Controls.Add(panel14);
+            panel1.Controls.Add(plStatistic);
             panel1.Controls.Add(btnBestSellingFood);
-            panel1.Controls.Add(panel2);
+            panel1.Controls.Add(plProfitChart);
             panel1.Location = new System.Drawing.Point(7, 8);
             panel1.Name = "panel1";
-            panel1.Size = new System.Drawing.Size(1418, 683);
+            panel1.Size = new System.Drawing.Size(1581, 774);
             panel1.TabIndex = 0;
             // 
             // btnBestSellingTopping
             // 
             btnBestSellingTopping.BackColor = System.Drawing.Color.FromArgb(255, 128, 128);
+            btnBestSellingTopping.BackgroundImage = (System.Drawing.Image)resources.GetObject("btnBestSellingTopping.BackgroundImage");
+            btnBestSellingTopping.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             btnBestSellingTopping.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            btnBestSellingTopping.Location = new System.Drawing.Point(502, 601);
+            btnBestSellingTopping.Location = new System.Drawing.Point(591, 688);
             btnBestSellingTopping.Name = "btnBestSellingTopping";
             btnBestSellingTopping.Size = new System.Drawing.Size(213, 66);
-            btnBestSellingTopping.TabIndex = 4;
+            btnBestSellingTopping.TabIndex = 3;
             btnBestSellingTopping.Text = "           BestSelling\r\n           Topping";
             btnBestSellingTopping.UseVisualStyleBackColor = false;
             btnBestSellingTopping.Click += btnBestSellingTopping_Click;
             // 
             // btnBestSellingDrink
             // 
+            btnBestSellingDrink.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             btnBestSellingDrink.BackColor = System.Drawing.Color.FromArgb(255, 128, 128);
+            btnBestSellingDrink.BackgroundImage = (System.Drawing.Image)resources.GetObject("btnBestSellingDrink.BackgroundImage");
+            btnBestSellingDrink.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             btnBestSellingDrink.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            btnBestSellingDrink.Location = new System.Drawing.Point(263, 601);
+            btnBestSellingDrink.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            btnBestSellingDrink.Location = new System.Drawing.Point(311, 688);
             btnBestSellingDrink.Name = "btnBestSellingDrink";
             btnBestSellingDrink.Size = new System.Drawing.Size(213, 66);
-            btnBestSellingDrink.TabIndex = 3;
+            btnBestSellingDrink.TabIndex = 2;
             btnBestSellingDrink.Text = "           BestSelling\r\n           Drink\r\n";
             btnBestSellingDrink.UseVisualStyleBackColor = false;
             btnBestSellingDrink.Click += btnBestSellingDrink_Click;
             // 
-            // panel14
+            // plStatistic
             // 
-            panel14.BackColor = System.Drawing.Color.GreenYellow;
-            panel14.Controls.Add(panel13);
-            panel14.Controls.Add(panel12);
-            panel14.Controls.Add(panel11);
-            panel14.Controls.Add(dataGridView1);
-            panel14.Location = new System.Drawing.Point(739, 8);
-            panel14.Name = "panel14";
-            panel14.Size = new System.Drawing.Size(665, 667);
-            panel14.TabIndex = 2;
+            plStatistic.BackColor = System.Drawing.Color.GreenYellow;
+            plStatistic.Controls.Add(dtgvStatistic);
+            plStatistic.Controls.Add(plTotalProfit);
+            plStatistic.Controls.Add(plTotalInvestment);
+            plStatistic.Controls.Add(plTotalIncome);
+            plStatistic.Location = new System.Drawing.Point(851, 8);
+            plStatistic.Name = "plStatistic";
+            plStatistic.Size = new System.Drawing.Size(727, 746);
+            plStatistic.TabIndex = 2;
             // 
-            // panel13
+            // plTotalProfit
             // 
-            panel13.Controls.Add(tbxTotalProfit);
-            panel13.Controls.Add(lbTotalProfit);
-            panel13.Location = new System.Drawing.Point(17, 620);
-            panel13.Name = "panel13";
-            panel13.Size = new System.Drawing.Size(627, 44);
-            panel13.TabIndex = 2;
+            plTotalProfit.Controls.Add(tbxTotalProfit);
+            plTotalProfit.Controls.Add(lbTotalProfit);
+            plTotalProfit.Location = new System.Drawing.Point(17, 680);
+            plTotalProfit.Name = "plTotalProfit";
+            plTotalProfit.Size = new System.Drawing.Size(627, 44);
+            plTotalProfit.TabIndex = 2;
             // 
             // tbxTotalProfit
             // 
@@ -118,7 +132,7 @@ namespace QuanLi
             tbxTotalProfit.Name = "tbxTotalProfit";
             tbxTotalProfit.ReadOnly = true;
             tbxTotalProfit.Size = new System.Drawing.Size(368, 31);
-            tbxTotalProfit.TabIndex = 1;
+            tbxTotalProfit.TabIndex = 7;
             // 
             // lbTotalProfit
             // 
@@ -130,14 +144,14 @@ namespace QuanLi
             lbTotalProfit.TabIndex = 0;
             lbTotalProfit.Text = "Tổng lãi:";
             // 
-            // panel12
+            // plTotalInvestment
             // 
-            panel12.Controls.Add(tbxTotalInvestment);
-            panel12.Controls.Add(lbTotalInvestment);
-            panel12.Location = new System.Drawing.Point(17, 571);
-            panel12.Name = "panel12";
-            panel12.Size = new System.Drawing.Size(627, 44);
-            panel12.TabIndex = 1;
+            plTotalInvestment.Controls.Add(tbxTotalInvestment);
+            plTotalInvestment.Controls.Add(lbTotalInvestment);
+            plTotalInvestment.Location = new System.Drawing.Point(17, 630);
+            plTotalInvestment.Name = "plTotalInvestment";
+            plTotalInvestment.Size = new System.Drawing.Size(627, 44);
+            plTotalInvestment.TabIndex = 1;
             // 
             // tbxTotalInvestment
             // 
@@ -145,7 +159,7 @@ namespace QuanLi
             tbxTotalInvestment.Name = "tbxTotalInvestment";
             tbxTotalInvestment.ReadOnly = true;
             tbxTotalInvestment.Size = new System.Drawing.Size(368, 31);
-            tbxTotalInvestment.TabIndex = 1;
+            tbxTotalInvestment.TabIndex = 6;
             // 
             // lbTotalInvestment
             // 
@@ -157,14 +171,14 @@ namespace QuanLi
             lbTotalInvestment.TabIndex = 0;
             lbTotalInvestment.Text = "Tổng vốn:";
             // 
-            // panel11
+            // plTotalIncome
             // 
-            panel11.Controls.Add(tbxTotalIncome);
-            panel11.Controls.Add(lbTotalIncome);
-            panel11.Location = new System.Drawing.Point(17, 521);
-            panel11.Name = "panel11";
-            panel11.Size = new System.Drawing.Size(627, 44);
-            panel11.TabIndex = 0;
+            plTotalIncome.Controls.Add(tbxTotalIncome);
+            plTotalIncome.Controls.Add(lbTotalIncome);
+            plTotalIncome.Location = new System.Drawing.Point(17, 580);
+            plTotalIncome.Name = "plTotalIncome";
+            plTotalIncome.Size = new System.Drawing.Size(627, 44);
+            plTotalIncome.TabIndex = 0;
             // 
             // tbxTotalIncome
             // 
@@ -172,7 +186,7 @@ namespace QuanLi
             tbxTotalIncome.Name = "tbxTotalIncome";
             tbxTotalIncome.ReadOnly = true;
             tbxTotalIncome.Size = new System.Drawing.Size(368, 31);
-            tbxTotalIncome.TabIndex = 1;
+            tbxTotalIncome.TabIndex = 5;
             // 
             // lbTotalIncome
             // 
@@ -184,21 +198,13 @@ namespace QuanLi
             lbTotalIncome.TabIndex = 0;
             lbTotalIncome.Text = "Tổng thành tiền:";
             // 
-            // dataGridView1
-            // 
-            dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new System.Drawing.Point(17, 16);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersWidth = 62;
-            dataGridView1.RowTemplate.Height = 33;
-            dataGridView1.Size = new System.Drawing.Size(627, 499);
-            dataGridView1.TabIndex = 3;
-            // 
             // btnBestSellingFood
             // 
             btnBestSellingFood.BackColor = System.Drawing.Color.FromArgb(255, 128, 128);
+            btnBestSellingFood.BackgroundImage = (System.Drawing.Image)resources.GetObject("btnBestSellingFood.BackgroundImage");
+            btnBestSellingFood.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             btnBestSellingFood.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            btnBestSellingFood.Location = new System.Drawing.Point(27, 601);
+            btnBestSellingFood.Location = new System.Drawing.Point(38, 688);
             btnBestSellingFood.Name = "btnBestSellingFood";
             btnBestSellingFood.Size = new System.Drawing.Size(213, 66);
             btnBestSellingFood.TabIndex = 1;
@@ -206,62 +212,134 @@ namespace QuanLi
             btnBestSellingFood.UseVisualStyleBackColor = false;
             btnBestSellingFood.Click += btnBestSellingFood_Click;
             // 
-            // panel2
+            // plProfitChart
             // 
-            panel2.BackColor = System.Drawing.Color.IndianRed;
-            panel2.Controls.Add(panel15);
-            panel2.Location = new System.Drawing.Point(9, 8);
-            panel2.Name = "panel2";
-            panel2.Size = new System.Drawing.Size(724, 587);
-            panel2.TabIndex = 0;
+            plProfitChart.BackColor = System.Drawing.Color.IndianRed;
+            plProfitChart.Controls.Add(panel15);
+            plProfitChart.Location = new System.Drawing.Point(9, 8);
+            plProfitChart.Name = "plProfitChart";
+            plProfitChart.Size = new System.Drawing.Size(824, 664);
+            plProfitChart.TabIndex = 0;
             // 
             // panel15
             // 
             panel15.BackColor = System.Drawing.Color.LightCoral;
             panel15.Location = new System.Drawing.Point(18, 16);
             panel15.Name = "panel15";
-            panel15.Size = new System.Drawing.Size(688, 543);
+            panel15.Size = new System.Drawing.Size(790, 626);
             panel15.TabIndex = 0;
+            // 
+            // dtgvStatistic
+            // 
+            dtgvStatistic.AllowUserToOrderColumns = true;
+            dtgvStatistic.BackgroundColor = System.Drawing.SystemColors.ActiveBorder;
+            dtgvStatistic.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            dtgvStatistic.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Lime;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.InfoText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            dtgvStatistic.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dtgvStatistic.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dtgvStatistic.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { Date, Dish, Type, Sell, Price, Profit });
+            dtgvStatistic.EnableHeadersVisualStyles = false;
+            dtgvStatistic.Location = new System.Drawing.Point(17, 16);
+            dtgvStatistic.Name = "dtgvStatistic";
+            dtgvStatistic.RowHeadersWidth = 62;
+            dtgvStatistic.RowTemplate.Height = 33;
+            dtgvStatistic.Size = new System.Drawing.Size(695, 545);
+            dtgvStatistic.TabIndex = 8;
+            // 
+            // Date
+            // 
+            Date.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            Date.HeaderText = "Ngày";
+            Date.MinimumWidth = 8;
+            Date.Name = "Date";
+            // 
+            // Dish
+            // 
+            Dish.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            Dish.HeaderText = "Món";
+            Dish.MinimumWidth = 8;
+            Dish.Name = "Dish";
+            // 
+            // Type
+            // 
+            Type.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            Type.HeaderText = "Loại";
+            Type.MinimumWidth = 8;
+            Type.Name = "Type";
+            // 
+            // Sell
+            // 
+            Sell.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            Sell.HeaderText = "Số lượng";
+            Sell.MinimumWidth = 8;
+            Sell.Name = "Sell";
+            // 
+            // Price
+            // 
+            Price.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            Price.HeaderText = "Giá";
+            Price.MinimumWidth = 8;
+            Price.Name = "Price";
+            // 
+            // Profit
+            // 
+            Profit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            Profit.HeaderText = "Lợi nhuận";
+            Profit.MinimumWidth = 8;
+            Profit.Name = "Profit";
             // 
             // Form2
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(1437, 695);
+            ClientSize = new System.Drawing.Size(1600, 794);
             Controls.Add(panel1);
             Name = "Form2";
             Text = "Doanh thu";
             panel1.ResumeLayout(false);
-            panel14.ResumeLayout(false);
-            panel13.ResumeLayout(false);
-            panel13.PerformLayout();
-            panel12.ResumeLayout(false);
-            panel12.PerformLayout();
-            panel11.ResumeLayout(false);
-            panel11.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
-            panel2.ResumeLayout(false);
+            plStatistic.ResumeLayout(false);
+            plTotalProfit.ResumeLayout(false);
+            plTotalProfit.PerformLayout();
+            plTotalInvestment.ResumeLayout(false);
+            plTotalInvestment.PerformLayout();
+            plTotalIncome.ResumeLayout(false);
+            plTotalIncome.PerformLayout();
+            plProfitChart.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dtgvStatistic).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel14;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Panel panel13;
+        private System.Windows.Forms.Panel plStatistic;
+        private System.Windows.Forms.Panel plTotalProfit;
         private System.Windows.Forms.TextBox tbxTotalProfit;
         private System.Windows.Forms.Label lbTotalProfit;
-        private System.Windows.Forms.Panel panel12;
+        private System.Windows.Forms.Panel plTotalInvestment;
         private System.Windows.Forms.TextBox tbxTotalInvestment;
         private System.Windows.Forms.Label lbTotalInvestment;
-        private System.Windows.Forms.Panel panel11;
+        private System.Windows.Forms.Panel plTotalIncome;
         private System.Windows.Forms.TextBox tbxTotalIncome;
         private System.Windows.Forms.Label lbTotalIncome;
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel plProfitChart;
         private System.Windows.Forms.Panel panel15;
         private System.Windows.Forms.Button btnBestSellingFood;
         private System.Windows.Forms.Button btnBestSellingTopping;
         private System.Windows.Forms.Button btnBestSellingDrink;
+        private System.Windows.Forms.DataGridView dtgvStatistic;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Date;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Dish;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Type;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Sell;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Price;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Profit;
     }
 }
