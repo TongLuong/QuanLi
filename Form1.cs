@@ -24,7 +24,7 @@ namespace QuanLi
         public Form1()
         {
             InitializeComponent();
-            menu = Menu.Instance(); // singleton
+            menu = Menu.Instance; // singleton
             database = new Database();
             addItemForm = new AddItem();
         }
