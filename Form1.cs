@@ -17,17 +17,43 @@ namespace QuanLi
     {
         private Point MouseDownLocation;
         private Thread timeThread;
+        private Menu menu;
+        private Database database;
+        private AddItem addItemForm;
 
-        public Form1() => InitializeComponent();
+        public Form1()
+        {
+            InitializeComponent();
+            menu = Menu.Instance(); // singleton
+            database = new Database();
+            addItemForm = new AddItem();
+        }
 
         private void Order_Click(object sender, EventArgs e)
         {
-            Label temp = new Label();
-            temp.Text = "this is a very long textttttt";
-            temp.AutoSize = true;
+            List<Dish> dishes = new List<Dish>();
+            dishes = database.ReadCSVToList<Dish>();
 
-            flowOrderName.Controls.Add(temp);
-            flowOrderName.SetFlowBreak(temp, true); // set newest control as breakpoint, so that is will appear vertically in the flow panel
+            foreach (Dish dish in dishes)
+            {
+                Label temp = new Label();
+                temp.Text = dish.Name;
+                temp.AutoSize = true;
+                temp.Name = "";
+
+                flowOrderName.Controls.Add(temp);
+                flowOrderName.SetFlowBreak(temp, true); // set newest control as breakpoint, so that is will appear vertically in the flow panel
+            }
+        }
+
+        private void AddDish_Click(object sender, EventArgs e)
+        {
+            addItemForm.ShowDialog();
+            Dish dish = new Dish(1, addItemForm.itemName, addItemForm.itemPrice, addItemForm.itemExpense, Type.NONE);
+
+            List<Dish> dishes = new List<Dish>();
+            dishes.Add(dish);
+            database.WriteCSV(dishes);
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -106,7 +132,7 @@ namespace QuanLi
         {
             if (e.Button == MouseButtons.Left)
             {
-                // calculate new location for form after drag-and-drop operation
+                // calculate new location for the form after drag-and-drop operation
                 this.Left = this.Left + (e.X - MouseDownLocation.X);
                 this.Top = this.Top + (e.Y - MouseDownLocation.Y);
             }
@@ -130,6 +156,11 @@ namespace QuanLi
                 }
                 Thread.Sleep(100);
             }
+        }
+
+        private void LoadMenu()
+        {
+            
         }
     }
 }

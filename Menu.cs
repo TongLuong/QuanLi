@@ -11,6 +11,7 @@ namespace QuanLi
 {
     public enum Type
     {
+        NONE,
         FOOD,
         DRINK,
         TOPPING,
@@ -37,6 +38,7 @@ namespace QuanLi
             this.numberOfSells = 0;
             this.type = type;
         }
+
         #endregion
         #region overloading 
         public static bool operator !=(Dish A, Dish B)
@@ -106,9 +108,8 @@ namespace QuanLi
     }
     public class Menu
     {
-        //test
         #region feature
-        public static Menu Instance { get; private set; } //singleTon here
+        private static Menu instance = null; //singleTon here
 
         List<Dish> foodList, drinkList, toppingList, specialList;
         public List<Dish> FoodList { get => foodList; set => foodList = value; }
@@ -118,15 +119,22 @@ namespace QuanLi
         int count; public int Count { get => count; set => count = value; }
         #endregion
         #region constructor
-        public Menu()
+        private Menu()
         {
             foodList = new List<Dish>();
             drinkList = new List<Dish>();
             toppingList = new List<Dish>();
             specialList = new List<Dish>();
             count = 0;
-            Instance = this;
         }
+
+        public static Menu Instance()
+        {
+            instance ??= new Menu(); // if instance == null then instance = new...
+
+            return instance;
+        }
+
         #endregion
         #region Functions
         public List<Dish> getListByType(Type type)
