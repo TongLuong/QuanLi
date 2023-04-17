@@ -20,7 +20,7 @@ namespace QuanLi
     }
     public class Dish
     {
-        private string path = "/Images";
+        private string path = "Images\\Form1";
         #region Feature
         int id; public int ID { get => id; set=> id = value; }
         string name; public string Name { get => name; set => name = value; }
