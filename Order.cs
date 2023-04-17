@@ -68,11 +68,14 @@ namespace QuanLi
             bills = new List<Bill>();
         }
 
-        public static ListBill Instance()
+        public static ListBill Instance
         {
-            instance ??= new ListBill(); // if instance == null then instance = new...
 
-            return instance;
+            get 
+            {
+                if(instance == null) instance = new ListBill();
+                return instance;
+            } 
         }
 
         public void AddBill(Bill bill)

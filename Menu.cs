@@ -9,6 +9,7 @@ using System.Windows.Forms;
 
 namespace QuanLi
 {
+
     public enum Type
     {
         NONE,
@@ -19,6 +20,7 @@ namespace QuanLi
     }
     public class Dish
     {
+        private string path = "/Images";
         #region Feature
         int id; public int ID { get => id; set=> id = value; }
         string name; public string Name { get => name; set => name = value; }
@@ -26,10 +28,11 @@ namespace QuanLi
         double prodExpense; public double ProdExpense { get => prodExpense; set => prodExpense = value; }
         int numberOfSells; public int NumberOfSells { get => numberOfSells; set => numberOfSells = value; }
         Type type; public Type Type { get => type; set => type = value; }
+        string pathImage; public string PathImage { get=> pathImage; set => pathImage = value; }
         #endregion
 
         #region constructor
-        public Dish(int id, string name, double price, double prodExpense, Type type)
+        public Dish(int id, string name, double price, double prodExpense, Type type,string imageName)
         {
             this.id = id;
             this.name = name;
@@ -37,6 +40,7 @@ namespace QuanLi
             this.prodExpense = prodExpense;
             this.numberOfSells = 0;
             this.type = type;
+            this.pathImage = path + imageName;
         }
 
         #endregion
@@ -128,11 +132,13 @@ namespace QuanLi
             count = 0;
         }
 
-        public static Menu Instance()
+        public static Menu Instance
         {
-            instance ??= new Menu(); // if instance == null then instance = new...
-
-            return instance;
+            get
+            {
+                if(instance == null) instance = new Menu();
+                return instance;
+            }
         }
 
         #endregion
