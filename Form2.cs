@@ -19,6 +19,7 @@ namespace QuanLi
         {
             fBSDrink f = new fBSDrink();
             f.ShowDialog();
+            f.AddBestSelling();
         }
 
         private void btnBestSellingFood_Click(object sender, EventArgs e)

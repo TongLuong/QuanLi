@@ -1,4 +1,6 @@
-﻿namespace QuanLi
+﻿using System.Collections.Generic;
+
+namespace QuanLi
 {
     partial class fBSFood
     {
@@ -115,5 +117,18 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn FoodImage;
         private System.Windows.Forms.DataGridViewTextBoxColumn Sell;
         private System.Windows.Forms.DataGridViewTextBoxColumn Profit;
+
+        public void AddBestSelling()
+        {
+            List<Dish> temp = Menu.Instance().GetMostSelling(Type.FOOD);
+            if (temp != null)
+            {
+                for (int i = 0; i < temp.Count; i++)
+                {
+                    Dish item = temp[i];
+                    dtgvBSFood.Rows.Add(i, item.Name, item.NumberOfSells, item.NumberOfSells * (item.Price - item.ProdExpense));
+                }
+            }
+        }
     }
 }
