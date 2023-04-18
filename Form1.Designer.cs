@@ -58,6 +58,10 @@ namespace QuanLi
             pictureBox1 = new System.Windows.Forms.PictureBox();
             AddDish = new System.Windows.Forms.Button();
             CurrTime = new System.Windows.Forms.Label();
+            menuFood = new System.Windows.Forms.Panel();
+            menuDrink = new System.Windows.Forms.Panel();
+            menuTopping = new System.Windows.Forms.Panel();
+            menuSpecial = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)pbMenu).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pbOrder).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox11).BeginInit();
@@ -409,6 +413,42 @@ namespace QuanLi
             CurrTime.TabIndex = 44;
             CurrTime.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // menuFood
+            // 
+            menuFood.AutoScroll = true;
+            menuFood.BackColor = System.Drawing.Color.Coral;
+            menuFood.Location = new System.Drawing.Point(111, 79);
+            menuFood.Name = "menuFood";
+            menuFood.Size = new System.Drawing.Size(678, 587);
+            menuFood.TabIndex = 45;
+            // 
+            // menuDrink
+            // 
+            menuDrink.AutoScroll = true;
+            menuDrink.BackColor = System.Drawing.Color.Coral;
+            menuDrink.Location = new System.Drawing.Point(111, 79);
+            menuDrink.Name = "menuDrink";
+            menuDrink.Size = new System.Drawing.Size(678, 587);
+            menuDrink.TabIndex = 46;
+            // 
+            // menuTopping
+            // 
+            menuTopping.AutoScroll = true;
+            menuTopping.BackColor = System.Drawing.Color.Coral;
+            menuTopping.Location = new System.Drawing.Point(111, 79);
+            menuTopping.Name = "menuTopping";
+            menuTopping.Size = new System.Drawing.Size(678, 587);
+            menuTopping.TabIndex = 47;
+            // 
+            // menuSpecial
+            // 
+            menuSpecial.AutoScroll = true;
+            menuSpecial.BackColor = System.Drawing.Color.Coral;
+            menuSpecial.Location = new System.Drawing.Point(111, 79);
+            menuSpecial.Name = "menuSpecial";
+            menuSpecial.Size = new System.Drawing.Size(678, 587);
+            menuSpecial.TabIndex = 48;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -416,6 +456,10 @@ namespace QuanLi
             BackColor = System.Drawing.Color.White;
             ClientSize = new System.Drawing.Size(1404, 736);
             ControlBox = false;
+            Controls.Add(menuSpecial);
+            Controls.Add(menuTopping);
+            Controls.Add(menuDrink);
+            Controls.Add(menuFood);
             Controls.Add(CurrTime);
             Controls.Add(AddDish);
             Controls.Add(pictureBox1);
@@ -489,6 +533,10 @@ namespace QuanLi
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button AddDish;
         private System.Windows.Forms.Label CurrTime;
+        private System.Windows.Forms.Panel menuFood;
+        private System.Windows.Forms.Panel menuDrink;
+        private System.Windows.Forms.Panel menuTopping;
+        private System.Windows.Forms.Panel menuSpecial;
     }
 }
 

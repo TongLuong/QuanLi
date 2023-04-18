@@ -20,7 +20,7 @@ namespace QuanLi
         private Menu menu;
         private Database database;
         private AddItem addItemForm;
-        private Panel menuFood, menuDrink, menuTopping, menuSpecial, menuAll;
+        //private Panel menuFood, menuDrink, menuTopping, menuSpecial, menuAll;
 
         public Form1()
         {
@@ -28,7 +28,11 @@ namespace QuanLi
             menu = Menu.Instance; // singleton
             database = new Database();
             addItemForm = new AddItem();
-            menuFood = menuDrink = menuTopping = menuSpecial = menuAll = null;
+            //menuFood = menuDrink = menuTopping = menuSpecial = menuAll = null;
+            LoadMenu(Type.FOOD,menuFood);
+            LoadMenu(Type.DRINK,menuDrink);
+            LoadMenu(Type.TOPPING,menuTopping);
+            LoadMenu(Type.SPECIAL,menuSpecial);
         }
 
         private void Order_Click(object sender, EventArgs e)
@@ -183,8 +187,6 @@ namespace QuanLi
             }
             public Panel BuildPanel(Panel temp)
             {
-                if (temp != null) return temp;
-                temp = new Panel();
                 temp.Size = new Size(678, 587);
                 temp.Location = new Point(111, 79);
                 temp.BackColor = Color.Coral;
@@ -239,7 +241,7 @@ namespace QuanLi
                 panelDishes.Controls.Add(pb);
                 panelDishes.Controls.Add(lblName);
                 panelDishes.Controls.Add(lblPrice);
-                panelDishes.Visible = true;
+                panelDishes.Visible = false;
                 //panelDishes.Enabled = false;
             }
         }
@@ -249,8 +251,9 @@ namespace QuanLi
             if (menuDrink != temp) if (menuDrink != null) menuDrink.Visible = false;
             if (menuTopping != temp) if (menuTopping != null) menuTopping.Visible = false;
             if (menuSpecial != temp) if (menuSpecial != null) menuSpecial.Visible = false;
+            temp.Visible = true;
         }
-        private Panel GetPanelByType(Type type)
+        /*private Panel GetPanelByType(Type type)
         {
             Panel temp = null;
             if (type == Type.NONE)
@@ -266,8 +269,8 @@ namespace QuanLi
                 case Type.SPECIAL: temp = menuSpecial; break;
             }
             return temp;
-        }
-        private void LoadMenu(Type type)
+        }*/
+        private void LoadMenu(Type type,Panel panelDishes)
         {
             //init value for scale
             int width = 170;
@@ -284,10 +287,8 @@ namespace QuanLi
 
             //Build Panel
             List<Dish> listByType = Menu.Instance.getListByType(type);
-            Panel panelDishes = GetPanelByType(type);
+            //Panel panelDishes = GetPanelByType(type);
             panelDishes = ConcreteBuilder.Instance.BuildPanel(panelDishes);
-            Controls.Add(panelDishes);
-            panelDishes.BringToFront();
 
             for (int i = 0; i < sizeList; i++)
             {
@@ -307,35 +308,44 @@ namespace QuanLi
 
                     //add into panel
                     ConcreteBuilder.Instance.MergeAll(panelDishes, pb, lblName, lblPrice, numUpDown);
-                    switchVisible(panelDishes);
+                    
                     xLocation += moveX;
                 }
                 i--;
                 xLocation = 30;
                 yLocation += moveY;
             }
+            //switchVisible(panelDishes);
         }
 
         #endregion
 
         private void Food_Click(object sender, EventArgs e)
         {
-            LoadMenu(Type.FOOD);
+            //LoadMenu(Type.FOOD);
+            //menuFood.Visible = true;
+            switchVisible(menuFood);
         }
 
         private void Drinks_Click(object sender, EventArgs e)
         {
-            LoadMenu(Type.DRINK);
+            //LoadMenu(Type.DRINK);
+            switchVisible(menuDrink);
+            //menuDrink.Visible = true;
         }
 
         private void Special_Click(object sender, EventArgs e)
         {
-            LoadMenu(Type.SPECIAL);
+            //LoadMenu(Type.SPECIAL);
+           switchVisible(menuSpecial);
+            //menuSpecial.Visible = true;
         }
 
         private void Topping_Click(object sender, EventArgs e)
         {
-            LoadMenu(Type.TOPPING);
+            //LoadMenu(Type.TOPPING);
+            switchVisible(menuTopping);
+            //menuTopping.Visible = true; 
         }
     }
 }
