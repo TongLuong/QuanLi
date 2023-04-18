@@ -30,13 +30,13 @@ namespace QuanLi
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form2));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             panel1 = new System.Windows.Forms.Panel();
             btnBestSellingTopping = new System.Windows.Forms.Button();
             btnBestSellingDrink = new System.Windows.Forms.Button();
             plStatistic = new System.Windows.Forms.Panel();
+            lbDate = new System.Windows.Forms.Label();
             dtgvStatistic = new System.Windows.Forms.DataGridView();
-            Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
             Dish = new System.Windows.Forms.DataGridViewTextBoxColumn();
             Type = new System.Windows.Forms.DataGridViewTextBoxColumn();
             Sell = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -70,10 +70,10 @@ namespace QuanLi
             panel1.Controls.Add(plStatistic);
             panel1.Controls.Add(btnBestSellingFood);
             panel1.Controls.Add(plProfitChart);
-            panel1.Location = new System.Drawing.Point(6, 6);
+            panel1.Location = new System.Drawing.Point(8, 8);
             panel1.Margin = new System.Windows.Forms.Padding(2);
             panel1.Name = "panel1";
-            panel1.Size = new System.Drawing.Size(1265, 619);
+            panel1.Size = new System.Drawing.Size(1581, 774);
             panel1.TabIndex = 0;
             // 
             // btnBestSellingTopping
@@ -82,10 +82,10 @@ namespace QuanLi
             btnBestSellingTopping.BackgroundImage = (System.Drawing.Image)resources.GetObject("btnBestSellingTopping.BackgroundImage");
             btnBestSellingTopping.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             btnBestSellingTopping.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            btnBestSellingTopping.Location = new System.Drawing.Point(473, 550);
+            btnBestSellingTopping.Location = new System.Drawing.Point(591, 688);
             btnBestSellingTopping.Margin = new System.Windows.Forms.Padding(2);
             btnBestSellingTopping.Name = "btnBestSellingTopping";
-            btnBestSellingTopping.Size = new System.Drawing.Size(170, 53);
+            btnBestSellingTopping.Size = new System.Drawing.Size(212, 66);
             btnBestSellingTopping.TabIndex = 3;
             btnBestSellingTopping.Text = "           BestSelling\r\n           Topping";
             btnBestSellingTopping.UseVisualStyleBackColor = false;
@@ -99,10 +99,10 @@ namespace QuanLi
             btnBestSellingDrink.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             btnBestSellingDrink.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             btnBestSellingDrink.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            btnBestSellingDrink.Location = new System.Drawing.Point(249, 550);
+            btnBestSellingDrink.Location = new System.Drawing.Point(311, 688);
             btnBestSellingDrink.Margin = new System.Windows.Forms.Padding(2);
             btnBestSellingDrink.Name = "btnBestSellingDrink";
-            btnBestSellingDrink.Size = new System.Drawing.Size(170, 53);
+            btnBestSellingDrink.Size = new System.Drawing.Size(212, 66);
             btnBestSellingDrink.TabIndex = 2;
             btnBestSellingDrink.Text = "           BestSelling\r\n           Drink\r\n";
             btnBestSellingDrink.UseVisualStyleBackColor = false;
@@ -111,15 +111,25 @@ namespace QuanLi
             // plStatistic
             // 
             plStatistic.BackColor = System.Drawing.Color.GreenYellow;
+            plStatistic.Controls.Add(lbDate);
             plStatistic.Controls.Add(dtgvStatistic);
             plStatistic.Controls.Add(plTotalProfit);
             plStatistic.Controls.Add(plTotalInvestment);
             plStatistic.Controls.Add(plTotalIncome);
-            plStatistic.Location = new System.Drawing.Point(681, 6);
+            plStatistic.Location = new System.Drawing.Point(851, 8);
             plStatistic.Margin = new System.Windows.Forms.Padding(2);
             plStatistic.Name = "plStatistic";
-            plStatistic.Size = new System.Drawing.Size(582, 597);
+            plStatistic.Size = new System.Drawing.Size(728, 746);
             plStatistic.TabIndex = 2;
+            // 
+            // lbDate
+            // 
+            lbDate.AutoSize = true;
+            lbDate.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            lbDate.Location = new System.Drawing.Point(39, 25);
+            lbDate.Name = "lbDate";
+            lbDate.Size = new System.Drawing.Size(0, 36);
+            lbDate.TabIndex = 9;
             // 
             // dtgvStatistic
             // 
@@ -127,31 +137,24 @@ namespace QuanLi
             dtgvStatistic.BackgroundColor = System.Drawing.SystemColors.ActiveBorder;
             dtgvStatistic.BorderStyle = System.Windows.Forms.BorderStyle.None;
             dtgvStatistic.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Lime;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.InfoText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            dtgvStatistic.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Lime;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.InfoText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            dtgvStatistic.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dtgvStatistic.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dtgvStatistic.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { Date, Dish, Type, Sell, Price, Profit });
+            dtgvStatistic.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { Dish, Type, Sell, Price, Profit });
             dtgvStatistic.EnableHeadersVisualStyles = false;
-            dtgvStatistic.Location = new System.Drawing.Point(14, 13);
+            dtgvStatistic.Location = new System.Drawing.Point(18, 77);
             dtgvStatistic.Margin = new System.Windows.Forms.Padding(2);
             dtgvStatistic.Name = "dtgvStatistic";
             dtgvStatistic.RowHeadersWidth = 62;
             dtgvStatistic.RowTemplate.Height = 33;
-            dtgvStatistic.Size = new System.Drawing.Size(556, 436);
+            dtgvStatistic.Size = new System.Drawing.Size(695, 484);
             dtgvStatistic.TabIndex = 8;
-            // 
-            // Date
-            // 
-            Date.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            Date.HeaderText = "Ngày";
-            Date.MinimumWidth = 8;
-            Date.Name = "Date";
             // 
             // Dish
             // 
@@ -192,29 +195,29 @@ namespace QuanLi
             // 
             plTotalProfit.Controls.Add(tbxTotalProfit);
             plTotalProfit.Controls.Add(lbTotalProfit);
-            plTotalProfit.Location = new System.Drawing.Point(14, 544);
+            plTotalProfit.Location = new System.Drawing.Point(18, 680);
             plTotalProfit.Margin = new System.Windows.Forms.Padding(2);
             plTotalProfit.Name = "plTotalProfit";
-            plTotalProfit.Size = new System.Drawing.Size(502, 35);
+            plTotalProfit.Size = new System.Drawing.Size(628, 44);
             plTotalProfit.TabIndex = 2;
             // 
             // tbxTotalProfit
             // 
-            tbxTotalProfit.Location = new System.Drawing.Point(154, 5);
+            tbxTotalProfit.Location = new System.Drawing.Point(192, 6);
             tbxTotalProfit.Margin = new System.Windows.Forms.Padding(2);
             tbxTotalProfit.Name = "tbxTotalProfit";
             tbxTotalProfit.ReadOnly = true;
-            tbxTotalProfit.Size = new System.Drawing.Size(295, 27);
+            tbxTotalProfit.Size = new System.Drawing.Size(368, 31);
             tbxTotalProfit.TabIndex = 7;
             // 
             // lbTotalProfit
             // 
             lbTotalProfit.AutoSize = true;
             lbTotalProfit.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            lbTotalProfit.Location = new System.Drawing.Point(2, 7);
+            lbTotalProfit.Location = new System.Drawing.Point(2, 9);
             lbTotalProfit.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             lbTotalProfit.Name = "lbTotalProfit";
-            lbTotalProfit.Size = new System.Drawing.Size(69, 20);
+            lbTotalProfit.Size = new System.Drawing.Size(86, 25);
             lbTotalProfit.TabIndex = 0;
             lbTotalProfit.Text = "Tổng lãi:";
             // 
@@ -222,29 +225,29 @@ namespace QuanLi
             // 
             plTotalInvestment.Controls.Add(tbxTotalInvestment);
             plTotalInvestment.Controls.Add(lbTotalInvestment);
-            plTotalInvestment.Location = new System.Drawing.Point(14, 504);
+            plTotalInvestment.Location = new System.Drawing.Point(18, 630);
             plTotalInvestment.Margin = new System.Windows.Forms.Padding(2);
             plTotalInvestment.Name = "plTotalInvestment";
-            plTotalInvestment.Size = new System.Drawing.Size(502, 35);
+            plTotalInvestment.Size = new System.Drawing.Size(628, 44);
             plTotalInvestment.TabIndex = 1;
             // 
             // tbxTotalInvestment
             // 
-            tbxTotalInvestment.Location = new System.Drawing.Point(154, 5);
+            tbxTotalInvestment.Location = new System.Drawing.Point(192, 6);
             tbxTotalInvestment.Margin = new System.Windows.Forms.Padding(2);
             tbxTotalInvestment.Name = "tbxTotalInvestment";
             tbxTotalInvestment.ReadOnly = true;
-            tbxTotalInvestment.Size = new System.Drawing.Size(295, 27);
+            tbxTotalInvestment.Size = new System.Drawing.Size(368, 31);
             tbxTotalInvestment.TabIndex = 6;
             // 
             // lbTotalInvestment
             // 
             lbTotalInvestment.AutoSize = true;
             lbTotalInvestment.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            lbTotalInvestment.Location = new System.Drawing.Point(2, 7);
+            lbTotalInvestment.Location = new System.Drawing.Point(2, 9);
             lbTotalInvestment.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             lbTotalInvestment.Name = "lbTotalInvestment";
-            lbTotalInvestment.Size = new System.Drawing.Size(79, 20);
+            lbTotalInvestment.Size = new System.Drawing.Size(98, 25);
             lbTotalInvestment.TabIndex = 0;
             lbTotalInvestment.Text = "Tổng vốn:";
             // 
@@ -252,29 +255,29 @@ namespace QuanLi
             // 
             plTotalIncome.Controls.Add(tbxTotalIncome);
             plTotalIncome.Controls.Add(lbTotalIncome);
-            plTotalIncome.Location = new System.Drawing.Point(14, 464);
+            plTotalIncome.Location = new System.Drawing.Point(18, 580);
             plTotalIncome.Margin = new System.Windows.Forms.Padding(2);
             plTotalIncome.Name = "plTotalIncome";
-            plTotalIncome.Size = new System.Drawing.Size(502, 35);
+            plTotalIncome.Size = new System.Drawing.Size(628, 44);
             plTotalIncome.TabIndex = 0;
             // 
             // tbxTotalIncome
             // 
-            tbxTotalIncome.Location = new System.Drawing.Point(154, 5);
+            tbxTotalIncome.Location = new System.Drawing.Point(192, 6);
             tbxTotalIncome.Margin = new System.Windows.Forms.Padding(2);
             tbxTotalIncome.Name = "tbxTotalIncome";
             tbxTotalIncome.ReadOnly = true;
-            tbxTotalIncome.Size = new System.Drawing.Size(295, 27);
+            tbxTotalIncome.Size = new System.Drawing.Size(368, 31);
             tbxTotalIncome.TabIndex = 5;
             // 
             // lbTotalIncome
             // 
             lbTotalIncome.AutoSize = true;
             lbTotalIncome.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            lbTotalIncome.Location = new System.Drawing.Point(2, 7);
+            lbTotalIncome.Location = new System.Drawing.Point(2, 9);
             lbTotalIncome.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             lbTotalIncome.Name = "lbTotalIncome";
-            lbTotalIncome.Size = new System.Drawing.Size(125, 20);
+            lbTotalIncome.Size = new System.Drawing.Size(154, 25);
             lbTotalIncome.TabIndex = 0;
             lbTotalIncome.Text = "Tổng thành tiền:";
             // 
@@ -284,10 +287,10 @@ namespace QuanLi
             btnBestSellingFood.BackgroundImage = (System.Drawing.Image)resources.GetObject("btnBestSellingFood.BackgroundImage");
             btnBestSellingFood.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             btnBestSellingFood.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            btnBestSellingFood.Location = new System.Drawing.Point(30, 550);
+            btnBestSellingFood.Location = new System.Drawing.Point(38, 688);
             btnBestSellingFood.Margin = new System.Windows.Forms.Padding(2);
             btnBestSellingFood.Name = "btnBestSellingFood";
-            btnBestSellingFood.Size = new System.Drawing.Size(170, 53);
+            btnBestSellingFood.Size = new System.Drawing.Size(212, 66);
             btnBestSellingFood.TabIndex = 1;
             btnBestSellingFood.Text = "           BestSelling\r\n           Food";
             btnBestSellingFood.UseVisualStyleBackColor = false;
@@ -297,31 +300,33 @@ namespace QuanLi
             // 
             plProfitChart.BackColor = System.Drawing.Color.IndianRed;
             plProfitChart.Controls.Add(formsPlot1);
-            plProfitChart.Location = new System.Drawing.Point(7, 6);
+            plProfitChart.Location = new System.Drawing.Point(9, 8);
             plProfitChart.Margin = new System.Windows.Forms.Padding(2);
             plProfitChart.Name = "plProfitChart";
-            plProfitChart.Size = new System.Drawing.Size(659, 531);
+            plProfitChart.Size = new System.Drawing.Size(824, 664);
             plProfitChart.TabIndex = 0;
             // 
             // formsPlot1
             // 
-            formsPlot1.Location = new System.Drawing.Point(-7, -6);
-            formsPlot1.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            formsPlot1.Location = new System.Drawing.Point(-9, -8);
+            formsPlot1.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             formsPlot1.Name = "formsPlot1";
-            formsPlot1.Size = new System.Drawing.Size(666, 537);
+            formsPlot1.Size = new System.Drawing.Size(832, 671);
             formsPlot1.TabIndex = 0;
             // 
             // Form2
             // 
-            AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(1280, 635);
+            ClientSize = new System.Drawing.Size(1600, 794);
             Controls.Add(panel1);
             Margin = new System.Windows.Forms.Padding(2);
             Name = "Form2";
             Text = "Doanh thu";
+            Load += Form2_Load;
             panel1.ResumeLayout(false);
             plStatistic.ResumeLayout(false);
+            plStatistic.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dtgvStatistic).EndInit();
             plTotalProfit.ResumeLayout(false);
             plTotalProfit.PerformLayout();
@@ -351,12 +356,12 @@ namespace QuanLi
         private System.Windows.Forms.Button btnBestSellingTopping;
         private System.Windows.Forms.Button btnBestSellingDrink;
         private System.Windows.Forms.DataGridView dtgvStatistic;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Date;
+        private ScottPlot.FormsPlot formsPlot1;
+        private System.Windows.Forms.Label lbDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn Dish;
         private System.Windows.Forms.DataGridViewTextBoxColumn Type;
         private System.Windows.Forms.DataGridViewTextBoxColumn Sell;
         private System.Windows.Forms.DataGridViewTextBoxColumn Price;
         private System.Windows.Forms.DataGridViewTextBoxColumn Profit;
-        private ScottPlot.FormsPlot formsPlot1;
     }
 }
