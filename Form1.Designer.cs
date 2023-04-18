@@ -58,7 +58,6 @@ namespace QuanLi
             pictureBox1 = new System.Windows.Forms.PictureBox();
             CurrTime = new System.Windows.Forms.TextBox();
             AddDish = new System.Windows.Forms.Button();
-            panelDishes = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)pbMenu).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pbOrder).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox11).BeginInit();
@@ -104,6 +103,7 @@ namespace QuanLi
             Drinks.TabIndex = 7;
             Drinks.Text = "Đồ uống";
             Drinks.UseVisualStyleBackColor = false;
+            Drinks.Click += Drinks_Click;
             // 
             // Topping
             // 
@@ -122,6 +122,7 @@ namespace QuanLi
             Topping.TabIndex = 8;
             Topping.Text = "Topping";
             Topping.UseVisualStyleBackColor = false;
+            Topping.Click += Topping_Click;
             // 
             // Special
             // 
@@ -140,6 +141,7 @@ namespace QuanLi
             Special.TabIndex = 9;
             Special.Text = "Đặc biệt";
             Special.UseVisualStyleBackColor = false;
+            Special.Click += Special_Click;
             // 
             // All
             // 
@@ -408,15 +410,6 @@ namespace QuanLi
             AddDish.UseVisualStyleBackColor = false;
             AddDish.Click += AddDish_Click;
             // 
-            // panelDishes
-            // 
-            panelDishes.AutoScroll = true;
-            panelDishes.BackColor = System.Drawing.Color.Coral;
-            panelDishes.Location = new System.Drawing.Point(111, 79);
-            panelDishes.Name = "panelDishes";
-            panelDishes.Size = new System.Drawing.Size(678, 597);
-            panelDishes.TabIndex = 44;
-            // 
             // Form1
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -424,7 +417,6 @@ namespace QuanLi
             BackColor = System.Drawing.Color.White;
             ClientSize = new System.Drawing.Size(1404, 736);
             ControlBox = false;
-            Controls.Add(panelDishes);
             Controls.Add(AddDish);
             Controls.Add(CurrTime);
             Controls.Add(pictureBox1);
@@ -498,7 +490,6 @@ namespace QuanLi
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.TextBox CurrTime;
         private System.Windows.Forms.Button AddDish;
-        private System.Windows.Forms.Panel panelDishes;
     }
 }
 
