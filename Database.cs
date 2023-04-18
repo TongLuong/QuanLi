@@ -130,6 +130,7 @@ namespace QuanLi
 
                 return menu as List<T>;
             }
+
             return new List<T> { };
         }
     }

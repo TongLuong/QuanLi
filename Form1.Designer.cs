@@ -56,8 +56,8 @@ namespace QuanLi
             Stat = new System.Windows.Forms.Button();
             label6 = new System.Windows.Forms.Label();
             pictureBox1 = new System.Windows.Forms.PictureBox();
-            CurrTime = new System.Windows.Forms.TextBox();
             AddDish = new System.Windows.Forms.Button();
+            CurrTime = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)pbMenu).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pbOrder).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox11).BeginInit();
@@ -383,16 +383,6 @@ namespace QuanLi
             pictureBox1.TabIndex = 40;
             pictureBox1.TabStop = false;
             // 
-            // CurrTime
-            // 
-            CurrTime.Font = new System.Drawing.Font("Cambria", 7.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            CurrTime.Location = new System.Drawing.Point(0, 702);
-            CurrTime.Multiline = true;
-            CurrTime.Name = "CurrTime";
-            CurrTime.ReadOnly = true;
-            CurrTime.Size = new System.Drawing.Size(90, 34);
-            CurrTime.TabIndex = 42;
-            // 
             // AddDish
             // 
             AddDish.BackColor = System.Drawing.Color.FromArgb(250, 248, 0);
@@ -410,6 +400,15 @@ namespace QuanLi
             AddDish.UseVisualStyleBackColor = false;
             AddDish.Click += AddDish_Click;
             // 
+            // CurrTime
+            // 
+            CurrTime.Font = new System.Drawing.Font("Cambria", 7.20000029F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            CurrTime.Location = new System.Drawing.Point(0, 704);
+            CurrTime.Name = "CurrTime";
+            CurrTime.Size = new System.Drawing.Size(90, 32);
+            CurrTime.TabIndex = 44;
+            CurrTime.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -417,8 +416,8 @@ namespace QuanLi
             BackColor = System.Drawing.Color.White;
             ClientSize = new System.Drawing.Size(1404, 736);
             ControlBox = false;
-            Controls.Add(AddDish);
             Controls.Add(CurrTime);
+            Controls.Add(AddDish);
             Controls.Add(pictureBox1);
             Controls.Add(label6);
             Controls.Add(Stat);
@@ -488,8 +487,8 @@ namespace QuanLi
         private System.Windows.Forms.Button Stat;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.TextBox CurrTime;
         private System.Windows.Forms.Button AddDish;
+        private System.Windows.Forms.Label CurrTime;
     }
 }
 

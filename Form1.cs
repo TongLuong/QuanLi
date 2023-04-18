@@ -153,9 +153,10 @@ namespace QuanLi
                 {
                     CurrTime.Invoke(new Action(() =>
                     {
-                        CurrTime.Text = DateTime.Now.ToString("hh:mm:ss tt ") + DateTime.Now.ToString("dd/MM/yyyy");
+                        CurrTime.Text = DateTime.Now.ToString("hh:mm:ss tt \n") + DateTime.Now.ToString("dd/MM/yyyy");
                     })); // method for sharing data between threads
                 }
+
                 Thread.Sleep(100);
             }
         }
@@ -163,11 +164,11 @@ namespace QuanLi
         private interface IBuilder
         {
             public Panel BuildPanel(Panel temp);
-            public PictureBox BuildPictureBox(int w,int h,int x, int y);
-            public Label BuildLabelName(int w,int h,int x, int y,string name);
-            public Label BuildLabelPrice(int w, int h, int x,int y,int price);
-            public NumericUpDown BuildUpDown(int w, int h, int x, int y,int id);
-            public void MergeAll(Panel panelDishes,PictureBox pb, Label lblName, Label lblPrice,NumericUpDown numUpDown);
+            public PictureBox BuildPictureBox(int w, int h, int x, int y);
+            public Label BuildLabelName(int w, int h, int x, int y, string name);
+            public Label BuildLabelPrice(int w, int h, int x, int y, int price);
+            public NumericUpDown BuildUpDown(int w, int h, int x, int y, int id);
+            public void MergeAll(Panel panelDishes, PictureBox pb, Label lblName, Label lblPrice, NumericUpDown numUpDown);
         }
         public class ConcreteBuilder : IBuilder
         {
@@ -176,7 +177,7 @@ namespace QuanLi
             {
                 get
                 {
-                    if(instance == null) instance = new ConcreteBuilder();
+                    if (instance == null) instance = new ConcreteBuilder();
                     return instance;
                 }
             }
@@ -192,7 +193,7 @@ namespace QuanLi
                 //temp.BringToFront();
                 return temp;
             }
-            public PictureBox BuildPictureBox(int w,int h, int x, int y)
+            public PictureBox BuildPictureBox(int w, int h, int x, int y)
             {
                 PictureBox pb = new PictureBox();
                 pb.Size = new Size(w, h);
@@ -220,7 +221,7 @@ namespace QuanLi
                 lblPrice.TextAlign = ContentAlignment.MiddleCenter;
                 return lblPrice;
             }
-            public NumericUpDown BuildUpDown(int w, int h, int x, int y,int i)
+            public NumericUpDown BuildUpDown(int w, int h, int x, int y, int i)
             {
                 NumericUpDown numUpDown = new NumericUpDown();
                 numUpDown.Size = new Size(w, h);
@@ -231,7 +232,6 @@ namespace QuanLi
                 numUpDown.Name = i.ToString();
                 numUpDown.Enabled = false;
                 return numUpDown;
-
             }
             public void MergeAll(Panel panelDishes, PictureBox pb, Label lblName, Label lblPrice, NumericUpDown numUpDown)
             {
@@ -241,7 +241,6 @@ namespace QuanLi
                 panelDishes.Controls.Add(lblPrice);
                 panelDishes.Visible = true;
                 //panelDishes.Enabled = false;
-                
             }
         }
         private void switchVisible(Panel temp)
@@ -289,25 +288,25 @@ namespace QuanLi
             panelDishes = ConcreteBuilder.Instance.BuildPanel(panelDishes);
             Controls.Add(panelDishes);
             panelDishes.BringToFront();
-            
+
             for (int i = 0; i < sizeList; i++)
             {
                 for (int j = 0; j < 3 & i < sizeList; j++, i++)
                 {
                     //Build pictureBox
-                    PictureBox pb = ConcreteBuilder.Instance.BuildPictureBox(width,height,xLocation,yLocation);
+                    PictureBox pb = ConcreteBuilder.Instance.BuildPictureBox(width, height, xLocation, yLocation);
 
                     //Build Label Name
-                    Label lblName = ConcreteBuilder.Instance.BuildLabelName(width,heightName,xLocation,yLocation + pb.Size.Height,"hahahaha");
+                    Label lblName = ConcreteBuilder.Instance.BuildLabelName(width, heightName, xLocation, yLocation + pb.Size.Height, "hahahaha");
 
                     //Build Price
                     Label lblPrice = ConcreteBuilder.Instance.BuildLabelPrice(width, heightPrice, xLocation, lblName.Location.Y + lblName.Size.Height, 200000);
 
                     //Build updown button
-                    NumericUpDown numUpDown = ConcreteBuilder.Instance.BuildUpDown(upDownW, upDownH, xLocation + width - upDownW, yLocation,i);
+                    NumericUpDown numUpDown = ConcreteBuilder.Instance.BuildUpDown(upDownW, upDownH, xLocation + width - upDownW, yLocation, i);
 
                     //add into panel
-                    ConcreteBuilder.Instance.MergeAll(panelDishes,pb,lblName,lblPrice,numUpDown);
+                    ConcreteBuilder.Instance.MergeAll(panelDishes, pb, lblName, lblPrice, numUpDown);
                     switchVisible(panelDishes);
                     xLocation += moveX;
                 }
