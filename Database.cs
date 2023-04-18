@@ -121,7 +121,8 @@ namespace QuanLi
                         sarr[1],
                         Convert.ToDouble(sarr[2]),
                         Convert.ToDouble(sarr[3]),
-                        tempEnum
+                        tempEnum,
+                        sarr[5]
                     );
 
                     menu.Add(temp);
@@ -129,24 +130,6 @@ namespace QuanLi
 
                 return menu as List<T>;
             }
-            else if (typeof(T) == typeof(Order))
-            {
-                List<Order> order = new List<Order>();
-                foreach (string[] sarr in ReadCSV<T>())
-                {
-                    Order temp = new Order
-                    (
-                        Convert.ToInt32(sarr[0]),
-                        sarr[1],
-                        Convert.ToDouble(sarr[2])
-                    );
-
-                    order.Add(temp);
-                }
-
-                return order as List<T>;
-            }
-            
             return new List<T> { };
         }
     }

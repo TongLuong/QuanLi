@@ -49,7 +49,7 @@ namespace QuanLi
         private void AddDish_Click(object sender, EventArgs e)
         {
             addItemForm.ShowDialog();
-            Dish dish = new Dish(1, addItemForm.itemName, addItemForm.itemPrice, addItemForm.itemExpense, Type.NONE);
+            Dish dish = new Dish(1, addItemForm.itemName, addItemForm.itemPrice, addItemForm.itemExpense, Type.NONE,"");
 
             List<Dish> dishes = new List<Dish>();
             dishes.Add(dish);
