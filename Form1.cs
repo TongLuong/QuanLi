@@ -159,7 +159,91 @@ namespace QuanLi
                 Thread.Sleep(100);
             }
         }
-        #region load menu function
+        #region load menu function (using Builder Design Pattern)
+        private interface IBuilder
+        {
+            public Panel BuildPanel(Panel temp);
+            public PictureBox BuildPictureBox(int w,int h,int x, int y);
+            public Label BuildLabelName(int w,int h,int x, int y,string name);
+            public Label BuildLabelPrice(int w, int h, int x,int y,int price);
+            public NumericUpDown BuildUpDown(int w, int h, int x, int y,int id);
+            public void MergeAll(Panel panelDishes,PictureBox pb, Label lblName, Label lblPrice,NumericUpDown numUpDown);
+        }
+        public class ConcreteBuilder : IBuilder
+        {
+            private static ConcreteBuilder instance;
+            public static ConcreteBuilder Instance
+            {
+                get
+                {
+                    if(instance == null) instance = new ConcreteBuilder();
+                    return instance;
+                }
+            }
+            public Panel BuildPanel(Panel temp)
+            {
+                if (temp != null) return temp;
+                temp = new Panel();
+                temp.Size = new Size(678, 587);
+                temp.Location = new Point(111, 79);
+                temp.BackColor = Color.Coral;
+                temp.AutoScroll = true;
+                temp.TabIndex = 44;
+                //temp.BringToFront();
+                return temp;
+            }
+            public PictureBox BuildPictureBox(int w,int h, int x, int y)
+            {
+                PictureBox pb = new PictureBox();
+                pb.Size = new Size(w, h);
+                pb.Location = new Point(x, y);
+                pb.BackColor = Color.White;
+                return pb;
+            }
+            public Label BuildLabelName(int w, int h, int x, int y, string name)
+            {
+                Label lblName = new Label();
+                lblName.Size = new Size(w, h);
+                lblName.Location = new Point(x, y);
+                lblName.AutoSize = false;
+                lblName.Text = name;
+                lblName.TextAlign = ContentAlignment.MiddleCenter;
+                return lblName;
+            }
+            public Label BuildLabelPrice(int w, int h, int x, int y, int price)
+            {
+                Label lblPrice = new Label();
+                lblPrice.Size = new Size(w, h);
+                lblPrice.Location = new Point(x, y);
+                lblPrice.AutoSize = false;
+                lblPrice.Text = price.ToString();
+                lblPrice.TextAlign = ContentAlignment.MiddleCenter;
+                return lblPrice;
+            }
+            public NumericUpDown BuildUpDown(int w, int h, int x, int y,int i)
+            {
+                NumericUpDown numUpDown = new NumericUpDown();
+                numUpDown.Size = new Size(w, h);
+                numUpDown.Location = new Point(x, y);
+                numUpDown.AutoSize = false;
+                numUpDown.Maximum = 99;
+                numUpDown.Minimum = 0;
+                numUpDown.Name = i.ToString();
+                numUpDown.Enabled = false;
+                return numUpDown;
+
+            }
+            public void MergeAll(Panel panelDishes, PictureBox pb, Label lblName, Label lblPrice, NumericUpDown numUpDown)
+            {
+                panelDishes.Controls.Add(numUpDown);
+                panelDishes.Controls.Add(pb);
+                panelDishes.Controls.Add(lblName);
+                panelDishes.Controls.Add(lblPrice);
+                panelDishes.Visible = true;
+                //panelDishes.Enabled = false;
+                
+            }
+        }
         private void switchVisible(Panel temp)
         {
             if (menuFood != temp) if (menuFood != null) menuFood.Visible = false;
@@ -167,7 +251,7 @@ namespace QuanLi
             if (menuTopping != temp) if (menuTopping != null) menuTopping.Visible = false;
             if (menuSpecial != temp) if (menuSpecial != null) menuSpecial.Visible = false;
         }
-        private Panel initPanel(Type type)
+        private Panel GetPanelByType(Type type)
         {
             Panel temp = null;
             if (type == Type.NONE)
@@ -182,23 +266,11 @@ namespace QuanLi
                 case Type.TOPPING: temp = menuTopping; break;
                 case Type.SPECIAL: temp = menuSpecial; break;
             }
-            if (temp == null)
-            {
-                temp = new Panel();
-                temp.Size = new Size(678, 587);
-                temp.Location = new Point(111, 79);
-                temp.BackColor = Color.Coral;
-                temp.AutoScroll = true;
-                temp.TabIndex = 44;
-                Controls.Add(temp);
-                temp.BringToFront();
-            }
             return temp;
         }
         private void LoadMenu(Type type)
         {
-            List<Dish> listByType = Menu.Instance.getListByType(type);
-            Panel panelDishes = initPanel(type);
+            //init value for scale
             int width = 170;
             int height = 160;
             int heightName = 50;
@@ -210,51 +282,33 @@ namespace QuanLi
             int moveX = 215;
             int moveY = height + 3 + heightName + heightPrice + 20;
             int sizeList = 10;
+
+            //Build Panel
+            List<Dish> listByType = Menu.Instance.getListByType(type);
+            Panel panelDishes = GetPanelByType(type);
+            panelDishes = ConcreteBuilder.Instance.BuildPanel(panelDishes);
+            Controls.Add(panelDishes);
+            panelDishes.BringToFront();
+            
             for (int i = 0; i < sizeList; i++)
             {
                 for (int j = 0; j < 3 & i < sizeList; j++, i++)
                 {
-                    //init pictureBox
-                    PictureBox pb = new PictureBox();
-                    pb.Size = new Size(width, height);
-                    pb.Location = new Point(xLocation, yLocation);
-                    pb.BackColor = Color.White;
+                    //Build pictureBox
+                    PictureBox pb = ConcreteBuilder.Instance.BuildPictureBox(width,height,xLocation,yLocation);
 
-                    //init Name
-                    Label lblName = new Label();
-                    lblName.Size = new Size(width, heightName);
-                    lblName.Location = new Point(xLocation, yLocation + pb.Size.Height);
-                    lblName.AutoSize = false;
-                    lblName.Text = "hahaah";
-                    lblName.TextAlign = ContentAlignment.MiddleCenter;
+                    //Build Label Name
+                    Label lblName = ConcreteBuilder.Instance.BuildLabelName(width,heightName,xLocation,yLocation + pb.Size.Height,"hahahaha");
 
-                    //init Price
-                    Label lblPrice = new Label();
-                    lblPrice.Size = new Size(width, heightPrice);
-                    lblPrice.Location = new Point(xLocation, lblName.Location.Y + lblName.Size.Height);
-                    lblPrice.AutoSize = false;
-                    lblPrice.Text = "200000";
-                    lblPrice.TextAlign = ContentAlignment.MiddleCenter;
+                    //Build Price
+                    Label lblPrice = ConcreteBuilder.Instance.BuildLabelPrice(width, heightPrice, xLocation, lblName.Location.Y + lblName.Size.Height, 200000);
 
-                    //init updown button
-                    NumericUpDown numUpDown = new NumericUpDown();
-                    numUpDown.Size = new Size(upDownW, upDownH);
-                    numUpDown.Location = new Point(xLocation + width - upDownW, yLocation);
-                    numUpDown.AutoSize = false;
-                    numUpDown.Maximum = 99;
-                    numUpDown.Minimum = 0;
-                    numUpDown.Name = i.ToString();
-                    numUpDown.Enabled = false;
+                    //Build updown button
+                    NumericUpDown numUpDown = ConcreteBuilder.Instance.BuildUpDown(upDownW, upDownH, xLocation + width - upDownW, yLocation,i);
 
                     //add into panel
-                    panelDishes.Controls.Add(numUpDown);
-                    panelDishes.Controls.Add(pb);
-                    panelDishes.Controls.Add(lblName);
-                    panelDishes.Controls.Add(lblPrice);
-                    panelDishes.Visible = true;
-                    //panelDishes.Enabled = false;
+                    ConcreteBuilder.Instance.MergeAll(panelDishes,pb,lblName,lblPrice,numUpDown);
                     switchVisible(panelDishes);
-
                     xLocation += moveX;
                 }
                 i--;
