@@ -30,7 +30,7 @@ namespace QuanLi
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             dtgvBSTopping = new System.Windows.Forms.DataGridView();
             Rank = new System.Windows.Forms.DataGridViewTextBoxColumn();
             FoodName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -44,14 +44,14 @@ namespace QuanLi
             // 
             dtgvBSTopping.BorderStyle = System.Windows.Forms.BorderStyle.None;
             dtgvBSTopping.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(255, 128, 128);
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.InfoText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            dtgvBSTopping.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(255, 128, 128);
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.InfoText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            dtgvBSTopping.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dtgvBSTopping.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dtgvBSTopping.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { Rank, FoodName, FoodImage, Sell, Profit });
             dtgvBSTopping.EnableHeadersVisualStyles = false;
@@ -120,7 +120,7 @@ namespace QuanLi
 
         public void AddBestSelling()
         {
-            List<Dish> temp = Menu.Instance().GetMostSelling(Type.TOPPING);
+            List<Dish> temp = Menu.Instance.GetMostSelling(Type.TOPPING);
             if (temp != null)
             {
                 for (int i = 0; i < temp.Count; i++)

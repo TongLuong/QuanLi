@@ -120,7 +120,7 @@ namespace QuanLi
 
         public void AddBestSelling()
         {
-            List<Dish> temp = Menu.Instance().GetMostSelling(Type.DRINK);
+            List<Dish> temp = Menu.Instance.GetMostSelling(Type.DRINK);
             if (temp != null)
             {
                 for (int i = 0; i < temp.Count; i++)

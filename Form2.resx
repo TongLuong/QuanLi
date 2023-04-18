@@ -61,7 +61,7 @@
   <data name="btnBestSellingTopping.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAABuEAAAIACAYAAACcgcE3AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wQAADsEBuJFr7QAAUSdJREFUeF7t3XecJGWd+PHumc2JXeISlrTAEnYBARERwQSCIAiKgIgESZKDBIEl
+        vQAADr0BR/uQrQAAUSdJREFUeF7t3XecJGWd+PHumc2JXeISlrTAEnYBARERwQSCIAiKgIgESZKDBIEl
         B7MgKIKgcJ6e6Uynp2L8mcOZw6lIkCR6hjMgLDA8Pwb1jlu/u13VU9NdT9f7j/d/TNV0PTX17Ov7obtb
         6fzzEwAAAAAAAFAdEQ4AAAAAAAAqJsIBAAAAAABAxUQ4AAAAAAAAqJgIBwAAAAAAABUT4QAAAAAAAKBi
         IhwAAAAAAABUTIQDAAAAAACAiolwAAAAAAAAUDERDgAAAAAAAComwgEAAAAAAEDFRDgAAAAAAAComAgH
@@ -413,7 +413,7 @@
   <data name="btnBestSellingDrink.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAEXQAAAVjCAYAAAB3CRCoAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wgAADsIBFShKgAAA/2BJREFUeF7s3MGLXNed6PFsplHs7qloPJKlDKaY3SwC9R+kl/asei8Nro2ytBsE
+        vgAADr4B6kKxwAAA/2BJREFUeF7s3MGLXNed6PFsplHs7qloPJKlDKaY3SwC9R+kl/asei8Nro2ytBsE
         0qqtGoKRYxRNS37YMOYlFRwTISmeApNJwDOhIGQz3pQ3Bj8ju/6E2o15DM/35cq37Jb0k1TdfavqnHs/
         P/hsEttd595zz61Nfb9X/PM/FwAAAAAAAAAAAAAAAAAAAAAAHJ+gCwAAAAAAAAAAAAAAAAAAAABATQRd
         AAAAAAAAAAAAAAAAAAAAAABqIugCAAAAAAAAAAAAAAAAAAAAAFATQRcAAAAAAAAAAAAAAAAAAAAAgJoI
@@ -1506,10 +1506,25 @@
         AABJRU5ErkJggg==
 </value>
   </data>
+  <metadata name="Dish.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="Type.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="Sell.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="Price.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="Profit.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="btnBestSellingFood.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAB6kAAAIqCAYAAAB2VX/zAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wQAADsEBuJFr7QAAbApJREFUeF7t3Xf4pFV9N/79bmV3YYFdYOksS+9I771Jb8LSFQVp0pt0lgUBo7FE
+        vQAADr0BR/uQrQAAbApJREFUeF7t3Xf4pFV9N/79bmV3YYFdYOksS+9I771Jb8LSFQVp0pt0lgUBo7FE
         k6hRowaNJmosqNjRgEDqk2pMYokxJsZeQNr57ez+jO7y5rttzj33zLz+eF2XT9g9n3M+97nPc13nvTMz
         ptx2WwEAAAAAAACAJgipAQAAAAAAAGiMkBoAAAAAAACAxgipAQAAAAAAAGiMkBoAAAAAAACAxgipAQAA
         AAAAAGiMkBoAAAAAAACAxgipAQAAAAAAAGiMkBoAAAAAAACAxgipAQAAAAAAAGiMkBoAAAAAAACAxgip
@@ -1973,22 +1988,4 @@
         AAAAAAAAQENuK/8foiTh5eALZwsAAAAASUVORK5CYII=
 </value>
   </data>
-  <metadata name="Date.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="Dish.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="Type.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="Sell.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="Price.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="Profit.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
 </root>
