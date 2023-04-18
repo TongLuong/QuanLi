@@ -167,7 +167,7 @@ namespace QuanLi
         #region load menu function (using Builder Design Pattern)
         private interface IBuilder
         {
-            public Panel BuildPanel(Panel temp);
+            //public Panel BuildPanel(Panel temp);
             public PictureBox BuildPictureBox(int w, int h, int x, int y);
             public Label BuildLabelName(int w, int h, int x, int y, string name);
             public Label BuildLabelPrice(int w, int h, int x, int y, int price);
@@ -185,7 +185,7 @@ namespace QuanLi
                     return instance;
                 }
             }
-            public Panel BuildPanel(Panel temp)
+            /*public Panel BuildPanel(Panel temp)
             {
                 temp.Size = new Size(678, 587);
                 temp.Location = new Point(111, 79);
@@ -194,7 +194,7 @@ namespace QuanLi
                 temp.TabIndex = 44;
                 //temp.BringToFront();
                 return temp;
-            }
+            }*/
             public PictureBox BuildPictureBox(int w, int h, int x, int y)
             {
                 PictureBox pb = new PictureBox();
@@ -288,7 +288,7 @@ namespace QuanLi
             //Build Panel
             List<Dish> listByType = Menu.Instance.getListByType(type);
             //Panel panelDishes = GetPanelByType(type);
-            panelDishes = ConcreteBuilder.Instance.BuildPanel(panelDishes);
+            //panelDishes = ConcreteBuilder.Instance.BuildPanel(panelDishes);
 
             for (int i = 0; i < sizeList; i++)
             {
