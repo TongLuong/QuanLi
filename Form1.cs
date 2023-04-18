@@ -258,7 +258,7 @@ namespace QuanLi
                     xLocation += moveX;
                 }
                 i--;
-                xLocation = 40;
+                xLocation = 30;
                 yLocation += moveY;
             }
         }
