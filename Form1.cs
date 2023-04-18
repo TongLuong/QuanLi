@@ -49,7 +49,7 @@ namespace QuanLi
         private void AddDish_Click(object sender, EventArgs e)
         {
             addItemForm.ShowDialog();
-            Dish dish = new Dish(1, addItemForm.itemName, addItemForm.itemPrice, addItemForm.itemExpense, Type.NONE,"");
+            Dish dish = new Dish(1, addItemForm.itemName, addItemForm.itemPrice, addItemForm.itemExpense, Type.NONE, "");
 
             List<Dish> dishes = new List<Dish>();
             dishes.Add(dish);
@@ -157,10 +157,56 @@ namespace QuanLi
                 Thread.Sleep(100);
             }
         }
-
-        private void LoadMenu()
+        #region load menu function
+        private void LoadMenu(Type type)
         {
-            
+            //List<Dish> listByType = Menu.Instance.getListByType(type);
+            int width = 170;
+            int height = 160;
+            int heightName = 50;
+            int heightPrice = 25;
+            int xLocation = 40;
+            int yLocation = 40;
+            int moveX = 215;
+            int moveY = height + 3 + heightName + heightPrice + 20;
+            int sizeList = 10;
+            for (int i = 0; i < sizeList; i++)
+            {
+                for (int j = 0; j < 3; j++)
+                {
+                    PictureBox pb = new PictureBox();
+                    pb.Size = new Size(width, height);
+                    pb.Location = new Point(xLocation, yLocation);
+                    pb.BackColor = Color.White;
+                    //pb.Name = (i*10+j).ToString();
+
+                    Label lblName = new Label();
+                    lblName.Size = new Size(width, heightName);
+                    lblName.Location = new Point(xLocation, yLocation + pb.Size.Height);
+                    lblName.AutoSize = false;
+                    lblName.Text = "hahaah";
+
+                    Label lblPrice = new Label();
+                    lblPrice.Size = new Size(width, heightPrice);
+                    lblPrice.Location = new Point(xLocation, lblName.Location.Y + lblName.Size.Height);
+                    lblPrice.AutoSize = false;
+                    lblPrice.Text = "200000";
+
+                    panelDishes.Controls.Add(pb);
+                    panelDishes.Controls.Add(lblName);
+                    panelDishes.Controls.Add(lblPrice);
+                    xLocation += moveX;
+                }
+                xLocation = 40;
+                yLocation += moveY;
+            }
+        }
+
+        #endregion
+
+        private void Food_Click(object sender, EventArgs e)
+        {
+            LoadMenu(Type.FOOD);
         }
     }
 }
