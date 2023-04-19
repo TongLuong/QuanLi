@@ -20,7 +20,6 @@ namespace QuanLi
         private Menu menu;
         private Database database;
         private AddItem addItemForm;
-        //private Panel menuFood, menuDrink, menuTopping, menuSpecial, menuAll;
 
         public Form1()
         {
@@ -28,7 +27,6 @@ namespace QuanLi
             menu = Menu.Instance; // singleton
             database = new Database();
             addItemForm = new AddItem();
-            //menuFood = menuDrink = menuTopping = menuSpecial = menuAll = null;
             LoadMenu(Type.FOOD, menuFood);
             LoadMenu(Type.DRINK, menuDrink);
             LoadMenu(Type.TOPPING, menuTopping);
@@ -153,12 +151,19 @@ namespace QuanLi
         {
             while (true)
             {
-                if (CurrTime.IsHandleCreated) // check if the control was created/existed
+                try
                 {
-                    CurrTime.Invoke(new Action(() =>
+                    if (CurrTime.IsHandleCreated) // check if the control was created/existed
                     {
-                        CurrTime.Text = DateTime.Now.ToString("hh:mm:ss tt \n") + DateTime.Now.ToString("dd/MM/yyyy");
-                    })); // method for sharing data between threads
+                        CurrTime.Invoke(new Action(() =>
+                        {
+                            CurrTime.Text = DateTime.Now.ToString("hh:mm:ss tt \n") + DateTime.Now.ToString("dd/MM/yyyy");
+                        })); // method for sharing data between threads
+                    }
+                }
+                catch(Exception) 
+                {
+                    return;
                 }
 
                 Thread.Sleep(100);
@@ -185,16 +190,7 @@ namespace QuanLi
                     return instance;
                 }
             }
-            /*public Panel BuildPanel(Panel temp)
-            {
-                temp.Size = new Size(678, 587);
-                temp.Location = new Point(111, 79);
-                temp.BackColor = Color.Coral;
-                temp.AutoScroll = true;
-                temp.TabIndex = 44;
-                //temp.BringToFront();
-                return temp;
-            }*/
+
             public PictureBox BuildPictureBox(int w, int h, int x, int y)
             {
                 PictureBox pb = new PictureBox();
@@ -253,25 +249,8 @@ namespace QuanLi
             if (menuDrink != temp) if (menuDrink != null) menuDrink.Visible = false;
             if (menuTopping != temp) if (menuTopping != null) menuTopping.Visible = false;
             if (menuSpecial != temp) if (menuSpecial != null) menuSpecial.Visible = false;
-
         }
-        /*private Panel GetPanelByType(Type type)
-        {
-            Panel temp = null;
-            if (type == Type.NONE)
-            {
-                MessageBox.Show("Invalid Type !!");
-                return null;
-            }
-            switch (type)
-            {
-                case Type.FOOD: temp = menuFood; break;
-                case Type.DRINK: temp = menuDrink; break;
-                case Type.TOPPING: temp = menuTopping; break;
-                case Type.SPECIAL: temp = menuSpecial; break;
-            }
-            return temp;
-        }*/
+
         private void LoadMenu(Type type, Panel panelDishes)
         {
             //init value for scale
@@ -289,8 +268,6 @@ namespace QuanLi
 
             //Build Panel
             List<Dish> listByType = Menu.Instance.getListByType(type);
-            //Panel panelDishes = GetPanelByType(type);
-            //panelDishes = ConcreteBuilder.Instance.BuildPanel(panelDishes);
 
             for (int i = 0; i < sizeList; i++)
             {
@@ -317,37 +294,28 @@ namespace QuanLi
                 xLocation = 30;
                 yLocation += moveY;
             }
-            //switchVisible(panelDishes);
         }
 
         #endregion
 
         private void Food_Click(object sender, EventArgs e)
         {
-            //LoadMenu(Type.FOOD);
-            //menuFood.Visible = true;
             switchVisible(menuFood);
         }
 
         private void Drinks_Click(object sender, EventArgs e)
         {
-            //LoadMenu(Type.DRINK);
             switchVisible(menuDrink);
-            //menuDrink.Visible = true;
         }
 
         private void Special_Click(object sender, EventArgs e)
         {
-            //LoadMenu(Type.SPECIAL);
             switchVisible(menuSpecial);
-            //menuSpecial.Visible = true;
         }
 
         private void Topping_Click(object sender, EventArgs e)
         {
-            //LoadMenu(Type.TOPPING);
             switchVisible(menuTopping);
-            //menuTopping.Visible = true; 
         }
     }
 }

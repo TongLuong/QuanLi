@@ -47,7 +47,7 @@ namespace QuanLi
         /// Write data to csv file
         /// </summary>
         /// <param name="obj"></param>
-        public void WriteCSV<T>(List<T> obj)
+        public void WriteCSV<T>(List<T> obj, bool addTime = false)
         {
             string objectName = typeof(T).Name;
             string filePath = baseDataDir + objectName + extension;
@@ -66,6 +66,10 @@ namespace QuanLi
 
                         newLine.Append("," + attr.ToString());
                     }
+
+                    if (addTime)
+                        newLine.Append("," + DateTime.Now.ToString("dd/MM/yyyy"));
+
                     newLine.Remove(0, 1);
 
                     writer.WriteLine(newLine.ToString());

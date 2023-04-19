@@ -54,5 +54,12 @@ namespace QuanLi
         {
             this.Close();
         }
+
+        private void AddItem_Load(object sender, EventArgs e)
+        {
+            ItemName.Text = "";
+            ItemPrice.Text = "";
+            ItemExpense.Text = "";
+        }
     }
 }
