@@ -29,10 +29,10 @@ namespace QuanLi
             database = new Database();
             addItemForm = new AddItem();
             //menuFood = menuDrink = menuTopping = menuSpecial = menuAll = null;
-            LoadMenu(Type.FOOD,menuFood);
-            LoadMenu(Type.DRINK,menuDrink);
-            LoadMenu(Type.TOPPING,menuTopping);
-            LoadMenu(Type.SPECIAL,menuSpecial);
+            LoadMenu(Type.FOOD, menuFood);
+            LoadMenu(Type.DRINK, menuDrink);
+            LoadMenu(Type.TOPPING, menuTopping);
+            LoadMenu(Type.SPECIAL, menuSpecial);
         }
 
         private void Order_Click(object sender, EventArgs e)
@@ -247,11 +247,13 @@ namespace QuanLi
         }
         private void switchVisible(Panel temp)
         {
+            temp.Visible = true;
+            temp.BringToFront();
             if (menuFood != temp) if (menuFood != null) menuFood.Visible = false;
             if (menuDrink != temp) if (menuDrink != null) menuDrink.Visible = false;
             if (menuTopping != temp) if (menuTopping != null) menuTopping.Visible = false;
             if (menuSpecial != temp) if (menuSpecial != null) menuSpecial.Visible = false;
-            temp.Visible = true;
+           
         }
         /*private Panel GetPanelByType(Type type)
         {
@@ -270,7 +272,7 @@ namespace QuanLi
             }
             return temp;
         }*/
-        private void LoadMenu(Type type,Panel panelDishes)
+        private void LoadMenu(Type type, Panel panelDishes)
         {
             //init value for scale
             int width = 170;
@@ -308,7 +310,7 @@ namespace QuanLi
 
                     //add into panel
                     ConcreteBuilder.Instance.MergeAll(panelDishes, pb, lblName, lblPrice, numUpDown);
-                    
+
                     xLocation += moveX;
                 }
                 i--;
@@ -337,7 +339,7 @@ namespace QuanLi
         private void Special_Click(object sender, EventArgs e)
         {
             //LoadMenu(Type.SPECIAL);
-           switchVisible(menuSpecial);
+            switchVisible(menuSpecial);
             //menuSpecial.Visible = true;
         }
 
