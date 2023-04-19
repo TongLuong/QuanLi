@@ -36,7 +36,7 @@ namespace QuanLi
         private void Form2_Load(object sender, EventArgs e)
         {
             DateTime today = DateTime.Today;
-            lbDate.Text = "Ngày " + today.ToString("dd/MM/yyyy");
+            lbDate.Text = "Doanh thu ngày " + today.ToString("dd/MM/yyyy");
         }
 
         //void LoadStatistics()

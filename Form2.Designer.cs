@@ -1,4 +1,6 @@
 ﻿
+using System;
+
 namespace QuanLi
 {
     partial class Form2
@@ -85,9 +87,10 @@ namespace QuanLi
             btnBestSellingTopping.Location = new System.Drawing.Point(591, 688);
             btnBestSellingTopping.Margin = new System.Windows.Forms.Padding(2);
             btnBestSellingTopping.Name = "btnBestSellingTopping";
+            btnBestSellingTopping.Padding = new System.Windows.Forms.Padding(50, 0, 0, 0);
             btnBestSellingTopping.Size = new System.Drawing.Size(212, 66);
             btnBestSellingTopping.TabIndex = 3;
-            btnBestSellingTopping.Text = "           BestSelling\n           Topping";
+            btnBestSellingTopping.Text = "BestSelling"+Environment.NewLine+"Topping";
             btnBestSellingTopping.UseVisualStyleBackColor = false;
             btnBestSellingTopping.Click += btnBestSellingTopping_Click;
             // 
@@ -102,9 +105,10 @@ namespace QuanLi
             btnBestSellingDrink.Location = new System.Drawing.Point(311, 688);
             btnBestSellingDrink.Margin = new System.Windows.Forms.Padding(2);
             btnBestSellingDrink.Name = "btnBestSellingDrink";
+            btnBestSellingDrink.Padding = new System.Windows.Forms.Padding(50, 0, 0, 0);
             btnBestSellingDrink.Size = new System.Drawing.Size(212, 66);
             btnBestSellingDrink.TabIndex = 2;
-            btnBestSellingDrink.Text = "           BestSelling\n           Drink";
+            btnBestSellingDrink.Text = "BestSelling"+Environment.NewLine+"Drink";
             btnBestSellingDrink.UseVisualStyleBackColor = false;
             btnBestSellingDrink.Click += btnBestSellingDrink_Click;
             // 
@@ -290,9 +294,10 @@ namespace QuanLi
             btnBestSellingFood.Location = new System.Drawing.Point(38, 688);
             btnBestSellingFood.Margin = new System.Windows.Forms.Padding(2);
             btnBestSellingFood.Name = "btnBestSellingFood";
+            btnBestSellingFood.Padding = new System.Windows.Forms.Padding(50, 0, 0, 0);
             btnBestSellingFood.Size = new System.Drawing.Size(212, 66);
             btnBestSellingFood.TabIndex = 1;
-            btnBestSellingFood.Text = "           BestSelling\n           Food";
+            btnBestSellingFood.Text = "BestSelling"+Environment.NewLine+"Food";
             btnBestSellingFood.UseVisualStyleBackColor = false;
             btnBestSellingFood.Click += btnBestSellingFood_Click;
             // 
