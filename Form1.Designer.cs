@@ -56,9 +56,12 @@ namespace QuanLi
             Stat = new System.Windows.Forms.Button();
             label6 = new System.Windows.Forms.Label();
             pictureBox1 = new System.Windows.Forms.PictureBox();
-            pictureBox2 = new System.Windows.Forms.PictureBox();
-            CurrTime = new System.Windows.Forms.TextBox();
             AddDish = new System.Windows.Forms.Button();
+            CurrTime = new System.Windows.Forms.Label();
+            menuFood = new System.Windows.Forms.Panel();
+            menuDrink = new System.Windows.Forms.Panel();
+            menuTopping = new System.Windows.Forms.Panel();
+            menuSpecial = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)pbMenu).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pbOrder).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox11).BeginInit();
@@ -66,7 +69,6 @@ namespace QuanLi
             ((System.ComponentModel.ISupportInitialize)minimize).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox7).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
             // 
             // Food
@@ -86,6 +88,7 @@ namespace QuanLi
             Food.TabIndex = 6;
             Food.Text = "Đồ ăn";
             Food.UseVisualStyleBackColor = false;
+            Food.Click += Food_Click;
             // 
             // Drinks
             // 
@@ -104,6 +107,7 @@ namespace QuanLi
             Drinks.TabIndex = 7;
             Drinks.Text = "Đồ uống";
             Drinks.UseVisualStyleBackColor = false;
+            Drinks.Click += Drinks_Click;
             // 
             // Topping
             // 
@@ -122,6 +126,7 @@ namespace QuanLi
             Topping.TabIndex = 8;
             Topping.Text = "Topping";
             Topping.UseVisualStyleBackColor = false;
+            Topping.Click += Topping_Click;
             // 
             // Special
             // 
@@ -140,6 +145,7 @@ namespace QuanLi
             Special.TabIndex = 9;
             Special.Text = "Đặc biệt";
             Special.UseVisualStyleBackColor = false;
+            Special.Click += Special_Click;
             // 
             // All
             // 
@@ -381,25 +387,6 @@ namespace QuanLi
             pictureBox1.TabIndex = 40;
             pictureBox1.TabStop = false;
             // 
-            // pictureBox2
-            // 
-            pictureBox2.BackColor = System.Drawing.Color.FromArgb(247, 96, 121);
-            pictureBox2.Location = new System.Drawing.Point(111, 70);
-            pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new System.Drawing.Size(678, 598);
-            pictureBox2.TabIndex = 41;
-            pictureBox2.TabStop = false;
-            // 
-            // CurrTime
-            // 
-            CurrTime.Font = new System.Drawing.Font("Cambria", 7.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            CurrTime.Location = new System.Drawing.Point(0, 702);
-            CurrTime.Multiline = true;
-            CurrTime.Name = "CurrTime";
-            CurrTime.ReadOnly = true;
-            CurrTime.Size = new System.Drawing.Size(90, 34);
-            CurrTime.TabIndex = 42;
-            // 
             // AddDish
             // 
             AddDish.BackColor = System.Drawing.Color.FromArgb(250, 248, 0);
@@ -417,6 +404,51 @@ namespace QuanLi
             AddDish.UseVisualStyleBackColor = false;
             AddDish.Click += AddDish_Click;
             // 
+            // CurrTime
+            // 
+            CurrTime.Font = new System.Drawing.Font("Cambria", 7.20000029F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            CurrTime.Location = new System.Drawing.Point(0, 704);
+            CurrTime.Name = "CurrTime";
+            CurrTime.Size = new System.Drawing.Size(90, 32);
+            CurrTime.TabIndex = 44;
+            CurrTime.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // menuFood
+            // 
+            menuFood.AutoScroll = true;
+            menuFood.BackColor = System.Drawing.Color.Coral;
+            menuFood.Location = new System.Drawing.Point(111, 79);
+            menuFood.Name = "menuFood";
+            menuFood.Size = new System.Drawing.Size(678, 587);
+            menuFood.TabIndex = 45;
+            // 
+            // menuDrink
+            // 
+            menuDrink.AutoScroll = true;
+            menuDrink.BackColor = System.Drawing.Color.Coral;
+            menuDrink.Location = new System.Drawing.Point(111, 79);
+            menuDrink.Name = "menuDrink";
+            menuDrink.Size = new System.Drawing.Size(678, 587);
+            menuDrink.TabIndex = 46;
+            // 
+            // menuTopping
+            // 
+            menuTopping.AutoScroll = true;
+            menuTopping.BackColor = System.Drawing.Color.Coral;
+            menuTopping.Location = new System.Drawing.Point(111, 79);
+            menuTopping.Name = "menuTopping";
+            menuTopping.Size = new System.Drawing.Size(678, 587);
+            menuTopping.TabIndex = 47;
+            // 
+            // menuSpecial
+            // 
+            menuSpecial.AutoScroll = true;
+            menuSpecial.BackColor = System.Drawing.Color.Coral;
+            menuSpecial.Location = new System.Drawing.Point(111, 79);
+            menuSpecial.Name = "menuSpecial";
+            menuSpecial.Size = new System.Drawing.Size(678, 587);
+            menuSpecial.TabIndex = 48;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -424,9 +456,12 @@ namespace QuanLi
             BackColor = System.Drawing.Color.White;
             ClientSize = new System.Drawing.Size(1404, 736);
             ControlBox = false;
-            Controls.Add(AddDish);
+            Controls.Add(menuSpecial);
+            Controls.Add(menuTopping);
+            Controls.Add(menuDrink);
+            Controls.Add(menuFood);
             Controls.Add(CurrTime);
-            Controls.Add(pictureBox2);
+            Controls.Add(AddDish);
             Controls.Add(pictureBox1);
             Controls.Add(label6);
             Controls.Add(Stat);
@@ -466,7 +501,6 @@ namespace QuanLi
             ((System.ComponentModel.ISupportInitialize)minimize).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox7).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -497,9 +531,12 @@ namespace QuanLi
         private System.Windows.Forms.Button Stat;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.TextBox CurrTime;
         private System.Windows.Forms.Button AddDish;
+        private System.Windows.Forms.Label CurrTime;
+        private System.Windows.Forms.Panel menuFood;
+        private System.Windows.Forms.Panel menuDrink;
+        private System.Windows.Forms.Panel menuTopping;
+        private System.Windows.Forms.Panel menuSpecial;
     }
 }
 
