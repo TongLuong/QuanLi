@@ -32,7 +32,7 @@ namespace QuanLi
         #endregion
 
         #region constructor
-        public Dish(long id, string name, double price, double prodExpense, Type type, string imageName)
+        public Dish(long id, string name, double price, double prodExpense, int numberOfSells, Type type, string imageName)
         {
             this.id = id;
             this.name = name;
@@ -161,6 +161,8 @@ namespace QuanLi
             drinkList = new List<Dish>();
             toppingList = new List<Dish>();
             specialList = new List<Dish>();
+
+            LoadFromDatabase();
             count = 0;
         }
 
@@ -175,6 +177,35 @@ namespace QuanLi
 
         #endregion
         #region Functions
+
+        private void LoadFromDatabase()
+        {
+            List<Dish> all = Database.Instance.ReadCSVToList<Dish>();
+
+            IEnumerator<Dish> enumerator = all.GetEnumerator();
+            while(enumerator.MoveNext())
+            {
+                Dish dish = enumerator.Current;
+                switch(dish.Type)
+                {
+                    case Type.NONE:
+                        break;
+                    case Type.FOOD:
+                        FoodList.Add(dish);
+                        break;
+                    case Type.DRINK:
+                        DrinkList.Add(dish);
+                        break;
+                    case Type.TOPPING:
+                        ToppingList.Add(dish);
+                        break;
+                    case Type.SPECIAL:
+                        SpecialList.Add(dish);
+                        break;
+                }
+            }
+        }
+
         public List<Dish> getListByType(Type type)
         {
             List<Dish> refList = null;

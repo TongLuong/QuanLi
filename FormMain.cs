@@ -80,7 +80,7 @@ namespace QuanLi
 
         private void OpenMenu()
         {
-            Form1 form1 = new Form1();
+            Form1 form1 = Form1.Instance;
             form1.Show();
         }
 

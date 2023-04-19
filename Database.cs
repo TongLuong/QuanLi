@@ -6,6 +6,7 @@ using System;
 using System.Reflection;
 using System.Text;
 using System.Linq;
+using System.Windows.Forms;
 
 namespace QuanLi
 {
@@ -20,9 +21,20 @@ namespace QuanLi
             set => extension = value;
         }
 
-        public Database()
+        private static Database database;
+
+        private Database()
         {
             initPath();
+        }
+
+        public static Database Instance
+        {
+            get
+            {
+                database ??= new Database();
+                return database;
+            }
         }
 
         /// <summary>
@@ -120,22 +132,31 @@ namespace QuanLi
                 List<Dish> menu = new List<Dish>();
                 foreach (string[] sarr in ReadCSV<T>())
                 {
-                    if (!listOfType.Contains(sarr[4]))
+                    if (!listOfType.Contains(sarr[5]))
                         continue;
 
                     Type tempEnum;
-                    Enum.TryParse(sarr[4], out tempEnum);
-                    Dish temp = new Dish
-                    (
-                        Convert.ToInt32(sarr[0]),
-                        sarr[1],
-                        Convert.ToDouble(sarr[2]),
-                        Convert.ToDouble(sarr[3]),
-                        tempEnum,
-                        sarr[5]
-                    );
+                    Enum.TryParse(sarr[5], out tempEnum);
 
-                    menu.Add(temp);
+                    try
+                    {
+                        Dish temp = new Dish
+                        (
+                            Convert.ToInt64(sarr[0]),
+                            sarr[1],
+                            Convert.ToDouble(sarr[2]),
+                            Convert.ToDouble(sarr[3]),
+                            Convert.ToInt32(sarr[4]),
+                            tempEnum,
+                            sarr[5]
+                        );
+
+                        menu.Add(temp);
+                    }
+                    catch(Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
                 }
 
                 return menu as List<T>;

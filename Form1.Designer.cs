@@ -39,7 +39,7 @@ namespace QuanLi
             pbMenu = new System.Windows.Forms.PictureBox();
             label1 = new System.Windows.Forms.Label();
             pbOrder = new System.Windows.Forms.PictureBox();
-            Order = new System.Windows.Forms.Button();
+            Pay = new System.Windows.Forms.Button();
             label2 = new System.Windows.Forms.Label();
             pictureBox11 = new System.Windows.Forms.PictureBox();
             flowOrderName = new System.Windows.Forms.FlowLayoutPanel();
@@ -204,22 +204,22 @@ namespace QuanLi
             pbOrder.TabIndex = 13;
             pbOrder.TabStop = false;
             // 
-            // Order
+            // Pay
             // 
-            Order.BackColor = System.Drawing.Color.FromArgb(250, 248, 0);
-            Order.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            Order.FlatAppearance.BorderSize = 0;
-            Order.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(128, 255, 128);
-            Order.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(255, 128, 128);
-            Order.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            Order.Font = new System.Drawing.Font("Cambria", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            Order.Location = new System.Drawing.Point(672, 674);
-            Order.Name = "Order";
-            Order.Size = new System.Drawing.Size(117, 51);
-            Order.TabIndex = 23;
-            Order.Text = "Đặt món";
-            Order.UseVisualStyleBackColor = false;
-            Order.Click += Order_Click;
+            Pay.BackColor = System.Drawing.Color.FromArgb(250, 248, 0);
+            Pay.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            Pay.FlatAppearance.BorderSize = 0;
+            Pay.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(128, 255, 128);
+            Pay.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(255, 128, 128);
+            Pay.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            Pay.Font = new System.Drawing.Font("Cambria", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            Pay.Location = new System.Drawing.Point(672, 674);
+            Pay.Name = "Pay";
+            Pay.Size = new System.Drawing.Size(117, 51);
+            Pay.TabIndex = 23;
+            Pay.Text = "Thanh toán";
+            Pay.UseVisualStyleBackColor = false;
+            Pay.Click += Pay_Click;
             // 
             // label2
             // 
@@ -559,7 +559,7 @@ namespace QuanLi
             Controls.Add(flowOrderName);
             Controls.Add(pictureBox11);
             Controls.Add(label2);
-            Controls.Add(Order);
+            Controls.Add(Pay);
             Controls.Add(label1);
             Controls.Add(pbOrder);
             Controls.Add(All);
@@ -601,7 +601,7 @@ namespace QuanLi
         private System.Windows.Forms.PictureBox pbMenu;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pbOrder;
-        private System.Windows.Forms.Button Order;
+        private System.Windows.Forms.Button Pay;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.PictureBox pictureBox11;
         private System.Windows.Forms.FlowLayoutPanel flowOrderName;
