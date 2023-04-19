@@ -14,6 +14,7 @@ namespace QuanLi
         {
             InitializeComponent();
             timer1.Start();
+            this.StartPosition = FormStartPosition.CenterScreen;
         }
 
         private void label1_Click(object sender, EventArgs e)
