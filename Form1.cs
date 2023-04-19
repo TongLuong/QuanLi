@@ -247,11 +247,13 @@ namespace QuanLi
         }
         private void switchVisible(Panel temp)
         {
+            temp.Visible = true;
+            temp.BringToFront();
             if (menuFood != temp) if (menuFood != null) menuFood.Visible = false;
             if (menuDrink != temp) if (menuDrink != null) menuDrink.Visible = false;
             if (menuTopping != temp) if (menuTopping != null) menuTopping.Visible = false;
             if (menuSpecial != temp) if (menuSpecial != null) menuSpecial.Visible = false;
-            temp.Visible = true;
+           
         }
         /*private Panel GetPanelByType(Type type)
         {
