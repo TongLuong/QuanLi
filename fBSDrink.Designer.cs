@@ -117,18 +117,5 @@ namespace QuanLi
         private System.Windows.Forms.DataGridViewTextBoxColumn FoodImage;
         private System.Windows.Forms.DataGridViewTextBoxColumn Sell;
         private System.Windows.Forms.DataGridViewTextBoxColumn Profit;
-
-        public void AddBestSelling()
-        {
-            List<Dish> temp = Menu.Instance.GetMostSelling(Type.DRINK);
-            if (temp != null)
-            {
-                for (int i = 0; i < temp.Count; i++)
-                {
-                    Dish item = temp[i];
-                    dtgvBSDrink.Rows.Add(i, item.Name, item.NumberOfSells, item.NumberOfSells * (item.Price - item.ProdExpense));
-                }
-            }
-        }
     }
 }

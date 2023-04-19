@@ -19,21 +19,18 @@ namespace QuanLi
         {
             fBSDrink f = new fBSDrink();
             f.ShowDialog();
-            f.AddBestSelling();
         }
 
         private void btnBestSellingFood_Click(object sender, EventArgs e)
         {
             fBSFood f = new fBSFood();
             f.ShowDialog();
-            f.AddBestSelling();
         }
 
         private void btnBestSellingTopping_Click(object sender, EventArgs e)
         {
             fBSTopping f = new fBSTopping();
             f.ShowDialog();
-            f.AddBestSelling();
         }
 
         private void Form2_Load(object sender, EventArgs e)
@@ -41,5 +38,10 @@ namespace QuanLi
             DateTime today = DateTime.Today;
             lbDate.Text = "Ngày " + today.ToString("dd/MM/yyyy");
         }
+
+        //void LoadStatistics()
+        //{
+        //    List<Dish> dishes = Menu.Instance.
+        //}
     }
 }

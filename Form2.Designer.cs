@@ -87,7 +87,7 @@ namespace QuanLi
             btnBestSellingTopping.Name = "btnBestSellingTopping";
             btnBestSellingTopping.Size = new System.Drawing.Size(212, 66);
             btnBestSellingTopping.TabIndex = 3;
-            btnBestSellingTopping.Text = "           BestSelling\r\n           Topping";
+            btnBestSellingTopping.Text = "           BestSelling\n           Topping";
             btnBestSellingTopping.UseVisualStyleBackColor = false;
             btnBestSellingTopping.Click += btnBestSellingTopping_Click;
             // 
@@ -104,7 +104,7 @@ namespace QuanLi
             btnBestSellingDrink.Name = "btnBestSellingDrink";
             btnBestSellingDrink.Size = new System.Drawing.Size(212, 66);
             btnBestSellingDrink.TabIndex = 2;
-            btnBestSellingDrink.Text = "           BestSelling\r\n           Drink\r\n";
+            btnBestSellingDrink.Text = "           BestSelling\n           Drink";
             btnBestSellingDrink.UseVisualStyleBackColor = false;
             btnBestSellingDrink.Click += btnBestSellingDrink_Click;
             // 
@@ -292,7 +292,7 @@ namespace QuanLi
             btnBestSellingFood.Name = "btnBestSellingFood";
             btnBestSellingFood.Size = new System.Drawing.Size(212, 66);
             btnBestSellingFood.TabIndex = 1;
-            btnBestSellingFood.Text = "           BestSelling\r\n           Food";
+            btnBestSellingFood.Text = "           BestSelling\n           Food";
             btnBestSellingFood.UseVisualStyleBackColor = false;
             btnBestSellingFood.Click += btnBestSellingFood_Click;
             // 
