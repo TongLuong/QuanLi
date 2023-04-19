@@ -253,7 +253,7 @@ namespace QuanLi
             if (menuDrink != temp) if (menuDrink != null) menuDrink.Visible = false;
             if (menuTopping != temp) if (menuTopping != null) menuTopping.Visible = false;
             if (menuSpecial != temp) if (menuSpecial != null) menuSpecial.Visible = false;
-           
+
         }
         /*private Panel GetPanelByType(Type type)
         {
@@ -280,7 +280,7 @@ namespace QuanLi
             int heightName = 50;
             int heightPrice = 25;
             int xLocation = 30;
-            int yLocation = 40;
+            int yLocation = 50;
             int upDownH = 27;
             int upDownW = 45;
             int moveX = 215;
