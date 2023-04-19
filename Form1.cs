@@ -53,7 +53,9 @@ namespace QuanLi
         private void AddDish_Click(object sender, EventArgs e)
         {
             addItemForm.ShowDialog();
-            Dish dish = new Dish(1, addItemForm.itemName, addItemForm.itemPrice, addItemForm.itemExpense, Type.NONE, "");
+            if (addItemForm.Abort)
+                return;
+            Dish dish = new Dish(addItemForm.itemName, addItemForm.itemPrice, addItemForm.itemExpense, addItemForm.itemType, "");
 
             List<Dish> dishes = new List<Dish>();
             dishes.Add(dish);
@@ -62,8 +64,6 @@ namespace QuanLi
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            //this.BackColor = Color.FromArgb(0, 0, 1);
-            //this.TransparencyKey = Color.FromArgb(0, 0, 1);
             timeThread = new Thread(() => UpdateTime()); // create thread for updating the time
             timeThread.IsBackground = true;
             timeThread.Start();
@@ -142,11 +142,6 @@ namespace QuanLi
             }
         }
 
-        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            //timeThread.Interrupt();
-        }
-
         private void UpdateTime()
         {
             while (true)
@@ -161,7 +156,7 @@ namespace QuanLi
                         })); // method for sharing data between threads
                     }
                 }
-                catch(Exception) 
+                catch
                 {
                     return;
                 }

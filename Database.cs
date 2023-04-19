@@ -5,6 +5,7 @@ using System.Xml.Serialization;
 using System;
 using System.Reflection;
 using System.Text;
+using System.Linq;
 
 namespace QuanLi
 {
@@ -51,7 +52,8 @@ namespace QuanLi
         {
             string objectName = typeof(T).Name;
             string filePath = baseDataDir + objectName + extension;
-
+            //int count = File.ReadLines(@"E:\File.txt").Count();
+            
             StringBuilder csvStr = new StringBuilder();
 
             using (StreamWriter writer = new StreamWriter(new FileStream(filePath, FileMode.Append, FileAccess.Write), Encoding.UTF8))
@@ -71,7 +73,7 @@ namespace QuanLi
                         newLine.Append("," + DateTime.Now.ToString("dd/MM/yyyy"));
 
                     newLine.Remove(0, 1);
-
+                    
                     writer.WriteLine(newLine.ToString());
                 }
             }
@@ -111,14 +113,18 @@ namespace QuanLi
         {
             string objectName = typeof(T).Name;
             string filePath = baseDataDir + objectName + extension;
+            List<string> listOfType = Enum.GetNames(typeof(Type)).ToList();
 
             if (typeof(T) == typeof(Dish))
             {
                 List<Dish> menu = new List<Dish>();
                 foreach (string[] sarr in ReadCSV<T>())
                 {
+                    if (!listOfType.Contains(sarr[4]))
+                        continue;
+
                     Type tempEnum;
-                    Enum.TryParse("NONE", out tempEnum);
+                    Enum.TryParse(sarr[4], out tempEnum);
                     Dish temp = new Dish
                     (
                         Convert.ToInt32(sarr[0]),

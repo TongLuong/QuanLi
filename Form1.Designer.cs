@@ -59,13 +59,13 @@ namespace QuanLi
             AddDish = new System.Windows.Forms.Button();
             CurrTime = new System.Windows.Forms.Label();
             menuFood = new System.Windows.Forms.Panel();
+            FoodLabel = new System.Windows.Forms.Button();
             menuDrink = new System.Windows.Forms.Panel();
+            DrinkLabel = new System.Windows.Forms.Button();
             menuTopping = new System.Windows.Forms.Panel();
+            ToppingLable = new System.Windows.Forms.Button();
             menuSpecial = new System.Windows.Forms.Panel();
             SpecialLabel = new System.Windows.Forms.Button();
-            ToppingLable = new System.Windows.Forms.Button();
-            DrinkLabel = new System.Windows.Forms.Button();
-            FoodLabel = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)pbMenu).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pbOrder).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox11).BeginInit();
@@ -431,6 +431,24 @@ namespace QuanLi
             menuFood.Size = new System.Drawing.Size(678, 587);
             menuFood.TabIndex = 45;
             // 
+            // FoodLabel
+            // 
+            FoodLabel.BackColor = System.Drawing.Color.FromArgb(237, 205, 26);
+            FoodLabel.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            FoodLabel.FlatAppearance.BorderSize = 0;
+            FoodLabel.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(128, 255, 128);
+            FoodLabel.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(128, 255, 128);
+            FoodLabel.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(255, 128, 128);
+            FoodLabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            FoodLabel.Font = new System.Drawing.Font("Cambria", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            FoodLabel.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            FoodLabel.Location = new System.Drawing.Point(3, 3);
+            FoodLabel.Name = "FoodLabel";
+            FoodLabel.Size = new System.Drawing.Size(90, 40);
+            FoodLabel.TabIndex = 47;
+            FoodLabel.Text = "Đồ ăn";
+            FoodLabel.UseVisualStyleBackColor = false;
+            // 
             // menuDrink
             // 
             menuDrink.AutoScroll = true;
@@ -441,6 +459,24 @@ namespace QuanLi
             menuDrink.Size = new System.Drawing.Size(678, 587);
             menuDrink.TabIndex = 46;
             // 
+            // DrinkLabel
+            // 
+            DrinkLabel.BackColor = System.Drawing.Color.FromArgb(237, 205, 26);
+            DrinkLabel.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            DrinkLabel.FlatAppearance.BorderSize = 0;
+            DrinkLabel.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(128, 255, 128);
+            DrinkLabel.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(128, 255, 128);
+            DrinkLabel.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(255, 128, 128);
+            DrinkLabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            DrinkLabel.Font = new System.Drawing.Font("Cambria", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            DrinkLabel.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            DrinkLabel.Location = new System.Drawing.Point(3, 3);
+            DrinkLabel.Name = "DrinkLabel";
+            DrinkLabel.Size = new System.Drawing.Size(90, 40);
+            DrinkLabel.TabIndex = 48;
+            DrinkLabel.Text = "Đồ uống";
+            DrinkLabel.UseVisualStyleBackColor = false;
+            // 
             // menuTopping
             // 
             menuTopping.AutoScroll = true;
@@ -450,6 +486,24 @@ namespace QuanLi
             menuTopping.Name = "menuTopping";
             menuTopping.Size = new System.Drawing.Size(678, 587);
             menuTopping.TabIndex = 47;
+            // 
+            // ToppingLable
+            // 
+            ToppingLable.BackColor = System.Drawing.Color.FromArgb(237, 205, 26);
+            ToppingLable.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            ToppingLable.FlatAppearance.BorderSize = 0;
+            ToppingLable.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(128, 255, 128);
+            ToppingLable.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(128, 255, 128);
+            ToppingLable.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(255, 128, 128);
+            ToppingLable.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            ToppingLable.Font = new System.Drawing.Font("Cambria", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            ToppingLable.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            ToppingLable.Location = new System.Drawing.Point(3, 3);
+            ToppingLable.Name = "ToppingLable";
+            ToppingLable.Size = new System.Drawing.Size(90, 40);
+            ToppingLable.TabIndex = 49;
+            ToppingLable.Text = "Topping";
+            ToppingLable.UseVisualStyleBackColor = false;
             // 
             // menuSpecial
             // 
@@ -478,60 +532,6 @@ namespace QuanLi
             SpecialLabel.TabIndex = 7;
             SpecialLabel.Text = "Đặc biệt";
             SpecialLabel.UseVisualStyleBackColor = false;
-            // 
-            // ToppingLable
-            // 
-            ToppingLable.BackColor = System.Drawing.Color.FromArgb(237, 205, 26);
-            ToppingLable.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            ToppingLable.FlatAppearance.BorderSize = 0;
-            ToppingLable.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(128, 255, 128);
-            ToppingLable.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(128, 255, 128);
-            ToppingLable.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(255, 128, 128);
-            ToppingLable.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            ToppingLable.Font = new System.Drawing.Font("Cambria", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            ToppingLable.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            ToppingLable.Location = new System.Drawing.Point(3, 3);
-            ToppingLable.Name = "ToppingLable";
-            ToppingLable.Size = new System.Drawing.Size(90, 40);
-            ToppingLable.TabIndex = 49;
-            ToppingLable.Text = "Topping";
-            ToppingLable.UseVisualStyleBackColor = false;
-            // 
-            // DrinkLabel
-            // 
-            DrinkLabel.BackColor = System.Drawing.Color.FromArgb(237, 205, 26);
-            DrinkLabel.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            DrinkLabel.FlatAppearance.BorderSize = 0;
-            DrinkLabel.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(128, 255, 128);
-            DrinkLabel.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(128, 255, 128);
-            DrinkLabel.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(255, 128, 128);
-            DrinkLabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            DrinkLabel.Font = new System.Drawing.Font("Cambria", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            DrinkLabel.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            DrinkLabel.Location = new System.Drawing.Point(3, 3);
-            DrinkLabel.Name = "DrinkLabel";
-            DrinkLabel.Size = new System.Drawing.Size(90, 40);
-            DrinkLabel.TabIndex = 48;
-            DrinkLabel.Text = "Đồ uống";
-            DrinkLabel.UseVisualStyleBackColor = false;
-            // 
-            // FoodLabel
-            // 
-            FoodLabel.BackColor = System.Drawing.Color.FromArgb(237, 205, 26);
-            FoodLabel.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            FoodLabel.FlatAppearance.BorderSize = 0;
-            FoodLabel.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(128, 255, 128);
-            FoodLabel.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(128, 255, 128);
-            FoodLabel.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(255, 128, 128);
-            FoodLabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            FoodLabel.Font = new System.Drawing.Font("Cambria", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            FoodLabel.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            FoodLabel.Location = new System.Drawing.Point(3, 3);
-            FoodLabel.Name = "FoodLabel";
-            FoodLabel.Size = new System.Drawing.Size(90, 40);
-            FoodLabel.TabIndex = 47;
-            FoodLabel.Text = "Đồ ăn";
-            FoodLabel.UseVisualStyleBackColor = false;
             // 
             // Form1
             // 
@@ -574,7 +574,6 @@ namespace QuanLi
             Name = "Form1";
             StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             Text = "Form1";
-            FormClosing += Form1_FormClosing;
             Load += Form1_Load;
             MouseDown += Form1_MouseDown;
             MouseMove += Form1_MouseMove;

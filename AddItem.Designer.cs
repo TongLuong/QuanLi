@@ -37,12 +37,14 @@
             ItemExpense = new System.Windows.Forms.TextBox();
             Cancel = new System.Windows.Forms.Button();
             Accept = new System.Windows.Forms.Button();
+            label5 = new System.Windows.Forms.Label();
+            ItemType = new System.Windows.Forms.ComboBox();
             SuspendLayout();
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new System.Drawing.Point(12, 46);
+            label1.Location = new System.Drawing.Point(12, 49);
             label1.Name = "label1";
             label1.Size = new System.Drawing.Size(32, 20);
             label1.TabIndex = 0;
@@ -51,7 +53,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new System.Drawing.Point(12, 89);
+            label2.Location = new System.Drawing.Point(12, 92);
             label2.Name = "label2";
             label2.Size = new System.Drawing.Size(60, 20);
             label2.TabIndex = 1;
@@ -60,7 +62,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new System.Drawing.Point(13, 133);
+            label3.Location = new System.Drawing.Point(12, 136);
             label3.Name = "label3";
             label3.Size = new System.Drawing.Size(55, 20);
             label3.TabIndex = 2;
@@ -99,7 +101,7 @@
             // 
             // Cancel
             // 
-            Cancel.Location = new System.Drawing.Point(169, 166);
+            Cancel.Location = new System.Drawing.Point(169, 218);
             Cancel.Name = "Cancel";
             Cancel.Size = new System.Drawing.Size(94, 29);
             Cancel.TabIndex = 7;
@@ -109,7 +111,7 @@
             // 
             // Accept
             // 
-            Accept.Location = new System.Drawing.Point(69, 166);
+            Accept.Location = new System.Drawing.Point(69, 218);
             Accept.Name = "Accept";
             Accept.Size = new System.Drawing.Size(94, 29);
             Accept.TabIndex = 8;
@@ -117,11 +119,33 @@
             Accept.UseVisualStyleBackColor = true;
             Accept.Click += Accept_Click;
             // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new System.Drawing.Point(12, 179);
+            label5.Name = "label5";
+            label5.Size = new System.Drawing.Size(70, 20);
+            label5.TabIndex = 9;
+            label5.Text = "Phân loại";
+            // 
+            // ItemType
+            // 
+            ItemType.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            ItemType.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            ItemType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            ItemType.FormattingEnabled = true;
+            ItemType.Location = new System.Drawing.Point(85, 176);
+            ItemType.Name = "ItemType";
+            ItemType.Size = new System.Drawing.Size(178, 28);
+            ItemType.TabIndex = 10;
+            // 
             // AddItem
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(273, 204);
+            ClientSize = new System.Drawing.Size(273, 253);
+            Controls.Add(ItemType);
+            Controls.Add(label5);
             Controls.Add(Accept);
             Controls.Add(Cancel);
             Controls.Add(ItemExpense);
@@ -151,5 +175,7 @@
         private System.Windows.Forms.TextBox ItemExpense;
         private System.Windows.Forms.Button Cancel;
         private System.Windows.Forms.Button Accept;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ComboBox ItemType;
     }
 }
