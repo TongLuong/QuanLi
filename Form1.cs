@@ -306,6 +306,7 @@ namespace QuanLi
                 pb.Location = new Point(x, y);
                 pb.BackColor = Color.White;
                 pb.Image = pb.InitialImage;
+                //pb.Image = Image.FromFile(dish.PathImage); // commented until we have images
                 return pb;
             }
             public Label BuildLabelName(int w, int h, int x, int y, string name)
