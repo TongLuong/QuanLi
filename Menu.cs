@@ -97,13 +97,10 @@ namespace QuanLi
             {
                 return true;
             }
-
-            if (ReferenceEquals(obj, null))
-            {
+            else if (ReferenceEquals(obj, null))
                 return false;
-            }
-
-            throw new NotImplementedException();
+            else
+                return false;
         }
 
         public static Dish operator +(Dish dish, int val) //maybe not necessary cause of modifying by using value in textBox GUI
@@ -227,12 +224,11 @@ namespace QuanLi
             return refList;
 
         }
-        public void AddDish(Dish dish) 
+        public void AddDish(Dish dish)
         {
             List<Dish> refList = getListByType(dish.Type);
             if(refList.Contains(dish))
             {
-               
                 MessageBox.Show("Available Dish !!");
             }
             else

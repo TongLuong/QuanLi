@@ -167,6 +167,8 @@ namespace QuanLi
         public interface IMediator
         {
             void Notify(object sender, string mes);
+
+            List<Control> GetControls();
         }
         public class ConcreteMediator : IMediator
         {
@@ -199,6 +201,11 @@ namespace QuanLi
                     double newPrice = Convert.ToDouble(this.price.BasePrice) * Convert.ToDouble(mes);
                     this.price.ChangeText(newPrice.ToString());
                 }
+            }
+
+            public List<Control> GetControls()
+            {
+                return new List<Control>() { name, amount, price };
             }
         }
         public partial class CustomNumericUpDown : NumericUpDown
@@ -275,8 +282,8 @@ namespace QuanLi
             //public Panel BuildPanel(Panel temp);
             public PictureBox BuildPictureBox(int w, int h, int x, int y);
             public Label BuildLabelName(int w, int h, int x, int y, string name);
-            public Label BuildLabelPrice(int w, int h, int x, int y, int price);
-            public CustomNumericUpDown BuildUpDown(int w, int h, int x, int y, int id);
+            public Label BuildLabelPrice(int w, int h, int x, int y, double price);
+            public CustomNumericUpDown BuildUpDown(int w, int h, int x, int y, int id,Dish dish);
             public void MergeAll(Panel panelDishes, PictureBox pb, Label lblName, Label lblPrice, CustomNumericUpDown numUpDown);
             public void LoadAll(Panel panelDishes, PictureBox pb, Label lblName, Label lblPrice, CustomNumericUpDown numUpDown, Dish dish);
         }
@@ -299,6 +306,7 @@ namespace QuanLi
                 pb.Location = new Point(x, y);
                 pb.BackColor = Color.White;
                 pb.Image = pb.InitialImage;
+                //pb.Image = Image.FromFile(dish.PathImage); // commented until we have images
                 return pb;
             }
             public Label BuildLabelName(int w, int h, int x, int y, string name)
@@ -311,7 +319,7 @@ namespace QuanLi
                 lblName.TextAlign = ContentAlignment.MiddleCenter;
                 return lblName;
             }
-            public Label BuildLabelPrice(int w, int h, int x, int y, int price)
+            public Label BuildLabelPrice(int w, int h, int x, int y, double price)
             {
                 Label lblPrice = new Label();
                 lblPrice.Size = new Size(w, h);
@@ -321,7 +329,7 @@ namespace QuanLi
                 lblPrice.TextAlign = ContentAlignment.MiddleCenter;
                 return lblPrice;
             }
-            public CustomNumericUpDown BuildUpDown(int w, int h, int x, int y, int i)
+            public CustomNumericUpDown BuildUpDown(int w, int h, int x, int y, int i,Dish dish)
             {
                 CustomNumericUpDown numUpDown = new CustomNumericUpDown();
                 numUpDown.Size = new Size(w, h);
@@ -332,22 +340,33 @@ namespace QuanLi
                 numUpDown.Name = i.ToString();
                 numUpDown.Enabled = true;
                 numUpDown.ValueChanged += NumUpDown_ValueChanged;
+                numUpDown.AttachDish(dish);
                 return numUpDown;
             }
 
             private void NumUpDown_ValueChanged(object sender, EventArgs e)
             {
                 CustomNumericUpDown cnup = (CustomNumericUpDown)sender;
-                if (cnup == null || cnup.CurrDish.Equals(null) || cnup.Value == 0)
+                if (cnup == null || cnup.CurrDish.Equals(null))
                     return;
+
+                Form1 form1 = Form1.Instance;
+                if (cnup.Value <= 0)
+                {
+                    List<Control> controls = cnup.Mediator.GetControls();
+                    form1.flowOrderName.Controls.Remove(controls[0]);
+                    form1.flowOrderAmount.Controls.Remove(controls[1]);
+                    form1.flowOrderPrice.Controls.Remove(controls[2]);
+                    cnup.HasMediator = false;
+                    return;
+                }
 
                 if (cnup.HasMediator) // if this object has initialized mediator already
                 {
                     cnup.ChangeValue(); // then we just change the current text
                     return;
                 }
-                
-                Form1 form1 = Form1.Instance;
+
                 Dish dish = cnup.CurrDish;
 
                 // add name
@@ -358,7 +377,7 @@ namespace QuanLi
                 form1.flowOrderName.Controls.Add(name);
                 // set newest control as breakpoint, so that is will appear vertically in the flow panel
                 form1.flowOrderName.SetFlowBreak(name, true);
-
+                
                 // add amount
                 CustomLabel amount = new CustomLabel();
                 amount.Text = ((int)cnup.Value).ToString();
@@ -410,7 +429,6 @@ namespace QuanLi
             if (menuTopping != temp) if (menuTopping != null) menuTopping.Visible = false;
             if (menuSpecial != temp) if (menuSpecial != null) menuSpecial.Visible = false;
         }
-
         private void LoadMenu(Type type, Panel panelDishes)
         {
             //init value for scale
@@ -439,16 +457,16 @@ namespace QuanLi
                     PictureBox pb = ConcreteBuilder.Instance.BuildPictureBox(width, height, xLocation, yLocation);
 
                     //Build Label Name
-                    Label lblName = ConcreteBuilder.Instance.BuildLabelName(width, heightName, xLocation, yLocation + pb.Size.Height, "hahahaha");
+                    Label lblName = ConcreteBuilder.Instance.BuildLabelName(width, heightName, xLocation, yLocation + pb.Size.Height, iterDish.Current.Name);
 
                     //Build Price
-                    Label lblPrice = ConcreteBuilder.Instance.BuildLabelPrice(width, heightPrice, xLocation, lblName.Location.Y + lblName.Size.Height, 200000);
+                    Label lblPrice = ConcreteBuilder.Instance.BuildLabelPrice(width, heightPrice, xLocation, lblName.Location.Y + lblName.Size.Height, iterDish.Current.Price);
 
                     //Build updown button
-                    CustomNumericUpDown numUpDown = ConcreteBuilder.Instance.BuildUpDown(upDownW, upDownH, xLocation + width - upDownW, yLocation, i); //width - upDownW, 0
+                    CustomNumericUpDown numUpDown = ConcreteBuilder.Instance.BuildUpDown(upDownW, upDownH, xLocation + width - upDownW, yLocation, i,iterDish.Current); //width - upDownW, 0
 
                     //add properties
-                    ConcreteBuilder.Instance.LoadAll(panelDishes, pb, lblName, lblPrice, numUpDown, iterDish.Current);
+                    //ConcreteBuilder.Instance.LoadAll(panelDishes, pb, lblName, lblPrice, numUpDown, iterDish.Current);
 
                     //add into panel
                     ConcreteBuilder.Instance.MergeAll(panelDishes, pb, lblName, lblPrice, numUpDown);
@@ -460,7 +478,6 @@ namespace QuanLi
                 yLocation += moveY;
             }
         }
-
         #endregion
 
         private void Food_Click(object sender, EventArgs e)
