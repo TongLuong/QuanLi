@@ -224,7 +224,7 @@ namespace QuanLi
             return refList;
 
         }
-        public void AddDish(Dish dish) 
+        public void AddDish(Dish dish)
         {
             List<Dish> refList = getListByType(dish.Type);
             if(refList.Contains(dish))

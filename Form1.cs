@@ -167,6 +167,8 @@ namespace QuanLi
         public interface IMediator
         {
             void Notify(object sender, string mes);
+
+            List<Control> GetControls();
         }
         public class ConcreteMediator : IMediator
         {
@@ -199,6 +201,11 @@ namespace QuanLi
                     double newPrice = Convert.ToDouble(this.price.BasePrice) * Convert.ToDouble(mes);
                     this.price.ChangeText(newPrice.ToString());
                 }
+            }
+
+            public List<Control> GetControls()
+            {
+                return new List<Control>() { name, amount, price };
             }
         }
         public partial class CustomNumericUpDown : NumericUpDown
@@ -338,16 +345,26 @@ namespace QuanLi
             private void NumUpDown_ValueChanged(object sender, EventArgs e)
             {
                 CustomNumericUpDown cnup = (CustomNumericUpDown)sender;
-                if (cnup == null || cnup.CurrDish.Equals(null) || cnup.Value == 0)
+                if (cnup == null || cnup.CurrDish.Equals(null))
                     return;
+
+                Form1 form1 = Form1.Instance;
+                if (cnup.Value <= 0)
+                {
+                    List<Control> controls = cnup.Mediator.GetControls();
+                    form1.flowOrderName.Controls.Remove(controls[0]);
+                    form1.flowOrderAmount.Controls.Remove(controls[1]);
+                    form1.flowOrderPrice.Controls.Remove(controls[2]);
+                    cnup.HasMediator = false;
+                    return;
+                }
 
                 if (cnup.HasMediator) // if this object has initialized mediator already
                 {
                     cnup.ChangeValue(); // then we just change the current text
                     return;
                 }
-                
-                Form1 form1 = Form1.Instance;
+
                 Dish dish = cnup.CurrDish;
 
                 // add name
@@ -358,7 +375,7 @@ namespace QuanLi
                 form1.flowOrderName.Controls.Add(name);
                 // set newest control as breakpoint, so that is will appear vertically in the flow panel
                 form1.flowOrderName.SetFlowBreak(name, true);
-
+                
                 // add amount
                 CustomLabel amount = new CustomLabel();
                 amount.Text = ((int)cnup.Value).ToString();
