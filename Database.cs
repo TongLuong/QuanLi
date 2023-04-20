@@ -32,7 +32,8 @@ namespace QuanLi
         {
             get
             {
-                database ??= new Database();
+                if (database == null) 
+                    database = new Database();
                 return database;
             }
         }

@@ -287,7 +287,6 @@ namespace QuanLi
             // 
             flowOrderAmount.BackColor = System.Drawing.Color.FromArgb(213, 255, 115);
             flowOrderAmount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            flowOrderAmount.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             flowOrderAmount.Location = new System.Drawing.Point(1086, 116);
             flowOrderAmount.Name = "flowOrderAmount";
             flowOrderAmount.Size = new System.Drawing.Size(148, 587);
@@ -297,7 +296,6 @@ namespace QuanLi
             // 
             flowOrderPrice.BackColor = System.Drawing.Color.FromArgb(213, 255, 115);
             flowOrderPrice.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            flowOrderPrice.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             flowOrderPrice.Location = new System.Drawing.Point(1231, 116);
             flowOrderPrice.Name = "flowOrderPrice";
             flowOrderPrice.Size = new System.Drawing.Size(129, 587);
