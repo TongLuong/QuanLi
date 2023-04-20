@@ -208,6 +208,7 @@ namespace QuanLi
                 return new List<Control>() { name, amount, price };
             }
         }
+        //CustomeUpDown has meidator and curDish
         public partial class CustomNumericUpDown : NumericUpDown
         {
             private bool hasMediator;
@@ -285,7 +286,6 @@ namespace QuanLi
             public Label BuildLabelPrice(int w, int h, int x, int y, double price);
             public CustomNumericUpDown BuildUpDown(int w, int h, int x, int y, int id,Dish dish);
             public void MergeAll(Panel panelDishes, PictureBox pb, Label lblName, Label lblPrice, CustomNumericUpDown numUpDown);
-            public void LoadAll(Panel panelDishes, PictureBox pb, Label lblName, Label lblPrice, CustomNumericUpDown numUpDown, Dish dish);
         }
         public class ConcreteBuilder : IBuilder
         {
@@ -410,14 +410,6 @@ namespace QuanLi
                 panelDishes.Controls.Add(lblPrice);
                 panelDishes.Visible = false;
                 //panelDishes.Enabled = false;
-            }
-            public void LoadAll(Panel panelDishes, PictureBox pb, Label lblName, Label lblPrice, CustomNumericUpDown numUpDown, Dish dish)
-            {
-                //pb.Image = Image.FromFile(dish.PathImage); // commented until we have images
-                lblName.Text = dish.Name;
-                lblPrice.Text = dish.Price.ToString();
-
-                numUpDown.AttachDish(dish);
             }
         }
         private void switchVisible(Panel temp)
