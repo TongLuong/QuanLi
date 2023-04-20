@@ -9,8 +9,10 @@ using System.Windows.Forms;
 
 namespace QuanLi
 {
+
     public enum Type
     {
+        NONE,
         FOOD,
         DRINK,
         TOPPING,
@@ -18,17 +20,19 @@ namespace QuanLi
     }
     public class Dish
     {
+        private string path = "Images\\Form1";
         #region Feature
-        int id; public int ID { get => id; set=> id = value; }
+        long id; public long ID { get => id; set=> id = value; }
         string name; public string Name { get => name; set => name = value; }
         double price; public double Price { get => price; set => price = value; }
         double prodExpense; public double ProdExpense { get => prodExpense; set => prodExpense = value; }
         int numberOfSells; public int NumberOfSells { get => numberOfSells; set => numberOfSells = value; }
         Type type; public Type Type { get => type; set => type = value; }
+        string pathImage; public string PathImage { get=> pathImage; set => pathImage = value; }
         #endregion
 
         #region constructor
-        public Dish(int id, string name, double price, double prodExpense, Type type)
+        public Dish(long id, string name, double price, double prodExpense, int numberOfSells, Type type, string imageName)
         {
             this.id = id;
             this.name = name;
@@ -36,7 +40,20 @@ namespace QuanLi
             this.prodExpense = prodExpense;
             this.numberOfSells = 0;
             this.type = type;
+            this.pathImage = path + imageName;
         }
+
+        public Dish(string name, double price, double prodExpense, Type type, string imageName)
+        {
+            this.id = NewId();
+            this.name = name;
+            this.price = price;
+            this.prodExpense = prodExpense;
+            this.numberOfSells = 0;
+            this.type = type;
+            this.pathImage = path + imageName;
+        }
+
         #endregion
         #region overloading 
         public static bool operator !=(Dish A, Dish B)
@@ -68,9 +85,25 @@ namespace QuanLi
         {
             return (A.numberOfSells > B.numberOfSells);
         }
+
         public override int GetHashCode()
         {
-            return NumberOfSells + id * 10;
+            return NumberOfSells + Convert.ToInt32(id) * 10;
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (ReferenceEquals(obj, null))
+            {
+                return false;
+            }
+
+            throw new NotImplementedException();
         }
 
         public static Dish operator +(Dish dish, int val) //maybe not necessary cause of modifying by using value in textBox GUI
@@ -102,13 +135,17 @@ namespace QuanLi
         {
 
         }
+
+        private long NewId()
+        {
+            return DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
+        }
         #endregion
     }
     public class Menu
     {
-        //test
         #region feature
-        public static Menu Instance { get; private set; } //singleTon here
+        private static Menu instance = null; //singleTon here
 
         List<Dish> foodList, drinkList, toppingList, specialList;
         public List<Dish> FoodList { get => foodList; set => foodList = value; }
@@ -118,17 +155,57 @@ namespace QuanLi
         int count; public int Count { get => count; set => count = value; }
         #endregion
         #region constructor
-        public Menu()
+        private Menu()
         {
             foodList = new List<Dish>();
             drinkList = new List<Dish>();
             toppingList = new List<Dish>();
             specialList = new List<Dish>();
+
+            LoadFromDatabase();
             count = 0;
-            Instance = this;
         }
+
+        public static Menu Instance
+        {
+            get
+            {
+                if(instance == null) instance = new Menu();
+                return instance;
+            }
+        }
+
         #endregion
         #region Functions
+
+        private void LoadFromDatabase()
+        {
+            List<Dish> all = Database.Instance.ReadCSVToList<Dish>();
+
+            IEnumerator<Dish> enumerator = all.GetEnumerator();
+            while(enumerator.MoveNext())
+            {
+                Dish dish = enumerator.Current;
+                switch(dish.Type)
+                {
+                    case Type.NONE:
+                        break;
+                    case Type.FOOD:
+                        FoodList.Add(dish);
+                        break;
+                    case Type.DRINK:
+                        DrinkList.Add(dish);
+                        break;
+                    case Type.TOPPING:
+                        ToppingList.Add(dish);
+                        break;
+                    case Type.SPECIAL:
+                        SpecialList.Add(dish);
+                        break;
+                }
+            }
+        }
+
         public List<Dish> getListByType(Type type)
         {
             List<Dish> refList = null;

@@ -55,9 +55,10 @@ namespace QuanLi
             MenuButton.FlatAppearance.BorderSize = 0;
             MenuButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             MenuButton.ForeColor = System.Drawing.Color.Transparent;
-            MenuButton.Location = new System.Drawing.Point(278, 345);
+            MenuButton.Location = new System.Drawing.Point(318, 460);
+            MenuButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             MenuButton.Name = "MenuButton";
-            MenuButton.Size = new System.Drawing.Size(158, 151);
+            MenuButton.Size = new System.Drawing.Size(181, 201);
             MenuButton.TabIndex = 0;
             MenuButton.UseVisualStyleBackColor = false;
             MenuButton.Click += MenuButton_Click;
@@ -68,9 +69,10 @@ namespace QuanLi
             // pictureBox1
             // 
             pictureBox1.BackColor = System.Drawing.Color.SaddleBrown;
-            pictureBox1.Location = new System.Drawing.Point(-5, -2);
+            pictureBox1.Location = new System.Drawing.Point(-6, -3);
+            pictureBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new System.Drawing.Size(991, 50);
+            pictureBox1.Size = new System.Drawing.Size(1133, 67);
             pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 1;
             pictureBox1.TabStop = false;
@@ -78,9 +80,10 @@ namespace QuanLi
             // pictureBox3
             // 
             pictureBox3.BackColor = System.Drawing.Color.SaddleBrown;
-            pictureBox3.Location = new System.Drawing.Point(-5, 519);
+            pictureBox3.Location = new System.Drawing.Point(-6, 692);
+            pictureBox3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             pictureBox3.Name = "pictureBox3";
-            pictureBox3.Size = new System.Drawing.Size(991, 50);
+            pictureBox3.Size = new System.Drawing.Size(1133, 67);
             pictureBox3.TabIndex = 3;
             pictureBox3.TabStop = false;
             // 
@@ -89,9 +92,9 @@ namespace QuanLi
             label1.BackColor = System.Drawing.Color.Transparent;
             label1.Font = new System.Drawing.Font("Showcard Gothic", 80.25F, System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
             label1.ForeColor = System.Drawing.SystemColors.WindowText;
-            label1.Location = new System.Drawing.Point(31, 93);
+            label1.Location = new System.Drawing.Point(35, 124);
             label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(589, 133);
+            label1.Size = new System.Drawing.Size(673, 177);
             label1.TabIndex = 4;
             label1.Text = "WELCOME";
             label1.Click += label1_Click;
@@ -101,9 +104,10 @@ namespace QuanLi
             pictureBox2.BackColor = System.Drawing.Color.Transparent;
             pictureBox2.BackgroundImage = Properties.Resources.pngwing_com;
             pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            pictureBox2.Location = new System.Drawing.Point(659, 54);
+            pictureBox2.Location = new System.Drawing.Point(753, 72);
+            pictureBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new System.Drawing.Size(208, 184);
+            pictureBox2.Size = new System.Drawing.Size(238, 245);
             pictureBox2.TabIndex = 5;
             pictureBox2.TabStop = false;
             // 
@@ -111,10 +115,10 @@ namespace QuanLi
             // 
             Time.AutoSize = true;
             Time.BackColor = System.Drawing.Color.Transparent;
-            Time.Font = new System.Drawing.Font(".VnLucida sans", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            Time.Location = new System.Drawing.Point(83, 235);
+            Time.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            Time.Location = new System.Drawing.Point(95, 313);
             Time.Name = "Time";
-            Time.Size = new System.Drawing.Size(74, 30);
+            Time.Size = new System.Drawing.Size(83, 36);
             Time.TabIndex = 6;
             Time.Text = "Time";
             // 
@@ -122,10 +126,10 @@ namespace QuanLi
             // 
             Date.AutoSize = true;
             Date.BackColor = System.Drawing.Color.Transparent;
-            Date.Font = new System.Drawing.Font(".VnLucida sans", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            Date.Location = new System.Drawing.Point(83, 274);
+            Date.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            Date.Location = new System.Drawing.Point(95, 365);
             Date.Name = "Date";
-            Date.Size = new System.Drawing.Size(70, 30);
+            Date.Size = new System.Drawing.Size(80, 36);
             Date.TabIndex = 7;
             Date.Text = "Date";
             // 
@@ -144,9 +148,10 @@ namespace QuanLi
             RevenueButton.FlatAppearance.BorderSize = 0;
             RevenueButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             RevenueButton.ForeColor = System.Drawing.Color.Transparent;
-            RevenueButton.Location = new System.Drawing.Point(530, 345);
+            RevenueButton.Location = new System.Drawing.Point(606, 460);
+            RevenueButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             RevenueButton.Name = "RevenueButton";
-            RevenueButton.Size = new System.Drawing.Size(158, 151);
+            RevenueButton.Size = new System.Drawing.Size(181, 201);
             RevenueButton.TabIndex = 8;
             RevenueButton.UseVisualStyleBackColor = false;
             RevenueButton.Click += RevenueButton_Click;
@@ -156,11 +161,11 @@ namespace QuanLi
             // 
             // FormMain
             // 
-            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             BackColor = System.Drawing.Color.Chocolate;
             BackgroundImage = Properties.Resources.CircleTile;
-            ClientSize = new System.Drawing.Size(984, 561);
+            ClientSize = new System.Drawing.Size(1122, 737);
             Controls.Add(RevenueButton);
             Controls.Add(Date);
             Controls.Add(Time);
@@ -169,9 +174,11 @@ namespace QuanLi
             Controls.Add(pictureBox3);
             Controls.Add(pictureBox1);
             Controls.Add(MenuButton);
-            MaximumSize = new System.Drawing.Size(1000, 600);
-            MinimumSize = new System.Drawing.Size(1000, 600);
+            Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            MaximumSize = new System.Drawing.Size(1140, 784);
+            MinimumSize = new System.Drawing.Size(1140, 784);
             Name = "FormMain";
+            StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             Text = "FormMain";
             Load += FormMain_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
