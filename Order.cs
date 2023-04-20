@@ -46,7 +46,7 @@ namespace QuanLi
                 string  newName = name[i].Text.ToString();
                 int  newAmount = Convert.ToInt32(amount[i].Text);
                 double newPrice = Convert.ToDouble(price[i].Text);
-                int newId = Convert.ToInt32(name[i].Name);
+                int newId = Convert.ToInt32(DateTime.Now.Day) + Convert.ToInt32(DateTime.Now.Month)*100 + Convert.ToInt32(DateTime.Now.Year)*10000;
 
                 Order tmp = new Order(newId, newName, newPrice);
                 KeyValuePair<Order, int> newOrder = new KeyValuePair<Order, int>(tmp,newAmount);

@@ -487,6 +487,19 @@ namespace QuanLi
         }
 
         #region Save to Menu and Bill
+        private void UpdateNRefresh(Control control)
+        {
+            if (control is CustomNumericUpDown)
+            {
+                CustomNumericUpDown upDown = (CustomNumericUpDown)control;
+                if (upDown.Value != 0)
+                {
+                    upDown.CurrDish.NumberOfSells += Convert.ToInt32(upDown.Value);
+                    upDown.Value = 0;
+
+                }
+            }
+        }
         private void Pay_Click(object sender, EventArgs e)
         {
             //Save Bill
@@ -496,44 +509,24 @@ namespace QuanLi
             
 
             //Update on Menu and refresh
-            foreach (CustomNumericUpDown upDown in menuFood.Controls)
+            foreach (Control control in menuFood.Controls)
             {
-                if (upDown.Value != 0)
-                {
-                    upDown.CurrDish.NumberOfSells += Convert.ToInt32(upDown.Value);
-                    upDown.Value = 0;
-
-                }
+                UpdateNRefresh(control);
             }
 
-            foreach (CustomNumericUpDown upDown in menuDrink.Controls)
+            foreach (Control control in menuDrink.Controls)
             {
-                if (upDown.Value != 0)
-                {
-                    upDown.CurrDish.NumberOfSells += Convert.ToInt32(upDown.Value);
-                    upDown.Value = 0;
-
-                }
+                UpdateNRefresh(control);
             }
 
-            foreach (CustomNumericUpDown upDown in menuTopping.Controls)
+            foreach (Control control in menuTopping.Controls)
             {
-                if (upDown.Value != 0)
-                {
-                    upDown.CurrDish.NumberOfSells += Convert.ToInt32(upDown.Value);
-                    upDown.Value = 0;
-
-                }
+                UpdateNRefresh(control);
             }
 
-            foreach (CustomNumericUpDown upDown in menuSpecial.Controls)
+            foreach (Control control in menuSpecial.Controls)
             {
-                if (upDown.Value != 0)
-                {
-                    upDown.CurrDish.NumberOfSells += Convert.ToInt32(upDown.Value);
-                    upDown.Value = 0;
-
-                }
+                UpdateNRefresh(control);
             }
 
         }
