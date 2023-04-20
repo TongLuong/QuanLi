@@ -41,12 +41,6 @@ namespace QuanLi
                 return instance;
             }
         }
-
-        private void Pay_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void AddDish_Click(object sender, EventArgs e)
         {
             addItemForm.ShowDialog();
@@ -220,7 +214,7 @@ namespace QuanLi
 
             private IMediator mediator; // instance stores ConcreteMediator
             public IMediator Mediator
-            { 
+            {
                 get => mediator;
                 set => mediator = value;
             }
@@ -265,7 +259,7 @@ namespace QuanLi
             }
             //======================================
             public CustomLabel(double basePrice = -1) : base()
-            { 
+            {
                 this.basePrice = basePrice;
                 mediator = null;
             }
@@ -284,7 +278,7 @@ namespace QuanLi
             public PictureBox BuildPictureBox(int w, int h, int x, int y);
             public Label BuildLabelName(int w, int h, int x, int y, string name);
             public Label BuildLabelPrice(int w, int h, int x, int y, double price);
-            public CustomNumericUpDown BuildUpDown(int w, int h, int x, int y, int id,Dish dish);
+            public CustomNumericUpDown BuildUpDown(int w, int h, int x, int y, int id, Dish dish);
             public void MergeAll(Panel panelDishes, PictureBox pb, Label lblName, Label lblPrice, CustomNumericUpDown numUpDown);
         }
         public class ConcreteBuilder : IBuilder
@@ -329,7 +323,7 @@ namespace QuanLi
                 lblPrice.TextAlign = ContentAlignment.MiddleCenter;
                 return lblPrice;
             }
-            public CustomNumericUpDown BuildUpDown(int w, int h, int x, int y, int i,Dish dish)
+            public CustomNumericUpDown BuildUpDown(int w, int h, int x, int y, int i, Dish dish)
             {
                 CustomNumericUpDown numUpDown = new CustomNumericUpDown();
                 numUpDown.Size = new Size(w, h);
@@ -377,7 +371,7 @@ namespace QuanLi
                 form1.flowOrderName.Controls.Add(name);
                 // set newest control as breakpoint, so that is will appear vertically in the flow panel
                 form1.flowOrderName.SetFlowBreak(name, true);
-                
+
                 // add amount
                 CustomLabel amount = new CustomLabel();
                 amount.Text = ((int)cnup.Value).ToString();
@@ -455,7 +449,7 @@ namespace QuanLi
                     Label lblPrice = ConcreteBuilder.Instance.BuildLabelPrice(width, heightPrice, xLocation, lblName.Location.Y + lblName.Size.Height, iterDish.Current.Price);
 
                     //Build updown button
-                    CustomNumericUpDown numUpDown = ConcreteBuilder.Instance.BuildUpDown(upDownW, upDownH, xLocation + width - upDownW, yLocation, i,iterDish.Current); //width - upDownW, 0
+                    CustomNumericUpDown numUpDown = ConcreteBuilder.Instance.BuildUpDown(upDownW, upDownH, xLocation + width - upDownW, yLocation, i, iterDish.Current); //width - upDownW, 0
 
                     //add properties
                     //ConcreteBuilder.Instance.LoadAll(panelDishes, pb, lblName, lblPrice, numUpDown, iterDish.Current);
@@ -491,5 +485,58 @@ namespace QuanLi
         {
             switchVisible(menuTopping);
         }
+
+        #region Save to Menu and Bill
+        private void Pay_Click(object sender, EventArgs e)
+        {
+            //Save Bill
+            Bill newBill = new Bill();
+            newBill.ModifyBill(flowOrderName, flowOrderAmount, flowOrderPrice);
+            ListBill.Instance.Bills.Add(newBill);
+            
+
+            //Update on Menu and refresh
+            foreach (CustomNumericUpDown upDown in menuFood.Controls)
+            {
+                if (upDown.Value != 0)
+                {
+                    upDown.CurrDish.NumberOfSells += Convert.ToInt32(upDown.Value);
+                    upDown.Value = 0;
+
+                }
+            }
+
+            foreach (CustomNumericUpDown upDown in menuDrink.Controls)
+            {
+                if (upDown.Value != 0)
+                {
+                    upDown.CurrDish.NumberOfSells += Convert.ToInt32(upDown.Value);
+                    upDown.Value = 0;
+
+                }
+            }
+
+            foreach (CustomNumericUpDown upDown in menuTopping.Controls)
+            {
+                if (upDown.Value != 0)
+                {
+                    upDown.CurrDish.NumberOfSells += Convert.ToInt32(upDown.Value);
+                    upDown.Value = 0;
+
+                }
+            }
+
+            foreach (CustomNumericUpDown upDown in menuSpecial.Controls)
+            {
+                if (upDown.Value != 0)
+                {
+                    upDown.CurrDish.NumberOfSells += Convert.ToInt32(upDown.Value);
+                    upDown.Value = 0;
+
+                }
+            }
+
+        }
+        #endregion
     }
 }

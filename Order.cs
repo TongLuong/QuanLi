@@ -70,17 +70,11 @@ namespace QuanLi
 
         public static ListBill Instance
         {
-
             get 
             {
                 if(instance == null) instance = new ListBill();
                 return instance;
             } 
-        }
-
-        public void AddBill(Bill bill)
-        {
-            bills.Add(bill);
         }
     }
 }
