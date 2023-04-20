@@ -5,6 +5,8 @@ using System.Xml.Serialization;
 using System;
 using System.Reflection;
 using System.Text;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace QuanLi
 {
@@ -19,9 +21,20 @@ namespace QuanLi
             set => extension = value;
         }
 
-        public Database()
+        private static Database database;
+
+        private Database()
         {
             initPath();
+        }
+
+        public static Database Instance
+        {
+            get
+            {
+                database ??= new Database();
+                return database;
+            }
         }
 
         /// <summary>
@@ -47,11 +60,12 @@ namespace QuanLi
         /// Write data to csv file
         /// </summary>
         /// <param name="obj"></param>
-        public void WriteCSV<T>(List<T> obj)
+        public void WriteCSV<T>(List<T> obj, bool addTime = false)
         {
             string objectName = typeof(T).Name;
             string filePath = baseDataDir + objectName + extension;
-
+            //int count = File.ReadLines(@"E:\File.txt").Count();
+            
             StringBuilder csvStr = new StringBuilder();
 
             using (StreamWriter writer = new StreamWriter(new FileStream(filePath, FileMode.Append, FileAccess.Write), Encoding.UTF8))
@@ -66,8 +80,12 @@ namespace QuanLi
 
                         newLine.Append("," + attr.ToString());
                     }
-                    newLine.Remove(0, 1);
 
+                    if (addTime)
+                        newLine.Append("," + DateTime.Now.ToString("dd/MM/yyyy"));
+
+                    newLine.Remove(0, 1);
+                    
                     writer.WriteLine(newLine.ToString());
                 }
             }
@@ -107,25 +125,38 @@ namespace QuanLi
         {
             string objectName = typeof(T).Name;
             string filePath = baseDataDir + objectName + extension;
+            List<string> listOfType = Enum.GetNames(typeof(Type)).ToList();
 
             if (typeof(T) == typeof(Dish))
             {
                 List<Dish> menu = new List<Dish>();
                 foreach (string[] sarr in ReadCSV<T>())
                 {
-                    Type tempEnum;
-                    Enum.TryParse("NONE", out tempEnum);
-                    Dish temp = new Dish
-                    (
-                        Convert.ToInt32(sarr[0]),
-                        sarr[1],
-                        Convert.ToDouble(sarr[2]),
-                        Convert.ToDouble(sarr[3]),
-                        tempEnum,
-                        sarr[5]
-                    );
+                    if (!listOfType.Contains(sarr[5]))
+                        continue;
 
-                    menu.Add(temp);
+                    Type tempEnum;
+                    Enum.TryParse(sarr[5], out tempEnum);
+
+                    try
+                    {
+                        Dish temp = new Dish
+                        (
+                            Convert.ToInt64(sarr[0]),
+                            sarr[1],
+                            Convert.ToDouble(sarr[2]),
+                            Convert.ToDouble(sarr[3]),
+                            Convert.ToInt32(sarr[4]),
+                            tempEnum,
+                            sarr[5]
+                        );
+
+                        menu.Add(temp);
+                    }
+                    catch(Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
                 }
 
                 return menu as List<T>;

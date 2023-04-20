@@ -22,7 +22,7 @@ namespace QuanLi
     {
         private string path = "Images\\Form1";
         #region Feature
-        int id; public int ID { get => id; set=> id = value; }
+        long id; public long ID { get => id; set=> id = value; }
         string name; public string Name { get => name; set => name = value; }
         double price; public double Price { get => price; set => price = value; }
         double prodExpense; public double ProdExpense { get => prodExpense; set => prodExpense = value; }
@@ -32,9 +32,20 @@ namespace QuanLi
         #endregion
 
         #region constructor
-        public Dish(int id, string name, double price, double prodExpense, Type type,string imageName)
+        public Dish(long id, string name, double price, double prodExpense, int numberOfSells, Type type, string imageName)
         {
             this.id = id;
+            this.name = name;
+            this.price = price;
+            this.prodExpense = prodExpense;
+            this.numberOfSells = 0;
+            this.type = type;
+            this.pathImage = path + imageName;
+        }
+
+        public Dish(string name, double price, double prodExpense, Type type, string imageName)
+        {
+            this.id = NewId();
             this.name = name;
             this.price = price;
             this.prodExpense = prodExpense;
@@ -74,9 +85,25 @@ namespace QuanLi
         {
             return (A.numberOfSells > B.numberOfSells);
         }
+
         public override int GetHashCode()
         {
-            return NumberOfSells + id * 10;
+            return NumberOfSells + Convert.ToInt32(id) * 10;
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (ReferenceEquals(obj, null))
+            {
+                return false;
+            }
+
+            throw new NotImplementedException();
         }
 
         public static Dish operator +(Dish dish, int val) //maybe not necessary cause of modifying by using value in textBox GUI
@@ -108,6 +135,11 @@ namespace QuanLi
         {
 
         }
+
+        private long NewId()
+        {
+            return DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
+        }
         #endregion
     }
     public class Menu
@@ -129,6 +161,8 @@ namespace QuanLi
             drinkList = new List<Dish>();
             toppingList = new List<Dish>();
             specialList = new List<Dish>();
+
+            LoadFromDatabase();
             count = 0;
         }
 
@@ -143,6 +177,35 @@ namespace QuanLi
 
         #endregion
         #region Functions
+
+        private void LoadFromDatabase()
+        {
+            List<Dish> all = Database.Instance.ReadCSVToList<Dish>();
+
+            IEnumerator<Dish> enumerator = all.GetEnumerator();
+            while(enumerator.MoveNext())
+            {
+                Dish dish = enumerator.Current;
+                switch(dish.Type)
+                {
+                    case Type.NONE:
+                        break;
+                    case Type.FOOD:
+                        FoodList.Add(dish);
+                        break;
+                    case Type.DRINK:
+                        DrinkList.Add(dish);
+                        break;
+                    case Type.TOPPING:
+                        ToppingList.Add(dish);
+                        break;
+                    case Type.SPECIAL:
+                        SpecialList.Add(dish);
+                        break;
+                }
+            }
+        }
+
         public List<Dish> getListByType(Type type)
         {
             List<Dish> refList = null;
