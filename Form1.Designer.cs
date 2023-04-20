@@ -519,17 +519,17 @@ namespace QuanLi
             // 
             Total.AutoSize = true;
             Total.BackColor = System.Drawing.Color.FromArgb(213, 255, 115);
-            Total.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            Total.Font = new System.Drawing.Font("Cambria", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             Total.Location = new System.Drawing.Point(856, 676);
             Total.Name = "Total";
-            Total.Size = new System.Drawing.Size(203, 41);
+            Total.Size = new System.Drawing.Size(191, 36);
             Total.TabIndex = 49;
             Total.Text = "THÀNH TIỀN";
             // 
             // TotalPrice
             // 
             TotalPrice.BackColor = System.Drawing.Color.FromArgb(213, 255, 115);
-            TotalPrice.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            TotalPrice.Font = new System.Drawing.Font("Cambria", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             TotalPrice.Location = new System.Drawing.Point(1065, 676);
             TotalPrice.Name = "TotalPrice";
             TotalPrice.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
