@@ -134,6 +134,11 @@ namespace QuanLi
             }
         }
 
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            
+        }
+
         private void UpdateTime()
         {
             while (true)
