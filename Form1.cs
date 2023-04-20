@@ -352,12 +352,14 @@ namespace QuanLi
                     form1.flowOrderAmount.Controls.Remove(controls[1]);
                     form1.flowOrderPrice.Controls.Remove(controls[2]);
                     cnup.HasMediator = false;
+                    Form1.Instance.CalToTal();
                     return;
                 }
 
                 if (cnup.HasMediator) // if this object has initialized mediator already
                 {
                     cnup.ChangeValue(); // then we just change the current text
+                    Form1.Instance.CalToTal();
                     return;
                 }
 
@@ -394,6 +396,7 @@ namespace QuanLi
                 // init mediator
                 new ConcreteMediator(cnup, name, amount, price);
                 cnup.HasMediator = true;
+                Form1.Instance.CalToTal();
             }
             public void MergeAll(Panel panelDishes, PictureBox pb, Label lblName, Label lblPrice, CustomNumericUpDown numUpDown)
             {
@@ -487,6 +490,49 @@ namespace QuanLi
         }
 
         #region Save to Menu and Bill
+        private void Refresh_Click(object sender, EventArgs e)
+        {
+            if(TotalPrice.Text == "0")
+            {
+                return;
+            }
+            foreach (Control control in menuFood.Controls)
+            {
+                if (control is CustomNumericUpDown)
+                {
+                    CustomNumericUpDown upDown = (CustomNumericUpDown)control;
+                    upDown.Value = 0;
+                }
+            }
+
+            foreach (Control control in menuDrink.Controls)
+            {
+                if (control is CustomNumericUpDown)
+                {
+                    CustomNumericUpDown upDown = (CustomNumericUpDown)control;
+                    upDown.Value = 0;
+                }
+            }
+
+            foreach (Control control in menuTopping.Controls)
+            {
+                if (control is CustomNumericUpDown)
+                {
+                    CustomNumericUpDown upDown = (CustomNumericUpDown)control;
+                    upDown.Value = 0;
+                }
+            }
+
+            foreach (Control control in menuSpecial.Controls)
+            {
+                if (control is CustomNumericUpDown)
+                {
+                    CustomNumericUpDown upDown = (CustomNumericUpDown)control;
+                    upDown.Value = 0;
+                }
+            }
+
+        }
         private void UpdateNRefresh(Control control)
         {
             if (control is CustomNumericUpDown)
@@ -503,10 +549,15 @@ namespace QuanLi
         private void Pay_Click(object sender, EventArgs e)
         {
             //Save Bill
+            if(Convert.ToDouble(TotalPrice.Text) == 0)
+            {
+                MessageBox.Show("Unavailable Bill !!");
+                return;
+            }
             Bill newBill = new Bill();
             newBill.ModifyBill(flowOrderName, flowOrderAmount, flowOrderPrice);
             ListBill.Instance.Bills.Add(newBill);
-            
+
 
             //Update on Menu and refresh
             foreach (Control control in menuFood.Controls)
@@ -531,5 +582,18 @@ namespace QuanLi
 
         }
         #endregion
+
+        public void CalToTal()
+        {
+            double total = 0;
+            List<Control> price = flowOrderPrice.Controls.OfType<Control>().ToList();
+            int size = price.Count;
+            for (int i = 0; i < size; i++)
+            {
+                double newPrice = Convert.ToDouble(price[i].Text);
+                total += newPrice;
+            }
+            TotalPrice.Text = Convert.ToString(total);
+        }
     }
 }

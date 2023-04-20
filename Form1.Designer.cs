@@ -35,7 +35,6 @@ namespace QuanLi
             Drinks = new System.Windows.Forms.Button();
             Topping = new System.Windows.Forms.Button();
             Special = new System.Windows.Forms.Button();
-            All = new System.Windows.Forms.Button();
             pbMenu = new System.Windows.Forms.PictureBox();
             label1 = new System.Windows.Forms.Label();
             pbOrder = new System.Windows.Forms.PictureBox();
@@ -66,6 +65,9 @@ namespace QuanLi
             ToppingLable = new System.Windows.Forms.Button();
             menuSpecial = new System.Windows.Forms.Panel();
             SpecialLabel = new System.Windows.Forms.Button();
+            Total = new System.Windows.Forms.Label();
+            TotalPrice = new System.Windows.Forms.Label();
+            Refresh = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)pbMenu).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pbOrder).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox11).BeginInit();
@@ -155,24 +157,6 @@ namespace QuanLi
             Special.UseVisualStyleBackColor = false;
             Special.Click += Special_Click;
             // 
-            // All
-            // 
-            All.BackColor = System.Drawing.Color.FromArgb(237, 205, 26);
-            All.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            All.FlatAppearance.BorderSize = 0;
-            All.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(128, 255, 128);
-            All.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(128, 255, 128);
-            All.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(255, 128, 128);
-            All.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            All.Font = new System.Drawing.Font("Cambria", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            All.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            All.Location = new System.Drawing.Point(0, 189);
-            All.Name = "All";
-            All.Size = new System.Drawing.Size(90, 38);
-            All.TabIndex = 10;
-            All.Text = "Tất cả";
-            All.UseVisualStyleBackColor = false;
-            // 
             // pbMenu
             // 
             pbMenu.BackColor = System.Drawing.Color.FromArgb(247, 23, 59);
@@ -247,7 +231,7 @@ namespace QuanLi
             flowOrderName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             flowOrderName.Location = new System.Drawing.Point(856, 116);
             flowOrderName.Name = "flowOrderName";
-            flowOrderName.Size = new System.Drawing.Size(233, 587);
+            flowOrderName.Size = new System.Drawing.Size(233, 550);
             flowOrderName.TabIndex = 26;
             // 
             // label3
@@ -289,7 +273,7 @@ namespace QuanLi
             flowOrderAmount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             flowOrderAmount.Location = new System.Drawing.Point(1086, 116);
             flowOrderAmount.Name = "flowOrderAmount";
-            flowOrderAmount.Size = new System.Drawing.Size(148, 587);
+            flowOrderAmount.Size = new System.Drawing.Size(148, 550);
             flowOrderAmount.TabIndex = 27;
             // 
             // flowOrderPrice
@@ -298,7 +282,7 @@ namespace QuanLi
             flowOrderPrice.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             flowOrderPrice.Location = new System.Drawing.Point(1231, 116);
             flowOrderPrice.Name = "flowOrderPrice";
-            flowOrderPrice.Size = new System.Drawing.Size(129, 587);
+            flowOrderPrice.Size = new System.Drawing.Size(129, 550);
             flowOrderPrice.TabIndex = 27;
             // 
             // close
@@ -402,7 +386,7 @@ namespace QuanLi
             AddDish.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(255, 128, 128);
             AddDish.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             AddDish.Font = new System.Drawing.Font("Cambria", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            AddDish.Location = new System.Drawing.Point(549, 673);
+            AddDish.Location = new System.Drawing.Point(391, 673);
             AddDish.Name = "AddDish";
             AddDish.Size = new System.Drawing.Size(117, 51);
             AddDish.TabIndex = 43;
@@ -531,6 +515,45 @@ namespace QuanLi
             SpecialLabel.Text = "Đặc biệt";
             SpecialLabel.UseVisualStyleBackColor = false;
             // 
+            // Total
+            // 
+            Total.AutoSize = true;
+            Total.BackColor = System.Drawing.Color.FromArgb(213, 255, 115);
+            Total.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            Total.Location = new System.Drawing.Point(856, 676);
+            Total.Name = "Total";
+            Total.Size = new System.Drawing.Size(203, 41);
+            Total.TabIndex = 49;
+            Total.Text = "THÀNH TIỀN";
+            // 
+            // TotalPrice
+            // 
+            TotalPrice.BackColor = System.Drawing.Color.FromArgb(213, 255, 115);
+            TotalPrice.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            TotalPrice.Location = new System.Drawing.Point(1065, 676);
+            TotalPrice.Name = "TotalPrice";
+            TotalPrice.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            TotalPrice.Size = new System.Drawing.Size(295, 41);
+            TotalPrice.TabIndex = 50;
+            TotalPrice.Text = "0";
+            // 
+            // Refresh
+            // 
+            Refresh.BackColor = System.Drawing.Color.FromArgb(250, 248, 0);
+            Refresh.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            Refresh.FlatAppearance.BorderSize = 0;
+            Refresh.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(128, 255, 128);
+            Refresh.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(255, 128, 128);
+            Refresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            Refresh.Font = new System.Drawing.Font("Cambria", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            Refresh.Location = new System.Drawing.Point(534, 674);
+            Refresh.Name = "Refresh";
+            Refresh.Size = new System.Drawing.Size(117, 51);
+            Refresh.TabIndex = 51;
+            Refresh.Text = "Làm Mới";
+            Refresh.UseVisualStyleBackColor = false;
+            Refresh.Click += Refresh_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -538,6 +561,9 @@ namespace QuanLi
             BackColor = System.Drawing.Color.White;
             ClientSize = new System.Drawing.Size(1404, 736);
             ControlBox = false;
+            Controls.Add(Refresh);
+            Controls.Add(TotalPrice);
+            Controls.Add(Total);
             Controls.Add(menuSpecial);
             Controls.Add(menuDrink);
             Controls.Add(menuTopping);
@@ -560,7 +586,6 @@ namespace QuanLi
             Controls.Add(Pay);
             Controls.Add(label1);
             Controls.Add(pbOrder);
-            Controls.Add(All);
             Controls.Add(Special);
             Controls.Add(Topping);
             Controls.Add(Drinks);
@@ -595,7 +620,6 @@ namespace QuanLi
         private System.Windows.Forms.Button Drinks;
         private System.Windows.Forms.Button Topping;
         private System.Windows.Forms.Button Special;
-        private System.Windows.Forms.Button All;
         private System.Windows.Forms.PictureBox pbMenu;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pbOrder;
@@ -626,6 +650,9 @@ namespace QuanLi
         private System.Windows.Forms.Button DrinkLabel;
         private System.Windows.Forms.Button ToppingLable;
         private System.Windows.Forms.Button SpecialLabel;
+        private System.Windows.Forms.Label Total;
+        private System.Windows.Forms.Label TotalPrice;
+        private System.Windows.Forms.Button Refresh;
     }
 }
 

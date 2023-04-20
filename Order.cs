@@ -48,7 +48,7 @@ namespace QuanLi
                 double newPrice = Convert.ToDouble(price[i].Text);
                 int newId = Convert.ToInt32(DateTime.Now.Day) + Convert.ToInt32(DateTime.Now.Month)*100 + Convert.ToInt32(DateTime.Now.Year)*10000;
 
-                Order tmp = new Order(newId, newName, newPrice);
+                Order tmp = new Order(newId, newName, newPrice/newAmount); //cal single price
                 KeyValuePair<Order, int> newOrder = new KeyValuePair<Order, int>(tmp,newAmount);
                 orders.Add(newOrder);
                 total += newAmount * newPrice;
