@@ -410,7 +410,6 @@ namespace QuanLi
             if (menuTopping != temp) if (menuTopping != null) menuTopping.Visible = false;
             if (menuSpecial != temp) if (menuSpecial != null) menuSpecial.Visible = false;
         }
-
         private void LoadMenu(Type type, Panel panelDishes)
         {
             //init value for scale
@@ -460,7 +459,6 @@ namespace QuanLi
                 yLocation += moveY;
             }
         }
-
         #endregion
 
         private void Food_Click(object sender, EventArgs e)
