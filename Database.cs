@@ -7,6 +7,7 @@ using System.Reflection;
 using System.Text;
 using System.Linq;
 using System.Windows.Forms;
+using System.Globalization;
 
 namespace QuanLi
 {
@@ -112,7 +113,7 @@ namespace QuanLi
         /// <typeparam name="T"></typeparam>
         /// <param name="date">Format "dd-mm-yyyy"</param>
         /// <returns></returns>
-        public IEnumerable<string[]> ReadCSV<T>(string date = null)
+        private IEnumerable<string[]> ReadCSV<T>(string date = null)
         {
             string objectName = typeof(T).Name;
             string filePath = "";
@@ -145,6 +146,9 @@ namespace QuanLi
         /// <returns></returns>
         public List<T> ReadCSVToList<T>(string date = null)
         {
+            if (!CheckForDate(date) && date != null)
+                return new List<T>();
+
             string objectName = typeof(T).Name;
             string filePath = "";
 
@@ -197,7 +201,30 @@ namespace QuanLi
                 return menu as List<T>;
             }
 
-            return new List<T> { };
+            return new List<T>();
+        }
+
+        /// <summary>
+        /// check for date whether it is in corect format
+        /// </summary>
+        /// <param name="date"></param>
+        /// <returns></returns>
+        private bool CheckForDate(string date)
+        {
+            if (date == null)
+                return false;
+
+            string s = "2015-11-9"; // or 2015-11-19
+            DateTime dt;
+            string[] formats = { "yyyy-MM-dd" };
+            if (DateTime.TryParseExact(s, formats, CultureInfo.InvariantCulture,
+                                      DateTimeStyles.None, out dt))
+                return true;
+            else
+            {
+                MessageBox.Show("Wrong date format!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
         }
     }
 }
