@@ -147,8 +147,6 @@ namespace QuanLi
                     Menu menu = Menu.Instance;
 
                     List<Dish> result = new List<Dish>();
-                    /*List<Dish> list = menu.getListByType(Type.DRINK).Concat(menu.getListByType(Type.SPECIAL)).Concat(menu.getListByType(Type.FOOD)).
-                                            Concat(menu.getListByType(Type.TOPPING)).ToList();*/
                     foreach (CustomNumericUpDown control in menuFood.Controls.OfType<CustomNumericUpDown>())
                     {
                         if (control.CurrDish.NumberOfSells > 0)
