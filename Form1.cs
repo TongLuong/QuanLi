@@ -47,7 +47,7 @@ namespace QuanLi
             if (addItemForm.Abort)
                 return;
             Dish dish = new Dish(addItemForm.itemName, addItemForm.itemPrice, addItemForm.itemExpense, addItemForm.itemType, "");
-
+            
             List<Dish> dishes = new List<Dish>();
             dishes.Add(dish);
             database.WriteCSV(dishes);
@@ -144,6 +144,37 @@ namespace QuanLi
             {
                 case ExittingForm.CustomDialogResult.SAVE:
                     e.Cancel = true;
+                    Menu menu = Menu.Instance;
+
+                    List<Dish> result = new List<Dish>();
+                    /*List<Dish> list = menu.getListByType(Type.DRINK).Concat(menu.getListByType(Type.SPECIAL)).Concat(menu.getListByType(Type.FOOD)).
+                                            Concat(menu.getListByType(Type.TOPPING)).ToList();*/
+                    foreach (CustomNumericUpDown control in menuFood.Controls.OfType<CustomNumericUpDown>())
+                    {
+                        if (control.CurrDish.NumberOfSells > 0)
+                            result.Add(control.CurrDish);
+                    }
+
+                    foreach (CustomNumericUpDown control in menuDrink.Controls.OfType<CustomNumericUpDown>())
+                    {
+                        if (control.CurrDish.NumberOfSells > 0)
+                            result.Add(control.CurrDish);
+                    }
+
+                    foreach (CustomNumericUpDown control in menuTopping.Controls.OfType<CustomNumericUpDown>())
+                    {
+                        if (control.CurrDish.NumberOfSells > 0)
+                            result.Add(control.CurrDish);
+                    }
+
+                    foreach (CustomNumericUpDown control in menuSpecial.Controls.OfType<CustomNumericUpDown>())
+                    {
+                        if (control.CurrDish.NumberOfSells > 0)
+                            result.Add(control.CurrDish);
+                    }
+
+                    Database.Instance.WriteCSV<Dish>(result, true);
+
                     this.Hide();
                     break;
                 case ExittingForm.CustomDialogResult.DONTSAVE:
@@ -572,7 +603,6 @@ namespace QuanLi
                 {
                     upDown.CurrDish.NumberOfSells += Convert.ToInt32(upDown.Value);
                     upDown.Value = 0;
-
                 }
             }
         }
@@ -587,7 +617,6 @@ namespace QuanLi
             Bill newBill = new Bill();
             newBill.ModifyBill(flowOrderName, flowOrderAmount, flowOrderPrice);
             ListBill.Instance.Bills.Add(newBill);
-
 
             //Update on Menu and refresh
             foreach (Control control in menuFood.Controls)
@@ -609,7 +638,6 @@ namespace QuanLi
             {
                 UpdateNRefresh(control);
             }
-
         }
         #endregion
 
