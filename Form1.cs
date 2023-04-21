@@ -52,6 +52,7 @@ namespace QuanLi
             dishes.Add(dish);
             database.WriteCSV(dishes);
             Menu.Instance.AddDish(dish);
+            ReLoadMenu(dish.Type);
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -468,13 +469,18 @@ namespace QuanLi
                 yLocation += moveY;
             }
         }
-        private void ReLoadMenu(Type type,Panel panelDishes) // used after remove or add dish to display on form
+        private void ReLoadMenu(Type type) // used after remove or add dish to display on form
         {
+            Panel panelDishes = null;
+            switch (type)
+            {
+                case Type.FOOD: panelDishes = menuFood; break;
+                case Type.DRINK: panelDishes = menuDrink; break;
+                case Type.TOPPING: panelDishes = menuTopping; break;
+                case Type.SPECIAL: panelDishes = menuSpecial; break;
+            }
             panelDishes.Controls.Clear();
-            if (panelDishes == menuFood) LoadMenu(Type.FOOD, menuFood);
-            else if(panelDishes == menuDrink) LoadMenu(Type.DRINK, menuDrink);
-            else if(panelDishes == menuTopping) LoadMenu(Type.TOPPING, menuTopping);
-            else LoadMenu(Type.SPECIAL, menuSpecial);
+            LoadMenu(type, panelDishes);
         }
         #endregion
 
