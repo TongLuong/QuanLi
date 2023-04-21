@@ -495,6 +495,7 @@ namespace QuanLi
             }
             panelDishes.Controls.Clear();
             LoadMenu(type, panelDishes);
+            switchVisible(panelDishes);
         }
         #endregion
 
