@@ -41,12 +41,6 @@ namespace QuanLi
                 return instance;
             }
         }
-
-        private void Pay_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void AddDish_Click(object sender, EventArgs e)
         {
             addItemForm.ShowDialog();
@@ -140,6 +134,11 @@ namespace QuanLi
             }
         }
 
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            
+        }
+
         private void UpdateTime()
         {
             while (true)
@@ -208,6 +207,7 @@ namespace QuanLi
                 return new List<Control>() { name, amount, price };
             }
         }
+        //CustomeUpDown has medidator and currDish
         public partial class CustomNumericUpDown : NumericUpDown
         {
             private bool hasMediator;
@@ -219,7 +219,7 @@ namespace QuanLi
 
             private IMediator mediator; // instance stores ConcreteMediator
             public IMediator Mediator
-            { 
+            {
                 get => mediator;
                 set => mediator = value;
             }
@@ -264,7 +264,7 @@ namespace QuanLi
             }
             //======================================
             public CustomLabel(double basePrice = -1) : base()
-            { 
+            {
                 this.basePrice = basePrice;
                 mediator = null;
             }
@@ -279,13 +279,11 @@ namespace QuanLi
         #region load menu function (using Builder Design Pattern)
         private interface IBuilder
         {
-            //public Panel BuildPanel(Panel temp);
             public PictureBox BuildPictureBox(int w, int h, int x, int y);
             public Label BuildLabelName(int w, int h, int x, int y, string name);
             public Label BuildLabelPrice(int w, int h, int x, int y, double price);
-            public CustomNumericUpDown BuildUpDown(int w, int h, int x, int y, int id,Dish dish);
+            public CustomNumericUpDown BuildUpDown(int w, int h, int x, int y, int id, Dish dish);
             public void MergeAll(Panel panelDishes, PictureBox pb, Label lblName, Label lblPrice, CustomNumericUpDown numUpDown);
-            public void LoadAll(Panel panelDishes, PictureBox pb, Label lblName, Label lblPrice, CustomNumericUpDown numUpDown, Dish dish);
         }
         public class ConcreteBuilder : IBuilder
         {
@@ -329,7 +327,7 @@ namespace QuanLi
                 lblPrice.TextAlign = ContentAlignment.MiddleCenter;
                 return lblPrice;
             }
-            public CustomNumericUpDown BuildUpDown(int w, int h, int x, int y, int i,Dish dish)
+            public CustomNumericUpDown BuildUpDown(int w, int h, int x, int y, int i, Dish dish)
             {
                 CustomNumericUpDown numUpDown = new CustomNumericUpDown();
                 numUpDown.Size = new Size(w, h);
@@ -358,12 +356,14 @@ namespace QuanLi
                     form1.flowOrderAmount.Controls.Remove(controls[1]);
                     form1.flowOrderPrice.Controls.Remove(controls[2]);
                     cnup.HasMediator = false;
+                    Form1.Instance.CalToTal();
                     return;
                 }
 
                 if (cnup.HasMediator) // if this object has initialized mediator already
                 {
                     cnup.ChangeValue(); // then we just change the current text
+                    Form1.Instance.CalToTal();
                     return;
                 }
 
@@ -377,7 +377,7 @@ namespace QuanLi
                 form1.flowOrderName.Controls.Add(name);
                 // set newest control as breakpoint, so that is will appear vertically in the flow panel
                 form1.flowOrderName.SetFlowBreak(name, true);
-                
+
                 // add amount
                 CustomLabel amount = new CustomLabel();
                 amount.Text = ((int)cnup.Value).ToString();
@@ -400,6 +400,7 @@ namespace QuanLi
                 // init mediator
                 new ConcreteMediator(cnup, name, amount, price);
                 cnup.HasMediator = true;
+                Form1.Instance.CalToTal();
             }
             public void MergeAll(Panel panelDishes, PictureBox pb, Label lblName, Label lblPrice, CustomNumericUpDown numUpDown)
             {
@@ -410,14 +411,6 @@ namespace QuanLi
                 panelDishes.Controls.Add(lblPrice);
                 panelDishes.Visible = false;
                 //panelDishes.Enabled = false;
-            }
-            public void LoadAll(Panel panelDishes, PictureBox pb, Label lblName, Label lblPrice, CustomNumericUpDown numUpDown, Dish dish)
-            {
-                //pb.Image = Image.FromFile(dish.PathImage); // commented until we have images
-                lblName.Text = dish.Name;
-                lblPrice.Text = dish.Price.ToString();
-
-                numUpDown.AttachDish(dish);
             }
         }
         private void switchVisible(Panel temp)
@@ -463,10 +456,7 @@ namespace QuanLi
                     Label lblPrice = ConcreteBuilder.Instance.BuildLabelPrice(width, heightPrice, xLocation, lblName.Location.Y + lblName.Size.Height, iterDish.Current.Price);
 
                     //Build updown button
-                    CustomNumericUpDown numUpDown = ConcreteBuilder.Instance.BuildUpDown(upDownW, upDownH, xLocation + width - upDownW, yLocation, i,iterDish.Current); //width - upDownW, 0
-
-                    //add properties
-                    //ConcreteBuilder.Instance.LoadAll(panelDishes, pb, lblName, lblPrice, numUpDown, iterDish.Current);
+                    CustomNumericUpDown numUpDown = ConcreteBuilder.Instance.BuildUpDown(upDownW, upDownH, xLocation + width - upDownW, yLocation, i, iterDish.Current);
 
                     //add into panel
                     ConcreteBuilder.Instance.MergeAll(panelDishes, pb, lblName, lblPrice, numUpDown);
@@ -498,6 +488,113 @@ namespace QuanLi
         private void Topping_Click(object sender, EventArgs e)
         {
             switchVisible(menuTopping);
+        }
+
+        #region Save to Menu and Bill
+        private void Refresh_Click(object sender, EventArgs e)
+        {
+            if (TotalPrice.Text == "0")
+            {
+                return;
+            }
+            foreach (Control control in menuFood.Controls)
+            {
+                if (control is CustomNumericUpDown)
+                {
+                    CustomNumericUpDown upDown = (CustomNumericUpDown)control;
+                    upDown.Value = 0;
+                }
+            }
+
+            foreach (Control control in menuDrink.Controls)
+            {
+                if (control is CustomNumericUpDown)
+                {
+                    CustomNumericUpDown upDown = (CustomNumericUpDown)control;
+                    upDown.Value = 0;
+                }
+            }
+
+            foreach (Control control in menuTopping.Controls)
+            {
+                if (control is CustomNumericUpDown)
+                {
+                    CustomNumericUpDown upDown = (CustomNumericUpDown)control;
+                    upDown.Value = 0;
+                }
+            }
+
+            foreach (Control control in menuSpecial.Controls)
+            {
+                if (control is CustomNumericUpDown)
+                {
+                    CustomNumericUpDown upDown = (CustomNumericUpDown)control;
+                    upDown.Value = 0;
+                }
+            }
+
+        }
+        private void UpdateNRefresh(Control control)
+        {
+            if (control is CustomNumericUpDown)
+            {
+                CustomNumericUpDown upDown = (CustomNumericUpDown)control;
+                if (upDown.Value != 0)
+                {
+                    upDown.CurrDish.NumberOfSells += Convert.ToInt32(upDown.Value);
+                    upDown.Value = 0;
+
+                }
+            }
+        }
+        private void Pay_Click(object sender, EventArgs e)
+        {
+            //Save Bill
+            if (Convert.ToDouble(TotalPrice.Text) == 0)
+            {
+                MessageBox.Show("Unavailable Bill !!");
+                return;
+            }
+            Bill newBill = new Bill();
+            newBill.ModifyBill(flowOrderName, flowOrderAmount, flowOrderPrice);
+            ListBill.Instance.Bills.Add(newBill);
+
+
+            //Update on Menu and refresh
+            foreach (Control control in menuFood.Controls)
+            {
+                UpdateNRefresh(control);
+            }
+
+            foreach (Control control in menuDrink.Controls)
+            {
+                UpdateNRefresh(control);
+            }
+
+            foreach (Control control in menuTopping.Controls)
+            {
+                UpdateNRefresh(control);
+            }
+
+            foreach (Control control in menuSpecial.Controls)
+            {
+                UpdateNRefresh(control);
+            }
+
+        }
+        #endregion
+
+        public void CalToTal()
+        {
+            double total = 0;
+            List<Control> price = flowOrderPrice.Controls.OfType<Control>().ToList();
+            int size = price.Count;
+            for (int i = 0; i < size; i++)
+            {
+                double newPrice = Convert.ToDouble(price[i].Text);
+                total += newPrice;
+            }
+            TotalPrice.Text = Convert.ToString(total);
         }
     }
 }

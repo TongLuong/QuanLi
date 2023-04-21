@@ -227,30 +227,35 @@ namespace QuanLi
         public void AddDish(Dish dish)
         {
             List<Dish> refList = getListByType(dish.Type);
-            if(refList.Contains(dish))
+            IEnumerator<Dish> it = refList.GetEnumerator();
+            while (it.MoveNext())
             {
-                MessageBox.Show("Available Dish !!");
+                if(it.Current.Name == dish.Name)
+                {
+                    MessageBox.Show("Available Dish !!");
+                    return;
+                }
             }
-            else
-            {
-                refList.Add(dish);
-                count++;
-            }
+            refList.Add(dish);
+            count++;
 
         }
 
         public void RemoveDish(Dish dish)
         {
             List<Dish> refList = getListByType(dish.Type);
-            if (refList.Contains(dish))
+            IEnumerator<Dish> it = refList.GetEnumerator();
+            while (it.MoveNext())
             {
-                refList.Remove(dish);
-                count--;
+                if (it.Current.Name == dish.Name)
+                {
+                    refList.Remove(dish);
+                    count--;
+                    return;
+                }
             }
-            else
-            {
-                MessageBox.Show("Unvailable dish !!");
-            }
+            MessageBox.Show("Unvailable dish !!");
+            return;
         }
 
         public void SortMenu(Type type) 
@@ -317,13 +322,13 @@ namespace QuanLi
             return total;
 
         }
-        public List<Dish> GetMostSelling()
+        public List<Dish> GetMostSelling(List<Dish> mostSellingDishes)
         {
-            if (count == 0) return null;
+            mostSellingDishes.Clear();
+            if (count == 0) return mostSellingDishes;
             List<Dish> dishes = foodList.Concat(drinkList).Concat(toppingList).Concat(specialList).ToList();
             dishes.Sort((a, b) => a > b ? -1 : 0);
             IEnumerator<Dish> it = dishes.GetEnumerator ();
-            List<Dish> mostSellingDishes = new List<Dish>();
             int mostSelling = 0;
             while(it.MoveNext())
             {
@@ -340,13 +345,13 @@ namespace QuanLi
             }
             return mostSellingDishes;
         }
-        public List<Dish> GetMostSelling(Type type)
+        public List<Dish> GetMostSelling(Type type,List<Dish> mostSellingDishes)
         {
-            if (count == 0) return null;
+            mostSellingDishes.Clear();
             List<Dish> dishes = getListByType(type);
+            if(dishes.Count == 0) { return mostSellingDishes; }
             dishes.Sort((a, b) => a > b ? -1 : 0);
             IEnumerator<Dish> it = dishes.GetEnumerator();
-            List<Dish> mostSellingDishes = new List<Dish>();
             int mostSelling = 0;
             while (it.MoveNext())
             {
