@@ -54,6 +54,7 @@ namespace QuanLi
                 orders.Add(newOrder);
                 total += newPrice;
             }
+            id = ListBill.Instance.Bills.Count*(100000000)+ id;
 
         }
         #endregion
