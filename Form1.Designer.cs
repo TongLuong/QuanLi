@@ -231,7 +231,7 @@ namespace QuanLi
             flowOrderName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             flowOrderName.Location = new System.Drawing.Point(856, 116);
             flowOrderName.Name = "flowOrderName";
-            flowOrderName.Size = new System.Drawing.Size(233, 550);
+            flowOrderName.Size = new System.Drawing.Size(233, 546);
             flowOrderName.TabIndex = 26;
             // 
             // label3
@@ -273,7 +273,7 @@ namespace QuanLi
             flowOrderAmount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             flowOrderAmount.Location = new System.Drawing.Point(1086, 116);
             flowOrderAmount.Name = "flowOrderAmount";
-            flowOrderAmount.Size = new System.Drawing.Size(148, 550);
+            flowOrderAmount.Size = new System.Drawing.Size(148, 546);
             flowOrderAmount.TabIndex = 27;
             // 
             // flowOrderPrice
@@ -282,7 +282,7 @@ namespace QuanLi
             flowOrderPrice.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             flowOrderPrice.Location = new System.Drawing.Point(1231, 116);
             flowOrderPrice.Name = "flowOrderPrice";
-            flowOrderPrice.Size = new System.Drawing.Size(129, 550);
+            flowOrderPrice.Size = new System.Drawing.Size(129, 546);
             flowOrderPrice.TabIndex = 27;
             // 
             // close
@@ -519,17 +519,17 @@ namespace QuanLi
             // 
             Total.AutoSize = true;
             Total.BackColor = System.Drawing.Color.FromArgb(213, 255, 115);
-            Total.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            Total.Font = new System.Drawing.Font("Cambria", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             Total.Location = new System.Drawing.Point(856, 676);
             Total.Name = "Total";
-            Total.Size = new System.Drawing.Size(203, 41);
+            Total.Size = new System.Drawing.Size(191, 36);
             Total.TabIndex = 49;
             Total.Text = "THÀNH TIỀN";
             // 
             // TotalPrice
             // 
             TotalPrice.BackColor = System.Drawing.Color.FromArgb(213, 255, 115);
-            TotalPrice.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            TotalPrice.Font = new System.Drawing.Font("Cambria", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             TotalPrice.Location = new System.Drawing.Point(1065, 676);
             TotalPrice.Name = "TotalPrice";
             TotalPrice.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -597,6 +597,7 @@ namespace QuanLi
             Name = "Form1";
             StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             Text = "Form1";
+            FormClosing += Form1_FormClosing;
             Load += Form1_Load;
             MouseDown += Form1_MouseDown;
             MouseMove += Form1_MouseMove;

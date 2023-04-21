@@ -134,6 +134,11 @@ namespace QuanLi
             }
         }
 
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            
+        }
+
         private void UpdateTime()
         {
             while (true)
@@ -202,7 +207,7 @@ namespace QuanLi
                 return new List<Control>() { name, amount, price };
             }
         }
-        //CustomeUpDown has meidator and curDish
+        //CustomeUpDown has medidator and currDish
         public partial class CustomNumericUpDown : NumericUpDown
         {
             private bool hasMediator;
@@ -274,7 +279,6 @@ namespace QuanLi
         #region load menu function (using Builder Design Pattern)
         private interface IBuilder
         {
-            //public Panel BuildPanel(Panel temp);
             public PictureBox BuildPictureBox(int w, int h, int x, int y);
             public Label BuildLabelName(int w, int h, int x, int y, string name);
             public Label BuildLabelPrice(int w, int h, int x, int y, double price);
@@ -452,10 +456,7 @@ namespace QuanLi
                     Label lblPrice = ConcreteBuilder.Instance.BuildLabelPrice(width, heightPrice, xLocation, lblName.Location.Y + lblName.Size.Height, iterDish.Current.Price);
 
                     //Build updown button
-                    CustomNumericUpDown numUpDown = ConcreteBuilder.Instance.BuildUpDown(upDownW, upDownH, xLocation + width - upDownW, yLocation, i, iterDish.Current); //width - upDownW, 0
-
-                    //add properties
-                    //ConcreteBuilder.Instance.LoadAll(panelDishes, pb, lblName, lblPrice, numUpDown, iterDish.Current);
+                    CustomNumericUpDown numUpDown = ConcreteBuilder.Instance.BuildUpDown(upDownW, upDownH, xLocation + width - upDownW, yLocation, i, iterDish.Current);
 
                     //add into panel
                     ConcreteBuilder.Instance.MergeAll(panelDishes, pb, lblName, lblPrice, numUpDown);
@@ -492,7 +493,7 @@ namespace QuanLi
         #region Save to Menu and Bill
         private void Refresh_Click(object sender, EventArgs e)
         {
-            if(TotalPrice.Text == "0")
+            if (TotalPrice.Text == "0")
             {
                 return;
             }
@@ -549,7 +550,7 @@ namespace QuanLi
         private void Pay_Click(object sender, EventArgs e)
         {
             //Save Bill
-            if(Convert.ToDouble(TotalPrice.Text) == 0)
+            if (Convert.ToDouble(TotalPrice.Text) == 0)
             {
                 MessageBox.Show("Unavailable Bill !!");
                 return;
