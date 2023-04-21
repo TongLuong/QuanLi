@@ -468,6 +468,14 @@ namespace QuanLi
                 yLocation += moveY;
             }
         }
+        private void ReLoadMenu(Type type,Panel panelDishes) // used after remove or add dish to display on form
+        {
+            panelDishes.Controls.Clear();
+            if (panelDishes == menuFood) LoadMenu(Type.FOOD, menuFood);
+            else if(panelDishes == menuDrink) LoadMenu(Type.DRINK, menuDrink);
+            else if(panelDishes == menuTopping) LoadMenu(Type.TOPPING, menuTopping);
+            else LoadMenu(Type.SPECIAL, menuSpecial);
+        }
         #endregion
 
         private void Food_Click(object sender, EventArgs e)
