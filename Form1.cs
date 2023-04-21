@@ -136,7 +136,21 @@ namespace QuanLi
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            
+            ExittingForm ef = new ExittingForm();
+            ef.ShowDialog();
+
+            switch(ef.Result)
+            {
+                case ExittingForm.CustomDialogResult.SAVE:
+                    e.Cancel = true;
+                    this.Hide();
+                    break;
+                case ExittingForm.CustomDialogResult.DONTSAVE:
+                    break;
+                case ExittingForm.CustomDialogResult.CANCEL:
+                    e.Cancel = true;
+                    break;
+            }
         }
 
         private void UpdateTime()
