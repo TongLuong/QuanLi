@@ -10,14 +10,12 @@ namespace QuanLi
 {
     public class Order
     {
-        int id; public int Id { get => id; }
         string name; public string Name { get => name; }
         double price; public double Price { get => price; }
-        public Order(int id, string name, double price)
+        public Order(string name, double price)
         {
             this.name = name;
             this.price = price;
-            this.id = id;
         }
     }
     public class Bill
@@ -25,12 +23,16 @@ namespace QuanLi
         #region Feature
         List<KeyValuePair<Order, int>> orders; public List<KeyValuePair<Order, int>> Orders { get => orders; set => orders = value; }
         double total; public double Total { get => total; set => total = value; } // total money of this Bill
+        int id; public int ID { get => id; }
         #endregion
         #region Constructor
         public Bill()
         {
             orders = new List<KeyValuePair<Order, int>>();
             total = 0;
+            id = (Convert.ToInt32(DateTime.Now.Day) 
+                + Convert.ToInt32(DateTime.Now.Month) * 100 
+                + Convert.ToInt32(DateTime.Now.Year) * 10000);
         }
         #endregion
         #region Function
@@ -46,12 +48,11 @@ namespace QuanLi
                 string  newName = name[i].Text.ToString();
                 int  newAmount = Convert.ToInt32(amount[i].Text);
                 double newPrice = Convert.ToDouble(price[i].Text);
-                int newId = Convert.ToInt32(DateTime.Now.Day) + Convert.ToInt32(DateTime.Now.Month)*100 + Convert.ToInt32(DateTime.Now.Year)*10000;
 
-                Order tmp = new Order(newId, newName, newPrice/newAmount); //cal single price
+                Order tmp = new Order(newName, newPrice/newAmount); //cal single price
                 KeyValuePair<Order, int> newOrder = new KeyValuePair<Order, int>(tmp,newAmount);
                 orders.Add(newOrder);
-                total += newAmount * newPrice;
+                total += newPrice;
             }
 
         }
