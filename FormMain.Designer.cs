@@ -97,7 +97,6 @@ namespace QuanLi
             label1.Size = new System.Drawing.Size(673, 177);
             label1.TabIndex = 4;
             label1.Text = "WELCOME";
-            label1.Click += label1_Click;
             // 
             // pictureBox2
             // 
@@ -180,7 +179,7 @@ namespace QuanLi
             Name = "FormMain";
             StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             Text = "FormMain";
-            Load += FormMain_Load;
+            FormClosing += FormMain_FormClosing;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
