@@ -47,11 +47,12 @@ namespace QuanLi
             if (addItemForm.Abort)
                 return;
             Dish dish = new Dish(addItemForm.itemName, addItemForm.itemPrice, addItemForm.itemExpense, addItemForm.itemType, "");
-
+            
             List<Dish> dishes = new List<Dish>();
             dishes.Add(dish);
             database.WriteCSV(dishes);
             Menu.Instance.AddDish(dish);
+            ReLoadMenu(dish.Type);
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -136,7 +137,50 @@ namespace QuanLi
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            
+            ExittingForm ef = new ExittingForm();
+            ef.ShowDialog();
+
+            switch(ef.Result)
+            {
+                case ExittingForm.CustomDialogResult.SAVE:
+                    e.Cancel = true;
+                    Menu menu = Menu.Instance;
+
+                    List<Dish> result = new List<Dish>();
+                    foreach (CustomNumericUpDown control in menuFood.Controls.OfType<CustomNumericUpDown>())
+                    {
+                        if (control.CurrDish.NumberOfSells > 0)
+                            result.Add(control.CurrDish);
+                    }
+
+                    foreach (CustomNumericUpDown control in menuDrink.Controls.OfType<CustomNumericUpDown>())
+                    {
+                        if (control.CurrDish.NumberOfSells > 0)
+                            result.Add(control.CurrDish);
+                    }
+
+                    foreach (CustomNumericUpDown control in menuTopping.Controls.OfType<CustomNumericUpDown>())
+                    {
+                        if (control.CurrDish.NumberOfSells > 0)
+                            result.Add(control.CurrDish);
+                    }
+
+                    foreach (CustomNumericUpDown control in menuSpecial.Controls.OfType<CustomNumericUpDown>())
+                    {
+                        if (control.CurrDish.NumberOfSells > 0)
+                            result.Add(control.CurrDish);
+                    }
+
+                    Database.Instance.WriteCSV<Dish>(result, true);
+
+                    this.Hide();
+                    break;
+                case ExittingForm.CustomDialogResult.DONTSAVE:
+                    break;
+                case ExittingForm.CustomDialogResult.CANCEL:
+                    e.Cancel = true;
+                    break;
+            }
         }
 
         private void UpdateTime()
@@ -468,6 +512,20 @@ namespace QuanLi
                 yLocation += moveY;
             }
         }
+        private void ReLoadMenu(Type type) // used after remove or add dish to display on form
+        {
+            Panel panelDishes = null;
+            switch (type)
+            {
+                case Type.FOOD: panelDishes = menuFood; break;
+                case Type.DRINK: panelDishes = menuDrink; break;
+                case Type.TOPPING: panelDishes = menuTopping; break;
+                case Type.SPECIAL: panelDishes = menuSpecial; break;
+            }
+            panelDishes.Controls.Clear();
+            LoadMenu(type, panelDishes);
+            switchVisible(panelDishes);
+        }
         #endregion
 
         private void Food_Click(object sender, EventArgs e)
@@ -543,7 +601,6 @@ namespace QuanLi
                 {
                     upDown.CurrDish.NumberOfSells += Convert.ToInt32(upDown.Value);
                     upDown.Value = 0;
-
                 }
             }
         }
@@ -558,7 +615,6 @@ namespace QuanLi
             Bill newBill = new Bill();
             newBill.ModifyBill(flowOrderName, flowOrderAmount, flowOrderPrice);
             ListBill.Instance.Bills.Add(newBill);
-
 
             //Update on Menu and refresh
             foreach (Control control in menuFood.Controls)
@@ -580,7 +636,6 @@ namespace QuanLi
             {
                 UpdateNRefresh(control);
             }
-
         }
         #endregion
 

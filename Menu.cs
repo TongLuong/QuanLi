@@ -29,10 +29,12 @@ namespace QuanLi
         int numberOfSells; public int NumberOfSells { get => numberOfSells; set => numberOfSells = value; }
         Type type; public Type Type { get => type; set => type = value; }
         string pathImage; public string PathImage { get=> pathImage; set => pathImage = value; }
+        string time; public string Time { get =>  time; set => time = value; }
         #endregion
 
         #region constructor
-        public Dish(long id, string name, double price, double prodExpense, int numberOfSells, Type type, string imageName)
+
+        public Dish(long id, string name, double price, double prodExpense, int numberOfSells, Type type, string imageName, string time = "")
         {
             this.id = id;
             this.name = name;
@@ -40,7 +42,8 @@ namespace QuanLi
             this.prodExpense = prodExpense;
             this.numberOfSells = 0;
             this.type = type;
-            this.pathImage = path + imageName;
+            this.pathImage = imageName;
+            this.time = time;
         }
 
         public Dish(string name, double price, double prodExpense, Type type, string imageName)
