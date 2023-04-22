@@ -47,7 +47,7 @@ namespace QuanLi
             if (addItemForm.Abort)
                 return;
             Dish dish = new Dish(addItemForm.itemName, addItemForm.itemPrice, addItemForm.itemExpense, addItemForm.itemType, "");
-            
+
             List<Dish> dishes = new List<Dish>();
             dishes.Add(dish);
             database.WriteCSV(dishes);
@@ -74,7 +74,8 @@ namespace QuanLi
 
         private void close_Click(object sender, EventArgs e)
         {
-            this.Close(); // close the form
+            //this.Close(); // close the form
+            this.Hide();
         }
 
         private bool MouseIsOverControl(Control c)
@@ -135,15 +136,14 @@ namespace QuanLi
             }
         }
 
-        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        public void ApplicationClosing(ref FormClosingEventArgs e)
         {
             ExittingForm ef = new ExittingForm();
             ef.ShowDialog();
 
-            switch(ef.Result)
+            switch (ef.Result)
             {
                 case ExittingForm.CustomDialogResult.SAVE:
-                    e.Cancel = true;
                     Menu menu = Menu.Instance;
 
                     List<Dish> result = new List<Dish>();
@@ -172,8 +172,6 @@ namespace QuanLi
                     }
 
                     Database.Instance.WriteCSV<Dish>(result, true);
-
-                    this.Hide();
                     break;
                 case ExittingForm.CustomDialogResult.DONTSAVE:
                     break;
@@ -650,6 +648,14 @@ namespace QuanLi
                 total += newPrice;
             }
             TotalPrice.Text = Convert.ToString(total);
+        }
+    }
+
+    public partial class FormMain : Form
+    {
+        private void FormMain_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Form1.Instance.ApplicationClosing(ref e);
         }
     }
 }

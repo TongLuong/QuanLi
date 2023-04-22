@@ -22,7 +22,7 @@ namespace QuanLi
     {
         private string path = "Images\\Form1";
         #region Feature
-        long id; public long ID { get => id; set=> id = value; }
+        string id; public string ID { get => id; set=> id = value; }
         string name; public string Name { get => name; set => name = value; }
         double price; public double Price { get => price; set => price = value; }
         double prodExpense; public double ProdExpense { get => prodExpense; set => prodExpense = value; }
@@ -34,7 +34,7 @@ namespace QuanLi
 
         #region constructor
 
-        public Dish(long id, string name, double price, double prodExpense, int numberOfSells, Type type, string imageName, string time = "")
+        public Dish(string id, string name, double price, double prodExpense, int numberOfSells, Type type, string imageName, string time = "")
         {
             this.id = id;
             this.name = name;
@@ -48,7 +48,7 @@ namespace QuanLi
 
         public Dish(string name, double price, double prodExpense, Type type, string imageName)
         {
-            this.id = NewId();
+            this.id = NewId().ToString();
             this.name = name;
             this.price = price;
             this.prodExpense = prodExpense;
@@ -58,7 +58,7 @@ namespace QuanLi
         }
 
         #endregion
-        #region overloading 
+        #region overloading
         public static bool operator !=(Dish A, Dish B)
         {
             return (A.numberOfSells != B.numberOfSells);

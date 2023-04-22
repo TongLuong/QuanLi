@@ -1,7 +1,5 @@
 ﻿using System.Collections.Generic;
-using System.Xml;
 using System.IO;
-using System.Xml.Serialization;
 using System;
 using System.Reflection;
 using System.Text;
@@ -175,12 +173,12 @@ namespace QuanLi
                         time = "";
                     else
                         time = sarr[7];
-
+                    
                     try
                     {
                         Dish temp = new Dish
                         (
-                            Convert.ToInt64(sarr[0]),
+                            sarr[0],
                             sarr[1],
                             Convert.ToDouble(sarr[2]),
                             Convert.ToDouble(sarr[3]),
@@ -205,7 +203,28 @@ namespace QuanLi
         }
 
         /// <summary>
-        /// check for date whether it is in corect format
+        /// Specific function for reading all data recorded for revenue, not the menu
+        /// </summary>
+        /// <returns></returns>
+        public List<T> ReadCSVAllDate<T>()
+        {
+            DirectoryInfo dir = new DirectoryInfo(baseDataDir);
+            FileInfo[] files = dir.GetFiles();
+
+            List<T> result = new List<T>();
+            foreach(FileInfo file in files)
+            {
+                string fileName = Path.GetFileNameWithoutExtension(file.Name);
+
+                if (fileName != "Dish")
+                    result.AddRange(ReadCSVToList<T>(fileName));
+            }
+
+            return result;
+        }
+
+        /// <summary>
+        /// check for date whether it is in corect format (dd-MM-yyyy)
         /// </summary>
         /// <param name="date"></param>
         /// <returns></returns>
@@ -214,10 +233,9 @@ namespace QuanLi
             if (date == null)
                 return false;
 
-            string s = "2015-11-9"; // or 2015-11-19
             DateTime dt;
-            string[] formats = { "yyyy-MM-dd" };
-            if (DateTime.TryParseExact(s, formats, CultureInfo.InvariantCulture,
+            string[] formats = { "dd-MM-yyyy" };
+            if (DateTime.TryParseExact(date, formats, CultureInfo.InvariantCulture,
                                       DateTimeStyles.None, out dt))
                 return true;
             else
