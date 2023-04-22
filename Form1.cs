@@ -43,7 +43,6 @@ namespace QuanLi
         }
         private void AddDish_Click(object sender, EventArgs e)
         {
-            List<Dish> d = Database.Instance.ReadCSVToList<Dish>("23-04-2023");
             addItemForm.ShowDialog();
             if (addItemForm.Abort)
                 return;
