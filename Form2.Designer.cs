@@ -1,5 +1,7 @@
 ﻿
+using ScottPlot;
 using System;
+using System.Windows.Forms;
 
 namespace QuanLi
 {
@@ -31,307 +33,408 @@ namespace QuanLi
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form2));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            panel1 = new System.Windows.Forms.Panel();
-            btnBestSellingTopping = new System.Windows.Forms.Button();
-            btnBestSellingDrink = new System.Windows.Forms.Button();
-            plStatistic = new System.Windows.Forms.Panel();
-            lbDate = new System.Windows.Forms.Label();
-            dtgvStatistic = new System.Windows.Forms.DataGridView();
-            Dish = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            Type = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            Sell = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            Profit = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            plTotalProfit = new System.Windows.Forms.Panel();
-            tbxTotalProfit = new System.Windows.Forms.TextBox();
-            lbTotalProfit = new System.Windows.Forms.Label();
-            plTotalInvestment = new System.Windows.Forms.Panel();
-            tbxTotalInvestment = new System.Windows.Forms.TextBox();
-            lbTotalInvestment = new System.Windows.Forms.Label();
-            plTotalIncome = new System.Windows.Forms.Panel();
-            tbxTotalIncome = new System.Windows.Forms.TextBox();
-            lbTotalIncome = new System.Windows.Forms.Label();
-            btnBestSellingFood = new System.Windows.Forms.Button();
-            plProfitChart = new System.Windows.Forms.Panel();
-            formsPlot1 = new ScottPlot.FormsPlot();
-            panel1.SuspendLayout();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            panelFull = new Panel();
+            bestSellingPanel = new Panel();
+            label1 = new Label();
+            btnBestSellingTopping = new Button();
+            btnBestSellingDrink = new Button();
+            btnBestSellingFood = new Button();
+            plStatistic = new Panel();
+            dtgvStatistic = new DataGridView();
+            Dish = new DataGridViewTextBoxColumn();
+            Type = new DataGridViewTextBoxColumn();
+            Sell = new DataGridViewTextBoxColumn();
+            Price = new DataGridViewTextBoxColumn();
+            Profit = new DataGridViewTextBoxColumn();
+            plTotalProfit = new Panel();
+            totalProfitLabel = new Label();
+            lbTotalProfit = new Label();
+            plTotalInvestment = new Panel();
+            totalInvestmentLabel = new Label();
+            lbTotalInvestment = new Label();
+            plTotalIncome = new Panel();
+            totalIncomeLabel = new Label();
+            lbTotalIncome = new Label();
+            plProfitChart = new Panel();
+            chart = new FormsPlot();
+            dropdownPanel = new Panel();
+            allTimeButton = new Button();
+            oneMonthButton = new Button();
+            todayButton = new Button();
+            dropdownButton = new Button();
+            dropdownTimer = new Timer(components);
+            updateTimeLabel = new Label();
+            panelFull.SuspendLayout();
+            bestSellingPanel.SuspendLayout();
             plStatistic.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dtgvStatistic).BeginInit();
             plTotalProfit.SuspendLayout();
             plTotalInvestment.SuspendLayout();
             plTotalIncome.SuspendLayout();
             plProfitChart.SuspendLayout();
+            dropdownPanel.SuspendLayout();
             SuspendLayout();
             // 
-            // panel1
+            // panelFull
             // 
-            panel1.Controls.Add(btnBestSellingTopping);
-            panel1.Controls.Add(btnBestSellingDrink);
-            panel1.Controls.Add(plStatistic);
-            panel1.Controls.Add(btnBestSellingFood);
-            panel1.Controls.Add(plProfitChart);
-            panel1.Location = new System.Drawing.Point(8, 8);
-            panel1.Margin = new System.Windows.Forms.Padding(2);
-            panel1.Name = "panel1";
-            panel1.Size = new System.Drawing.Size(1581, 774);
-            panel1.TabIndex = 0;
+            panelFull.Controls.Add(updateTimeLabel);
+            panelFull.Controls.Add(bestSellingPanel);
+            panelFull.Controls.Add(plStatistic);
+            panelFull.Controls.Add(plProfitChart);
+            panelFull.Location = new System.Drawing.Point(6, 6);
+            panelFull.Margin = new Padding(2);
+            panelFull.Name = "panelFull";
+            panelFull.Size = new System.Drawing.Size(1265, 619);
+            panelFull.TabIndex = 0;
+            // 
+            // bestSellingPanel
+            // 
+            bestSellingPanel.BackColor = System.Drawing.Color.DeepSkyBlue;
+            bestSellingPanel.Controls.Add(label1);
+            bestSellingPanel.Controls.Add(btnBestSellingTopping);
+            bestSellingPanel.Controls.Add(btnBestSellingDrink);
+            bestSellingPanel.Controls.Add(btnBestSellingFood);
+            bestSellingPanel.Location = new System.Drawing.Point(0, 476);
+            bestSellingPanel.Name = "bestSellingPanel";
+            bestSellingPanel.Size = new System.Drawing.Size(678, 143);
+            bestSellingPanel.TabIndex = 4;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            label1.Location = new System.Drawing.Point(290, 26);
+            label1.Name = "label1";
+            label1.Size = new System.Drawing.Size(104, 23);
+            label1.TabIndex = 5;
+            label1.Text = "Best Selling";
+            label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnBestSellingTopping
             // 
+            btnBestSellingTopping.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             btnBestSellingTopping.BackColor = System.Drawing.Color.FromArgb(255, 128, 128);
             btnBestSellingTopping.BackgroundImage = (System.Drawing.Image)resources.GetObject("btnBestSellingTopping.BackgroundImage");
-            btnBestSellingTopping.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            btnBestSellingTopping.BackgroundImageLayout = ImageLayout.Zoom;
             btnBestSellingTopping.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            btnBestSellingTopping.Location = new System.Drawing.Point(591, 688);
-            btnBestSellingTopping.Margin = new System.Windows.Forms.Padding(2);
+            btnBestSellingTopping.Location = new System.Drawing.Point(483, 74);
+            btnBestSellingTopping.Margin = new Padding(2);
             btnBestSellingTopping.Name = "btnBestSellingTopping";
-            btnBestSellingTopping.Padding = new System.Windows.Forms.Padding(50, 0, 0, 0);
-            btnBestSellingTopping.Size = new System.Drawing.Size(212, 66);
-            btnBestSellingTopping.TabIndex = 3;
-            btnBestSellingTopping.Text = "BestSelling"+Environment.NewLine+"Topping";
+            btnBestSellingTopping.Padding = new Padding(40, 0, 0, 0);
+            btnBestSellingTopping.Size = new System.Drawing.Size(170, 53);
+            btnBestSellingTopping.TabIndex = 4;
+            btnBestSellingTopping.Text = "Topping";
             btnBestSellingTopping.UseVisualStyleBackColor = false;
-            btnBestSellingTopping.Click += btnBestSellingTopping_Click;
             // 
             // btnBestSellingDrink
             // 
-            btnBestSellingDrink.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            btnBestSellingDrink.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btnBestSellingDrink.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             btnBestSellingDrink.BackColor = System.Drawing.Color.FromArgb(255, 128, 128);
             btnBestSellingDrink.BackgroundImage = (System.Drawing.Image)resources.GetObject("btnBestSellingDrink.BackgroundImage");
-            btnBestSellingDrink.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            btnBestSellingDrink.BackgroundImageLayout = ImageLayout.Zoom;
             btnBestSellingDrink.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             btnBestSellingDrink.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            btnBestSellingDrink.Location = new System.Drawing.Point(311, 688);
-            btnBestSellingDrink.Margin = new System.Windows.Forms.Padding(2);
+            btnBestSellingDrink.Location = new System.Drawing.Point(252, 74);
+            btnBestSellingDrink.Margin = new Padding(2);
             btnBestSellingDrink.Name = "btnBestSellingDrink";
-            btnBestSellingDrink.Padding = new System.Windows.Forms.Padding(50, 0, 0, 0);
-            btnBestSellingDrink.Size = new System.Drawing.Size(212, 66);
-            btnBestSellingDrink.TabIndex = 2;
-            btnBestSellingDrink.Text = "BestSelling"+Environment.NewLine+"Drink";
+            btnBestSellingDrink.Padding = new Padding(40, 0, 0, 0);
+            btnBestSellingDrink.Size = new System.Drawing.Size(170, 53);
+            btnBestSellingDrink.TabIndex = 3;
+            btnBestSellingDrink.Text = "Drink";
             btnBestSellingDrink.UseVisualStyleBackColor = false;
-            btnBestSellingDrink.Click += btnBestSellingDrink_Click;
+            // 
+            // btnBestSellingFood
+            // 
+            btnBestSellingFood.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btnBestSellingFood.BackColor = System.Drawing.Color.FromArgb(255, 128, 128);
+            btnBestSellingFood.BackgroundImage = (System.Drawing.Image)resources.GetObject("btnBestSellingFood.BackgroundImage");
+            btnBestSellingFood.BackgroundImageLayout = ImageLayout.Zoom;
+            btnBestSellingFood.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            btnBestSellingFood.Location = new System.Drawing.Point(21, 74);
+            btnBestSellingFood.Margin = new Padding(2);
+            btnBestSellingFood.Name = "btnBestSellingFood";
+            btnBestSellingFood.Padding = new Padding(40, 0, 0, 0);
+            btnBestSellingFood.Size = new System.Drawing.Size(170, 53);
+            btnBestSellingFood.TabIndex = 2;
+            btnBestSellingFood.Text = "Food";
+            btnBestSellingFood.UseVisualStyleBackColor = false;
             // 
             // plStatistic
             // 
             plStatistic.BackColor = System.Drawing.Color.GreenYellow;
-            plStatistic.Controls.Add(lbDate);
             plStatistic.Controls.Add(dtgvStatistic);
             plStatistic.Controls.Add(plTotalProfit);
             plStatistic.Controls.Add(plTotalInvestment);
             plStatistic.Controls.Add(plTotalIncome);
-            plStatistic.Location = new System.Drawing.Point(851, 8);
-            plStatistic.Margin = new System.Windows.Forms.Padding(2);
+            plStatistic.Location = new System.Drawing.Point(675, 52);
+            plStatistic.Margin = new Padding(2);
             plStatistic.Name = "plStatistic";
-            plStatistic.Size = new System.Drawing.Size(728, 746);
+            plStatistic.Size = new System.Drawing.Size(590, 567);
             plStatistic.TabIndex = 2;
-            // 
-            // lbDate
-            // 
-            lbDate.AutoSize = true;
-            lbDate.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            lbDate.Location = new System.Drawing.Point(39, 25);
-            lbDate.Name = "lbDate";
-            lbDate.Size = new System.Drawing.Size(0, 36);
-            lbDate.TabIndex = 9;
             // 
             // dtgvStatistic
             // 
             dtgvStatistic.AllowUserToOrderColumns = true;
             dtgvStatistic.BackgroundColor = System.Drawing.SystemColors.ActiveBorder;
-            dtgvStatistic.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dtgvStatistic.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Lime;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.InfoText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            dtgvStatistic.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            dtgvStatistic.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dtgvStatistic.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { Dish, Type, Sell, Price, Profit });
+            dtgvStatistic.BorderStyle = BorderStyle.None;
+            dtgvStatistic.CellBorderStyle = DataGridViewCellBorderStyle.None;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Lime;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.InfoText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dtgvStatistic.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dtgvStatistic.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dtgvStatistic.Columns.AddRange(new DataGridViewColumn[] { Dish, Type, Sell, Price, Profit });
             dtgvStatistic.EnableHeadersVisualStyles = false;
-            dtgvStatistic.Location = new System.Drawing.Point(18, 77);
-            dtgvStatistic.Margin = new System.Windows.Forms.Padding(2);
+            dtgvStatistic.Location = new System.Drawing.Point(35, 33);
+            dtgvStatistic.Margin = new Padding(2);
             dtgvStatistic.Name = "dtgvStatistic";
             dtgvStatistic.RowHeadersWidth = 62;
             dtgvStatistic.RowTemplate.Height = 33;
-            dtgvStatistic.Size = new System.Drawing.Size(695, 484);
+            dtgvStatistic.Size = new System.Drawing.Size(556, 387);
             dtgvStatistic.TabIndex = 8;
             // 
             // Dish
             // 
-            Dish.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            Dish.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             Dish.HeaderText = "Món";
             Dish.MinimumWidth = 8;
             Dish.Name = "Dish";
             // 
             // Type
             // 
-            Type.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            Type.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             Type.HeaderText = "Loại";
             Type.MinimumWidth = 8;
             Type.Name = "Type";
             // 
             // Sell
             // 
-            Sell.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            Sell.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             Sell.HeaderText = "Số lượng";
             Sell.MinimumWidth = 8;
             Sell.Name = "Sell";
             // 
             // Price
             // 
-            Price.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            Price.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             Price.HeaderText = "Giá";
             Price.MinimumWidth = 8;
             Price.Name = "Price";
             // 
             // Profit
             // 
-            Profit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            Profit.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             Profit.HeaderText = "Lợi nhuận";
             Profit.MinimumWidth = 8;
             Profit.Name = "Profit";
             // 
             // plTotalProfit
             // 
-            plTotalProfit.Controls.Add(tbxTotalProfit);
+            plTotalProfit.Controls.Add(totalProfitLabel);
             plTotalProfit.Controls.Add(lbTotalProfit);
-            plTotalProfit.Location = new System.Drawing.Point(18, 680);
-            plTotalProfit.Margin = new System.Windows.Forms.Padding(2);
+            plTotalProfit.Location = new System.Drawing.Point(14, 519);
+            plTotalProfit.Margin = new Padding(2);
             plTotalProfit.Name = "plTotalProfit";
-            plTotalProfit.Size = new System.Drawing.Size(628, 44);
+            plTotalProfit.Size = new System.Drawing.Size(502, 35);
             plTotalProfit.TabIndex = 2;
             // 
-            // tbxTotalProfit
+            // totalProfitLabel
             // 
-            tbxTotalProfit.Location = new System.Drawing.Point(192, 6);
-            tbxTotalProfit.Margin = new System.Windows.Forms.Padding(2);
-            tbxTotalProfit.Name = "tbxTotalProfit";
-            tbxTotalProfit.ReadOnly = true;
-            tbxTotalProfit.Size = new System.Drawing.Size(368, 31);
-            tbxTotalProfit.TabIndex = 7;
+            totalProfitLabel.BackColor = System.Drawing.Color.White;
+            totalProfitLabel.Location = new System.Drawing.Point(150, 4);
+            totalProfitLabel.Name = "totalProfitLabel";
+            totalProfitLabel.Size = new System.Drawing.Size(300, 25);
+            totalProfitLabel.TabIndex = 7;
+            totalProfitLabel.Text = "0";
             // 
             // lbTotalProfit
             // 
             lbTotalProfit.AutoSize = true;
             lbTotalProfit.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            lbTotalProfit.Location = new System.Drawing.Point(2, 9);
-            lbTotalProfit.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            lbTotalProfit.Location = new System.Drawing.Point(2, 7);
+            lbTotalProfit.Margin = new Padding(2, 0, 2, 0);
             lbTotalProfit.Name = "lbTotalProfit";
-            lbTotalProfit.Size = new System.Drawing.Size(86, 25);
+            lbTotalProfit.Size = new System.Drawing.Size(69, 20);
             lbTotalProfit.TabIndex = 0;
             lbTotalProfit.Text = "Tổng lãi:";
             // 
             // plTotalInvestment
             // 
-            plTotalInvestment.Controls.Add(tbxTotalInvestment);
+            plTotalInvestment.Controls.Add(totalInvestmentLabel);
             plTotalInvestment.Controls.Add(lbTotalInvestment);
-            plTotalInvestment.Location = new System.Drawing.Point(18, 630);
-            plTotalInvestment.Margin = new System.Windows.Forms.Padding(2);
+            plTotalInvestment.Location = new System.Drawing.Point(14, 471);
+            plTotalInvestment.Margin = new Padding(2);
             plTotalInvestment.Name = "plTotalInvestment";
-            plTotalInvestment.Size = new System.Drawing.Size(628, 44);
+            plTotalInvestment.Size = new System.Drawing.Size(504, 35);
             plTotalInvestment.TabIndex = 1;
             // 
-            // tbxTotalInvestment
+            // totalInvestmentLabel
             // 
-            tbxTotalInvestment.Location = new System.Drawing.Point(192, 6);
-            tbxTotalInvestment.Margin = new System.Windows.Forms.Padding(2);
-            tbxTotalInvestment.Name = "tbxTotalInvestment";
-            tbxTotalInvestment.ReadOnly = true;
-            tbxTotalInvestment.Size = new System.Drawing.Size(368, 31);
-            tbxTotalInvestment.TabIndex = 6;
+            totalInvestmentLabel.BackColor = System.Drawing.Color.White;
+            totalInvestmentLabel.Location = new System.Drawing.Point(150, 4);
+            totalInvestmentLabel.Name = "totalInvestmentLabel";
+            totalInvestmentLabel.Size = new System.Drawing.Size(300, 25);
+            totalInvestmentLabel.TabIndex = 7;
+            totalInvestmentLabel.Text = "0";
             // 
             // lbTotalInvestment
             // 
             lbTotalInvestment.AutoSize = true;
             lbTotalInvestment.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            lbTotalInvestment.Location = new System.Drawing.Point(2, 9);
-            lbTotalInvestment.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            lbTotalInvestment.Location = new System.Drawing.Point(2, 7);
+            lbTotalInvestment.Margin = new Padding(2, 0, 2, 0);
             lbTotalInvestment.Name = "lbTotalInvestment";
-            lbTotalInvestment.Size = new System.Drawing.Size(98, 25);
+            lbTotalInvestment.Size = new System.Drawing.Size(79, 20);
             lbTotalInvestment.TabIndex = 0;
             lbTotalInvestment.Text = "Tổng vốn:";
             // 
             // plTotalIncome
             // 
-            plTotalIncome.Controls.Add(tbxTotalIncome);
+            plTotalIncome.Controls.Add(totalIncomeLabel);
             plTotalIncome.Controls.Add(lbTotalIncome);
-            plTotalIncome.Location = new System.Drawing.Point(18, 580);
-            plTotalIncome.Margin = new System.Windows.Forms.Padding(2);
+            plTotalIncome.Location = new System.Drawing.Point(16, 424);
+            plTotalIncome.Margin = new Padding(2);
             plTotalIncome.Name = "plTotalIncome";
-            plTotalIncome.Size = new System.Drawing.Size(628, 44);
+            plTotalIncome.Size = new System.Drawing.Size(502, 35);
             plTotalIncome.TabIndex = 0;
             // 
-            // tbxTotalIncome
+            // totalIncomeLabel
             // 
-            tbxTotalIncome.Location = new System.Drawing.Point(192, 6);
-            tbxTotalIncome.Margin = new System.Windows.Forms.Padding(2);
-            tbxTotalIncome.Name = "tbxTotalIncome";
-            tbxTotalIncome.ReadOnly = true;
-            tbxTotalIncome.Size = new System.Drawing.Size(368, 31);
-            tbxTotalIncome.TabIndex = 5;
+            totalIncomeLabel.BackColor = System.Drawing.Color.White;
+            totalIncomeLabel.Location = new System.Drawing.Point(150, 4);
+            totalIncomeLabel.Name = "totalIncomeLabel";
+            totalIncomeLabel.Size = new System.Drawing.Size(300, 25);
+            totalIncomeLabel.TabIndex = 6;
+            totalIncomeLabel.Text = "0";
             // 
             // lbTotalIncome
             // 
             lbTotalIncome.AutoSize = true;
             lbTotalIncome.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            lbTotalIncome.Location = new System.Drawing.Point(2, 9);
-            lbTotalIncome.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            lbTotalIncome.Location = new System.Drawing.Point(2, 7);
+            lbTotalIncome.Margin = new Padding(2, 0, 2, 0);
             lbTotalIncome.Name = "lbTotalIncome";
-            lbTotalIncome.Size = new System.Drawing.Size(154, 25);
+            lbTotalIncome.Size = new System.Drawing.Size(125, 20);
             lbTotalIncome.TabIndex = 0;
             lbTotalIncome.Text = "Tổng thành tiền:";
-            // 
-            // btnBestSellingFood
-            // 
-            btnBestSellingFood.BackColor = System.Drawing.Color.FromArgb(255, 128, 128);
-            btnBestSellingFood.BackgroundImage = (System.Drawing.Image)resources.GetObject("btnBestSellingFood.BackgroundImage");
-            btnBestSellingFood.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            btnBestSellingFood.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            btnBestSellingFood.Location = new System.Drawing.Point(38, 688);
-            btnBestSellingFood.Margin = new System.Windows.Forms.Padding(2);
-            btnBestSellingFood.Name = "btnBestSellingFood";
-            btnBestSellingFood.Padding = new System.Windows.Forms.Padding(50, 0, 0, 0);
-            btnBestSellingFood.Size = new System.Drawing.Size(212, 66);
-            btnBestSellingFood.TabIndex = 1;
-            btnBestSellingFood.Text = "BestSelling"+Environment.NewLine+"Food";
-            btnBestSellingFood.UseVisualStyleBackColor = false;
-            btnBestSellingFood.Click += btnBestSellingFood_Click;
             // 
             // plProfitChart
             // 
             plProfitChart.BackColor = System.Drawing.Color.IndianRed;
-            plProfitChart.Controls.Add(formsPlot1);
-            plProfitChart.Location = new System.Drawing.Point(9, 8);
-            plProfitChart.Margin = new System.Windows.Forms.Padding(2);
+            plProfitChart.Controls.Add(chart);
+            plProfitChart.Location = new System.Drawing.Point(0, 52);
+            plProfitChart.Margin = new Padding(2);
             plProfitChart.Name = "plProfitChart";
-            plProfitChart.Size = new System.Drawing.Size(824, 664);
+            plProfitChart.Size = new System.Drawing.Size(678, 430);
             plProfitChart.TabIndex = 0;
             // 
-            // formsPlot1
+            // chart
             // 
-            formsPlot1.Location = new System.Drawing.Point(-9, -8);
-            formsPlot1.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
-            formsPlot1.Name = "formsPlot1";
-            formsPlot1.Size = new System.Drawing.Size(832, 671);
-            formsPlot1.TabIndex = 0;
+            chart.Location = new System.Drawing.Point(36, 46);
+            chart.Margin = new Padding(5);
+            chart.Name = "chart";
+            chart.Size = new System.Drawing.Size(600, 349);
+            chart.TabIndex = 0;
+            // 
+            // dropdownPanel
+            // 
+            dropdownPanel.Controls.Add(allTimeButton);
+            dropdownPanel.Controls.Add(oneMonthButton);
+            dropdownPanel.Controls.Add(todayButton);
+            dropdownPanel.Controls.Add(dropdownButton);
+            dropdownPanel.Location = new System.Drawing.Point(1021, 6);
+            dropdownPanel.MaximumSize = new System.Drawing.Size(250, 200);
+            dropdownPanel.MinimumSize = new System.Drawing.Size(250, 50);
+            dropdownPanel.Name = "dropdownPanel";
+            dropdownPanel.Size = new System.Drawing.Size(250, 50);
+            dropdownPanel.TabIndex = 5;
+            // 
+            // allTimeButton
+            // 
+            allTimeButton.BackColor = System.Drawing.Color.Azure;
+            allTimeButton.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            allTimeButton.Location = new System.Drawing.Point(0, 150);
+            allTimeButton.Name = "allTimeButton";
+            allTimeButton.Size = new System.Drawing.Size(250, 50);
+            allTimeButton.TabIndex = 3;
+            allTimeButton.Text = "Mọi thời gian";
+            allTimeButton.UseVisualStyleBackColor = false;
+            allTimeButton.Click += allTimeButton_Click;
+            // 
+            // oneMonthButton
+            // 
+            oneMonthButton.BackColor = System.Drawing.Color.Azure;
+            oneMonthButton.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            oneMonthButton.Location = new System.Drawing.Point(0, 100);
+            oneMonthButton.Name = "oneMonthButton";
+            oneMonthButton.Size = new System.Drawing.Size(250, 50);
+            oneMonthButton.TabIndex = 2;
+            oneMonthButton.Text = "Tháng hiện tại";
+            oneMonthButton.UseVisualStyleBackColor = false;
+            oneMonthButton.Click += oneMonthButton_Click;
+            // 
+            // todayButton
+            // 
+            todayButton.BackColor = System.Drawing.Color.Azure;
+            todayButton.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            todayButton.Location = new System.Drawing.Point(0, 50);
+            todayButton.Name = "todayButton";
+            todayButton.Size = new System.Drawing.Size(250, 50);
+            todayButton.TabIndex = 1;
+            todayButton.Text = "Hôm nay";
+            todayButton.UseVisualStyleBackColor = false;
+            todayButton.Click += todayButton_Click;
+            // 
+            // dropdownButton
+            // 
+            dropdownButton.BackColor = System.Drawing.Color.Silver;
+            dropdownButton.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            dropdownButton.Location = new System.Drawing.Point(0, 0);
+            dropdownButton.Name = "dropdownButton";
+            dropdownButton.Size = new System.Drawing.Size(250, 50);
+            dropdownButton.TabIndex = 0;
+            dropdownButton.Text = "Loại thống kê";
+            dropdownButton.UseVisualStyleBackColor = false;
+            dropdownButton.Click += dropdownButton_Click;
+            // 
+            // dropdownTimer
+            // 
+            dropdownTimer.Tick += dropdownTimer_Tick;
+            // 
+            // updateTimeLabel
+            // 
+            updateTimeLabel.BackColor = System.Drawing.SystemColors.Control;
+            updateTimeLabel.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            updateTimeLabel.Location = new System.Drawing.Point(0, 0);
+            updateTimeLabel.Name = "updateTimeLabel";
+            updateTimeLabel.Size = new System.Drawing.Size(356, 50);
+            updateTimeLabel.TabIndex = 5;
+            updateTimeLabel.Text = "Cập nhật lần cuối:  00 : 00 : 00 00/00/0000";
+            updateTimeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // Form2
             // 
-            AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
-            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(1600, 794);
-            Controls.Add(panel1);
-            Margin = new System.Windows.Forms.Padding(2);
+            AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new System.Drawing.Size(1280, 635);
+            Controls.Add(dropdownPanel);
+            Controls.Add(panelFull);
+            Margin = new Padding(2);
             Name = "Form2";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Doanh thu";
-            Load += Form2_Load;
-            panel1.ResumeLayout(false);
+            panelFull.ResumeLayout(false);
+            bestSellingPanel.ResumeLayout(false);
+            bestSellingPanel.PerformLayout();
             plStatistic.ResumeLayout(false);
-            plStatistic.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dtgvStatistic).EndInit();
             plTotalProfit.ResumeLayout(false);
             plTotalProfit.PerformLayout();
@@ -340,33 +443,52 @@ namespace QuanLi
             plTotalIncome.ResumeLayout(false);
             plTotalIncome.PerformLayout();
             plProfitChart.ResumeLayout(false);
+            dropdownPanel.ResumeLayout(false);
             ResumeLayout(false);
         }
 
         #endregion
 
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panelFull;
         private System.Windows.Forms.Panel plStatistic;
         private System.Windows.Forms.Panel plTotalProfit;
-        private System.Windows.Forms.TextBox tbxTotalProfit;
         private System.Windows.Forms.Label lbTotalProfit;
         private System.Windows.Forms.Panel plTotalInvestment;
-        private System.Windows.Forms.TextBox tbxTotalInvestment;
         private System.Windows.Forms.Label lbTotalInvestment;
         private System.Windows.Forms.Panel plTotalIncome;
-        private System.Windows.Forms.TextBox tbxTotalIncome;
         private System.Windows.Forms.Label lbTotalIncome;
         private System.Windows.Forms.Panel plProfitChart;
-        private System.Windows.Forms.Button btnBestSellingFood;
-        private System.Windows.Forms.Button btnBestSellingTopping;
-        private System.Windows.Forms.Button btnBestSellingDrink;
         private System.Windows.Forms.DataGridView dtgvStatistic;
-        private ScottPlot.FormsPlot formsPlot1;
-        private System.Windows.Forms.Label lbDate;
+        private ScottPlot.FormsPlot chart;
         private System.Windows.Forms.DataGridViewTextBoxColumn Dish;
         private System.Windows.Forms.DataGridViewTextBoxColumn Type;
         private System.Windows.Forms.DataGridViewTextBoxColumn Sell;
         private System.Windows.Forms.DataGridViewTextBoxColumn Price;
         private System.Windows.Forms.DataGridViewTextBoxColumn Profit;
+        private System.Windows.Forms.Panel bestSellingPanel;
+        private System.Windows.Forms.Button btnBestSellingTopping;
+        private System.Windows.Forms.Button btnBestSellingDrink;
+        private System.Windows.Forms.Button btnBestSellingFood;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Panel dropdownPanel;
+        private System.Windows.Forms.Button dropdownButton;
+        private System.Windows.Forms.Button allTimeButton;
+        private System.Windows.Forms.Button oneMonthButton;
+        private System.Windows.Forms.Button todayButton;
+        private System.Windows.Forms.Timer dropdownTimer;
+        private System.Windows.Forms.Label totalIncomeLabel;
+        private System.Windows.Forms.Label totalProfitLabel;
+        private System.Windows.Forms.Label totalInvestmentLabel;
+
+        public void ChartInitialize()
+        {
+            chart.Plot.Style(Style.Seaborn);
+            chart.Plot.Palette = Palette.Amber;
+            chart.Plot.XLabel("Ngày");
+            chart.Plot.YLabel("Doanh thu");
+            chart.Visible = false;
+        }
+
+        private Label updateTimeLabel;
     }
 }
