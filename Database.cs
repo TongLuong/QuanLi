@@ -111,16 +111,8 @@ namespace QuanLi
         /// <typeparam name="T"></typeparam>
         /// <param name="date">Format "dd-mm-yyyy"</param>
         /// <returns></returns>
-        private IEnumerable<string[]> ReadCSV<T>(string date = null)
-        {
-            string objectName = typeof(T).Name;
-            string filePath = "";
-
-            if (date == null)
-                filePath = baseDataDir + objectName + extension;
-            else
-                filePath = baseDataDir + date + extension;
-
+        private IEnumerable<string[]> ReadCSV<T>(string filePath)
+        { 
             using (FileStream fs = new FileStream(filePath, FileMode.Open,
                                 FileAccess.Read, FileShare.None, 65536,
                                 FileOptions.SequentialScan))
@@ -147,6 +139,7 @@ namespace QuanLi
             if (!CheckForDate(date) && date != null)
                 return new List<T>();
 
+            List<string> listOfType = Enum.GetNames(typeof(Type)).ToList();
             string objectName = typeof(T).Name;
             string filePath = "";
 
@@ -155,12 +148,13 @@ namespace QuanLi
             else
                 filePath = baseDataDir + date + extension;
 
-            List<string> listOfType = Enum.GetNames(typeof(Type)).ToList();
+            if (!File.Exists(filePath))
+                return null;
 
             if (typeof(T) == typeof(Dish))
             {
                 List<Dish> menu = new List<Dish>();
-                foreach (string[] sarr in ReadCSV<T>(date))
+                foreach (string[] sarr in ReadCSV<T>(filePath))
                 {
                     if (!listOfType.Contains(sarr[5]))
                         continue;
