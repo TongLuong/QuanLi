@@ -16,7 +16,6 @@ namespace QuanLi
         private Thread timeThread;
         private Database database;
         private AddItem addItemForm;
-        private KeyHandler keyHandler;
 
         private Form1()
         {
@@ -24,7 +23,8 @@ namespace QuanLi
             database = Database.Instance;
             addItemForm = new AddItem();
 
-            keyHandler = new KeyHandler(Keys.Control | Keys.Z, this);
+            // declaration bellow
+            keyHandler = new KeyHandler(Keys.Z, this);
             keyHandler.Register();
 
             LoadMenu(Type.FOOD, menuFood);
@@ -659,13 +659,7 @@ namespace QuanLi
         }
     }
 
-    #region Handling hot keys
-    public static class Constants
-    {
-        // windows message id for hotkey
-        public const int WM_HOTKEY_MSG_ID = 0x0312;
-    }
-
+    #region Handling hot keys (for undo - redo operations)
     public class KeyHandler
     {
         // import api from dynamic library
@@ -674,6 +668,8 @@ namespace QuanLi
 
         [DllImport("user32.dll")]
         private static extern bool UnregisterHotKey(IntPtr hWnd, int id);
+
+        private const int MOD_CONTROL = 0x0002;
 
         private int key;
         private IntPtr hWnd;
@@ -693,12 +689,30 @@ namespace QuanLi
 
         public bool Register()
         {
-            return RegisterHotKey(hWnd, id, 0, key);
+            return RegisterHotKey(hWnd, id, MOD_CONTROL, key);
         }
 
         public bool Unregister()
         {
             return UnregisterHotKey(hWnd, id);
+        }
+    }
+
+    public partial class Form1 : Form
+    {
+        private KeyHandler keyHandler;
+        public const int WM_HOTKEY_MSG_ID = 0x0312;
+        private void HandleHotKey()
+        {
+            MessageBox.Show("yeah");
+        }
+
+        protected override void WndProc(ref Message mes)
+        {
+            if (mes.Msg == WM_HOTKEY_MSG_ID)
+                HandleHotKey();
+
+            base.WndProc(ref mes);
         }
     }
     #endregion
