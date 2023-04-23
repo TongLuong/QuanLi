@@ -1,14 +1,10 @@
-﻿using Microsoft.VisualBasic.Logging;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Data.SqlClient;
 using System.Drawing;
+using System.IO;
 using System.Linq;
-using System.Text;
+using System.Runtime.InteropServices;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace QuanLi
@@ -20,12 +16,17 @@ namespace QuanLi
         private Thread timeThread;
         private Database database;
         private AddItem addItemForm;
+        private KeyHandler keyHandler;
 
         private Form1()
         {
             InitializeComponent();
             database = Database.Instance;
             addItemForm = new AddItem();
+
+            keyHandler = new KeyHandler(Keys.Control | Keys.Z, this);
+            keyHandler.Register();
+
             LoadMenu(Type.FOOD, menuFood);
             LoadMenu(Type.DRINK, menuDrink);
             LoadMenu(Type.TOPPING, menuTopping);
@@ -321,7 +322,7 @@ namespace QuanLi
         #region load menu function (using Builder Design Pattern)
         private interface IBuilder
         {
-            public PictureBox BuildPictureBox(int w, int h, int x, int y);
+            public PictureBox BuildPictureBox(int w, int h, int x, int y, string imagePath);
             public Label BuildLabelName(int w, int h, int x, int y, string name);
             public Label BuildLabelPrice(int w, int h, int x, int y, double price);
             public CustomNumericUpDown BuildUpDown(int w, int h, int x, int y, int id, Dish dish);
@@ -339,14 +340,16 @@ namespace QuanLi
                 }
             }
 
-            public PictureBox BuildPictureBox(int w, int h, int x, int y)
+            public PictureBox BuildPictureBox(int w, int h, int x, int y, string imagePath)
             {
                 PictureBox pb = new PictureBox();
                 pb.Size = new Size(w, h);
                 pb.Location = new Point(x, y);
                 pb.BackColor = Color.White;
                 pb.Image = pb.InitialImage;
-                //pb.Image = Image.FromFile(dish.PathImage); // commented until we have images
+
+                if (imagePath != null && File.Exists(imagePath))
+                    pb.Image = Image.FromFile(imagePath); // commented until we have images
                 return pb;
             }
             public Label BuildLabelName(int w, int h, int x, int y, string name)
@@ -481,15 +484,12 @@ namespace QuanLi
             IEnumerator<Dish> iterDish = dish.GetEnumerator();
             int sizeList = dish.Count;
 
-            //Build Panel
-            List<Dish> listByType = Menu.Instance.getListByType(type);
-
             for (int i = 0; i < sizeList; i++)
             {
                 for (int j = 0; j < 3 && i < sizeList && iterDish.MoveNext(); j++, i++)
                 {
                     //Build pictureBox
-                    PictureBox pb = ConcreteBuilder.Instance.BuildPictureBox(width, height, xLocation, yLocation);
+                    PictureBox pb = ConcreteBuilder.Instance.BuildPictureBox(width, height, xLocation, yLocation, iterDish.Current.GetImagePath());
 
                     //Build Label Name
                     Label lblName = ConcreteBuilder.Instance.BuildLabelName(width, heightName, xLocation, yLocation + pb.Size.Height, iterDish.Current.Name);
@@ -658,4 +658,48 @@ namespace QuanLi
             Form1.Instance.ApplicationClosing(ref e);
         }
     }
+
+    #region Handling hot keys
+    public static class Constants
+    {
+        // windows message id for hotkey
+        public const int WM_HOTKEY_MSG_ID = 0x0312;
+    }
+
+    public class KeyHandler
+    {
+        // import api from dynamic library
+        [DllImport("user32.dll")]
+        private static extern bool RegisterHotKey(IntPtr hWnd, int id, int fsModifiers, int vk);
+
+        [DllImport("user32.dll")]
+        private static extern bool UnregisterHotKey(IntPtr hWnd, int id);
+
+        private int key;
+        private IntPtr hWnd;
+        private int id;
+
+        public KeyHandler(Keys key, Form form)
+        {
+            this.key = (int)key;
+            this.hWnd = form.Handle;
+            id = this.GetHashCode();
+        }
+
+        public override int GetHashCode()
+        {
+            return key ^ hWnd.ToInt32(); // xor
+        }
+
+        public bool Register()
+        {
+            return RegisterHotKey(hWnd, id, 0, key);
+        }
+
+        public bool Unregister()
+        {
+            return UnregisterHotKey(hWnd, id);
+        }
+    }
+    #endregion
 }
