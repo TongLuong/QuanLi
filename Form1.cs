@@ -16,12 +16,14 @@ namespace QuanLi
         private Thread timeThread;
         private Database database;
         private AddItem addItemForm;
+        private Caretaker caretaker;
 
         private Form1()
         {
             InitializeComponent();
             database = Database.Instance;
             addItemForm = new AddItem();
+            caretaker = new Caretaker(this);
 
             // declaration bellow
             keyHandler = new KeyHandler(Keys.Z, this);
@@ -289,6 +291,22 @@ namespace QuanLi
             {
                 mediator.Notify(this, this.Value.ToString());
             }
+
+            public override void UpButton()
+            {
+                // save state before changing value
+                Form1.Instance.Save(this);
+                Form1.Instance.caretaker.Backup(this);
+                base.UpButton();
+            }
+
+            public override void DownButton()
+            {
+                // save state before changing value
+                Form1.Instance.Save(this);
+                Form1.Instance.caretaker.Backup(this);
+                base.DownButton();
+            }
         }
         public partial class CustomLabel : Label
         {
@@ -392,7 +410,7 @@ namespace QuanLi
                 CustomNumericUpDown cnup = (CustomNumericUpDown)sender;
                 if (cnup == null || cnup.CurrDish.Equals(null))
                     return;
-
+                
                 Form1 form1 = Form1.Instance;
                 if (cnup.Value <= 0)
                 {
@@ -401,6 +419,8 @@ namespace QuanLi
                     form1.flowOrderAmount.Controls.Remove(controls[1]);
                     form1.flowOrderPrice.Controls.Remove(controls[2]);
                     cnup.HasMediator = false;
+                    cnup.Mediator = null;
+
                     Form1.Instance.CalToTal();
                     return;
                 }
@@ -547,7 +567,7 @@ namespace QuanLi
         }
 
         #region Save to Menu and Bill
-        private void Refresh_Click(object sender, EventArgs e)
+        private void RefreshBut_Click(object sender, EventArgs e)
         {
             if (TotalPrice.Text == "0")
             {
@@ -649,6 +669,81 @@ namespace QuanLi
             }
             TotalPrice.Text = Convert.ToString(total);
         }
+
+        #region Memento
+        public IMemento Save(CustomNumericUpDown control)
+        {
+            return new ConcreteMemento(control);
+        }
+
+        public void Restore(IMemento memento)
+        {
+            if (!(memento is ConcreteMemento))
+            {
+                throw new Exception("Unknown memento class " + memento.ToString());
+            }
+
+            memento.GetState();
+        }
+
+        public interface IMemento
+        {
+            public CustomNumericUpDown GetState();
+        }
+
+        public class ConcreteMemento : IMemento
+        {
+            private CustomNumericUpDown control;
+            private decimal value;
+
+            public ConcreteMemento(CustomNumericUpDown control)
+            {
+                this.control = control;
+                this.value = control.Value;
+            }
+
+            public CustomNumericUpDown GetState()
+            {
+                control.Value = value;
+                return control;
+            }
+        }
+
+        public class Caretaker
+        {
+            private List<IMemento> mementos;
+            private Form1 originator;
+
+            public Caretaker(Form1 originator)
+            {
+                this.originator = originator;
+                mementos = new List<IMemento>();
+            }
+
+            public void Backup(CustomNumericUpDown control)
+            {
+                mementos.Add(originator.Save(control));
+            }
+
+            public void Undo()
+            {
+                if (mementos.Count == 0)
+                    return;
+
+                IMemento memento = mementos.Last();
+                mementos.RemoveAt(mementos.Count - 1); // remove the last
+
+                try
+                {
+                    originator.Restore(memento);
+                }
+                catch
+                {
+                    Undo();
+                }
+            }
+        }
+        #endregion
     }
 
     public partial class FormMain : Form
@@ -695,24 +790,6 @@ namespace QuanLi
         public bool Unregister()
         {
             return UnregisterHotKey(hWnd, id);
-        }
-    }
-
-    public partial class Form1 : Form
-    {
-        private KeyHandler keyHandler;
-        public const int WM_HOTKEY_MSG_ID = 0x0312;
-        private void HandleHotKey()
-        {
-            MessageBox.Show("yeah");
-        }
-
-        protected override void WndProc(ref Message mes)
-        {
-            if (mes.Msg == WM_HOTKEY_MSG_ID)
-                HandleHotKey();
-
-            base.WndProc(ref mes);
         }
     }
     #endregion

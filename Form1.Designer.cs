@@ -67,7 +67,7 @@ namespace QuanLi
             SpecialLabel = new System.Windows.Forms.Button();
             Total = new System.Windows.Forms.Label();
             TotalPrice = new System.Windows.Forms.Label();
-            Refresh = new System.Windows.Forms.Button();
+            RefreshBut = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)pbMenu).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pbOrder).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox11).BeginInit();
@@ -537,22 +537,22 @@ namespace QuanLi
             TotalPrice.TabIndex = 50;
             TotalPrice.Text = "0";
             // 
-            // Refresh
+            // RefreshBut
             // 
-            Refresh.BackColor = System.Drawing.Color.FromArgb(250, 248, 0);
-            Refresh.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            Refresh.FlatAppearance.BorderSize = 0;
-            Refresh.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(128, 255, 128);
-            Refresh.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(255, 128, 128);
-            Refresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            Refresh.Font = new System.Drawing.Font("Cambria", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            Refresh.Location = new System.Drawing.Point(534, 674);
-            Refresh.Name = "Refresh";
-            Refresh.Size = new System.Drawing.Size(117, 51);
-            Refresh.TabIndex = 51;
-            Refresh.Text = "Làm Mới";
-            Refresh.UseVisualStyleBackColor = false;
-            Refresh.Click += Refresh_Click;
+            RefreshBut.BackColor = System.Drawing.Color.FromArgb(250, 248, 0);
+            RefreshBut.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            RefreshBut.FlatAppearance.BorderSize = 0;
+            RefreshBut.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(128, 255, 128);
+            RefreshBut.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(255, 128, 128);
+            RefreshBut.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            RefreshBut.Font = new System.Drawing.Font("Cambria", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            RefreshBut.Location = new System.Drawing.Point(534, 674);
+            RefreshBut.Name = "RefreshBut";
+            RefreshBut.Size = new System.Drawing.Size(117, 51);
+            RefreshBut.TabIndex = 51;
+            RefreshBut.Text = "Làm Mới";
+            RefreshBut.UseVisualStyleBackColor = false;
+            RefreshBut.Click += RefreshBut_Click;
             // 
             // Form1
             // 
@@ -561,7 +561,7 @@ namespace QuanLi
             BackColor = System.Drawing.Color.White;
             ClientSize = new System.Drawing.Size(1404, 736);
             ControlBox = false;
-            Controls.Add(Refresh);
+            Controls.Add(RefreshBut);
             Controls.Add(TotalPrice);
             Controls.Add(Total);
             Controls.Add(menuSpecial);
@@ -652,7 +652,7 @@ namespace QuanLi
         private System.Windows.Forms.Button SpecialLabel;
         private System.Windows.Forms.Label Total;
         private System.Windows.Forms.Label TotalPrice;
-        private System.Windows.Forms.Button Refresh;
+        private System.Windows.Forms.Button RefreshBut;
     }
 }
 
