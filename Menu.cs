@@ -28,7 +28,7 @@ namespace QuanLi
         double prodExpense; public double ProdExpense { get => prodExpense; set => prodExpense = value; }
         int numberOfSells; public int NumberOfSells { get => numberOfSells; set => numberOfSells = value; }
         Type type; public Type Type { get => type; set => type = value; }
-        string pathImage; public string PathImage { get=> pathImage; set => pathImage = value; }
+        string imageName; public string ImageName { get=> imageName; set => imageName = value; }
         string time; public string Time { get =>  time; set => time = value; }
         #endregion
 
@@ -40,9 +40,9 @@ namespace QuanLi
             this.name = name;
             this.price = price;
             this.prodExpense = prodExpense;
-            this.numberOfSells = 0;
+            this.numberOfSells = numberOfSells;
             this.type = type;
-            this.pathImage = imageName;
+            this.imageName = imageName;
             this.time = time;
         }
 
@@ -54,7 +54,7 @@ namespace QuanLi
             this.prodExpense = prodExpense;
             this.numberOfSells = 0;
             this.type = type;
-            this.pathImage = path + imageName;
+            this.ImageName = imageName;
         }
 
         #endregion
@@ -139,6 +139,11 @@ namespace QuanLi
         private long NewId()
         {
             return DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
+        }
+
+        public string GetImagePath()
+        {
+            return path + imageName;
         }
         #endregion
     }
