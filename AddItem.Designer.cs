@@ -104,7 +104,7 @@
             // 
             // Cancel
             // 
-            Cancel.Location = new System.Drawing.Point(234, 267);
+            Cancel.Location = new System.Drawing.Point(234, 260);
             Cancel.Name = "Cancel";
             Cancel.Size = new System.Drawing.Size(94, 29);
             Cancel.TabIndex = 7;
@@ -114,7 +114,7 @@
             // 
             // Accept
             // 
-            Accept.Location = new System.Drawing.Point(134, 267);
+            Accept.Location = new System.Drawing.Point(134, 260);
             Accept.Name = "Accept";
             Accept.Size = new System.Drawing.Size(94, 29);
             Accept.TabIndex = 8;
@@ -144,7 +144,7 @@
             // 
             // addImage
             // 
-            addImage.Location = new System.Drawing.Point(34, 267);
+            addImage.Location = new System.Drawing.Point(34, 260);
             addImage.Name = "addImage";
             addImage.Size = new System.Drawing.Size(94, 29);
             addImage.TabIndex = 11;
@@ -172,7 +172,7 @@
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(340, 355);
+            ClientSize = new System.Drawing.Size(340, 300);
             Controls.Add(label6);
             Controls.Add(ItemImage);
             Controls.Add(addImage);

@@ -67,7 +67,7 @@ namespace QuanLi
         private void Accept_Click(object sender, EventArgs e)
         {
             name = ItemName.Text;
-            File.Copy(ItemImage.Text, baseDir+imageName, true);
+            File.Copy(ItemImage.Text, baseDir + imageName, true);
             try
             {
                 price = Convert.ToDouble(ItemPrice.Text);

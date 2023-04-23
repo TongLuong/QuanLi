@@ -83,7 +83,10 @@ namespace QuanLi
                     foreach (object attr in GetAttributeValue<object>(objItem))
                     {
                         if (attr == null)
-                            return;
+                        {
+                            newLine.Append(",");
+                            continue;
+                        }    
 
                         count++;
                         if (attr.ToString() == "" && count >= 8)
