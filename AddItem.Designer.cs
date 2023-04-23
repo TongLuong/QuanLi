@@ -39,6 +39,9 @@
             Accept = new System.Windows.Forms.Button();
             label5 = new System.Windows.Forms.Label();
             ItemType = new System.Windows.Forms.ComboBox();
+            addImage = new System.Windows.Forms.Button();
+            ItemImage = new System.Windows.Forms.TextBox();
+            label6 = new System.Windows.Forms.Label();
             SuspendLayout();
             // 
             // label1
@@ -82,26 +85,26 @@
             // 
             ItemName.Location = new System.Drawing.Point(85, 46);
             ItemName.Name = "ItemName";
-            ItemName.Size = new System.Drawing.Size(178, 27);
+            ItemName.Size = new System.Drawing.Size(243, 27);
             ItemName.TabIndex = 4;
             // 
             // ItemPrice
             // 
             ItemPrice.Location = new System.Drawing.Point(85, 89);
             ItemPrice.Name = "ItemPrice";
-            ItemPrice.Size = new System.Drawing.Size(178, 27);
+            ItemPrice.Size = new System.Drawing.Size(243, 27);
             ItemPrice.TabIndex = 5;
             // 
             // ItemExpense
             // 
             ItemExpense.Location = new System.Drawing.Point(85, 133);
             ItemExpense.Name = "ItemExpense";
-            ItemExpense.Size = new System.Drawing.Size(178, 27);
+            ItemExpense.Size = new System.Drawing.Size(243, 27);
             ItemExpense.TabIndex = 6;
             // 
             // Cancel
             // 
-            Cancel.Location = new System.Drawing.Point(169, 218);
+            Cancel.Location = new System.Drawing.Point(234, 267);
             Cancel.Name = "Cancel";
             Cancel.Size = new System.Drawing.Size(94, 29);
             Cancel.TabIndex = 7;
@@ -111,7 +114,7 @@
             // 
             // Accept
             // 
-            Accept.Location = new System.Drawing.Point(69, 218);
+            Accept.Location = new System.Drawing.Point(134, 267);
             Accept.Name = "Accept";
             Accept.Size = new System.Drawing.Size(94, 29);
             Accept.TabIndex = 8;
@@ -136,14 +139,43 @@
             ItemType.FormattingEnabled = true;
             ItemType.Location = new System.Drawing.Point(85, 176);
             ItemType.Name = "ItemType";
-            ItemType.Size = new System.Drawing.Size(178, 28);
+            ItemType.Size = new System.Drawing.Size(125, 28);
             ItemType.TabIndex = 10;
+            // 
+            // addImage
+            // 
+            addImage.Location = new System.Drawing.Point(34, 267);
+            addImage.Name = "addImage";
+            addImage.Size = new System.Drawing.Size(94, 29);
+            addImage.TabIndex = 11;
+            addImage.Text = "Thêm Ảnh";
+            addImage.UseVisualStyleBackColor = true;
+            addImage.Click += addImage_Click;
+            // 
+            // ItemImage
+            // 
+            ItemImage.Location = new System.Drawing.Point(85, 221);
+            ItemImage.Name = "ItemImage";
+            ItemImage.Size = new System.Drawing.Size(243, 27);
+            ItemImage.TabIndex = 12;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new System.Drawing.Point(12, 224);
+            label6.Name = "label6";
+            label6.Size = new System.Drawing.Size(67, 20);
+            label6.TabIndex = 13;
+            label6.Text = "Path Ảnh";
             // 
             // AddItem
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(273, 253);
+            ClientSize = new System.Drawing.Size(340, 355);
+            Controls.Add(label6);
+            Controls.Add(ItemImage);
+            Controls.Add(addImage);
             Controls.Add(ItemType);
             Controls.Add(label5);
             Controls.Add(Accept);
@@ -177,5 +209,8 @@
         private System.Windows.Forms.Button Accept;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox ItemType;
+        private System.Windows.Forms.Button addImage;
+        private System.Windows.Forms.TextBox ItemImage;
+        private System.Windows.Forms.Label label6;
     }
 }

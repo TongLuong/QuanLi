@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -32,6 +34,8 @@ namespace QuanLi
             get => expense;
             set => expense = value;
         }
+        private string imageName; public string ImageName { get => imageName; set => imageName = value; }
+        private string baseDir;
 
         private Type type;
         public Type itemType
@@ -53,12 +57,17 @@ namespace QuanLi
             name = null;
             price = 0;
             expense = 0;
+            imageName = null;
             type = Type.NONE;
+            baseDir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            int index = baseDir.IndexOf("bin");
+            baseDir = baseDir.Substring(0, index) + "Images\\Form1\\";
         }
 
         private void Accept_Click(object sender, EventArgs e)
         {
             name = ItemName.Text;
+            File.Copy(ItemImage.Text, baseDir+imageName, true);
             try
             {
                 price = Convert.ToDouble(ItemPrice.Text);
@@ -90,7 +99,7 @@ namespace QuanLi
             ItemName.Text = "";
             ItemPrice.Text = "";
             ItemExpense.Text = "";
-
+            ItemImage.Text = "";
             if (ItemType.Items.Count == 0)
             {
                 foreach (string t in Enum.GetNames(typeof(Type)))
@@ -99,6 +108,18 @@ namespace QuanLi
                 }
             }
             ItemType.SelectedIndex = 0;
+        }
+
+        private void addImage_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Filter = "*.png | *.jpg";
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                imageName = Path.GetFileName(ofd.FileName);
+                ItemImage.Text = Path.GetFullPath(ofd.FileName);
+
+            }
         }
     }
 }

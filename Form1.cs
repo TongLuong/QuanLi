@@ -49,7 +49,7 @@ namespace QuanLi
             addItemForm.ShowDialog();
             if (addItemForm.Abort)
                 return;
-            Dish dish = new Dish(addItemForm.itemName, addItemForm.itemPrice, addItemForm.itemExpense, addItemForm.itemType, "");
+            Dish dish = new Dish(addItemForm.itemName, addItemForm.itemPrice, addItemForm.itemExpense, addItemForm.itemType,addItemForm.ImageName);
 
             List<Dish> dishes = new List<Dish>();
             dishes.Add(dish);
