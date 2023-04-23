@@ -17,17 +17,15 @@ namespace QuanLi
             InitializeComponent();
         }
 
-        //void AddBestSelling() //add best selling for today
-        //{
-        //    List<Dish> temp = Menu.Instance.GetMostSelling(Type.DRINK);
-        //    if (temp != null)
-        //    {
-        //        for (int i = 0; i < temp.Count; i++)
-        //        {
-        //            Dish item = temp[i];
-        //            dtgvBSDrink.Rows.Add(i, item.Name, item.NumberOfSells, item.NumberOfSells * (item.Price - item.ProdExpense));
-        //        }
-        //    }
-        //}
+        public void LoadData(List<Dish> dishes)
+        {
+            while (dtgvBSDrink.Rows.Count > 1)
+                dtgvBSDrink.Rows.RemoveAt(1);
+
+            foreach (Dish dish in dishes)
+            {
+                dtgvBSDrink.Rows.Add(dish.Name, Image.FromFile(dish.GetImagePath()), dish.NumberOfSells, (dish.Price - dish.ProdExpense) * dish.NumberOfSells);
+            }
+        }
     }
 }

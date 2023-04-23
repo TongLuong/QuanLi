@@ -17,15 +17,16 @@ namespace QuanLi
             InitializeComponent();
         }
 
-        public void ReloadData(List<Dish> dishes)
+        public void LoadData(List<Dish> dishes)
         {
             while (dtgvBSFood.Rows.Count > 1)
                 dtgvBSFood.Rows.RemoveAt(1);
 
             foreach (Dish dish in dishes)
             {
-                dtgvBSFood.Rows.Add(dish.Name, Image.FromFile(""));
+                dtgvBSFood.Rows.Add(dish.Name, Image.FromFile(dish.GetImagePath()), dish.NumberOfSells, (dish.Price - dish.ProdExpense) * dish.NumberOfSells);
             }
+
         }
     }
 

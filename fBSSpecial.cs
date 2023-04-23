@@ -16,5 +16,16 @@ namespace QuanLi
         {
             InitializeComponent();
         }
+
+        public void LoadData(List<Dish> dishes)
+        {
+            while (dtgvBSSpecial.Rows.Count > 1)
+                dtgvBSSpecial.Rows.RemoveAt(1);
+
+            foreach (Dish dish in dishes)
+            {
+                dtgvBSSpecial.Rows.Add(dish.Name, Image.FromFile(dish.GetImagePath()), dish.NumberOfSells, (dish.Price - dish.ProdExpense) * dish.NumberOfSells);
+            }
+        }
     }
 }

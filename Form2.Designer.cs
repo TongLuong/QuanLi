@@ -501,16 +501,6 @@ namespace QuanLi
         private System.Windows.Forms.Label totalIncomeLabel;
         private System.Windows.Forms.Label totalProfitLabel;
         private System.Windows.Forms.Label totalInvestmentLabel;
-
-        public void ChartInitialize()
-        {
-            chart.Plot.Style(Style.Seaborn);
-            chart.Plot.Palette = Palette.Amber;
-            chart.Plot.XLabel("Ngày");
-            chart.Plot.YLabel("Doanh thu");
-            chart.Visible = false;
-        }
-
         private Label updateTimeLabel;
         private Button btnBestSellingSpecial;
     }
