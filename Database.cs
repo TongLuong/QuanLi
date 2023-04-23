@@ -90,7 +90,7 @@ namespace QuanLi
                         {
                             if (addTime)
                             {
-                                newLine.Append("," + DateTime.Now.ToString("dd/MM/yyyy"));
+                                newLine.Append("," + DateTime.Now.ToString("dd-MM-yyyy"));
                                 continue;
                             }
                         }
