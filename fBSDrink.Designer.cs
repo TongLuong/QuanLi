@@ -32,7 +32,6 @@ namespace QuanLi
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             dtgvBSDrink = new System.Windows.Forms.DataGridView();
-            Rank = new System.Windows.Forms.DataGridViewTextBoxColumn();
             FoodName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             FoodImage = new System.Windows.Forms.DataGridViewTextBoxColumn();
             Sell = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -53,21 +52,15 @@ namespace QuanLi
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             dtgvBSDrink.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dtgvBSDrink.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dtgvBSDrink.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { Rank, FoodName, FoodImage, Sell, Profit });
+            dtgvBSDrink.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { FoodName, FoodImage, Sell, Profit });
             dtgvBSDrink.EnableHeadersVisualStyles = false;
-            dtgvBSDrink.Location = new System.Drawing.Point(14, 13);
+            dtgvBSDrink.Location = new System.Drawing.Point(11, 10);
+            dtgvBSDrink.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             dtgvBSDrink.Name = "dtgvBSDrink";
             dtgvBSDrink.RowHeadersWidth = 62;
             dtgvBSDrink.RowTemplate.Height = 33;
-            dtgvBSDrink.Size = new System.Drawing.Size(1085, 587);
+            dtgvBSDrink.Size = new System.Drawing.Size(868, 470);
             dtgvBSDrink.TabIndex = 2;
-            // 
-            // Rank
-            // 
-            Rank.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            Rank.HeaderText = "Thứ hạng";
-            Rank.MinimumWidth = 8;
-            Rank.Name = "Rank";
             // 
             // FoodName
             // 
@@ -99,10 +92,11 @@ namespace QuanLi
             // 
             // fBSDrink
             // 
-            AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
+            AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(1113, 613);
+            ClientSize = new System.Drawing.Size(890, 490);
             Controls.Add(dtgvBSDrink);
+            Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             Name = "fBSDrink";
             Text = "Đồ uống bán chạy nhất";
             ((System.ComponentModel.ISupportInitialize)dtgvBSDrink).EndInit();
@@ -112,7 +106,6 @@ namespace QuanLi
         #endregion
 
         private System.Windows.Forms.DataGridView dtgvBSDrink;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Rank;
         private System.Windows.Forms.DataGridViewTextBoxColumn FoodName;
         private System.Windows.Forms.DataGridViewTextBoxColumn FoodImage;
         private System.Windows.Forms.DataGridViewTextBoxColumn Sell;

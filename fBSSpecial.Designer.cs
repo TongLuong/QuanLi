@@ -1,8 +1,6 @@
-﻿using System.Collections.Generic;
-
-namespace QuanLi
+﻿namespace QuanLi
 {
-    partial class fBSTopping
+    partial class fBSSpecial
     {
         /// <summary>
         /// Required designer variable.
@@ -31,18 +29,18 @@ namespace QuanLi
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            dtgvBSTopping = new System.Windows.Forms.DataGridView();
-            FoodName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            FoodImage = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            dtgvBSSpecial = new System.Windows.Forms.DataGridView();
+            SpecialName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            SpecialImage = new System.Windows.Forms.DataGridViewTextBoxColumn();
             Sell = new System.Windows.Forms.DataGridViewTextBoxColumn();
             Profit = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)dtgvBSTopping).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dtgvBSSpecial).BeginInit();
             SuspendLayout();
             // 
-            // dtgvBSTopping
+            // dtgvBSSpecial
             // 
-            dtgvBSTopping.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dtgvBSTopping.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            dtgvBSSpecial.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            dtgvBSSpecial.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(255, 128, 128);
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -50,31 +48,31 @@ namespace QuanLi
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            dtgvBSTopping.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            dtgvBSTopping.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dtgvBSTopping.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { FoodName, FoodImage, Sell, Profit });
-            dtgvBSTopping.EnableHeadersVisualStyles = false;
-            dtgvBSTopping.Location = new System.Drawing.Point(10, 10);
-            dtgvBSTopping.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            dtgvBSTopping.Name = "dtgvBSTopping";
-            dtgvBSTopping.RowHeadersWidth = 62;
-            dtgvBSTopping.RowTemplate.Height = 33;
-            dtgvBSTopping.Size = new System.Drawing.Size(868, 470);
-            dtgvBSTopping.TabIndex = 3;
+            dtgvBSSpecial.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dtgvBSSpecial.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dtgvBSSpecial.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { SpecialName, SpecialImage, Sell, Profit });
+            dtgvBSSpecial.EnableHeadersVisualStyles = false;
+            dtgvBSSpecial.Location = new System.Drawing.Point(10, 10);
+            dtgvBSSpecial.Margin = new System.Windows.Forms.Padding(2);
+            dtgvBSSpecial.Name = "dtgvBSSpecial";
+            dtgvBSSpecial.RowHeadersWidth = 62;
+            dtgvBSSpecial.RowTemplate.Height = 33;
+            dtgvBSSpecial.Size = new System.Drawing.Size(868, 470);
+            dtgvBSSpecial.TabIndex = 1;
             // 
-            // FoodName
+            // SpecialName
             // 
-            FoodName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            FoodName.HeaderText = "Tên món ăn";
-            FoodName.MinimumWidth = 8;
-            FoodName.Name = "FoodName";
+            SpecialName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            SpecialName.HeaderText = "Tên món ăn";
+            SpecialName.MinimumWidth = 8;
+            SpecialName.Name = "SpecialName";
             // 
-            // FoodImage
+            // SpecialImage
             // 
-            FoodImage.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            FoodImage.HeaderText = "Hình ảnh";
-            FoodImage.MinimumWidth = 8;
-            FoodImage.Name = "FoodImage";
+            SpecialImage.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            SpecialImage.HeaderText = "Hình ảnh";
+            SpecialImage.MinimumWidth = 8;
+            SpecialImage.Name = "SpecialImage";
             // 
             // Sell
             // 
@@ -90,24 +88,24 @@ namespace QuanLi
             Profit.MinimumWidth = 8;
             Profit.Name = "Profit";
             // 
-            // fBSTopping
+            // fBSSpecial
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(887, 495);
-            Controls.Add(dtgvBSTopping);
-            Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            Name = "fBSTopping";
-            Text = "Topping bán chạy nhất";
-            ((System.ComponentModel.ISupportInitialize)dtgvBSTopping).EndInit();
+            ClientSize = new System.Drawing.Size(887, 489);
+            Controls.Add(dtgvBSSpecial);
+            Margin = new System.Windows.Forms.Padding(2);
+            Name = "fBSSpecial";
+            Text = "Món đặc biệt bán chạy nhất";
+            ((System.ComponentModel.ISupportInitialize)dtgvBSSpecial).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dtgvBSTopping;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FoodName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FoodImage;
+        private System.Windows.Forms.DataGridView dtgvBSSpecial;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SpecialName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SpecialImage;
         private System.Windows.Forms.DataGridViewTextBoxColumn Sell;
         private System.Windows.Forms.DataGridViewTextBoxColumn Profit;
     }

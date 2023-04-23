@@ -35,9 +35,11 @@ namespace QuanLi
         {
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form2));
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             panelFull = new Panel();
+            updateTimeLabel = new Label();
             bestSellingPanel = new Panel();
+            btnBestSellingSpecial = new Button();
             label1 = new Label();
             btnBestSellingTopping = new Button();
             btnBestSellingDrink = new Button();
@@ -66,7 +68,6 @@ namespace QuanLi
             todayButton = new Button();
             dropdownButton = new Button();
             dropdownTimer = new Timer(components);
-            updateTimeLabel = new Label();
             panelFull.SuspendLayout();
             bestSellingPanel.SuspendLayout();
             plStatistic.SuspendLayout();
@@ -90,9 +91,21 @@ namespace QuanLi
             panelFull.Size = new System.Drawing.Size(1265, 619);
             panelFull.TabIndex = 0;
             // 
+            // updateTimeLabel
+            // 
+            updateTimeLabel.BackColor = System.Drawing.SystemColors.Control;
+            updateTimeLabel.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            updateTimeLabel.Location = new System.Drawing.Point(0, 0);
+            updateTimeLabel.Name = "updateTimeLabel";
+            updateTimeLabel.Size = new System.Drawing.Size(403, 50);
+            updateTimeLabel.TabIndex = 5;
+            updateTimeLabel.Text = "Cập nhật lần cuối:  00 : 00 : 00 00/00/0000";
+            updateTimeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // bestSellingPanel
             // 
             bestSellingPanel.BackColor = System.Drawing.Color.DeepSkyBlue;
+            bestSellingPanel.Controls.Add(btnBestSellingSpecial);
             bestSellingPanel.Controls.Add(label1);
             bestSellingPanel.Controls.Add(btnBestSellingTopping);
             bestSellingPanel.Controls.Add(btnBestSellingDrink);
@@ -102,11 +115,28 @@ namespace QuanLi
             bestSellingPanel.Size = new System.Drawing.Size(678, 143);
             bestSellingPanel.TabIndex = 4;
             // 
+            // btnBestSellingSpecial
+            // 
+            btnBestSellingSpecial.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btnBestSellingSpecial.BackColor = System.Drawing.Color.FromArgb(255, 128, 128);
+            btnBestSellingSpecial.BackgroundImage = (System.Drawing.Image)resources.GetObject("btnBestSellingSpecial.BackgroundImage");
+            btnBestSellingSpecial.BackgroundImageLayout = ImageLayout.Zoom;
+            btnBestSellingSpecial.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            btnBestSellingSpecial.Location = new System.Drawing.Point(396, 85);
+            btnBestSellingSpecial.Margin = new Padding(2);
+            btnBestSellingSpecial.Name = "btnBestSellingSpecial";
+            btnBestSellingSpecial.Padding = new Padding(40, 0, 0, 0);
+            btnBestSellingSpecial.Size = new System.Drawing.Size(170, 53);
+            btnBestSellingSpecial.TabIndex = 6;
+            btnBestSellingSpecial.Text = "Special";
+            btnBestSellingSpecial.UseVisualStyleBackColor = false;
+            btnBestSellingSpecial.Click += btnBestSellingSpecial_Click;
+            // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            label1.Location = new System.Drawing.Point(290, 26);
+            label1.Location = new System.Drawing.Point(287, 7);
             label1.Name = "label1";
             label1.Size = new System.Drawing.Size(104, 23);
             label1.TabIndex = 5;
@@ -120,7 +150,7 @@ namespace QuanLi
             btnBestSellingTopping.BackgroundImage = (System.Drawing.Image)resources.GetObject("btnBestSellingTopping.BackgroundImage");
             btnBestSellingTopping.BackgroundImageLayout = ImageLayout.Zoom;
             btnBestSellingTopping.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            btnBestSellingTopping.Location = new System.Drawing.Point(483, 74);
+            btnBestSellingTopping.Location = new System.Drawing.Point(104, 85);
             btnBestSellingTopping.Margin = new Padding(2);
             btnBestSellingTopping.Name = "btnBestSellingTopping";
             btnBestSellingTopping.Padding = new Padding(40, 0, 0, 0);
@@ -128,6 +158,7 @@ namespace QuanLi
             btnBestSellingTopping.TabIndex = 4;
             btnBestSellingTopping.Text = "Topping";
             btnBestSellingTopping.UseVisualStyleBackColor = false;
+            btnBestSellingTopping.Click += btnBestSellingTopping_Click;
             // 
             // btnBestSellingDrink
             // 
@@ -138,7 +169,7 @@ namespace QuanLi
             btnBestSellingDrink.BackgroundImageLayout = ImageLayout.Zoom;
             btnBestSellingDrink.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             btnBestSellingDrink.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            btnBestSellingDrink.Location = new System.Drawing.Point(252, 74);
+            btnBestSellingDrink.Location = new System.Drawing.Point(396, 29);
             btnBestSellingDrink.Margin = new Padding(2);
             btnBestSellingDrink.Name = "btnBestSellingDrink";
             btnBestSellingDrink.Padding = new Padding(40, 0, 0, 0);
@@ -146,6 +177,7 @@ namespace QuanLi
             btnBestSellingDrink.TabIndex = 3;
             btnBestSellingDrink.Text = "Drink";
             btnBestSellingDrink.UseVisualStyleBackColor = false;
+            btnBestSellingDrink.Click += btnBestSellingDrink_Click;
             // 
             // btnBestSellingFood
             // 
@@ -154,7 +186,7 @@ namespace QuanLi
             btnBestSellingFood.BackgroundImage = (System.Drawing.Image)resources.GetObject("btnBestSellingFood.BackgroundImage");
             btnBestSellingFood.BackgroundImageLayout = ImageLayout.Zoom;
             btnBestSellingFood.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            btnBestSellingFood.Location = new System.Drawing.Point(21, 74);
+            btnBestSellingFood.Location = new System.Drawing.Point(104, 29);
             btnBestSellingFood.Margin = new Padding(2);
             btnBestSellingFood.Name = "btnBestSellingFood";
             btnBestSellingFood.Padding = new Padding(40, 0, 0, 0);
@@ -162,6 +194,7 @@ namespace QuanLi
             btnBestSellingFood.TabIndex = 2;
             btnBestSellingFood.Text = "Food";
             btnBestSellingFood.UseVisualStyleBackColor = false;
+            btnBestSellingFood.Click += btnBestSellingFood_Click;
             // 
             // plStatistic
             // 
@@ -182,14 +215,14 @@ namespace QuanLi
             dtgvStatistic.BackgroundColor = System.Drawing.SystemColors.ActiveBorder;
             dtgvStatistic.BorderStyle = BorderStyle.None;
             dtgvStatistic.CellBorderStyle = DataGridViewCellBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Lime;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.InfoText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            dtgvStatistic.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Lime;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.InfoText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dtgvStatistic.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dtgvStatistic.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dtgvStatistic.Columns.AddRange(new DataGridViewColumn[] { Dish, Type, Sell, Price, Profit });
             dtgvStatistic.EnableHeadersVisualStyles = false;
@@ -409,17 +442,6 @@ namespace QuanLi
             // 
             dropdownTimer.Tick += dropdownTimer_Tick;
             // 
-            // updateTimeLabel
-            // 
-            updateTimeLabel.BackColor = System.Drawing.SystemColors.Control;
-            updateTimeLabel.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            updateTimeLabel.Location = new System.Drawing.Point(0, 0);
-            updateTimeLabel.Name = "updateTimeLabel";
-            updateTimeLabel.Size = new System.Drawing.Size(356, 50);
-            updateTimeLabel.TabIndex = 5;
-            updateTimeLabel.Text = "Cập nhật lần cuối:  00 : 00 : 00 00/00/0000";
-            updateTimeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
             // Form2
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -490,5 +512,6 @@ namespace QuanLi
         }
 
         private Label updateTimeLabel;
+        private Button btnBestSellingSpecial;
     }
 }
