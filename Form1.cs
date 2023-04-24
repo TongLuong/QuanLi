@@ -49,7 +49,7 @@ namespace QuanLi
             addItemForm.ShowDialog();
             if (addItemForm.Abort)
                 return;
-            Dish dish = new Dish(addItemForm.itemName, addItemForm.itemPrice, addItemForm.itemExpense, addItemForm.itemType, "");
+            Dish dish = new Dish(addItemForm.itemName, addItemForm.itemPrice, addItemForm.itemExpense, addItemForm.itemType,addItemForm.ImageName);
 
             List<Dish> dishes = new List<Dish>();
             dishes.Add(dish);
@@ -683,29 +683,28 @@ namespace QuanLi
                 throw new Exception("Unknown memento class " + memento.ToString());
             }
 
-            memento.GetState();
+            memento.RestoreState();
         }
 
         public interface IMemento
         {
-            public CustomNumericUpDown GetState();
+            public void RestoreState();
         }
 
         public class ConcreteMemento : IMemento
         {
             private CustomNumericUpDown control;
-            private decimal value;
+            //private decimal value;
 
             public ConcreteMemento(CustomNumericUpDown control)
             {
                 this.control = control;
-                this.value = control.Value;
+                //this.value = control.Value;
             }
 
-            public CustomNumericUpDown GetState()
+            public void RestoreState()
             {
-                control.Value = value;
-                return control;
+                control.Value = 0;
             }
         }
 
@@ -742,6 +741,23 @@ namespace QuanLi
                     Undo();
                 }
             }
+        }
+        #endregion
+
+        #region HotKeys
+        private KeyHandler keyHandler;
+        public const int WM_HOTKEY_MSG_ID = 0x0312;
+        private void HandleHotKey()
+        {
+            caretaker.Undo();
+        }
+
+        protected override void WndProc(ref Message mes)
+        {
+            if (mes.Msg == WM_HOTKEY_MSG_ID)
+                HandleHotKey();
+
+            base.WndProc(ref mes);
         }
         #endregion
     }
