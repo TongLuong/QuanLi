@@ -43,12 +43,12 @@
             MenuAll.ReadOnly = true;
             MenuAll.RowHeadersWidth = 51;
             MenuAll.RowTemplate.Height = 29;
-            MenuAll.Size = new System.Drawing.Size(938, 458);
+            MenuAll.Size = new System.Drawing.Size(954, 458);
             MenuAll.TabIndex = 0;
             // 
             // DeleteBtn
             // 
-            DeleteBtn.Location = new System.Drawing.Point(856, 14);
+            DeleteBtn.Location = new System.Drawing.Point(872, 14);
             DeleteBtn.Name = "DeleteBtn";
             DeleteBtn.Size = new System.Drawing.Size(94, 29);
             DeleteBtn.TabIndex = 1;
@@ -58,7 +58,7 @@
             // 
             // CancelBtn
             // 
-            CancelBtn.Location = new System.Drawing.Point(756, 12);
+            CancelBtn.Location = new System.Drawing.Point(772, 14);
             CancelBtn.Name = "CancelBtn";
             CancelBtn.Size = new System.Drawing.Size(94, 29);
             CancelBtn.TabIndex = 2;
@@ -70,13 +70,14 @@
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(962, 519);
+            ClientSize = new System.Drawing.Size(975, 519);
             ControlBox = false;
             Controls.Add(CancelBtn);
             Controls.Add(DeleteBtn);
             Controls.Add(MenuAll);
             Name = "DeleteItem";
-            Text = "DeleteItem";
+            StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            Text = "Xóa Món";
             ((System.ComponentModel.ISupportInitialize)MenuAll).EndInit();
             ResumeLayout(false);
         }

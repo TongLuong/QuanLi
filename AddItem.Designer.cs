@@ -173,6 +173,7 @@
             AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             ClientSize = new System.Drawing.Size(340, 300);
+            ControlBox = false;
             Controls.Add(label6);
             Controls.Add(ItemImage);
             Controls.Add(addImage);
