@@ -16,15 +16,8 @@ namespace QuanLi
 {
     public partial class Form2 : Form
     {
-        public Form2()
-        {
-            InitializeComponent();
-            ChartInitialize();
-            FormInit();
-        }
-
         #region lists
-        List<Dish> all = new List<Dish>();
+        List<Dish> all = null;
         List<Dish> food = new List<Dish>();
         List<Dish> drink = new List<Dish>();
         List<Dish> topping = new List<Dish>();
@@ -39,6 +32,14 @@ namespace QuanLi
         fBSTopping toppingForm = null;
         fBSSpecial specialForm = null;
         #endregion
+
+        public Form2()
+        {
+            InitializeComponent();
+            ChartInitialize();
+            FormInit();
+        }
+
 
         private void btnBestSellingDrink_Click(object sender, EventArgs e)
         {
@@ -103,13 +104,13 @@ namespace QuanLi
             int index = 0;
             foreach (Dish dish in all)
             {
-                dtgvStatistic.Rows.Add(dish.Name, dish.Type.ToString(),0,0,0);
+                dtgvStatistic.Rows.Add(dish.Name, dish.Type.ToString(), 0, 0, 0);
                 indexInDtgv.Add(new KeyValuePair<int, string>(index++, dish.Name));
             }
 
             foreach (Dish dish in all)
             {
-                foreach (KeyValuePair<int,string> idx in indexInDtgv)
+                foreach (KeyValuePair<int, string> idx in indexInDtgv)
                 {
                     if (dish.Name == idx.Value)
                     {
@@ -135,6 +136,8 @@ namespace QuanLi
 
             DateTime updateTime = DateTime.Now;
             updateTimeLabel.Text = "Cập nhật lần cuối:  " + updateTime.ToString("HH : mm : ss     dd/MM/yyyy");
+
+            statisticsTypeLabel.Text = "Thống kê theo hôm nay";
         }
 
 
@@ -175,6 +178,8 @@ namespace QuanLi
             DateTime updateTime = DateTime.Now;
             updateTimeLabel.Text = "Cập nhật lần cuối:  " + updateTime.ToString("HH : mm : ss     dd/MM/yyyy");
 
+            statisticsTypeLabel.Text = "Thống kê theo hôm nay";
+
             dropdownTimer.Start();
         }
 
@@ -185,8 +190,8 @@ namespace QuanLi
             int month = now.Month;
             int year = now.Year;
             int day = now.Day;
-            all = new List<Dish>();
-            double[] x = new double[day], y = new double[day];
+            all.Clear();
+            double[] x = new double[day - 1], y = new double[day - 1];
             for (int i = 1; i < day; i++)
             {
                 List<Dish> dishInDay = Database.Instance.ReadCSVToList<Dish>(
@@ -205,7 +210,7 @@ namespace QuanLi
 
             }
 
-
+            chart.Plot.Clear();
             chart.Plot.AddScatter(x, y, Color.Red);
             chart.Plot.XAxis.ManualTickSpacing(1);
             chart.Plot.SetAxisLimits(1, DateTime.DaysInMonth(year, month), 0);
@@ -216,20 +221,23 @@ namespace QuanLi
 
             #endregion
             Operation();
+
+            statisticsTypeLabel.Text = "Thống kê theo tháng hiện tại";
+
         }
 
         private void allTimeButton_Click(object sender, EventArgs e)
         {
             all = Database.Instance.ReadCSVAllDate<Dish>();
-            int  month = 0, year = 0;
+            int month = 0, year = 0;
             List<Int32> profits = null;
             Int32 monthProfit = 0;
             foreach (Dish dish in all)
             {
-                
+
                 #region convert to date time
                 DateTime dt;
-                if (DateTime.TryParseExact(dish.Time, "dd-MM-yyyy", CultureInfo.InvariantCulture,DateTimeStyles.None, out dt))
+                if (DateTime.TryParseExact(dish.Time, "dd-MM-yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out dt))
                 {
                     if (dt.Month == month && dt.Year == year)
                     {
@@ -248,7 +256,7 @@ namespace QuanLi
                         monthProfit = dish.NumberOfSells * (Int32)(dish.Price - dish.ProdExpense);
                         month = dt.Month;
                         year = dt.Year;
-                        
+
                     }
                 }
                 #endregion
@@ -272,6 +280,7 @@ namespace QuanLi
                     x[i] = i + 1;
                     y[i] = profits[i];
                 }
+                chart.Plot.Clear();
                 chart.Plot.AddScatter(x, y, Color.Red);
                 chart.Plot.XAxis.ManualTickSpacing(1);
                 chart.Plot.SetAxisLimits(1, profits.Count, 0);
@@ -284,12 +293,14 @@ namespace QuanLi
                 chart.Visible = false;
 
             Operation();
+
+            statisticsTypeLabel.Text = "Thống kê theo toàn thời gian";
         }
 
         void Operation()
         {
             RefreshDataGridView();
-            chart.Plot.Clear();
+
             Int32 totalIncome = 0, totalInvestment = 0, totalProfit;
             foreach (Dish dish in all)
             {
@@ -352,7 +363,7 @@ namespace QuanLi
                             maxProfit = profit;
                             continue;
                         }
-                        if (profit==maxProfit)
+                        if (profit == maxProfit)
                             mostSellingDishes.Add(dish);
 
                         break;
@@ -364,7 +375,7 @@ namespace QuanLi
 
         void RefreshDataGridView()
         {
-            for (int i=0;i<indexInDtgv.Count;i++)
+            for (int i = 0; i < indexInDtgv.Count; i++)
             {
                 DataGridViewRow row = dtgvStatistic.Rows[i];
                 row.Cells[2].Value = 0;
@@ -382,5 +393,10 @@ namespace QuanLi
             chart.Plot.Clear();
         }
 
+        private void billBtn_Click(object sender, EventArgs e)
+        {
+            BillStatistics billForm = new BillStatistics();
+            billForm.ShowDialog();
+        }
     }
 }

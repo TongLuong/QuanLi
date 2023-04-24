@@ -55,7 +55,7 @@ namespace QuanLi
             dtgvBSTopping.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { FoodName, FoodImage, Sell, Profit });
             dtgvBSTopping.EnableHeadersVisualStyles = false;
             dtgvBSTopping.Location = new System.Drawing.Point(10, 10);
-            dtgvBSTopping.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            dtgvBSTopping.Margin = new System.Windows.Forms.Padding(2);
             dtgvBSTopping.Name = "dtgvBSTopping";
             dtgvBSTopping.RowHeadersWidth = 62;
             dtgvBSTopping.RowTemplate.Height = 33;
@@ -96,8 +96,9 @@ namespace QuanLi
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             ClientSize = new System.Drawing.Size(887, 495);
             Controls.Add(dtgvBSTopping);
-            Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            Margin = new System.Windows.Forms.Padding(2);
             Name = "fBSTopping";
+            StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             Text = "Topping bán chạy nhất";
             ((System.ComponentModel.ISupportInitialize)dtgvBSTopping).EndInit();
             ResumeLayout(false);

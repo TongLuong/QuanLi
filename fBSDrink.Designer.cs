@@ -55,7 +55,7 @@ namespace QuanLi
             dtgvBSDrink.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { FoodName, FoodImage, Sell, Profit });
             dtgvBSDrink.EnableHeadersVisualStyles = false;
             dtgvBSDrink.Location = new System.Drawing.Point(11, 10);
-            dtgvBSDrink.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            dtgvBSDrink.Margin = new System.Windows.Forms.Padding(2);
             dtgvBSDrink.Name = "dtgvBSDrink";
             dtgvBSDrink.RowHeadersWidth = 62;
             dtgvBSDrink.RowTemplate.Height = 33;
@@ -96,8 +96,9 @@ namespace QuanLi
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             ClientSize = new System.Drawing.Size(890, 490);
             Controls.Add(dtgvBSDrink);
-            Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            Margin = new System.Windows.Forms.Padding(2);
             Name = "fBSDrink";
+            StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             Text = "Đồ uống bán chạy nhất";
             ((System.ComponentModel.ISupportInitialize)dtgvBSDrink).EndInit();
             ResumeLayout(false);

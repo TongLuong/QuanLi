@@ -96,6 +96,7 @@
             Controls.Add(dtgvBSSpecial);
             Margin = new System.Windows.Forms.Padding(2);
             Name = "fBSSpecial";
+            StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             Text = "Món đặc biệt bán chạy nhất";
             ((System.ComponentModel.ISupportInitialize)dtgvBSSpecial).EndInit();
             ResumeLayout(false);

@@ -37,6 +37,7 @@ namespace QuanLi
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form2));
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             panelFull = new Panel();
+            statisticsTypeLabel = new Label();
             updateTimeLabel = new Label();
             bestSellingPanel = new Panel();
             btnBestSellingSpecial = new Button();
@@ -45,6 +46,7 @@ namespace QuanLi
             btnBestSellingDrink = new Button();
             btnBestSellingFood = new Button();
             plStatistic = new Panel();
+            billBtn = new Button();
             dtgvStatistic = new DataGridView();
             Dish = new DataGridViewTextBoxColumn();
             Type = new DataGridViewTextBoxColumn();
@@ -81,6 +83,7 @@ namespace QuanLi
             // 
             // panelFull
             // 
+            panelFull.Controls.Add(statisticsTypeLabel);
             panelFull.Controls.Add(updateTimeLabel);
             panelFull.Controls.Add(bestSellingPanel);
             panelFull.Controls.Add(plStatistic);
@@ -90,6 +93,16 @@ namespace QuanLi
             panelFull.Name = "panelFull";
             panelFull.Size = new System.Drawing.Size(1265, 619);
             panelFull.TabIndex = 0;
+            // 
+            // statisticsTypeLabel
+            // 
+            statisticsTypeLabel.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            statisticsTypeLabel.Location = new System.Drawing.Point(675, 0);
+            statisticsTypeLabel.Name = "statisticsTypeLabel";
+            statisticsTypeLabel.Size = new System.Drawing.Size(334, 50);
+            statisticsTypeLabel.TabIndex = 6;
+            statisticsTypeLabel.Text = "Thống kê trong hôm nay";
+            statisticsTypeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // updateTimeLabel
             // 
@@ -199,6 +212,7 @@ namespace QuanLi
             // plStatistic
             // 
             plStatistic.BackColor = System.Drawing.Color.GreenYellow;
+            plStatistic.Controls.Add(billBtn);
             plStatistic.Controls.Add(dtgvStatistic);
             plStatistic.Controls.Add(plTotalProfit);
             plStatistic.Controls.Add(plTotalInvestment);
@@ -208,6 +222,18 @@ namespace QuanLi
             plStatistic.Name = "plStatistic";
             plStatistic.Size = new System.Drawing.Size(590, 567);
             plStatistic.TabIndex = 2;
+            // 
+            // billBtn
+            // 
+            billBtn.BackColor = System.Drawing.Color.FromArgb(255, 128, 128);
+            billBtn.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            billBtn.Location = new System.Drawing.Point(498, 431);
+            billBtn.Name = "billBtn";
+            billBtn.Size = new System.Drawing.Size(89, 123);
+            billBtn.TabIndex = 10;
+            billBtn.Text = "Hoá đơn trong ngày";
+            billBtn.UseVisualStyleBackColor = false;
+            billBtn.Click += billBtn_Click;
             // 
             // dtgvStatistic
             // 
@@ -276,7 +302,7 @@ namespace QuanLi
             plTotalProfit.Location = new System.Drawing.Point(14, 519);
             plTotalProfit.Margin = new Padding(2);
             plTotalProfit.Name = "plTotalProfit";
-            plTotalProfit.Size = new System.Drawing.Size(502, 35);
+            plTotalProfit.Size = new System.Drawing.Size(462, 35);
             plTotalProfit.TabIndex = 2;
             // 
             // totalProfitLabel
@@ -306,7 +332,7 @@ namespace QuanLi
             plTotalInvestment.Location = new System.Drawing.Point(14, 471);
             plTotalInvestment.Margin = new Padding(2);
             plTotalInvestment.Name = "plTotalInvestment";
-            plTotalInvestment.Size = new System.Drawing.Size(504, 35);
+            plTotalInvestment.Size = new System.Drawing.Size(462, 35);
             plTotalInvestment.TabIndex = 1;
             // 
             // totalInvestmentLabel
@@ -336,7 +362,7 @@ namespace QuanLi
             plTotalIncome.Location = new System.Drawing.Point(16, 424);
             plTotalIncome.Margin = new Padding(2);
             plTotalIncome.Name = "plTotalIncome";
-            plTotalIncome.Size = new System.Drawing.Size(502, 35);
+            plTotalIncome.Size = new System.Drawing.Size(460, 35);
             plTotalIncome.TabIndex = 0;
             // 
             // totalIncomeLabel
@@ -371,6 +397,7 @@ namespace QuanLi
             // 
             // chart
             // 
+            chart.Enabled = false;
             chart.Location = new System.Drawing.Point(36, 46);
             chart.Margin = new Padding(5);
             chart.Name = "chart";
@@ -398,7 +425,7 @@ namespace QuanLi
             allTimeButton.Name = "allTimeButton";
             allTimeButton.Size = new System.Drawing.Size(250, 50);
             allTimeButton.TabIndex = 3;
-            allTimeButton.Text = "Mọi thời gian";
+            allTimeButton.Text = "Toàn thời gian";
             allTimeButton.UseVisualStyleBackColor = false;
             allTimeButton.Click += allTimeButton_Click;
             // 
@@ -503,5 +530,7 @@ namespace QuanLi
         private System.Windows.Forms.Label totalInvestmentLabel;
         private Label updateTimeLabel;
         private Button btnBestSellingSpecial;
+        private Label statisticsTypeLabel;
+        private Button billBtn;
     }
 }
