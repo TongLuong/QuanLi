@@ -16,6 +16,7 @@ namespace QuanLi
         private Thread timeThread;
         private Database database;
         private AddItem addItemForm;
+        private DeleteItem deleteItemForm;
         private Caretaker caretaker;
 
         private Form1()
@@ -24,6 +25,7 @@ namespace QuanLi
             database = Database.Instance;
             addItemForm = new AddItem();
             caretaker = new Caretaker(this);
+            deleteItemForm = new DeleteItem();
 
             // declaration bellow
             keyHandler = new KeyHandler(Keys.Z, this);
@@ -49,7 +51,7 @@ namespace QuanLi
             addItemForm.ShowDialog();
             if (addItemForm.Abort)
                 return;
-            Dish dish = new Dish(addItemForm.itemName, addItemForm.itemPrice, addItemForm.itemExpense, addItemForm.itemType,addItemForm.ImageName);
+            Dish dish = new Dish(addItemForm.itemName, addItemForm.itemPrice, addItemForm.itemExpense, addItemForm.itemType, addItemForm.ImageName);
 
             List<Dish> dishes = new List<Dish>();
             dishes.Add(dish);
@@ -58,6 +60,17 @@ namespace QuanLi
             ReLoadMenu(dish.Type);
         }
 
+        private void deleteDish_Click(object sender, EventArgs e)
+        {
+            deleteItemForm.ShowMenu();
+            deleteItemForm.ShowDialog();
+            if (deleteItemForm.Abort) return;
+            Type type = deleteItemForm.DelDish.Type;
+            Menu.Instance.RemoveDish(deleteItemForm.DelDish);
+            ReLoadMenu(type);
+            MessageBox.Show("Đã xóa món thành công !", "Thông báo");         
+        }
+        #region ???? điền hộ phát
         private void Form1_Load(object sender, EventArgs e)
         {
             timeThread = new Thread(() => UpdateTime()); // create thread for updating the time
@@ -206,7 +219,7 @@ namespace QuanLi
                 Thread.Sleep(100);
             }
         }
-
+        #endregion
         #region Build custom controls and Mediator
         public interface IMediator
         {
@@ -410,7 +423,7 @@ namespace QuanLi
                 CustomNumericUpDown cnup = (CustomNumericUpDown)sender;
                 if (cnup == null || cnup.CurrDish.Equals(null))
                     return;
-                
+
                 Form1 form1 = Form1.Instance;
                 if (cnup.Value <= 0)
                 {
@@ -545,7 +558,7 @@ namespace QuanLi
             switchVisible(panelDishes);
         }
         #endregion
-
+        #region load menu button by type 
         private void Food_Click(object sender, EventArgs e)
         {
             switchVisible(menuFood);
@@ -565,62 +578,48 @@ namespace QuanLi
         {
             switchVisible(menuTopping);
         }
-
-        #region Save to Menu and Bill
+        #endregion
+        #region Save to Menu and Bill and refresh button
         private void RefreshBut_Click(object sender, EventArgs e)
         {
             if (TotalPrice.Text == "0")
             {
                 return;
             }
-            foreach (Control control in menuFood.Controls)
+            foreach (CustomNumericUpDown control in menuFood.Controls.OfType<CustomNumericUpDown>())
             {
-                if (control is CustomNumericUpDown)
-                {
-                    CustomNumericUpDown upDown = (CustomNumericUpDown)control;
-                    upDown.Value = 0;
-                }
+                control.Value = 0;
+
             }
 
-            foreach (Control control in menuDrink.Controls)
+            foreach (CustomNumericUpDown control in menuDrink.Controls.OfType<CustomNumericUpDown>())
             {
-                if (control is CustomNumericUpDown)
-                {
-                    CustomNumericUpDown upDown = (CustomNumericUpDown)control;
-                    upDown.Value = 0;
-                }
+                control.Value = 0;
+
             }
 
-            foreach (Control control in menuTopping.Controls)
+            foreach (CustomNumericUpDown control in menuTopping.Controls.OfType<CustomNumericUpDown>())
             {
-                if (control is CustomNumericUpDown)
-                {
-                    CustomNumericUpDown upDown = (CustomNumericUpDown)control;
-                    upDown.Value = 0;
-                }
+                control.Value = 0;
+
             }
 
-            foreach (Control control in menuSpecial.Controls)
+            foreach (CustomNumericUpDown control in menuSpecial.Controls.OfType<CustomNumericUpDown>())
             {
-                if (control is CustomNumericUpDown)
-                {
-                    CustomNumericUpDown upDown = (CustomNumericUpDown)control;
-                    upDown.Value = 0;
-                }
+                control.Value = 0;
+
             }
 
         }
-        private void UpdateNRefresh(Control control)
+        private void UpdateNRefresh(CustomNumericUpDown control)
         {
-            if (control is CustomNumericUpDown)
+            //CustomNumericUpDown upDown = (CustomNumericUpDown)control;
+            if (control.Value != 0)
             {
-                CustomNumericUpDown upDown = (CustomNumericUpDown)control;
-                if (upDown.Value != 0)
-                {
-                    upDown.CurrDish.NumberOfSells += Convert.ToInt32(upDown.Value);
-                    upDown.Value = 0;
-                }
+                control.CurrDish.NumberOfSells += Convert.ToInt32(control.Value);
+                control.Value = 0;
             }
+
         }
         private void Pay_Click(object sender, EventArgs e)
         {
@@ -635,28 +634,26 @@ namespace QuanLi
             ListBill.Instance.Bills.Add(newBill);
 
             //Update on Menu and refresh
-            foreach (Control control in menuFood.Controls)
+            foreach (CustomNumericUpDown control in menuFood.Controls.OfType<CustomNumericUpDown>())
             {
                 UpdateNRefresh(control);
             }
 
-            foreach (Control control in menuDrink.Controls)
+            foreach (CustomNumericUpDown control in menuDrink.Controls.OfType<CustomNumericUpDown>())
             {
                 UpdateNRefresh(control);
             }
 
-            foreach (Control control in menuTopping.Controls)
+            foreach (CustomNumericUpDown control in menuTopping.Controls.OfType<CustomNumericUpDown>())
             {
                 UpdateNRefresh(control);
             }
 
-            foreach (Control control in menuSpecial.Controls)
+            foreach (CustomNumericUpDown control in menuSpecial.Controls.OfType<CustomNumericUpDown>())
             {
                 UpdateNRefresh(control);
             }
         }
-        #endregion
-
         public void CalToTal()
         {
             double total = 0;
@@ -669,7 +666,7 @@ namespace QuanLi
             }
             TotalPrice.Text = Convert.ToString(total);
         }
-
+        #endregion
         #region Memento
         public IMemento Save(CustomNumericUpDown control)
         {
@@ -759,7 +756,9 @@ namespace QuanLi
 
             base.WndProc(ref mes);
         }
+
         #endregion
+
     }
 
     public partial class FormMain : Form

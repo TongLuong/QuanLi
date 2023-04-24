@@ -68,6 +68,7 @@ namespace QuanLi
             Total = new System.Windows.Forms.Label();
             TotalPrice = new System.Windows.Forms.Label();
             RefreshBut = new System.Windows.Forms.Button();
+            deleteDish = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)pbMenu).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pbOrder).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox11).BeginInit();
@@ -386,7 +387,7 @@ namespace QuanLi
             AddDish.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(255, 128, 128);
             AddDish.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             AddDish.Font = new System.Drawing.Font("Cambria", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            AddDish.Location = new System.Drawing.Point(391, 673);
+            AddDish.Location = new System.Drawing.Point(265, 674);
             AddDish.Name = "AddDish";
             AddDish.Size = new System.Drawing.Size(117, 51);
             AddDish.TabIndex = 43;
@@ -554,6 +555,23 @@ namespace QuanLi
             RefreshBut.UseVisualStyleBackColor = false;
             RefreshBut.Click += RefreshBut_Click;
             // 
+            // deleteDish
+            // 
+            deleteDish.BackColor = System.Drawing.Color.FromArgb(250, 248, 0);
+            deleteDish.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            deleteDish.FlatAppearance.BorderSize = 0;
+            deleteDish.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(128, 255, 128);
+            deleteDish.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(255, 128, 128);
+            deleteDish.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            deleteDish.Font = new System.Drawing.Font("Cambria", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            deleteDish.Location = new System.Drawing.Point(398, 674);
+            deleteDish.Name = "deleteDish";
+            deleteDish.Size = new System.Drawing.Size(117, 51);
+            deleteDish.TabIndex = 52;
+            deleteDish.Text = "Xóa món";
+            deleteDish.UseVisualStyleBackColor = false;
+            deleteDish.Click += deleteDish_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -561,6 +579,7 @@ namespace QuanLi
             BackColor = System.Drawing.Color.White;
             ClientSize = new System.Drawing.Size(1404, 736);
             ControlBox = false;
+            Controls.Add(deleteDish);
             Controls.Add(RefreshBut);
             Controls.Add(TotalPrice);
             Controls.Add(Total);
@@ -653,6 +672,7 @@ namespace QuanLi
         private System.Windows.Forms.Label Total;
         private System.Windows.Forms.Label TotalPrice;
         private System.Windows.Forms.Button RefreshBut;
+        private System.Windows.Forms.Button deleteDish;
     }
 }
 

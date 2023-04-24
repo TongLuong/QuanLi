@@ -67,7 +67,7 @@ namespace QuanLi
         private void Accept_Click(object sender, EventArgs e)
         {
             name = ItemName.Text;
-            File.Copy(ItemImage.Text, baseDir + imageName, true);
+            if(ItemImage.Text != "")File.Copy(ItemImage.Text, baseDir + imageName, true);
             try
             {
                 price = Convert.ToDouble(ItemPrice.Text);
@@ -84,6 +84,7 @@ namespace QuanLi
             }
 
             Enum.TryParse(ItemType.SelectedItem.ToString(), out type);
+            MessageBox.Show("Thêm món thành công !");
 
             this.Close();
         }

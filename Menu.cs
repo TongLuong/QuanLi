@@ -334,7 +334,7 @@ namespace QuanLi
         {
             mostSellingDishes.Clear();
             if (count == 0) return mostSellingDishes;
-            List<Dish> dishes = foodList.Concat(drinkList).Concat(toppingList).Concat(specialList).ToList();
+            List<Dish> dishes = GetAllDishes();
             dishes.Sort((a, b) => a > b ? -1 : 0);
             IEnumerator<Dish> it = dishes.GetEnumerator ();
             int mostSelling = 0;
@@ -375,6 +375,10 @@ namespace QuanLi
                 }
             }
             return mostSellingDishes;
+        }
+        public List<Dish> GetAllDishes()
+        {
+            return foodList.Concat(drinkList).Concat(toppingList).Concat(specialList).ToList();
         }
         #endregion
     }
