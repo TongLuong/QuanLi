@@ -67,7 +67,7 @@ namespace QuanLi
             if (!addTime)
                 objectName = typeof(T).Name;
             else
-                objectName = @DateTime.Now.ToString("dd-MM-yyyy");
+                objectName = DateTime.Now.ToString("dd-MM-yyyy");
 
             string filePath = baseDataDir + objectName + extension;
             //int count = File.ReadLines(@"E:\File.txt").Count();

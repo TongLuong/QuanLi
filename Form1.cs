@@ -70,7 +70,7 @@ namespace QuanLi
             ReLoadMenu(type);
             MessageBox.Show("Đã xóa món thành công !", "Thông báo");         
         }
-        #region ???? điền hộ phát
+        #region Events Handling
         private void Form1_Load(object sender, EventArgs e)
         {
             timeThread = new Thread(() => UpdateTime()); // create thread for updating the time
