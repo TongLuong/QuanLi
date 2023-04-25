@@ -162,6 +162,7 @@
             // 
             // ItemImage
             // 
+            ItemImage.Enabled = false;
             ItemImage.Font = new System.Drawing.Font("Cambria", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             ItemImage.Location = new System.Drawing.Point(90, 221);
             ItemImage.Name = "ItemImage";

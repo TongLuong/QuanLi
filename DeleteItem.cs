@@ -17,7 +17,7 @@ namespace QuanLi
         #region inital value
         private bool abort; public bool Abort { get => abort; set => abort = value; }
         private string baseDir, dataDir, imagesDir;
-        private Dish delDish; public Dish DelDish { get => delDish; set => delDish = value; }
+        private Dish delDish;
         private DataTable dt;
         #endregion
         public DeleteItem()
@@ -76,7 +76,7 @@ namespace QuanLi
 
                 //get infor
                 int index = MenuAll.SelectedRows[0].Index;
-                imagesDir += MenuAll.Rows[index].Cells[6].Value.ToString();
+                imagesDir = baseDir.Substring(0, baseDir.IndexOf("bin")) + "Images\\Form1\\"+ MenuAll.Rows[index].Cells[6].Value.ToString();
                 string id = MenuAll.Rows[index].Cells[0].Value.ToString();
                 //get dish
                 List<Dish> all = Menu.Instance.GetAllDishes();
@@ -89,19 +89,14 @@ namespace QuanLi
                         break;
                     }
                 }
-                //del
+                //delete
+                Type type = delDish.Type;
+                if (!Menu.Instance.RemoveDish(delDish)) return;
                 if (MenuAll.Rows[index].Cells[6].Value.ToString() != "") File.Delete(imagesDir);
                 MenuAll.Rows.RemoveAt(index);
-
-                //Database.Instance.
-                using (StreamWriter wrt = new StreamWriter(dataDir))
-                {
-                    foreach (DataRow row in dt.Rows)
-                    {
-                        string[] fields = row.ItemArray.Select(field => field.ToString()).ToArray();
-                        wrt.WriteLine(string.Join(",", fields));
-                    }
-                }
+                Database.Instance.WriteCSV<Dish>(Menu.Instance.GetAllDishes(), false,true);
+                Form1.Instance.ReLoadMenu(type);
+                abort = false;
                 this.Close();
             }
 

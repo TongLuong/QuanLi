@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Windows.Forms;
@@ -47,30 +49,44 @@ namespace QuanLi
                 return instance;
             }
         }
+        #region add and delete button
         private void AddDish_Click(object sender, EventArgs e)
         {
+            if(flowOrderName.Controls.Count > 0)
+            {
+                MessageBox.Show("Đang đặt đơn hàng, không thể thêm món !", "Lỗi");
+                return;
+            }
             addItemForm.ShowDialog();
             if (addItemForm.Abort)
                 return;
+            
             Dish dish = new Dish(addItemForm.itemName, addItemForm.itemPrice, addItemForm.itemExpense, addItemForm.itemType, addItemForm.ImageName);
-
+            if (!Menu.Instance.AddDish(dish))
+            {
+                return;
+            }
+            addItemForm.AddImage();
             List<Dish> dishes = new List<Dish>();
             dishes.Add(dish);
             database.WriteCSV(dishes);
-            Menu.Instance.AddDish(dish);
             ReLoadMenu(dish.Type);
+            MessageBox.Show("Thêm món thành công !","Thông báo");
         }
 
         private void deleteDish_Click(object sender, EventArgs e)
         {
+            if (flowOrderName.Controls.Count > 0)
+            {
+                MessageBox.Show("Đang đặt đơn hàng, không thể xóa món !", "Lỗi");
+                return;
+            }
             deleteItemForm.ShowMenu();
             deleteItemForm.ShowDialog();
             if (deleteItemForm.Abort) return;
-            Type type = deleteItemForm.DelDish.Type;
-            Menu.Instance.RemoveDish(deleteItemForm.DelDish);
-            ReLoadMenu(type);
             MessageBox.Show("Đã xóa món thành công !", "Thông báo");         
         }
+        #endregion
         #region Events Handling
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -221,6 +237,7 @@ namespace QuanLi
             }
         }
         #endregion
+
         #region Build custom controls and Mediator
         public interface IMediator
         {
@@ -574,7 +591,7 @@ namespace QuanLi
                 yLocation += moveY;
             }
         }
-        private void ReLoadMenu(Type type) // used after remove or add dish to display on form
+        public void ReLoadMenu(Type type) // used after remove or add dish to display on form
         {
             Panel panelDishes = null;
             switch (type)
@@ -589,6 +606,7 @@ namespace QuanLi
             switchVisible(panelDishes);
         }
         #endregion
+
         #region load menu button by type 
         private void Food_Click(object sender, EventArgs e)
         {
@@ -610,6 +628,7 @@ namespace QuanLi
             switchVisible(menuTopping);
         }
         #endregion
+
         #region Save to Menu and Bill and refresh button
         private void RefreshBut_Click(object sender, EventArgs e)
         {
