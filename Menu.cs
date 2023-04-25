@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,42 +22,49 @@ namespace QuanLi
     }
     public class Dish
     {
-        private string path = "Images\\Form1";
+        private string path = "";
         #region Feature
-        long id; public long ID { get => id; set=> id = value; }
+        string id; public string ID { get => id; set=> id = value; }
         string name; public string Name { get => name; set => name = value; }
         double price; public double Price { get => price; set => price = value; }
         double prodExpense; public double ProdExpense { get => prodExpense; set => prodExpense = value; }
         int numberOfSells; public int NumberOfSells { get => numberOfSells; set => numberOfSells = value; }
         Type type; public Type Type { get => type; set => type = value; }
-        string pathImage; public string PathImage { get=> pathImage; set => pathImage = value; }
+        string imageName; public string ImageName { get=> imageName; set => imageName = value; }
+        string time; public string Time { get =>  time; set => time = value; }
         #endregion
 
         #region constructor
-        public Dish(long id, string name, double price, double prodExpense, int numberOfSells, Type type, string imageName)
+
+        public Dish(string id, string name, double price, double prodExpense, int numberOfSells, Type type, string imageName, string time = "")
         {
             this.id = id;
             this.name = name;
             this.price = price;
             this.prodExpense = prodExpense;
-            this.numberOfSells = 0;
+            this.numberOfSells = numberOfSells;
             this.type = type;
-            this.pathImage = path + imageName;
+            this.imageName = imageName;
+            this.time = time;
+
+            InitImagePath();
         }
 
         public Dish(string name, double price, double prodExpense, Type type, string imageName)
         {
-            this.id = NewId();
+            this.id = NewId().ToString();
             this.name = name;
             this.price = price;
             this.prodExpense = prodExpense;
             this.numberOfSells = 0;
             this.type = type;
-            this.pathImage = path + imageName;
+            this.ImageName = imageName;
+
+            InitImagePath();
         }
 
         #endregion
-        #region overloading 
+        #region overloading
         public static bool operator !=(Dish A, Dish B)
         {
             return (A.numberOfSells != B.numberOfSells);
@@ -97,13 +106,10 @@ namespace QuanLi
             {
                 return true;
             }
-
-            if (ReferenceEquals(obj, null))
-            {
+            else if (ReferenceEquals(obj, null))
                 return false;
-            }
-
-            throw new NotImplementedException();
+            else
+                return false;
         }
 
         public static Dish operator +(Dish dish, int val) //maybe not necessary cause of modifying by using value in textBox GUI
@@ -139,6 +145,18 @@ namespace QuanLi
         private long NewId()
         {
             return DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
+        }
+
+        private void InitImagePath()
+        {
+            string baseDir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            int index = baseDir.IndexOf("bin");
+            path = baseDir.Substring(0, index) + "Images\\Form1\\";
+        }
+
+        public string GetImagePath()
+        {
+            return path + imageName;
         }
         #endregion
     }
@@ -227,34 +245,43 @@ namespace QuanLi
             return refList;
 
         }
-        public void AddDish(Dish dish) 
+        public bool AddDish(Dish dish)
         {
+            if(dish.Type == Type.NONE)
+            {
+                MessageBox.Show("Unvalid Type !");
+                return false;
+            }
             List<Dish> refList = getListByType(dish.Type);
-            if(refList.Contains(dish))
+            IEnumerator<Dish> it = refList.GetEnumerator();
+            while (it.MoveNext())
             {
-               
-                MessageBox.Show("Available Dish !!");
+                if(it.Current.Name == dish.Name)
+                {
+                    MessageBox.Show("Available Dish !!");
+                    return false;
+                }
             }
-            else
-            {
-                refList.Add(dish);
-                count++;
-            }
-
+            refList.Add(dish);
+            count++;
+            return true;
         }
 
-        public void RemoveDish(Dish dish)
+        public bool RemoveDish(Dish dish)
         {
             List<Dish> refList = getListByType(dish.Type);
-            if (refList.Contains(dish))
+            IEnumerator<Dish> it = refList.GetEnumerator();
+            while (it.MoveNext())
             {
-                refList.Remove(dish);
-                count--;
+                if (it.Current.Name == dish.Name)
+                {
+                    refList.Remove(dish);
+                    count--;
+                    return true;
+                }
             }
-            else
-            {
-                MessageBox.Show("Unvailable dish !!");
-            }
+            MessageBox.Show("Unvailable dish !!");
+            return false;
         }
 
         public void SortMenu(Type type) 
@@ -321,13 +348,13 @@ namespace QuanLi
             return total;
 
         }
-        public List<Dish> GetMostSelling()
+        public List<Dish> GetMostSelling(List<Dish> mostSellingDishes)
         {
-            if (count == 0) return null;
-            List<Dish> dishes = foodList.Concat(drinkList).Concat(toppingList).Concat(specialList).ToList();
+            mostSellingDishes.Clear();
+            if (count == 0) return mostSellingDishes;
+            List<Dish> dishes = GetAllDishes();
             dishes.Sort((a, b) => a > b ? -1 : 0);
             IEnumerator<Dish> it = dishes.GetEnumerator ();
-            List<Dish> mostSellingDishes = new List<Dish>();
             int mostSelling = 0;
             while(it.MoveNext())
             {
@@ -344,13 +371,13 @@ namespace QuanLi
             }
             return mostSellingDishes;
         }
-        public List<Dish> GetMostSelling(Type type)
+        public List<Dish> GetMostSelling(Type type,List<Dish> mostSellingDishes)
         {
-            if (count == 0) return null;
+            mostSellingDishes.Clear();
             List<Dish> dishes = getListByType(type);
+            if(dishes.Count == 0) { return mostSellingDishes; }
             dishes.Sort((a, b) => a > b ? -1 : 0);
             IEnumerator<Dish> it = dishes.GetEnumerator();
-            List<Dish> mostSellingDishes = new List<Dish>();
             int mostSelling = 0;
             while (it.MoveNext())
             {
@@ -366,6 +393,10 @@ namespace QuanLi
                 }
             }
             return mostSellingDishes;
+        }
+        public List<Dish> GetAllDishes()
+        {
+            return foodList.Concat(drinkList).Concat(toppingList).Concat(specialList).ToList();
         }
         #endregion
     }

@@ -1,12 +1,11 @@
 ﻿using System.Collections.Generic;
-using System.Xml;
 using System.IO;
-using System.Xml.Serialization;
 using System;
 using System.Reflection;
 using System.Text;
 using System.Linq;
 using System.Windows.Forms;
+using System.Globalization;
 
 namespace QuanLi
 {
@@ -32,7 +31,7 @@ namespace QuanLi
         {
             get
             {
-                if (database == null) 
+                if (database == null)
                     database = new Database();
                 return database;
             }
@@ -61,32 +60,49 @@ namespace QuanLi
         /// Write data to csv file
         /// </summary>
         /// <param name="obj"></param>
-        public void WriteCSV<T>(List<T> obj, bool addTime = false)
+        public void WriteCSV<T>(List<T> obj, bool addTime = false, bool overrideOld = false)
         {
-            string objectName = typeof(T).Name;
+            string objectName = null;
+
+            if (!addTime)
+                objectName = typeof(T).Name;
+            else
+                objectName = DateTime.Now.ToString("dd-MM-yyyy");
+
             string filePath = baseDataDir + objectName + extension;
             //int count = File.ReadLines(@"E:\File.txt").Count();
-            
+
             StringBuilder csvStr = new StringBuilder();
 
-            using (StreamWriter writer = new StreamWriter(new FileStream(filePath, FileMode.Append, FileAccess.Write), Encoding.UTF8))
+            using (StreamWriter writer = new StreamWriter(new FileStream(filePath, overrideOld ? FileMode.Create : FileMode.Append, FileAccess.Write), Encoding.UTF8))
             {
                 foreach (object objItem in obj)
                 {
                     StringBuilder newLine = new StringBuilder();
+                    int count = 0;
                     foreach (object attr in GetAttributeValue<object>(objItem))
                     {
                         if (attr == null)
-                            return;
+                        {
+                            newLine.Append(",");
+                            continue;
+                        }    
+
+                        count++;
+                        if (attr.ToString() == "" && count >= 8)
+                        {
+                            if (addTime)
+                            {
+                                newLine.Append("," + DateTime.Now.ToString("dd-MM-yyyy"));
+                                continue;
+                            }
+                        }
 
                         newLine.Append("," + attr.ToString());
                     }
 
-                    if (addTime)
-                        newLine.Append("," + DateTime.Now.ToString("dd/MM/yyyy"));
-
                     newLine.Remove(0, 1);
-                    
+
                     writer.WriteLine(newLine.ToString());
                 }
             }
@@ -95,13 +111,11 @@ namespace QuanLi
         /// <summary>
         /// Iterator for reading csv file line by line
         /// </summary>
-        /// <param name="T"></param>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="date">Format "dd-mm-yyyy"</param>
         /// <returns></returns>
-        public IEnumerable<string[]> ReadCSV<T>()
-        {
-            string objectName = typeof(T).Name;
-            string filePath = baseDataDir + objectName + extension;
-
+        private IEnumerable<string[]> ReadCSV<T>(string filePath)
+        { 
             using (FileStream fs = new FileStream(filePath, FileMode.Open,
                                 FileAccess.Read, FileShare.None, 65536,
                                 FileOptions.SequentialScan))
@@ -120,18 +134,30 @@ namespace QuanLi
         /// <summary>
         /// Read csv and store it in a list
         /// </summary>
-        /// <param name="T"></param>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="date">Format "dd-mm-yyyy"</param>
         /// <returns></returns>
-        public List<T> ReadCSVToList<T>()
+        public List<T> ReadCSVToList<T>(string date = null)
         {
-            string objectName = typeof(T).Name;
-            string filePath = baseDataDir + objectName + extension;
+            if (!CheckForDate(date) && date != null)
+                return new List<T>();
+
             List<string> listOfType = Enum.GetNames(typeof(Type)).ToList();
+            string objectName = typeof(T).Name;
+            string filePath = "";
+
+            if (date == null)
+                filePath = baseDataDir + objectName + extension;
+            else
+                filePath = baseDataDir + date + extension;
+
+            if (!File.Exists(filePath))
+                return null;
 
             if (typeof(T) == typeof(Dish))
             {
                 List<Dish> menu = new List<Dish>();
-                foreach (string[] sarr in ReadCSV<T>())
+                foreach (string[] sarr in ReadCSV<T>(filePath))
                 {
                     if (!listOfType.Contains(sarr[5]))
                         continue;
@@ -139,22 +165,29 @@ namespace QuanLi
                     Type tempEnum;
                     Enum.TryParse(sarr[5], out tempEnum);
 
+                    string time = "";
+                    if (sarr.Length < 8)
+                        time = "";
+                    else
+                        time = sarr[7];
+                    
                     try
                     {
                         Dish temp = new Dish
                         (
-                            Convert.ToInt64(sarr[0]),
+                            sarr[0],
                             sarr[1],
                             Convert.ToDouble(sarr[2]),
                             Convert.ToDouble(sarr[3]),
                             Convert.ToInt32(sarr[4]),
                             tempEnum,
-                            sarr[5]
+                            sarr[6],
+                            time
                         );
 
                         menu.Add(temp);
                     }
-                    catch(Exception ex)
+                    catch (Exception ex)
                     {
                         MessageBox.Show(ex.Message);
                     }
@@ -163,7 +196,50 @@ namespace QuanLi
                 return menu as List<T>;
             }
 
-            return new List<T> { };
+            return new List<T>();
+        }
+
+        /// <summary>
+        /// Specific function for reading all data recorded for revenue, not the menu
+        /// </summary>
+        /// <returns></returns>
+        public List<T> ReadCSVAllDate<T>()
+        {
+            DirectoryInfo dir = new DirectoryInfo(baseDataDir);
+            FileInfo[] files = dir.GetFiles();
+
+            List<T> result = new List<T>();
+            foreach(FileInfo file in files)
+            {
+                string fileName = Path.GetFileNameWithoutExtension(file.Name);
+
+                if (fileName != "Dish")
+                    result.AddRange(ReadCSVToList<T>(fileName));
+            }
+
+            return result;
+        }
+
+        /// <summary>
+        /// check for date whether it is in corect format (dd-MM-yyyy)
+        /// </summary>
+        /// <param name="date"></param>
+        /// <returns></returns>
+        private bool CheckForDate(string date)
+        {
+            if (date == null)
+                return false;
+
+            DateTime dt;
+            string[] formats = { "dd-MM-yyyy" };
+            if (DateTime.TryParseExact(date, formats, CultureInfo.InvariantCulture,
+                                      DateTimeStyles.None, out dt))
+                return true;
+            else
+            {
+                MessageBox.Show("Wrong date format!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
         }
     }
 }

@@ -39,71 +39,80 @@
             Accept = new System.Windows.Forms.Button();
             label5 = new System.Windows.Forms.Label();
             ItemType = new System.Windows.Forms.ComboBox();
+            addImage = new System.Windows.Forms.Button();
+            ItemImage = new System.Windows.Forms.TextBox();
+            label6 = new System.Windows.Forms.Label();
             SuspendLayout();
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new System.Drawing.Point(12, 49);
+            label1.Font = new System.Drawing.Font("Cambria", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            label1.Location = new System.Drawing.Point(8, 49);
             label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(32, 20);
+            label1.Size = new System.Drawing.Size(35, 20);
             label1.TabIndex = 0;
             label1.Text = "Tên";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new System.Drawing.Point(12, 92);
+            label2.Font = new System.Drawing.Font("Cambria", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            label2.Location = new System.Drawing.Point(8, 92);
             label2.Name = "label2";
-            label2.Size = new System.Drawing.Size(60, 20);
+            label2.Size = new System.Drawing.Size(64, 20);
             label2.TabIndex = 1;
             label2.Text = "Giá tiền";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new System.Drawing.Point(12, 136);
+            label3.Font = new System.Drawing.Font("Cambria", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            label3.Location = new System.Drawing.Point(8, 136);
             label3.Name = "label3";
-            label3.Size = new System.Drawing.Size(55, 20);
+            label3.Size = new System.Drawing.Size(60, 20);
             label3.TabIndex = 2;
             label3.Text = "Chi phí";
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            label4.Location = new System.Drawing.Point(12, 9);
+            label4.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            label4.Location = new System.Drawing.Point(13, 9);
             label4.Name = "label4";
-            label4.Size = new System.Drawing.Size(248, 20);
+            label4.Size = new System.Drawing.Size(315, 23);
             label4.TabIndex = 3;
             label4.Text = "Nhập thông tin cho sản phẩm mới";
             // 
             // ItemName
             // 
-            ItemName.Location = new System.Drawing.Point(85, 46);
+            ItemName.Font = new System.Drawing.Font("Cambria", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            ItemName.Location = new System.Drawing.Point(90, 46);
             ItemName.Name = "ItemName";
-            ItemName.Size = new System.Drawing.Size(178, 27);
+            ItemName.Size = new System.Drawing.Size(243, 25);
             ItemName.TabIndex = 4;
             // 
             // ItemPrice
             // 
-            ItemPrice.Location = new System.Drawing.Point(85, 89);
+            ItemPrice.Font = new System.Drawing.Font("Cambria", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            ItemPrice.Location = new System.Drawing.Point(90, 89);
             ItemPrice.Name = "ItemPrice";
-            ItemPrice.Size = new System.Drawing.Size(178, 27);
+            ItemPrice.Size = new System.Drawing.Size(243, 25);
             ItemPrice.TabIndex = 5;
             // 
             // ItemExpense
             // 
-            ItemExpense.Location = new System.Drawing.Point(85, 133);
+            ItemExpense.Font = new System.Drawing.Font("Cambria", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            ItemExpense.Location = new System.Drawing.Point(90, 133);
             ItemExpense.Name = "ItemExpense";
-            ItemExpense.Size = new System.Drawing.Size(178, 27);
+            ItemExpense.Size = new System.Drawing.Size(243, 25);
             ItemExpense.TabIndex = 6;
             // 
             // Cancel
             // 
-            Cancel.Location = new System.Drawing.Point(169, 218);
+            Cancel.Location = new System.Drawing.Point(228, 260);
             Cancel.Name = "Cancel";
-            Cancel.Size = new System.Drawing.Size(94, 29);
+            Cancel.Size = new System.Drawing.Size(105, 40);
             Cancel.TabIndex = 7;
             Cancel.Text = "Hủy bỏ";
             Cancel.UseVisualStyleBackColor = true;
@@ -111,9 +120,9 @@
             // 
             // Accept
             // 
-            Accept.Location = new System.Drawing.Point(69, 218);
+            Accept.Location = new System.Drawing.Point(117, 260);
             Accept.Name = "Accept";
-            Accept.Size = new System.Drawing.Size(94, 29);
+            Accept.Size = new System.Drawing.Size(105, 40);
             Accept.TabIndex = 8;
             Accept.Text = "OK";
             Accept.UseVisualStyleBackColor = true;
@@ -122,9 +131,10 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new System.Drawing.Point(12, 179);
+            label5.Font = new System.Drawing.Font("Cambria", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            label5.Location = new System.Drawing.Point(8, 179);
             label5.Name = "label5";
-            label5.Size = new System.Drawing.Size(70, 20);
+            label5.Size = new System.Drawing.Size(76, 20);
             label5.TabIndex = 9;
             label5.Text = "Phân loại";
             // 
@@ -133,17 +143,51 @@
             ItemType.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             ItemType.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             ItemType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            ItemType.Font = new System.Drawing.Font("Cambria", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             ItemType.FormattingEnabled = true;
-            ItemType.Location = new System.Drawing.Point(85, 176);
+            ItemType.Location = new System.Drawing.Point(90, 176);
             ItemType.Name = "ItemType";
-            ItemType.Size = new System.Drawing.Size(178, 28);
+            ItemType.Size = new System.Drawing.Size(125, 25);
             ItemType.TabIndex = 10;
+            // 
+            // addImage
+            // 
+            addImage.Location = new System.Drawing.Point(8, 260);
+            addImage.Name = "addImage";
+            addImage.Size = new System.Drawing.Size(105, 40);
+            addImage.TabIndex = 11;
+            addImage.Text = "Thêm Ảnh";
+            addImage.UseVisualStyleBackColor = true;
+            addImage.Click += addImage_Click;
+            // 
+            // ItemImage
+            // 
+            ItemImage.Enabled = false;
+            ItemImage.Font = new System.Drawing.Font("Cambria", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            ItemImage.Location = new System.Drawing.Point(90, 221);
+            ItemImage.Name = "ItemImage";
+            ItemImage.Size = new System.Drawing.Size(243, 25);
+            ItemImage.TabIndex = 12;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Font = new System.Drawing.Font("Cambria", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            label6.Location = new System.Drawing.Point(8, 224);
+            label6.Name = "label6";
+            label6.Size = new System.Drawing.Size(74, 20);
+            label6.TabIndex = 13;
+            label6.Text = "Hình ảnh";
             // 
             // AddItem
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(273, 253);
+            ClientSize = new System.Drawing.Size(340, 307);
+            ControlBox = false;
+            Controls.Add(label6);
+            Controls.Add(ItemImage);
+            Controls.Add(addImage);
             Controls.Add(ItemType);
             Controls.Add(label5);
             Controls.Add(Accept);
@@ -156,9 +200,10 @@
             Controls.Add(label2);
             Controls.Add(label1);
             MaximizeBox = false;
+            MaximumSize = new System.Drawing.Size(358, 325);
+            MinimumSize = new System.Drawing.Size(358, 325);
             Name = "AddItem";
             StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            Text = "AddItemcs";
             Load += AddItem_Load;
             ResumeLayout(false);
             PerformLayout();
@@ -177,5 +222,8 @@
         private System.Windows.Forms.Button Accept;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox ItemType;
+        private System.Windows.Forms.Button addImage;
+        private System.Windows.Forms.TextBox ItemImage;
+        private System.Windows.Forms.Label label6;
     }
 }
