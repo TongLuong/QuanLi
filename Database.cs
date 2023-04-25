@@ -60,7 +60,7 @@ namespace QuanLi
         /// Write data to csv file
         /// </summary>
         /// <param name="obj"></param>
-        public void WriteCSV<T>(List<T> obj, bool addTime = false)
+        public void WriteCSV<T>(List<T> obj, bool addTime = false, bool overrideOld = false)
         {
             string objectName = null;
 
@@ -74,7 +74,7 @@ namespace QuanLi
 
             StringBuilder csvStr = new StringBuilder();
 
-            using (StreamWriter writer = new StreamWriter(new FileStream(filePath, FileMode.Append, FileAccess.Write), Encoding.UTF8))
+            using (StreamWriter writer = new StreamWriter(new FileStream(filePath, overrideOld ? FileMode.Create : FileMode.Append, FileAccess.Write), Encoding.UTF8))
             {
                 foreach (object objItem in obj)
                 {
