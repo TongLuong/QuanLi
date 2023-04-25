@@ -477,6 +477,9 @@ namespace QuanLi
             Controls.Add(dropdownPanel);
             Controls.Add(panelFull);
             Margin = new Padding(2);
+            MaximizeBox = false;
+            MaximumSize = new System.Drawing.Size(1298, 682);
+            MinimumSize = new System.Drawing.Size(1298, 682);
             Name = "Form2";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Doanh thu";

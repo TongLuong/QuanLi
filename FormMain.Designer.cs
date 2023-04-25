@@ -174,6 +174,7 @@ namespace QuanLi
             Controls.Add(pictureBox1);
             Controls.Add(MenuButton);
             Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            MaximizeBox = false;
             MaximumSize = new System.Drawing.Size(1140, 784);
             MinimumSize = new System.Drawing.Size(1140, 784);
             Name = "FormMain";

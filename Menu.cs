@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,7 +22,7 @@ namespace QuanLi
     }
     public class Dish
     {
-        private string path = "Images\\Form1";
+        private string path = "";
         #region Feature
         string id; public string ID { get => id; set=> id = value; }
         string name; public string Name { get => name; set => name = value; }
@@ -44,6 +46,8 @@ namespace QuanLi
             this.type = type;
             this.imageName = imageName;
             this.time = time;
+
+            InitImagePath();
         }
 
         public Dish(string name, double price, double prodExpense, Type type, string imageName)
@@ -55,6 +59,8 @@ namespace QuanLi
             this.numberOfSells = 0;
             this.type = type;
             this.ImageName = imageName;
+
+            InitImagePath();
         }
 
         #endregion
@@ -139,6 +145,13 @@ namespace QuanLi
         private long NewId()
         {
             return DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
+        }
+
+        private void InitImagePath()
+        {
+            string baseDir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            int index = baseDir.IndexOf("bin");
+            path = baseDir.Substring(0, index) + "Images\\Form1\\";
         }
 
         public string GetImagePath()
