@@ -52,7 +52,7 @@ namespace QuanLi
         #region add and delete button
         private void AddDish_Click(object sender, EventArgs e)
         {
-            if(flowOrderName.Controls.Count > 0)
+            if (flowOrderName.Controls.Count > 0)
             {
                 MessageBox.Show("Đang đặt đơn hàng, không thể thêm món !", "Lỗi");
                 return;
@@ -60,7 +60,7 @@ namespace QuanLi
             addItemForm.ShowDialog();
             if (addItemForm.Abort)
                 return;
-            
+
             Dish dish = new Dish(addItemForm.itemName, addItemForm.itemPrice, addItemForm.itemExpense, addItemForm.itemType, addItemForm.ImageName);
             if (!Menu.Instance.AddDish(dish))
             {
@@ -71,7 +71,7 @@ namespace QuanLi
             dishes.Add(dish);
             database.WriteCSV(dishes);
             ReLoadMenu(dish.Type);
-            MessageBox.Show("Thêm món thành công !","Thông báo");
+            MessageBox.Show("Thêm món thành công !", "Thông báo");
         }
 
         private void deleteDish_Click(object sender, EventArgs e)
@@ -84,7 +84,7 @@ namespace QuanLi
             deleteItemForm.ShowMenu();
             deleteItemForm.ShowDialog();
             if (deleteItemForm.Abort) return;
-            MessageBox.Show("Đã xóa món thành công !", "Thông báo");         
+            MessageBox.Show("Đã xóa món thành công !", "Thông báo");
         }
         #endregion
         #region Events Handling
@@ -313,11 +313,19 @@ namespace QuanLi
                 get => currDish;
                 set => currDish = value;
             }
+
+            private decimal oldValue;
+            public decimal OldValue
+            {
+                get => oldValue;
+                set => oldValue = value;
+            }
             //======================================
             public CustomNumericUpDown() : base()
             {
                 labelsVisibling = false;
                 mediator = null;
+                oldValue = 0;
             }
 
             public void AttachDish(Dish dish)
@@ -339,14 +347,14 @@ namespace QuanLi
 
             public override void UpButton()
             {
-                // save state before changing value
+                // save state before chaging value
                 Form1.Instance.caretaker.Backup(this);
                 base.UpButton();
             }
 
             public override void DownButton()
             {
-                // save state before changing value
+                // save state before chaging value
                 Form1.Instance.caretaker.Backup(this);
                 base.DownButton();
             }
@@ -462,6 +470,15 @@ namespace QuanLi
                     return;
 
                 Form1 form1 = Form1.Instance;
+
+                decimal prevVal = Convert.ToDecimal(((UpDownBase)sender).Text); // value on textbox usually updates after value property
+                if (prevVal == cnup.Value) // so if it's value equals to the current value property, that means user has input value by hand
+                {
+                    form1.caretaker.Backup(cnup); // so we back the state up
+                    form1.caretaker.SetLast(cnup.OldValue, cnup.GetIndex());
+                }
+                cnup.OldValue = cnup.Value;
+
                 if (cnup.Value <= 0)
                 {
                     List<Control> controls = cnup.Mediator.GetControls();
@@ -767,7 +784,6 @@ namespace QuanLi
         }
 
         #endregion
-
     }
 
     public partial class FormMain : Form
@@ -783,6 +799,7 @@ namespace QuanLi
     {
         public CustomNumericUpDown RestoreState();
         public int GetIndex();
+        public void SetValueNIndex(decimal value, int index);
     }
 
     public class ConcreteMemento : IMemento
@@ -807,6 +824,12 @@ namespace QuanLi
         public int GetIndex()
         {
             return index;
+        }
+
+        public void SetValueNIndex(decimal value, int index)
+        {
+            this.value = value;
+            this.index = index;
         }
     }
 
@@ -847,6 +870,11 @@ namespace QuanLi
         public void ClearAll()
         {
             mementos.Clear();
+        }
+
+        public void SetLast(decimal value, int index) // set value and index of last item
+        {
+            mementos.Last().SetValueNIndex(value, index);
         }
     }
     #endregion
