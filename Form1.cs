@@ -423,7 +423,8 @@ namespace QuanLi
                 pb.Location = new Point(x, y);
                 pb.BackColor = Color.White;
                 pb.Image = pb.InitialImage;
-
+                pb.SizeMode = PictureBoxSizeMode.StretchImage;
+                
                 if (imagePath != null && File.Exists(imagePath))
                     pb.Image = Image.FromFile(imagePath); // commented until we have images
                 return pb;
