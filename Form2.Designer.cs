@@ -476,6 +476,7 @@ namespace QuanLi
             ClientSize = new System.Drawing.Size(1280, 635);
             Controls.Add(dropdownPanel);
             Controls.Add(panelFull);
+            Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(2);
             MaximizeBox = false;
             MaximumSize = new System.Drawing.Size(1298, 682);

@@ -618,6 +618,7 @@ namespace QuanLi
             Controls.Add(pbMenu);
             Controls.Add(pictureBox7);
             FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
             MaximizeBox = false;
             Name = "Form1";
             StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
