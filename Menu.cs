@@ -232,8 +232,13 @@ namespace QuanLi
             return refList;
 
         }
-        public void AddDish(Dish dish)
+        public bool AddDish(Dish dish)
         {
+            if(dish.Type == Type.NONE)
+            {
+                MessageBox.Show("Unvalid Type !");
+                return false;
+            }
             List<Dish> refList = getListByType(dish.Type);
             IEnumerator<Dish> it = refList.GetEnumerator();
             while (it.MoveNext())
@@ -241,15 +246,15 @@ namespace QuanLi
                 if(it.Current.Name == dish.Name)
                 {
                     MessageBox.Show("Available Dish !!");
-                    return;
+                    return false;
                 }
             }
             refList.Add(dish);
             count++;
-
+            return true;
         }
 
-        public void RemoveDish(Dish dish)
+        public bool RemoveDish(Dish dish)
         {
             List<Dish> refList = getListByType(dish.Type);
             IEnumerator<Dish> it = refList.GetEnumerator();
@@ -259,11 +264,11 @@ namespace QuanLi
                 {
                     refList.Remove(dish);
                     count--;
-                    return;
+                    return true;
                 }
             }
             MessageBox.Show("Unvailable dish !!");
-            return;
+            return false;
         }
 
         public void SortMenu(Type type) 

@@ -67,7 +67,6 @@ namespace QuanLi
         private void Accept_Click(object sender, EventArgs e)
         {
             name = ItemName.Text;
-            if (ItemImage.Text != "") File.Copy(ItemImage.Text, baseDir + imageName, true);
             try
             {
                 price = Convert.ToDouble(ItemPrice.Text);
@@ -84,7 +83,7 @@ namespace QuanLi
             }
 
             Enum.TryParse(ItemType.SelectedItem.ToString(), out type);
-            MessageBox.Show("Thêm món thành công !");
+
 
             this.Close();
         }
@@ -101,6 +100,7 @@ namespace QuanLi
             ItemPrice.Text = "";
             ItemExpense.Text = "";
             ItemImage.Text = "";
+            imageName = "";
             if (ItemType.Items.Count == 0)
             {
                 foreach (string t in Enum.GetNames(typeof(Type)))
@@ -121,6 +121,10 @@ namespace QuanLi
                 ItemImage.Text = Path.GetFullPath(ofd.FileName);
 
             }
+        }
+        public void AddImage()
+        {
+            if (ItemImage.Text != "") File.Copy(ItemImage.Text, baseDir + imageName, true);
         }
     }
 }
