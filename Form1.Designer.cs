@@ -228,10 +228,12 @@ namespace QuanLi
             // 
             // flowOrderName
             // 
+            flowOrderName.AutoScroll = true;
             flowOrderName.BackColor = System.Drawing.Color.FromArgb(213, 255, 115);
             flowOrderName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             flowOrderName.Location = new System.Drawing.Point(856, 116);
             flowOrderName.Name = "flowOrderName";
+            flowOrderName.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
             flowOrderName.Size = new System.Drawing.Size(233, 546);
             flowOrderName.TabIndex = 26;
             // 
@@ -270,19 +272,23 @@ namespace QuanLi
             // 
             // flowOrderAmount
             // 
+            flowOrderAmount.AutoScroll = true;
             flowOrderAmount.BackColor = System.Drawing.Color.FromArgb(213, 255, 115);
             flowOrderAmount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             flowOrderAmount.Location = new System.Drawing.Point(1086, 116);
             flowOrderAmount.Name = "flowOrderAmount";
+            flowOrderAmount.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
             flowOrderAmount.Size = new System.Drawing.Size(148, 546);
             flowOrderAmount.TabIndex = 27;
             // 
             // flowOrderPrice
             // 
+            flowOrderPrice.AutoScroll = true;
             flowOrderPrice.BackColor = System.Drawing.Color.FromArgb(213, 255, 115);
             flowOrderPrice.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             flowOrderPrice.Location = new System.Drawing.Point(1231, 116);
             flowOrderPrice.Name = "flowOrderPrice";
+            flowOrderPrice.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
             flowOrderPrice.Size = new System.Drawing.Size(129, 546);
             flowOrderPrice.TabIndex = 27;
             // 

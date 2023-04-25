@@ -90,6 +90,10 @@ namespace QuanLi
         #region Events Handling
         private void Form1_Load(object sender, EventArgs e)
         {
+            /*flowOrderName.Padding.Right = 10;
+            flowOrderAmount.HorizontalScroll.Visible = false;
+            flowOrderPrice.HorizontalScroll.Visible = false;*/
+
             timeThread = new Thread(() => UpdateTime()); // create thread for updating the time
             timeThread.IsBackground = true;
             timeThread.Start();
