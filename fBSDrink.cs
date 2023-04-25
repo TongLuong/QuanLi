@@ -24,7 +24,7 @@ namespace QuanLi
 
             foreach (Dish dish in dishes)
             {
-                dtgvBSDrink.Rows.Add(dish.Name, Image.FromFile(dish.GetImagePath()), dish.NumberOfSells, (dish.Price - dish.ProdExpense) * dish.NumberOfSells);
+                dtgvBSDrink.Rows.Add(dish.Name, dish.NumberOfSells, (dish.Price - dish.ProdExpense) * dish.NumberOfSells);
             }
         }
     }

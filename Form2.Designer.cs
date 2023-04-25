@@ -467,6 +467,7 @@ namespace QuanLi
             // 
             // dropdownTimer
             // 
+            dropdownTimer.Interval = 10;
             dropdownTimer.Tick += dropdownTimer_Tick;
             // 
             // Form2

@@ -78,21 +78,24 @@ namespace QuanLi
         bool listOpened = false;
         private void dropdownTimer_Tick(object sender, EventArgs e)
         {
+            dropdownPanel.Enabled = false;
             if (listOpened)
             {
-                dropdownPanel.Height -= 30;
+                dropdownPanel.Height -= 3;
                 if (dropdownPanel.Size == dropdownPanel.MinimumSize)
                 {
                     dropdownTimer.Stop();
+                    dropdownPanel.Enabled = true;
                     listOpened = false;
                 }
             }
             else
             {
-                dropdownPanel.Height += 30;
+                dropdownPanel.Height += 3;
                 if (dropdownPanel.Size == dropdownPanel.MaximumSize)
                 {
                     dropdownTimer.Stop();
+                    dropdownPanel.Enabled = true;
                     listOpened = true;
                 }
             }
@@ -153,15 +156,15 @@ namespace QuanLi
                     if (dish.Name == idx.Value)
                     {
                         DataGridViewRow row = dtgvStatistic.Rows[idx.Key];
-                        row.Cells[2].Value = (int)row.Cells[2].Value + dish.NumberOfSells;
-                        row.Cells[3].Value = (int)row.Cells[3].Value + dish.NumberOfSells * (int)dish.Price;
-                        row.Cells[4].Value = (int)row.Cells[4].Value + dish.NumberOfSells * (int)(dish.Price - dish.ProdExpense);
+                        row.Cells[2].Value = (Int32)row.Cells[2].Value + dish.NumberOfSells;
+                        row.Cells[3].Value = (Int32)row.Cells[3].Value + dish.NumberOfSells * (Int32)dish.Price;
+                        row.Cells[4].Value = (Int32)row.Cells[4].Value + dish.NumberOfSells * (Int32)(dish.Price - dish.ProdExpense);
                     }
                 }
 
             }
-            Int32 totalIncome = (int)Menu.Instance.TotalIncome();
-            Int32 totalInvestment = (int)Menu.Instance.TotalProdExpense();
+            Int32 totalIncome = (Int32)Menu.Instance.TotalIncome();
+            Int32 totalInvestment = (Int32)Menu.Instance.TotalProdExpense();
             Int32 totalProfit = totalIncome - totalInvestment;
 
             totalIncomeLabel.Text = (totalIncome > Int32.MaxValue) ? "Số tiền quá lớn" : ConvertToMoneyString(totalIncome.ToString());
@@ -199,11 +202,13 @@ namespace QuanLi
                 Int32 dayProfit = 0;
                 if (dishInDay != null)
                 {
+
+                    all = all.Concat(dishInDay).ToList();
+
                     foreach (Dish dish in dishInDay)
                     {
-                        dayProfit += (int)(dish.Price - dish.ProdExpense) * dish.NumberOfSells;
+                        dayProfit += (Int32)(dish.Price - dish.ProdExpense) * dish.NumberOfSells;
                     }
-                    all.Concat(dishInDay);
                 }
                 x[i - 1] = i;
                 y[i - 1] = dayProfit;
@@ -241,12 +246,11 @@ namespace QuanLi
                 {
                     if (dt.Month == month && dt.Year == year)
                     {
-                        Debug.Print("Y");
                         monthProfit += dish.NumberOfSells * (Int32)(dish.Price - dish.ProdExpense);
                     }
                     else
                     {
-                        if (month != 0 && year != 0)
+                        if ((month != 0 && year != 0)||dish == all[all.Count-1])
                         {
                             if (profits == null)
                                 profits = new List<Int32>(monthProfit);
@@ -256,17 +260,9 @@ namespace QuanLi
                         monthProfit = dish.NumberOfSells * (Int32)(dish.Price - dish.ProdExpense);
                         month = dt.Month;
                         year = dt.Year;
-
                     }
                 }
                 #endregion
-                if (dish == all[all.Count - 1])
-                {
-                    if (profits == null)
-                        profits = new List<Int32>(monthProfit);
-                    else
-                        profits.Add(monthProfit);
-                }
 
             }
             if (profits.Count > 1)
@@ -309,25 +305,34 @@ namespace QuanLi
                     if (dish.Name == idx.Value)
                     {
                         DataGridViewRow row = dtgvStatistic.Rows[idx.Key];
-                        row.Cells[2].Value = (int)row.Cells[2].Value + dish.NumberOfSells;
-                        row.Cells[3].Value = (int)row.Cells[3].Value + dish.NumberOfSells * (int)dish.Price;
-                        row.Cells[4].Value = (int)row.Cells[4].Value + dish.NumberOfSells * (int)(dish.Price - dish.ProdExpense);
+                        row.Cells[2].Value = (Int32)row.Cells[2].Value + dish.NumberOfSells;
+                        row.Cells[3].Value = (Int32)row.Cells[3].Value + dish.NumberOfSells * (Int32)dish.Price;
+                        row.Cells[4].Value = (Int32)row.Cells[4].Value + dish.NumberOfSells * (Int32)(dish.Price - dish.ProdExpense);
                     }
                 }
 
-                totalIncome += (int)dish.Price * dish.NumberOfSells;
-                totalInvestment += (int)dish.ProdExpense * dish.NumberOfSells;
+                totalIncome += (Int32)dish.Price * dish.NumberOfSells;
+                totalInvestment += (Int32)dish.ProdExpense * dish.NumberOfSells;
             }
             totalProfit = totalIncome - totalInvestment;
             totalIncomeLabel.Text = (totalIncome > Int32.MaxValue) ? "Số tiền quá lớn" : ConvertToMoneyString(totalIncome.ToString());
             totalInvestmentLabel.Text = (totalInvestment > Int32.MaxValue) ? "Số tiền quá lớn" : ConvertToMoneyString(totalInvestment.ToString());
             totalProfitLabel.Text = (totalProfit > Int32.MaxValue) ? "Số tiền quá lớn" : ConvertToMoneyString(totalProfit.ToString());
 
+            food.Clear();
+            drink.Clear();
+            topping.Clear();
+            special.Clear();
+
             food = GetMostSelling(QuanLi.Type.FOOD);
             drink = GetMostSelling(QuanLi.Type.DRINK);
             topping = GetMostSelling(QuanLi.Type.TOPPING);
             special = GetMostSelling(QuanLi.Type.SPECIAL);
 
+            foreach (Dish dish in food)
+            {
+                Debug.Print(dish.Name + " " + dish.NumberOfSells.ToString());
+            }
 
             DateTime updateTime = DateTime.Now;
             updateTimeLabel.Text = "Cập nhật lần cuối:  " + updateTime.ToString("HH : mm : ss     dd/MM/yyyy");
@@ -348,6 +353,7 @@ namespace QuanLi
         {
             List<Dish> dishes = Menu.Instance.getListByType(type);
             List<Dish> mostSellingDishes = new List<Dish>();
+            mostSellingDishes.Clear();
             Int32 maxProfit = 0;
             foreach (Dish dish in dishes)
             {
@@ -356,20 +362,31 @@ namespace QuanLi
                     if (dish.Name == idx.Value)
                     {
                         Int32 profit = (Int32)dtgvStatistic.Rows[idx.Key].Cells[4].Value;
+
+                        Dish tempDish = new Dish(
+                            dish.ID,
+                            dish.Name,
+                            dish.Price,
+                            dish.ProdExpense,
+                            (int)dtgvStatistic.Rows[idx.Key].Cells[2].Value,
+                            dish.Type,
+                            dish.ImageName);
+
+                        Debug.Print(profit.ToString());
                         if (profit > maxProfit)
                         {
                             mostSellingDishes.Clear();
-                            mostSellingDishes.Add(dish);
+                            mostSellingDishes.Add(tempDish);
                             maxProfit = profit;
                             continue;
                         }
                         if (profit == maxProfit)
-                            mostSellingDishes.Add(dish);
-
+                            mostSellingDishes.Add(tempDish);
                         break;
                     }
                 }
             }
+            
             return mostSellingDishes;
         }
 
