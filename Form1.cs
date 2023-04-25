@@ -6,6 +6,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Windows.Forms;
+using static QuanLi.Form1;
 
 namespace QuanLi
 {
@@ -225,6 +226,8 @@ namespace QuanLi
         {
             void Notify(object sender, string mes);
 
+            int GetIndex();
+
             List<Control> GetControls();
         }
         public class ConcreteMediator : IMediator
@@ -260,6 +263,11 @@ namespace QuanLi
                 }
             }
 
+            public int GetIndex() // get index of three custom labels in flow panel
+            {
+                return name.IndexInParent(); // 3 labels are at the same position, so we just need one for returning value
+            }
+
             public List<Control> GetControls()
             {
                 return new List<Control>() { name, amount, price };
@@ -268,11 +276,11 @@ namespace QuanLi
         //CustomeUpDown has medidator and currDish
         public partial class CustomNumericUpDown : NumericUpDown
         {
-            private bool hasMediator;
-            public bool HasMediator
+            private bool labelsVisibling;
+            public bool LabelsVisibling
             {
-                get => hasMediator;
-                set => hasMediator = value;
+                get => labelsVisibling;
+                set => labelsVisibling = value;
             }
 
             private IMediator mediator; // instance stores ConcreteMediator
@@ -291,7 +299,7 @@ namespace QuanLi
             //======================================
             public CustomNumericUpDown() : base()
             {
-                hasMediator = false;
+                labelsVisibling = false;
                 mediator = null;
             }
 
@@ -305,10 +313,16 @@ namespace QuanLi
                 mediator.Notify(this, this.Value.ToString());
             }
 
+            public int GetIndex() // get index from 3 assiciative labels
+            {
+                if (mediator == null)
+                    return -1;
+                return mediator.GetIndex();
+            }
+
             public override void UpButton()
             {
                 // save state before changing value
-                Form1.Instance.Save(this);
                 Form1.Instance.caretaker.Backup(this);
                 base.UpButton();
             }
@@ -316,7 +330,6 @@ namespace QuanLi
             public override void DownButton()
             {
                 // save state before changing value
-                Form1.Instance.Save(this);
                 Form1.Instance.caretaker.Backup(this);
                 base.DownButton();
             }
@@ -346,6 +359,13 @@ namespace QuanLi
             public void ChangeText(string newText)
             {
                 this.Text = newText;
+            }
+
+            public int IndexInParent()
+            {
+                if (this.Parent == null)
+                    return -1;
+                return this.Parent.Controls.IndexOf(this); // parent of this CustomLabel usually is FlowPanel
             }
         }
         #endregion
@@ -431,17 +451,28 @@ namespace QuanLi
                     form1.flowOrderName.Controls.Remove(controls[0]);
                     form1.flowOrderAmount.Controls.Remove(controls[1]);
                     form1.flowOrderPrice.Controls.Remove(controls[2]);
-                    cnup.HasMediator = false;
-                    cnup.Mediator = null;
+                    cnup.LabelsVisibling = false;
 
                     Form1.Instance.CalToTal();
                     return;
                 }
 
-                if (cnup.HasMediator) // if this object has initialized mediator already
+                if (cnup.LabelsVisibling && cnup.Mediator != null) // if this object has initialized mediator already
                 {
                     cnup.ChangeValue(); // then we just change the current text
                     Form1.Instance.CalToTal();
+                    return;
+                }
+                else if (!cnup.LabelsVisibling && cnup.Mediator != null)
+                {
+                    List<Control> controls = cnup.Mediator.GetControls();
+                    form1.flowOrderName.Controls.Add(controls[0]);
+                    form1.flowOrderAmount.Controls.Add(controls[1]);
+                    form1.flowOrderPrice.Controls.Add(controls[2]);
+
+                    cnup.ChangeValue();
+                    Form1.Instance.CalToTal();
+
                     return;
                 }
 
@@ -477,7 +508,7 @@ namespace QuanLi
 
                 // init mediator
                 new ConcreteMediator(cnup, name, amount, price);
-                cnup.HasMediator = true;
+                cnup.LabelsVisibling = true;
                 Form1.Instance.CalToTal();
             }
             public void MergeAll(Panel panelDishes, PictureBox pb, Label lblName, Label lblPrice, CustomNumericUpDown numUpDown)
@@ -610,6 +641,7 @@ namespace QuanLi
 
             }
 
+            caretaker.ClearAll();
         }
         private void UpdateNRefresh(CustomNumericUpDown control)
         {
@@ -653,6 +685,8 @@ namespace QuanLi
             {
                 UpdateNRefresh(control);
             }
+
+            caretaker.ClearAll();
         }
         public void CalToTal()
         {
@@ -667,7 +701,8 @@ namespace QuanLi
             TotalPrice.Text = Convert.ToString(total);
         }
         #endregion
-        #region Memento
+
+        #region Memento Design Pattern (1)
         public IMemento Save(CustomNumericUpDown control)
         {
             return new ConcreteMemento(control);
@@ -680,63 +715,18 @@ namespace QuanLi
                 throw new Exception("Unknown memento class " + memento.ToString());
             }
 
-            memento.RestoreState();
-        }
+            CustomNumericUpDown val = memento.RestoreState();
+            int index = memento.GetIndex();
+            List<Control> temp = val.Mediator.GetControls();
+            CustomLabel name = (CustomLabel)temp[0];
+            CustomLabel amount = (CustomLabel)temp[1];
+            CustomLabel price = (CustomLabel)temp[2];
 
-        public interface IMemento
-        {
-            public void RestoreState();
-        }
-
-        public class ConcreteMemento : IMemento
-        {
-            private CustomNumericUpDown control;
-            //private decimal value;
-
-            public ConcreteMemento(CustomNumericUpDown control)
+            if (index >= 0)
             {
-                this.control = control;
-                //this.value = control.Value;
-            }
-
-            public void RestoreState()
-            {
-                control.Value = 0;
-            }
-        }
-
-        public class Caretaker
-        {
-            private List<IMemento> mementos;
-            private Form1 originator;
-
-            public Caretaker(Form1 originator)
-            {
-                this.originator = originator;
-                mementos = new List<IMemento>();
-            }
-
-            public void Backup(CustomNumericUpDown control)
-            {
-                mementos.Add(originator.Save(control));
-            }
-
-            public void Undo()
-            {
-                if (mementos.Count == 0)
-                    return;
-
-                IMemento memento = mementos.Last();
-                mementos.RemoveAt(mementos.Count - 1); // remove the last
-
-                try
-                {
-                    originator.Restore(memento);
-                }
-                catch
-                {
-                    Undo();
-                }
+                flowOrderName.Controls.SetChildIndex(name, index);
+                flowOrderAmount.Controls.SetChildIndex(amount, index);
+                flowOrderPrice.Controls.SetChildIndex(price, index);
             }
         }
         #endregion
@@ -768,6 +758,79 @@ namespace QuanLi
             Form1.Instance.ApplicationClosing(ref e);
         }
     }
+
+    #region Memento Design Pattern (2)
+    public interface IMemento
+    {
+        public CustomNumericUpDown RestoreState();
+        public int GetIndex();
+    }
+
+    public class ConcreteMemento : IMemento
+    {
+        private Form1.CustomNumericUpDown control;
+        private decimal value;
+        private int index;
+
+        public ConcreteMemento(Form1.CustomNumericUpDown control)
+        {
+            this.control = control;
+            this.value = control.Value;
+            this.index = control.GetIndex();
+        }
+
+        public Form1.CustomNumericUpDown RestoreState()
+        {
+            control.Value = value;
+            return control;
+        }
+
+        public int GetIndex()
+        {
+            return index;
+        }
+    }
+
+    public class Caretaker
+    {
+        private List<IMemento> mementos;
+        private Form1 originator;
+
+        public Caretaker(Form1 originator)
+        {
+            this.originator = originator;
+            mementos = new List<IMemento>();
+        }
+
+        public void Backup(CustomNumericUpDown control)
+        {
+            mementos.Add(originator.Save(control));
+        }
+
+        public void Undo()
+        {
+            if (mementos.Count == 0)
+                return;
+
+            IMemento memento = mementos.Last();
+            mementos.RemoveAt(mementos.Count - 1); // remove the last
+
+            try
+            {
+                originator.Restore(memento);
+            }
+            catch
+            {
+                Undo();
+            }
+        }
+
+        public void ClearAll()
+        {
+            mementos.Clear();
+        }
+    }
+    #endregion
 
     #region Handling hot keys (for undo - redo operations)
     public class KeyHandler
