@@ -50,13 +50,14 @@
             dtgvBS.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dtgvBS.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dtgvBS.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { FoodName, Sell, Profit });
+            dtgvBS.Enabled = false;
             dtgvBS.EnableHeadersVisualStyles = false;
-            dtgvBS.Location = new System.Drawing.Point(11, 11);
-            dtgvBS.Margin = new System.Windows.Forms.Padding(2);
+            dtgvBS.Location = new System.Drawing.Point(13, 15);
+            dtgvBS.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             dtgvBS.Name = "dtgvBS";
             dtgvBS.RowHeadersWidth = 62;
             dtgvBS.RowTemplate.Height = 33;
-            dtgvBS.Size = new System.Drawing.Size(760, 352);
+            dtgvBS.Size = new System.Drawing.Size(869, 469);
             dtgvBS.TabIndex = 2;
             // 
             // FoodName
@@ -82,10 +83,11 @@
             // 
             // fBS
             // 
-            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(784, 373);
+            ClientSize = new System.Drawing.Size(896, 497);
             Controls.Add(dtgvBS);
+            Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             Name = "fBS";
             Text = "fBS";
             ((System.ComponentModel.ISupportInitialize)dtgvBS).EndInit();

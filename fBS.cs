@@ -16,14 +16,15 @@ namespace QuanLi
         {
             InitializeComponent();
         }
-        public void LoadData(List<Dish> dishes,string strName)
+        public void LoadData(List<Dish> dishes, string strName)
         {
             while (dtgvBS.Rows.Count > 1)
                 dtgvBS.Rows.RemoveAt(1);
 
             foreach (Dish dish in dishes)
             {
-                dtgvBS.Rows.Add(dish.Name, dish.NumberOfSells, (dish.Price - dish.ProdExpense) * dish.NumberOfSells);
+                if (dish.NumberOfSells > 0)
+                    dtgvBS.Rows.Add(dish.Name, dish.NumberOfSells, (dish.Price - dish.ProdExpense) * dish.NumberOfSells);
             }
             this.Text = strName + " bán chạy nhất";
         }
