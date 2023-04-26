@@ -755,6 +755,7 @@ namespace QuanLi
             }
 
             CustomNumericUpDown val = memento.RestoreState();
+            val.LabelsVisibling = true;
             int index = memento.GetIndex();
             List<Control> temp = val.Mediator.GetControls();
             CustomLabel name = (CustomLabel)temp[0];
