@@ -33,7 +33,6 @@ namespace QuanLi
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             dtgvBSTopping = new System.Windows.Forms.DataGridView();
             FoodName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            FoodImage = new System.Windows.Forms.DataGridViewTextBoxColumn();
             Sell = new System.Windows.Forms.DataGridViewTextBoxColumn();
             Profit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)dtgvBSTopping).BeginInit();
@@ -52,7 +51,7 @@ namespace QuanLi
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             dtgvBSTopping.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dtgvBSTopping.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dtgvBSTopping.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { FoodName, FoodImage, Sell, Profit });
+            dtgvBSTopping.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { FoodName, Sell, Profit });
             dtgvBSTopping.EnableHeadersVisualStyles = false;
             dtgvBSTopping.Location = new System.Drawing.Point(10, 10);
             dtgvBSTopping.Margin = new System.Windows.Forms.Padding(2);
@@ -68,13 +67,6 @@ namespace QuanLi
             FoodName.HeaderText = "Tên món ăn";
             FoodName.MinimumWidth = 8;
             FoodName.Name = "FoodName";
-            // 
-            // FoodImage
-            // 
-            FoodImage.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            FoodImage.HeaderText = "Hình ảnh";
-            FoodImage.MinimumWidth = 8;
-            FoodImage.Name = "FoodImage";
             // 
             // Sell
             // 
@@ -108,7 +100,6 @@ namespace QuanLi
 
         private System.Windows.Forms.DataGridView dtgvBSTopping;
         private System.Windows.Forms.DataGridViewTextBoxColumn FoodName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FoodImage;
         private System.Windows.Forms.DataGridViewTextBoxColumn Sell;
         private System.Windows.Forms.DataGridViewTextBoxColumn Profit;
     }
