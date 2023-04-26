@@ -49,6 +49,7 @@ namespace QuanLi
                 return instance;
             }
         }
+
         #region add and delete button
         private void AddDish_Click(object sender, EventArgs e)
         {
@@ -87,6 +88,7 @@ namespace QuanLi
             MessageBox.Show("Đã xóa món thành công !", "Thông báo");
         }
         #endregion
+
         #region Events Handling
         private void Form1_Load(object sender, EventArgs e)
         {

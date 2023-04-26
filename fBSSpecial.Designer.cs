@@ -31,7 +31,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             dtgvBSSpecial = new System.Windows.Forms.DataGridView();
             SpecialName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            SpecialImage = new System.Windows.Forms.DataGridViewTextBoxColumn();
             Sell = new System.Windows.Forms.DataGridViewTextBoxColumn();
             Profit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)dtgvBSSpecial).BeginInit();
@@ -50,7 +49,7 @@
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             dtgvBSSpecial.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dtgvBSSpecial.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dtgvBSSpecial.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { SpecialName, SpecialImage, Sell, Profit });
+            dtgvBSSpecial.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { SpecialName, Sell, Profit });
             dtgvBSSpecial.EnableHeadersVisualStyles = false;
             dtgvBSSpecial.Location = new System.Drawing.Point(10, 10);
             dtgvBSSpecial.Margin = new System.Windows.Forms.Padding(2);
@@ -66,13 +65,6 @@
             SpecialName.HeaderText = "Tên món ăn";
             SpecialName.MinimumWidth = 8;
             SpecialName.Name = "SpecialName";
-            // 
-            // SpecialImage
-            // 
-            SpecialImage.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            SpecialImage.HeaderText = "Hình ảnh";
-            SpecialImage.MinimumWidth = 8;
-            SpecialImage.Name = "SpecialImage";
             // 
             // Sell
             // 
@@ -106,7 +98,6 @@
 
         private System.Windows.Forms.DataGridView dtgvBSSpecial;
         private System.Windows.Forms.DataGridViewTextBoxColumn SpecialName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SpecialImage;
         private System.Windows.Forms.DataGridViewTextBoxColumn Sell;
         private System.Windows.Forms.DataGridViewTextBoxColumn Profit;
     }
