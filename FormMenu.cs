@@ -462,7 +462,6 @@ namespace QuanLi
                 lblName.AutoSize = false;
                 lblName.Text = name;
                 lblName.TextAlign = ContentAlignment.MiddleCenter;
-                lblName.Font = new Font("Cambria", lblName.Font.Size);
                 return lblName;
             }
             public Label BuildLabelPrice(int w, int h, int x, int y, double price)
@@ -473,7 +472,6 @@ namespace QuanLi
                 lblPrice.AutoSize = false;
                 lblPrice.Text = price.ToString();
                 lblPrice.TextAlign = ContentAlignment.MiddleCenter;
-                lblPrice.Font = new Font("Cambria", lblPrice.Font.Size);
                 return lblPrice;
             }
             public CustomNumericUpDown BuildUpDown(int w, int h, int x, int y, int i, Dish dish)
