@@ -64,7 +64,7 @@ namespace QuanLi
 
         private void RevenueButton_Click(object sender, EventArgs e)
         {
-            OpenRevenue();
+            OpenStatistics();
         }
 
         //---------------------------func-------------
@@ -75,7 +75,7 @@ namespace QuanLi
             form1.Show();
         }
 
-        private void OpenRevenue()
+        private void OpenStatistics()
         {
             FormStatistics form2 = new FormStatistics();
             form2.Show();
