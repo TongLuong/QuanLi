@@ -288,7 +288,7 @@ namespace QuanLi
             // Price
             // 
             Price.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            Price.HeaderText = "Giá";
+            Price.HeaderText = "Giá trị";
             Price.MinimumWidth = 8;
             Price.Name = "Price";
             Price.ReadOnly = true;

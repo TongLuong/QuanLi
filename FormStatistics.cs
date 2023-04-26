@@ -102,7 +102,7 @@ namespace QuanLi
             int index = 0;
             foreach (Dish dish in all)
             {
-                dtgvStatistic.Rows.Add(dish.Name, dish.Type.ToString(), 0, 0, 0);
+                dtgvStatistic.Rows.Add(dish.Name, dish.Type.ToString(), (Int64)0, (Int64)0, (Int64)0);
                 indexInDtgv.Add(new KeyValuePair<int, string>(index++, dish.Name));
             }
 
@@ -113,7 +113,7 @@ namespace QuanLi
                     if (dish.Name == idx.Value)
                     {
                         DataGridViewRow row = dtgvStatistic.Rows[idx.Key];
-                        row.Cells[2].Value = (Int64)row.Cells[2].Value + dish.NumberOfSells;
+                        row.Cells[2].Value = (Int64)row.Cells[2].Value + (Int64)dish.NumberOfSells;
                         row.Cells[3].Value = (Int64)row.Cells[3].Value + dish.NumberOfSells * (Int64)dish.Price;
                         row.Cells[4].Value = (Int64)row.Cells[4].Value + dish.NumberOfSells * (Int64)(dish.Price - dish.ProdExpense);
                     }
@@ -151,7 +151,7 @@ namespace QuanLi
                     if (dish.Name == idx.Value)
                     {
                         DataGridViewRow row = dtgvStatistic.Rows[idx.Key];
-                        row.Cells[2].Value = (Int64)row.Cells[2].Value + dish.NumberOfSells;
+                        row.Cells[2].Value = (Int64)row.Cells[2].Value + (Int64)dish.NumberOfSells;
                         row.Cells[3].Value = (Int64)row.Cells[3].Value + dish.NumberOfSells * (Int64)dish.Price;
                         row.Cells[4].Value = (Int64)row.Cells[4].Value + dish.NumberOfSells * (Int64)(dish.Price - dish.ProdExpense);
                     }
@@ -301,7 +301,7 @@ namespace QuanLi
                     if (dish.Name == idx.Value)
                     {
                         DataGridViewRow row = dtgvStatistic.Rows[idx.Key];
-                        row.Cells[2].Value = (Int64)row.Cells[2].Value + dish.NumberOfSells;
+                        row.Cells[2].Value = (Int64)row.Cells[2].Value + (Int64)dish.NumberOfSells;
                         row.Cells[3].Value = (Int64)row.Cells[3].Value + dish.NumberOfSells * (Int64)dish.Price;
                         row.Cells[4].Value = (Int64)row.Cells[4].Value + dish.NumberOfSells * (Int64)(dish.Price - dish.ProdExpense);
                     }
@@ -356,7 +356,7 @@ namespace QuanLi
                             dish.Name,
                             dish.Price,
                             dish.ProdExpense,
-                            (int)dtgvStatistic.Rows[idx.Key].Cells[2].Value,
+                            (Int32)(Int64)dtgvStatistic.Rows[idx.Key].Cells[2].Value,
                             dish.Type,
                             dish.ImageName);
 
@@ -383,9 +383,9 @@ namespace QuanLi
             for (int i = 0; i < indexInDtgv.Count; i++)
             {
                 DataGridViewRow row = dtgvStatistic.Rows[i];
-                row.Cells[2].Value = 0;
-                row.Cells[3].Value = 0;
-                row.Cells[4].Value = 0;
+                row.Cells[2].Value = (Int64)0;
+                row.Cells[3].Value = (Int64)0;
+                row.Cells[4].Value = (Int64)0;
             }
         }
 
