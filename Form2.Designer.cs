@@ -35,7 +35,7 @@ namespace QuanLi
         {
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form2));
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             panelFull = new Panel();
             statisticsTypeLabel = new Label();
             updateTimeLabel = new Label();
@@ -88,18 +88,19 @@ namespace QuanLi
             panelFull.Controls.Add(bestSellingPanel);
             panelFull.Controls.Add(plStatistic);
             panelFull.Controls.Add(plProfitChart);
-            panelFull.Location = new System.Drawing.Point(6, 6);
+            panelFull.Location = new System.Drawing.Point(8, 8);
             panelFull.Margin = new Padding(2);
             panelFull.Name = "panelFull";
-            panelFull.Size = new System.Drawing.Size(1265, 619);
+            panelFull.Size = new System.Drawing.Size(1581, 774);
             panelFull.TabIndex = 0;
             // 
             // statisticsTypeLabel
             // 
             statisticsTypeLabel.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            statisticsTypeLabel.Location = new System.Drawing.Point(675, 0);
+            statisticsTypeLabel.Location = new System.Drawing.Point(844, 0);
+            statisticsTypeLabel.Margin = new Padding(4, 0, 4, 0);
             statisticsTypeLabel.Name = "statisticsTypeLabel";
-            statisticsTypeLabel.Size = new System.Drawing.Size(334, 50);
+            statisticsTypeLabel.Size = new System.Drawing.Size(418, 62);
             statisticsTypeLabel.TabIndex = 6;
             statisticsTypeLabel.Text = "Thống kê trong hôm nay";
             statisticsTypeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -109,8 +110,9 @@ namespace QuanLi
             updateTimeLabel.BackColor = System.Drawing.SystemColors.Control;
             updateTimeLabel.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             updateTimeLabel.Location = new System.Drawing.Point(0, 0);
+            updateTimeLabel.Margin = new Padding(4, 0, 4, 0);
             updateTimeLabel.Name = "updateTimeLabel";
-            updateTimeLabel.Size = new System.Drawing.Size(403, 50);
+            updateTimeLabel.Size = new System.Drawing.Size(504, 62);
             updateTimeLabel.TabIndex = 5;
             updateTimeLabel.Text = "Cập nhật lần cuối:  00 : 00 : 00 00/00/0000";
             updateTimeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -123,9 +125,10 @@ namespace QuanLi
             bestSellingPanel.Controls.Add(btnBestSellingTopping);
             bestSellingPanel.Controls.Add(btnBestSellingDrink);
             bestSellingPanel.Controls.Add(btnBestSellingFood);
-            bestSellingPanel.Location = new System.Drawing.Point(0, 476);
+            bestSellingPanel.Location = new System.Drawing.Point(0, 595);
+            bestSellingPanel.Margin = new Padding(4);
             bestSellingPanel.Name = "bestSellingPanel";
-            bestSellingPanel.Size = new System.Drawing.Size(678, 143);
+            bestSellingPanel.Size = new System.Drawing.Size(844, 179);
             bestSellingPanel.TabIndex = 4;
             // 
             // btnBestSellingSpecial
@@ -135,11 +138,11 @@ namespace QuanLi
             btnBestSellingSpecial.BackgroundImage = (System.Drawing.Image)resources.GetObject("btnBestSellingSpecial.BackgroundImage");
             btnBestSellingSpecial.BackgroundImageLayout = ImageLayout.Zoom;
             btnBestSellingSpecial.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            btnBestSellingSpecial.Location = new System.Drawing.Point(396, 85);
+            btnBestSellingSpecial.Location = new System.Drawing.Point(491, 106);
             btnBestSellingSpecial.Margin = new Padding(2);
             btnBestSellingSpecial.Name = "btnBestSellingSpecial";
-            btnBestSellingSpecial.Padding = new Padding(40, 0, 0, 0);
-            btnBestSellingSpecial.Size = new System.Drawing.Size(170, 53);
+            btnBestSellingSpecial.Padding = new Padding(50, 0, 0, 0);
+            btnBestSellingSpecial.Size = new System.Drawing.Size(212, 66);
             btnBestSellingSpecial.TabIndex = 6;
             btnBestSellingSpecial.Text = "Special";
             btnBestSellingSpecial.UseVisualStyleBackColor = false;
@@ -149,9 +152,10 @@ namespace QuanLi
             // 
             label1.AutoSize = true;
             label1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            label1.Location = new System.Drawing.Point(287, 7);
+            label1.Location = new System.Drawing.Point(359, 9);
+            label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(104, 23);
+            label1.Size = new System.Drawing.Size(127, 30);
             label1.TabIndex = 5;
             label1.Text = "Best Selling";
             label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -163,11 +167,11 @@ namespace QuanLi
             btnBestSellingTopping.BackgroundImage = (System.Drawing.Image)resources.GetObject("btnBestSellingTopping.BackgroundImage");
             btnBestSellingTopping.BackgroundImageLayout = ImageLayout.Zoom;
             btnBestSellingTopping.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            btnBestSellingTopping.Location = new System.Drawing.Point(104, 85);
+            btnBestSellingTopping.Location = new System.Drawing.Point(126, 106);
             btnBestSellingTopping.Margin = new Padding(2);
             btnBestSellingTopping.Name = "btnBestSellingTopping";
-            btnBestSellingTopping.Padding = new Padding(40, 0, 0, 0);
-            btnBestSellingTopping.Size = new System.Drawing.Size(170, 53);
+            btnBestSellingTopping.Padding = new Padding(50, 0, 0, 0);
+            btnBestSellingTopping.Size = new System.Drawing.Size(212, 66);
             btnBestSellingTopping.TabIndex = 4;
             btnBestSellingTopping.Text = "Topping";
             btnBestSellingTopping.UseVisualStyleBackColor = false;
@@ -182,11 +186,11 @@ namespace QuanLi
             btnBestSellingDrink.BackgroundImageLayout = ImageLayout.Zoom;
             btnBestSellingDrink.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             btnBestSellingDrink.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            btnBestSellingDrink.Location = new System.Drawing.Point(396, 29);
+            btnBestSellingDrink.Location = new System.Drawing.Point(491, 36);
             btnBestSellingDrink.Margin = new Padding(2);
             btnBestSellingDrink.Name = "btnBestSellingDrink";
-            btnBestSellingDrink.Padding = new Padding(40, 0, 0, 0);
-            btnBestSellingDrink.Size = new System.Drawing.Size(170, 53);
+            btnBestSellingDrink.Padding = new Padding(50, 0, 0, 0);
+            btnBestSellingDrink.Size = new System.Drawing.Size(212, 66);
             btnBestSellingDrink.TabIndex = 3;
             btnBestSellingDrink.Text = "Drink";
             btnBestSellingDrink.UseVisualStyleBackColor = false;
@@ -199,11 +203,11 @@ namespace QuanLi
             btnBestSellingFood.BackgroundImage = (System.Drawing.Image)resources.GetObject("btnBestSellingFood.BackgroundImage");
             btnBestSellingFood.BackgroundImageLayout = ImageLayout.Zoom;
             btnBestSellingFood.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            btnBestSellingFood.Location = new System.Drawing.Point(104, 29);
+            btnBestSellingFood.Location = new System.Drawing.Point(126, 36);
             btnBestSellingFood.Margin = new Padding(2);
             btnBestSellingFood.Name = "btnBestSellingFood";
-            btnBestSellingFood.Padding = new Padding(40, 0, 0, 0);
-            btnBestSellingFood.Size = new System.Drawing.Size(170, 53);
+            btnBestSellingFood.Padding = new Padding(50, 0, 0, 0);
+            btnBestSellingFood.Size = new System.Drawing.Size(212, 66);
             btnBestSellingFood.TabIndex = 2;
             btnBestSellingFood.Text = "Food";
             btnBestSellingFood.UseVisualStyleBackColor = false;
@@ -217,19 +221,20 @@ namespace QuanLi
             plStatistic.Controls.Add(plTotalProfit);
             plStatistic.Controls.Add(plTotalInvestment);
             plStatistic.Controls.Add(plTotalIncome);
-            plStatistic.Location = new System.Drawing.Point(675, 52);
+            plStatistic.Location = new System.Drawing.Point(844, 65);
             plStatistic.Margin = new Padding(2);
             plStatistic.Name = "plStatistic";
-            plStatistic.Size = new System.Drawing.Size(590, 567);
+            plStatistic.Size = new System.Drawing.Size(738, 709);
             plStatistic.TabIndex = 2;
             // 
             // billBtn
             // 
             billBtn.BackColor = System.Drawing.Color.FromArgb(255, 128, 128);
             billBtn.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            billBtn.Location = new System.Drawing.Point(498, 431);
+            billBtn.Location = new System.Drawing.Point(606, 539);
+            billBtn.Margin = new Padding(4);
             billBtn.Name = "billBtn";
-            billBtn.Size = new System.Drawing.Size(89, 123);
+            billBtn.Size = new System.Drawing.Size(111, 141);
             billBtn.TabIndex = 10;
             billBtn.Text = "Hoá đơn trong ngày";
             billBtn.UseVisualStyleBackColor = false;
@@ -241,23 +246,23 @@ namespace QuanLi
             dtgvStatistic.BackgroundColor = System.Drawing.SystemColors.ActiveBorder;
             dtgvStatistic.BorderStyle = BorderStyle.None;
             dtgvStatistic.CellBorderStyle = DataGridViewCellBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Lime;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.InfoText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dtgvStatistic.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.Lime;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.InfoText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            dtgvStatistic.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dtgvStatistic.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dtgvStatistic.Columns.AddRange(new DataGridViewColumn[] { Dish, Type, Sell, Price, Profit });
             dtgvStatistic.EnableHeadersVisualStyles = false;
-            dtgvStatistic.Location = new System.Drawing.Point(35, 33);
+            dtgvStatistic.Location = new System.Drawing.Point(22, 25);
             dtgvStatistic.Margin = new Padding(2);
             dtgvStatistic.Name = "dtgvStatistic";
             dtgvStatistic.RowHeadersWidth = 62;
             dtgvStatistic.RowTemplate.Height = 33;
-            dtgvStatistic.Size = new System.Drawing.Size(556, 387);
+            dtgvStatistic.Size = new System.Drawing.Size(695, 484);
             dtgvStatistic.TabIndex = 8;
             // 
             // Dish
@@ -299,18 +304,19 @@ namespace QuanLi
             // 
             plTotalProfit.Controls.Add(totalProfitLabel);
             plTotalProfit.Controls.Add(lbTotalProfit);
-            plTotalProfit.Location = new System.Drawing.Point(14, 519);
+            plTotalProfit.Location = new System.Drawing.Point(18, 636);
             plTotalProfit.Margin = new Padding(2);
             plTotalProfit.Name = "plTotalProfit";
-            plTotalProfit.Size = new System.Drawing.Size(462, 35);
+            plTotalProfit.Size = new System.Drawing.Size(578, 44);
             plTotalProfit.TabIndex = 2;
             // 
             // totalProfitLabel
             // 
             totalProfitLabel.BackColor = System.Drawing.Color.White;
-            totalProfitLabel.Location = new System.Drawing.Point(150, 4);
+            totalProfitLabel.Location = new System.Drawing.Point(188, 5);
+            totalProfitLabel.Margin = new Padding(4, 0, 4, 0);
             totalProfitLabel.Name = "totalProfitLabel";
-            totalProfitLabel.Size = new System.Drawing.Size(300, 25);
+            totalProfitLabel.Size = new System.Drawing.Size(375, 31);
             totalProfitLabel.TabIndex = 7;
             totalProfitLabel.Text = "0";
             // 
@@ -318,10 +324,10 @@ namespace QuanLi
             // 
             lbTotalProfit.AutoSize = true;
             lbTotalProfit.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            lbTotalProfit.Location = new System.Drawing.Point(2, 7);
+            lbTotalProfit.Location = new System.Drawing.Point(2, 9);
             lbTotalProfit.Margin = new Padding(2, 0, 2, 0);
             lbTotalProfit.Name = "lbTotalProfit";
-            lbTotalProfit.Size = new System.Drawing.Size(69, 20);
+            lbTotalProfit.Size = new System.Drawing.Size(86, 25);
             lbTotalProfit.TabIndex = 0;
             lbTotalProfit.Text = "Tổng lãi:";
             // 
@@ -329,18 +335,19 @@ namespace QuanLi
             // 
             plTotalInvestment.Controls.Add(totalInvestmentLabel);
             plTotalInvestment.Controls.Add(lbTotalInvestment);
-            plTotalInvestment.Location = new System.Drawing.Point(14, 471);
+            plTotalInvestment.Location = new System.Drawing.Point(18, 588);
             plTotalInvestment.Margin = new Padding(2);
             plTotalInvestment.Name = "plTotalInvestment";
-            plTotalInvestment.Size = new System.Drawing.Size(462, 35);
+            plTotalInvestment.Size = new System.Drawing.Size(578, 44);
             plTotalInvestment.TabIndex = 1;
             // 
             // totalInvestmentLabel
             // 
             totalInvestmentLabel.BackColor = System.Drawing.Color.White;
-            totalInvestmentLabel.Location = new System.Drawing.Point(150, 4);
+            totalInvestmentLabel.Location = new System.Drawing.Point(188, 5);
+            totalInvestmentLabel.Margin = new Padding(4, 0, 4, 0);
             totalInvestmentLabel.Name = "totalInvestmentLabel";
-            totalInvestmentLabel.Size = new System.Drawing.Size(300, 25);
+            totalInvestmentLabel.Size = new System.Drawing.Size(375, 31);
             totalInvestmentLabel.TabIndex = 7;
             totalInvestmentLabel.Text = "0";
             // 
@@ -348,10 +355,10 @@ namespace QuanLi
             // 
             lbTotalInvestment.AutoSize = true;
             lbTotalInvestment.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            lbTotalInvestment.Location = new System.Drawing.Point(2, 7);
+            lbTotalInvestment.Location = new System.Drawing.Point(2, 9);
             lbTotalInvestment.Margin = new Padding(2, 0, 2, 0);
             lbTotalInvestment.Name = "lbTotalInvestment";
-            lbTotalInvestment.Size = new System.Drawing.Size(79, 20);
+            lbTotalInvestment.Size = new System.Drawing.Size(98, 25);
             lbTotalInvestment.TabIndex = 0;
             lbTotalInvestment.Text = "Tổng vốn:";
             // 
@@ -359,18 +366,19 @@ namespace QuanLi
             // 
             plTotalIncome.Controls.Add(totalIncomeLabel);
             plTotalIncome.Controls.Add(lbTotalIncome);
-            plTotalIncome.Location = new System.Drawing.Point(16, 424);
+            plTotalIncome.Location = new System.Drawing.Point(18, 539);
             plTotalIncome.Margin = new Padding(2);
             plTotalIncome.Name = "plTotalIncome";
-            plTotalIncome.Size = new System.Drawing.Size(460, 35);
+            plTotalIncome.Size = new System.Drawing.Size(578, 44);
             plTotalIncome.TabIndex = 0;
             // 
             // totalIncomeLabel
             // 
             totalIncomeLabel.BackColor = System.Drawing.Color.White;
-            totalIncomeLabel.Location = new System.Drawing.Point(150, 4);
+            totalIncomeLabel.Location = new System.Drawing.Point(188, 5);
+            totalIncomeLabel.Margin = new Padding(4, 0, 4, 0);
             totalIncomeLabel.Name = "totalIncomeLabel";
-            totalIncomeLabel.Size = new System.Drawing.Size(300, 25);
+            totalIncomeLabel.Size = new System.Drawing.Size(375, 31);
             totalIncomeLabel.TabIndex = 6;
             totalIncomeLabel.Text = "0";
             // 
@@ -378,10 +386,10 @@ namespace QuanLi
             // 
             lbTotalIncome.AutoSize = true;
             lbTotalIncome.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            lbTotalIncome.Location = new System.Drawing.Point(2, 7);
+            lbTotalIncome.Location = new System.Drawing.Point(2, 9);
             lbTotalIncome.Margin = new Padding(2, 0, 2, 0);
             lbTotalIncome.Name = "lbTotalIncome";
-            lbTotalIncome.Size = new System.Drawing.Size(125, 20);
+            lbTotalIncome.Size = new System.Drawing.Size(154, 25);
             lbTotalIncome.TabIndex = 0;
             lbTotalIncome.Text = "Tổng thành tiền:";
             // 
@@ -389,19 +397,19 @@ namespace QuanLi
             // 
             plProfitChart.BackColor = System.Drawing.Color.IndianRed;
             plProfitChart.Controls.Add(chart);
-            plProfitChart.Location = new System.Drawing.Point(0, 52);
+            plProfitChart.Location = new System.Drawing.Point(0, 65);
             plProfitChart.Margin = new Padding(2);
             plProfitChart.Name = "plProfitChart";
-            plProfitChart.Size = new System.Drawing.Size(678, 430);
+            plProfitChart.Size = new System.Drawing.Size(848, 538);
             plProfitChart.TabIndex = 0;
             // 
             // chart
             // 
             chart.Enabled = false;
-            chart.Location = new System.Drawing.Point(36, 46);
-            chart.Margin = new Padding(5);
+            chart.Location = new System.Drawing.Point(45, 58);
+            chart.Margin = new Padding(6);
             chart.Name = "chart";
-            chart.Size = new System.Drawing.Size(600, 349);
+            chart.Size = new System.Drawing.Size(750, 436);
             chart.TabIndex = 0;
             // 
             // dropdownPanel
@@ -410,20 +418,22 @@ namespace QuanLi
             dropdownPanel.Controls.Add(oneMonthButton);
             dropdownPanel.Controls.Add(todayButton);
             dropdownPanel.Controls.Add(dropdownButton);
-            dropdownPanel.Location = new System.Drawing.Point(1021, 6);
-            dropdownPanel.MaximumSize = new System.Drawing.Size(250, 200);
-            dropdownPanel.MinimumSize = new System.Drawing.Size(250, 50);
+            dropdownPanel.Location = new System.Drawing.Point(1276, 8);
+            dropdownPanel.Margin = new Padding(4);
+            dropdownPanel.MaximumSize = new System.Drawing.Size(312, 250);
+            dropdownPanel.MinimumSize = new System.Drawing.Size(312, 62);
             dropdownPanel.Name = "dropdownPanel";
-            dropdownPanel.Size = new System.Drawing.Size(250, 50);
+            dropdownPanel.Size = new System.Drawing.Size(312, 62);
             dropdownPanel.TabIndex = 5;
             // 
             // allTimeButton
             // 
             allTimeButton.BackColor = System.Drawing.Color.Azure;
             allTimeButton.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            allTimeButton.Location = new System.Drawing.Point(0, 150);
+            allTimeButton.Location = new System.Drawing.Point(0, 188);
+            allTimeButton.Margin = new Padding(4);
             allTimeButton.Name = "allTimeButton";
-            allTimeButton.Size = new System.Drawing.Size(250, 50);
+            allTimeButton.Size = new System.Drawing.Size(312, 62);
             allTimeButton.TabIndex = 3;
             allTimeButton.Text = "Toàn thời gian";
             allTimeButton.UseVisualStyleBackColor = false;
@@ -433,9 +443,10 @@ namespace QuanLi
             // 
             oneMonthButton.BackColor = System.Drawing.Color.Azure;
             oneMonthButton.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            oneMonthButton.Location = new System.Drawing.Point(0, 100);
+            oneMonthButton.Location = new System.Drawing.Point(0, 125);
+            oneMonthButton.Margin = new Padding(4);
             oneMonthButton.Name = "oneMonthButton";
-            oneMonthButton.Size = new System.Drawing.Size(250, 50);
+            oneMonthButton.Size = new System.Drawing.Size(312, 62);
             oneMonthButton.TabIndex = 2;
             oneMonthButton.Text = "Tháng hiện tại";
             oneMonthButton.UseVisualStyleBackColor = false;
@@ -445,9 +456,10 @@ namespace QuanLi
             // 
             todayButton.BackColor = System.Drawing.Color.Azure;
             todayButton.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            todayButton.Location = new System.Drawing.Point(0, 50);
+            todayButton.Location = new System.Drawing.Point(0, 62);
+            todayButton.Margin = new Padding(4);
             todayButton.Name = "todayButton";
-            todayButton.Size = new System.Drawing.Size(250, 50);
+            todayButton.Size = new System.Drawing.Size(312, 62);
             todayButton.TabIndex = 1;
             todayButton.Text = "Hôm nay";
             todayButton.UseVisualStyleBackColor = false;
@@ -458,8 +470,9 @@ namespace QuanLi
             dropdownButton.BackColor = System.Drawing.Color.Silver;
             dropdownButton.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             dropdownButton.Location = new System.Drawing.Point(0, 0);
+            dropdownButton.Margin = new Padding(4);
             dropdownButton.Name = "dropdownButton";
-            dropdownButton.Size = new System.Drawing.Size(250, 50);
+            dropdownButton.Size = new System.Drawing.Size(312, 62);
             dropdownButton.TabIndex = 0;
             dropdownButton.Text = "Loại thống kê";
             dropdownButton.UseVisualStyleBackColor = false;
@@ -472,15 +485,15 @@ namespace QuanLi
             // 
             // Form2
             // 
-            AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(1280, 635);
+            ClientSize = new System.Drawing.Size(1595, 782);
             Controls.Add(dropdownPanel);
             Controls.Add(panelFull);
             Margin = new Padding(2);
             MaximizeBox = false;
-            MaximumSize = new System.Drawing.Size(1298, 682);
-            MinimumSize = new System.Drawing.Size(1298, 682);
+            MaximumSize = new System.Drawing.Size(1617, 838);
+            MinimumSize = new System.Drawing.Size(1617, 838);
             Name = "Form2";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Doanh thu";

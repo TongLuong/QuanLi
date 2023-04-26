@@ -81,7 +81,7 @@ namespace QuanLi
             dropdownPanel.Enabled = false;
             if (listOpened)
             {
-                dropdownPanel.Height -= 3;
+                dropdownPanel.Height -= 15;
                 if (dropdownPanel.Size == dropdownPanel.MinimumSize)
                 {
                     dropdownTimer.Stop();
@@ -91,7 +91,7 @@ namespace QuanLi
             }
             else
             {
-                dropdownPanel.Height += 3;
+                dropdownPanel.Height += 15;
                 if (dropdownPanel.Size == dropdownPanel.MaximumSize)
                 {
                     dropdownTimer.Stop();
@@ -250,7 +250,7 @@ namespace QuanLi
                     }
                     else
                     {
-                        if ((month != 0 && year != 0)||dish == all[all.Count-1])
+                        if ((month != 0 && year != 0) || dish == all[all.Count - 1])
                         {
                             if (profits == null)
                                 profits = new List<Int32>(monthProfit);
@@ -386,7 +386,7 @@ namespace QuanLi
                     }
                 }
             }
-            
+
             return mostSellingDishes;
         }
 

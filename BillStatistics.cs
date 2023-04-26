@@ -47,5 +47,6 @@ namespace QuanLi
 
             averagePrice.Text = "Doanh thu trung bình : " + (totalPrice / bills.Count).ToString();
         }
+
     }
 }
