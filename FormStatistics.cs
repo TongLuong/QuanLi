@@ -415,15 +415,5 @@ namespace QuanLi
             BillStatistics billForm = new BillStatistics();
             billForm.ShowDialog();
         }
-
-        private void FormStatistics_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void plTotalInvestment_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
     }
 }
