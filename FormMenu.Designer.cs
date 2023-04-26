@@ -333,7 +333,7 @@ namespace QuanLi
             AddDish.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(255, 128, 128);
             AddDish.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             AddDish.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            AddDish.Location = new System.Drawing.Point(265, 664);
+            AddDish.Location = new System.Drawing.Point(260, 664);
             AddDish.Name = "AddDish";
             AddDish.Size = new System.Drawing.Size(117, 51);
             AddDish.TabIndex = 43;
@@ -470,10 +470,11 @@ namespace QuanLi
             TotalPrice.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             TotalPrice.Location = new System.Drawing.Point(1065, 663);
             TotalPrice.Name = "TotalPrice";
-            TotalPrice.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            TotalPrice.RightToLeft = System.Windows.Forms.RightToLeft.No;
             TotalPrice.Size = new System.Drawing.Size(295, 41);
             TotalPrice.TabIndex = 50;
             TotalPrice.Text = "0";
+            TotalPrice.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // RefreshBut
             // 
@@ -501,7 +502,7 @@ namespace QuanLi
             deleteDish.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(255, 128, 128);
             deleteDish.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             deleteDish.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            deleteDish.Location = new System.Drawing.Point(398, 664);
+            deleteDish.Location = new System.Drawing.Point(397, 664);
             deleteDish.Name = "deleteDish";
             deleteDish.Size = new System.Drawing.Size(117, 51);
             deleteDish.TabIndex = 52;

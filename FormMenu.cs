@@ -223,7 +223,7 @@ namespace QuanLi
                 {
                     this.amount.ChangeText(mes);
                     double newPrice = Convert.ToDouble(this.price.BasePrice) * Convert.ToDouble(mes);
-                    this.price.ChangeText(newPrice.ToString());
+                    this.price.ChangeText(newPrice.ToString("#,##0"));
                 }
             }
 
@@ -484,7 +484,7 @@ namespace QuanLi
                 // add price
                 CustomLabel price = new CustomLabel();
                 price.BasePrice = dish.Price; // set base price
-                price.Text = (dish.Price * (double)cnup.Value).ToString();
+                price.Text = (dish.Price * (double)cnup.Value).ToString("#,##0");
                 price.AutoSize = true;
                 price.Name = dish.ID.ToString() + ",Price";
                 form1.flowOrderPrice.Controls.Add(price);
@@ -685,7 +685,7 @@ namespace QuanLi
                 double newPrice = Convert.ToDouble(price[i].Text);
                 total += newPrice;
             }
-            TotalPrice.Text = Convert.ToString(total);
+            TotalPrice.Text = total.ToString("#,##0");
         }
         #endregion
 
