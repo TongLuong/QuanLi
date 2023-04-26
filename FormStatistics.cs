@@ -27,10 +27,10 @@ namespace QuanLi
         #endregion
 
         #region best selling forms
-        fBSFood foodForm = null;
-        fBSDrink drinkForm = null;
-        fBSTopping toppingForm = null;
-        fBSSpecial specialForm = null;
+        fBS foodForm = null;
+        fBS drinkForm = null;
+        fBS toppingForm = null;
+        fBS specialForm = null;
         #endregion
 
         public FormStatistics()
@@ -43,30 +43,30 @@ namespace QuanLi
 
         private void btnBestSellingDrink_Click(object sender, EventArgs e)
         {
-            drinkForm = new fBSDrink();
-            drinkForm.LoadData(drink);
+            drinkForm = new fBS();
+            drinkForm.LoadData(drink, "Đồ uống");
             drinkForm.ShowDialog();
         }
 
         private void btnBestSellingFood_Click(object sender, EventArgs e)
         {
-            foodForm = new fBSFood();
-            foodForm.LoadData(food);
+            foodForm = new fBS();
+            foodForm.LoadData(food, "Món ăn");
             foodForm.ShowDialog();
 
         }
 
         private void btnBestSellingTopping_Click(object sender, EventArgs e)
         {
-            toppingForm = new fBSTopping();
-            toppingForm.LoadData(topping);
+            toppingForm = new fBS();
+            toppingForm.LoadData(topping, "Topping");
             toppingForm.ShowDialog();
         }
 
         private void btnBestSellingSpecial_Click(object sender, EventArgs e)
         {
-            specialForm = new fBSSpecial();
-            specialForm.LoadData(special);
+            specialForm = new fBS();
+            specialForm.LoadData(special, "Món đặc biệt");
             specialForm.ShowDialog();
         }
 
@@ -414,6 +414,16 @@ namespace QuanLi
         {
             BillStatistics billForm = new BillStatistics();
             billForm.ShowDialog();
+        }
+
+        private void FormStatistics_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void plTotalInvestment_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

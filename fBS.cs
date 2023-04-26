@@ -10,24 +10,22 @@ using System.Windows.Forms;
 
 namespace QuanLi
 {
-    public partial class fBSFood : Form
+    public partial class fBS : Form
     {
-        public fBSFood()
+        public fBS()
         {
             InitializeComponent();
         }
-
-        public void LoadData(List<Dish> dishes)
+        public void LoadData(List<Dish> dishes,string strName)
         {
-            while (dtgvBSFood.Rows.Count > 1)
-                dtgvBSFood.Rows.RemoveAt(1);
+            while (dtgvBS.Rows.Count > 1)
+                dtgvBS.Rows.RemoveAt(1);
 
             foreach (Dish dish in dishes)
             {
-                dtgvBSFood.Rows.Add(dish.Name, dish.NumberOfSells, (dish.Price - dish.ProdExpense) * dish.NumberOfSells);
+                dtgvBS.Rows.Add(dish.Name, dish.NumberOfSells, (dish.Price - dish.ProdExpense) * dish.NumberOfSells);
             }
-
+            this.Text = strName + " bán chạy nhất";
         }
     }
-
 }
