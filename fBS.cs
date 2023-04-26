@@ -15,6 +15,7 @@ namespace QuanLi
         public fBS()
         {
             InitializeComponent();
+            dtgvBS.ReadOnly = true;
         }
         public void LoadData(List<Dish> dishes, string strName)
         {

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ExittingForm));
             label1 = new System.Windows.Forms.Label();
             Save = new System.Windows.Forms.Button();
             DSave = new System.Windows.Forms.Button();
@@ -83,6 +84,7 @@
             Controls.Add(DSave);
             Controls.Add(Save);
             Controls.Add(label1);
+            Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
             Name = "ExittingForm";
             StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             ResumeLayout(false);
