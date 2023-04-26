@@ -359,6 +359,7 @@ namespace QuanLi
             Stat.Text = "Thống kê";
             Stat.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             Stat.UseVisualStyleBackColor = false;
+            Stat.Click += Stat_Click;
             // 
             // WelcomeLabel
             // 

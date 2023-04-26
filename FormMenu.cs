@@ -171,6 +171,12 @@ namespace QuanLi
             }
         }
 
+        private void Stat_Click(object sender, EventArgs e)
+        {
+            FormStatistics form2 = new FormStatistics();
+            form2.Show();
+        }
+
         public void ApplicationClosing(ref FormClosingEventArgs e)
         {
             ExittingForm ef = new ExittingForm();
