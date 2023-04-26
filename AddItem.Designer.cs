@@ -49,7 +49,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new System.Drawing.Font("Cambria", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            label1.Location = new System.Drawing.Point(8, 49);
+            label1.Location = new System.Drawing.Point(8, 46);
             label1.Name = "label1";
             label1.Size = new System.Drawing.Size(35, 20);
             label1.TabIndex = 0;
@@ -59,7 +59,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new System.Drawing.Font("Cambria", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            label2.Location = new System.Drawing.Point(8, 92);
+            label2.Location = new System.Drawing.Point(8, 89);
             label2.Name = "label2";
             label2.Size = new System.Drawing.Size(64, 20);
             label2.TabIndex = 1;
@@ -69,7 +69,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new System.Drawing.Font("Cambria", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            label3.Location = new System.Drawing.Point(8, 136);
+            label3.Location = new System.Drawing.Point(8, 133);
             label3.Name = "label3";
             label3.Size = new System.Drawing.Size(60, 20);
             label3.TabIndex = 2;
@@ -79,7 +79,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            label4.Location = new System.Drawing.Point(13, 9);
+            label4.Location = new System.Drawing.Point(13, 6);
             label4.Name = "label4";
             label4.Size = new System.Drawing.Size(315, 23);
             label4.TabIndex = 3;
@@ -88,7 +88,7 @@
             // ItemName
             // 
             ItemName.Font = new System.Drawing.Font("Cambria", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            ItemName.Location = new System.Drawing.Point(90, 46);
+            ItemName.Location = new System.Drawing.Point(90, 43);
             ItemName.Name = "ItemName";
             ItemName.Size = new System.Drawing.Size(243, 25);
             ItemName.TabIndex = 4;
@@ -96,7 +96,7 @@
             // ItemPrice
             // 
             ItemPrice.Font = new System.Drawing.Font("Cambria", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            ItemPrice.Location = new System.Drawing.Point(90, 89);
+            ItemPrice.Location = new System.Drawing.Point(90, 86);
             ItemPrice.Name = "ItemPrice";
             ItemPrice.Size = new System.Drawing.Size(243, 25);
             ItemPrice.TabIndex = 5;
@@ -104,14 +104,14 @@
             // ItemExpense
             // 
             ItemExpense.Font = new System.Drawing.Font("Cambria", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            ItemExpense.Location = new System.Drawing.Point(90, 133);
+            ItemExpense.Location = new System.Drawing.Point(90, 130);
             ItemExpense.Name = "ItemExpense";
             ItemExpense.Size = new System.Drawing.Size(243, 25);
             ItemExpense.TabIndex = 6;
             // 
             // Cancel
             // 
-            Cancel.Location = new System.Drawing.Point(228, 260);
+            Cancel.Location = new System.Drawing.Point(228, 257);
             Cancel.Name = "Cancel";
             Cancel.Size = new System.Drawing.Size(105, 40);
             Cancel.TabIndex = 7;
@@ -121,7 +121,7 @@
             // 
             // Accept
             // 
-            Accept.Location = new System.Drawing.Point(117, 260);
+            Accept.Location = new System.Drawing.Point(117, 257);
             Accept.Name = "Accept";
             Accept.Size = new System.Drawing.Size(105, 40);
             Accept.TabIndex = 8;
@@ -133,7 +133,7 @@
             // 
             label5.AutoSize = true;
             label5.Font = new System.Drawing.Font("Cambria", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            label5.Location = new System.Drawing.Point(8, 179);
+            label5.Location = new System.Drawing.Point(8, 176);
             label5.Name = "label5";
             label5.Size = new System.Drawing.Size(76, 20);
             label5.TabIndex = 9;
@@ -146,14 +146,14 @@
             ItemType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             ItemType.Font = new System.Drawing.Font("Cambria", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             ItemType.FormattingEnabled = true;
-            ItemType.Location = new System.Drawing.Point(90, 176);
+            ItemType.Location = new System.Drawing.Point(90, 173);
             ItemType.Name = "ItemType";
             ItemType.Size = new System.Drawing.Size(125, 25);
             ItemType.TabIndex = 10;
             // 
             // addImage
             // 
-            addImage.Location = new System.Drawing.Point(8, 260);
+            addImage.Location = new System.Drawing.Point(8, 257);
             addImage.Name = "addImage";
             addImage.Size = new System.Drawing.Size(105, 40);
             addImage.TabIndex = 11;
@@ -165,7 +165,7 @@
             // 
             ItemImage.Enabled = false;
             ItemImage.Font = new System.Drawing.Font("Cambria", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            ItemImage.Location = new System.Drawing.Point(90, 221);
+            ItemImage.Location = new System.Drawing.Point(90, 218);
             ItemImage.Name = "ItemImage";
             ItemImage.Size = new System.Drawing.Size(243, 25);
             ItemImage.TabIndex = 12;
@@ -174,7 +174,7 @@
             // 
             label6.AutoSize = true;
             label6.Font = new System.Drawing.Font("Cambria", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            label6.Location = new System.Drawing.Point(8, 224);
+            label6.Location = new System.Drawing.Point(8, 221);
             label6.Name = "label6";
             label6.Size = new System.Drawing.Size(74, 20);
             label6.TabIndex = 13;
@@ -184,7 +184,7 @@
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(340, 307);
+            ClientSize = new System.Drawing.Size(340, 304);
             ControlBox = false;
             Controls.Add(label6);
             Controls.Add(ItemImage);
@@ -202,8 +202,8 @@
             Controls.Add(label1);
             Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
             MaximizeBox = false;
-            MaximumSize = new System.Drawing.Size(358, 325);
-            MinimumSize = new System.Drawing.Size(358, 325);
+            MaximumSize = new System.Drawing.Size(358, 322);
+            MinimumSize = new System.Drawing.Size(358, 322);
             Name = "AddItem";
             StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             Load += AddItem_Load;

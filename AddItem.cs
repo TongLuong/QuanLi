@@ -84,7 +84,6 @@ namespace QuanLi
 
             Enum.TryParse(ItemType.SelectedItem.ToString(), out type);
 
-
             this.Close();
         }
 
@@ -119,7 +118,6 @@ namespace QuanLi
             {
                 imageName = Path.GetFileName(ofd.FileName);
                 ItemImage.Text = Path.GetFullPath(ofd.FileName);
-
             }
         }
         public void AddImage()
