@@ -336,7 +336,6 @@ namespace QuanLi
             plTotalInvestment.Name = "plTotalInvestment";
             plTotalInvestment.Size = new System.Drawing.Size(404, 26);
             plTotalInvestment.TabIndex = 1;
-            plTotalInvestment.Paint += plTotalInvestment_Paint;
             // 
             // totalInvestmentLabel
             // 
@@ -493,7 +492,6 @@ namespace QuanLi
             Name = "FormStatistics";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Doanh thu";
-            Load += FormStatistics_Load;
             panelFull.ResumeLayout(false);
             bestSellingPanel.ResumeLayout(false);
             bestSellingPanel.PerformLayout();
