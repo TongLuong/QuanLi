@@ -91,7 +91,7 @@ namespace QuanLi
             Food.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(128, 255, 128);
             Food.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(255, 128, 128);
             Food.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            Food.Font = new System.Drawing.Font("Cambria", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            Food.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             Food.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             Food.Location = new System.Drawing.Point(0, 69);
             Food.Name = "Food";
@@ -110,7 +110,7 @@ namespace QuanLi
             Drinks.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(128, 255, 128);
             Drinks.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(255, 128, 128);
             Drinks.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            Drinks.Font = new System.Drawing.Font("Cambria", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            Drinks.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             Drinks.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             Drinks.Location = new System.Drawing.Point(0, 109);
             Drinks.Name = "Drinks";
@@ -129,7 +129,7 @@ namespace QuanLi
             Topping.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(128, 255, 128);
             Topping.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(255, 128, 128);
             Topping.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            Topping.Font = new System.Drawing.Font("Cambria", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            Topping.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             Topping.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             Topping.Location = new System.Drawing.Point(0, 149);
             Topping.Name = "Topping";
@@ -148,7 +148,7 @@ namespace QuanLi
             Special.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(128, 255, 128);
             Special.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(255, 128, 128);
             Special.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            Special.Font = new System.Drawing.Font("Cambria", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            Special.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             Special.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             Special.Location = new System.Drawing.Point(0, 29);
             Special.Name = "Special";
@@ -174,7 +174,7 @@ namespace QuanLi
             label1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             label1.Font = new System.Drawing.Font("Cambria", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             label1.ForeColor = System.Drawing.Color.White;
-            label1.Location = new System.Drawing.Point(356, 29);
+            label1.Location = new System.Drawing.Point(372, 40);
             label1.Name = "label1";
             label1.Size = new System.Drawing.Size(141, 30);
             label1.TabIndex = 12;
@@ -197,7 +197,7 @@ namespace QuanLi
             Pay.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(128, 255, 128);
             Pay.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(255, 128, 128);
             Pay.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            Pay.Font = new System.Drawing.Font("Cambria", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            Pay.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             Pay.Location = new System.Drawing.Point(672, 674);
             Pay.Name = "Pay";
             Pay.Size = new System.Drawing.Size(117, 51);
@@ -210,10 +210,10 @@ namespace QuanLi
             // 
             label2.AutoSize = true;
             label2.BackColor = System.Drawing.Color.FromArgb(128, 255, 128);
-            label2.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            label2.Location = new System.Drawing.Point(984, 41);
+            label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            label2.Location = new System.Drawing.Point(984, 36);
             label2.Name = "label2";
-            label2.Size = new System.Drawing.Size(243, 23);
+            label2.Size = new System.Drawing.Size(263, 28);
             label2.TabIndex = 24;
             label2.Text = "Danh sách các món đã đặt";
             // 
@@ -241,10 +241,10 @@ namespace QuanLi
             // 
             label3.AutoSize = true;
             label3.BackColor = System.Drawing.Color.FromArgb(213, 255, 115);
-            label3.Font = new System.Drawing.Font("Cambria", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            label3.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             label3.Location = new System.Drawing.Point(860, 79);
             label3.Name = "label3";
-            label3.Size = new System.Drawing.Size(113, 30);
+            label3.Size = new System.Drawing.Size(117, 35);
             label3.TabIndex = 27;
             label3.Text = "Tên món";
             // 
@@ -252,10 +252,10 @@ namespace QuanLi
             // 
             label4.AutoSize = true;
             label4.BackColor = System.Drawing.Color.FromArgb(213, 255, 115);
-            label4.Font = new System.Drawing.Font("Cambria", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            label4.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             label4.Location = new System.Drawing.Point(1088, 79);
             label4.Name = "label4";
-            label4.Size = new System.Drawing.Size(117, 30);
+            label4.Size = new System.Drawing.Size(121, 35);
             label4.TabIndex = 28;
             label4.Text = "Số lượng";
             // 
@@ -263,10 +263,10 @@ namespace QuanLi
             // 
             label5.AutoSize = true;
             label5.BackColor = System.Drawing.Color.FromArgb(213, 255, 115);
-            label5.Font = new System.Drawing.Font("Cambria", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            label5.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             label5.Location = new System.Drawing.Point(1306, 79);
             label5.Name = "label5";
-            label5.Size = new System.Drawing.Size(50, 30);
+            label5.Size = new System.Drawing.Size(53, 35);
             label5.TabIndex = 29;
             label5.Text = "Giá";
             // 
@@ -359,6 +359,7 @@ namespace QuanLi
             Stat.Text = "Thống kê";
             Stat.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             Stat.UseVisualStyleBackColor = false;
+            Stat.Click += Stat_Click;
             // 
             // WelcomeLabel
             // 
@@ -392,7 +393,7 @@ namespace QuanLi
             AddDish.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(128, 255, 128);
             AddDish.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(255, 128, 128);
             AddDish.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            AddDish.Font = new System.Drawing.Font("Cambria", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            AddDish.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             AddDish.Location = new System.Drawing.Point(265, 674);
             AddDish.Name = "AddDish";
             AddDish.Size = new System.Drawing.Size(117, 51);
@@ -513,7 +514,7 @@ namespace QuanLi
             SpecialLabel.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(128, 255, 128);
             SpecialLabel.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(255, 128, 128);
             SpecialLabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            SpecialLabel.Font = new System.Drawing.Font("Cambria", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            SpecialLabel.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             SpecialLabel.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             SpecialLabel.Location = new System.Drawing.Point(3, 3);
             SpecialLabel.Name = "SpecialLabel";
@@ -526,17 +527,17 @@ namespace QuanLi
             // 
             Total.AutoSize = true;
             Total.BackColor = System.Drawing.Color.FromArgb(213, 255, 115);
-            Total.Font = new System.Drawing.Font("Cambria", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            Total.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             Total.Location = new System.Drawing.Point(856, 676);
             Total.Name = "Total";
-            Total.Size = new System.Drawing.Size(191, 36);
+            Total.Size = new System.Drawing.Size(203, 41);
             Total.TabIndex = 49;
             Total.Text = "THÀNH TIỀN";
             // 
             // TotalPrice
             // 
             TotalPrice.BackColor = System.Drawing.Color.FromArgb(213, 255, 115);
-            TotalPrice.Font = new System.Drawing.Font("Cambria", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            TotalPrice.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             TotalPrice.Location = new System.Drawing.Point(1065, 676);
             TotalPrice.Name = "TotalPrice";
             TotalPrice.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -552,7 +553,7 @@ namespace QuanLi
             RefreshBut.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(128, 255, 128);
             RefreshBut.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(255, 128, 128);
             RefreshBut.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            RefreshBut.Font = new System.Drawing.Font("Cambria", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            RefreshBut.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             RefreshBut.Location = new System.Drawing.Point(534, 674);
             RefreshBut.Name = "RefreshBut";
             RefreshBut.Size = new System.Drawing.Size(117, 51);
@@ -569,7 +570,7 @@ namespace QuanLi
             deleteDish.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(128, 255, 128);
             deleteDish.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(255, 128, 128);
             deleteDish.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            deleteDish.Font = new System.Drawing.Font("Cambria", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            deleteDish.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             deleteDish.Location = new System.Drawing.Point(398, 674);
             deleteDish.Name = "deleteDish";
             deleteDish.Size = new System.Drawing.Size(117, 51);

@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             dtgvBills = new System.Windows.Forms.DataGridView();
             billID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             billIncome = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -44,16 +44,17 @@
             // 
             // dtgvBills
             // 
+            dtgvBills.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
             dtgvBills.BorderStyle = System.Windows.Forms.BorderStyle.None;
             dtgvBills.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(255, 128, 128);
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.InfoText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            dtgvBills.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(255, 128, 128);
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.InfoText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            dtgvBills.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dtgvBills.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dtgvBills.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { billID, billIncome });
             dtgvBills.EnableHeadersVisualStyles = false;
@@ -97,11 +98,11 @@
             averagePrice.BackColor = System.Drawing.SystemColors.Info;
             averagePrice.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             averagePrice.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            averagePrice.Location = new System.Drawing.Point(4, 147);
+            averagePrice.Location = new System.Drawing.Point(3, 158);
             averagePrice.Name = "averagePrice";
             averagePrice.Size = new System.Drawing.Size(440, 25);
             averagePrice.TabIndex = 8;
-            averagePrice.Text = "Doanh thu trung bình :";
+            averagePrice.Text = "Doanh thu trung bình : 0";
             averagePrice.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // mostValueBillPrice
@@ -109,11 +110,11 @@
             mostValueBillPrice.BackColor = System.Drawing.SystemColors.Info;
             mostValueBillPrice.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             mostValueBillPrice.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            mostValueBillPrice.Location = new System.Drawing.Point(3, 110);
+            mostValueBillPrice.Location = new System.Drawing.Point(18, 119);
             mostValueBillPrice.Name = "mostValueBillPrice";
-            mostValueBillPrice.Size = new System.Drawing.Size(440, 25);
+            mostValueBillPrice.Size = new System.Drawing.Size(425, 25);
             mostValueBillPrice.TabIndex = 7;
-            mostValueBillPrice.Text = "+ Doanh thu :";
+            mostValueBillPrice.Text = "+ Doanh thu : 0";
             mostValueBillPrice.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // mostValueBillID
@@ -121,11 +122,11 @@
             mostValueBillID.BackColor = System.Drawing.SystemColors.Info;
             mostValueBillID.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             mostValueBillID.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            mostValueBillID.Location = new System.Drawing.Point(4, 85);
+            mostValueBillID.Location = new System.Drawing.Point(18, 86);
             mostValueBillID.Name = "mostValueBillID";
-            mostValueBillID.Size = new System.Drawing.Size(440, 25);
+            mostValueBillID.Size = new System.Drawing.Size(425, 25);
             mostValueBillID.TabIndex = 6;
-            mostValueBillID.Text = "+ Mã hoá đơn :";
+            mostValueBillID.Text = "+ Mã hoá đơn : NULL";
             mostValueBillID.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // mostValueBillLabel
@@ -149,7 +150,7 @@
             numberOfBills.Name = "numberOfBills";
             numberOfBills.Size = new System.Drawing.Size(443, 25);
             numberOfBills.TabIndex = 4;
-            numberOfBills.Text = "Tổng số hoá đơn :";
+            numberOfBills.Text = "Tổng số hoá đơn : 0";
             numberOfBills.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // BillStatistics
@@ -160,9 +161,11 @@
             Controls.Add(panel1);
             Controls.Add(dtgvBills);
             Margin = new System.Windows.Forms.Padding(2);
+            MaximizeBox = false;
             Name = "BillStatistics";
             StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             Text = "Thống kê hoá hơn trong ngày";
+            Load += BillStatistics_Load;
             ((System.ComponentModel.ISupportInitialize)dtgvBills).EndInit();
             panel1.ResumeLayout(false);
             ResumeLayout(false);
