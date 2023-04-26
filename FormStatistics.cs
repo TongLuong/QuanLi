@@ -123,9 +123,9 @@ namespace QuanLi
             Int32 totalInvestment = (Int32)Menu.Instance.TotalProdExpense();
             Int32 totalProfit = totalIncome - totalInvestment;
 
-            totalIncomeLabel.Text = (totalIncome > Int32.MaxValue) ? "Số tiền quá lớn" : ConvertToMoneyString(totalIncome.ToString());
-            totalInvestmentLabel.Text = (totalInvestment > Int32.MaxValue) ? "Số tiền quá lớn" : ConvertToMoneyString(totalInvestment.ToString());
-            totalProfitLabel.Text = (totalProfit > Int32.MaxValue) ? "Số tiền quá lớn" : ConvertToMoneyString(totalProfit.ToString());
+            totalIncomeLabel.Text = (totalIncome > Int32.MaxValue) ? "Số tiền quá lớn" : totalIncome.ToString("#,##0");
+            totalInvestmentLabel.Text = (totalInvestment > Int32.MaxValue) ? "Số tiền quá lớn" : totalInvestment.ToString("#,##0");
+            totalProfitLabel.Text = (totalProfit > Int32.MaxValue) ? "Số tiền quá lớn" : totalProfit.ToString("#,##0");
 
             food = Menu.Instance.GetMostSelling(QuanLi.Type.FOOD, food);
             drink = Menu.Instance.GetMostSelling(QuanLi.Type.DRINK, drink);
@@ -162,9 +162,9 @@ namespace QuanLi
             Int32 totalInvestment = (Int32)Menu.Instance.TotalProdExpense();
             Int32 totalProfit = totalIncome - totalInvestment;
 
-            totalIncomeLabel.Text = (totalIncome > Int32.MaxValue) ? "Số tiền quá lớn" : ConvertToMoneyString(totalIncome.ToString());
-            totalInvestmentLabel.Text = (totalInvestment > Int32.MaxValue) ? "Số tiền quá lớn" : ConvertToMoneyString(totalInvestment.ToString());
-            totalProfitLabel.Text = (totalProfit > Int32.MaxValue) ? "Số tiền quá lớn" : ConvertToMoneyString(totalProfit.ToString());
+            totalIncomeLabel.Text = (totalIncome > Int32.MaxValue) ? "Số tiền quá lớn" : totalIncome.ToString("#,##0");
+            totalInvestmentLabel.Text = (totalInvestment > Int32.MaxValue) ? "Số tiền quá lớn" : totalInvestment.ToString("#,##0");
+            totalProfitLabel.Text = (totalProfit > Int32.MaxValue) ? "Số tiền quá lớn" : totalProfit.ToString("#,##0");
 
             chart.Visible = false;
 
@@ -310,9 +310,9 @@ namespace QuanLi
                 totalInvestment += (Int32)dish.ProdExpense * dish.NumberOfSells;
             }
             totalProfit = totalIncome - totalInvestment;
-            totalIncomeLabel.Text = (totalIncome > Int32.MaxValue) ? "Số tiền quá lớn" : ConvertToMoneyString(totalIncome.ToString());
-            totalInvestmentLabel.Text = (totalInvestment > Int32.MaxValue) ? "Số tiền quá lớn" : ConvertToMoneyString(totalInvestment.ToString());
-            totalProfitLabel.Text = (totalProfit > Int32.MaxValue) ? "Số tiền quá lớn" : ConvertToMoneyString(totalProfit.ToString());
+            totalIncomeLabel.Text = (totalIncome > Int32.MaxValue) ? "Số tiền quá lớn" : totalIncome.ToString("#,##0");
+            totalInvestmentLabel.Text = (totalInvestment > Int32.MaxValue) ? "Số tiền quá lớn" : totalInvestment.ToString("#,##0");
+            totalProfitLabel.Text = (totalProfit > Int32.MaxValue) ? "Số tiền quá lớn" : totalProfit.ToString("#,##0");
 
             food.Clear();
             drink.Clear();
@@ -335,14 +335,6 @@ namespace QuanLi
             dropdownTimer.Start();
         }
 
-        string ConvertToMoneyString(string money)
-        {
-            for (int i = money.Length - 4; i >= 0; i -= 3)
-            {
-                money.Insert(i + 1, " ");
-            }
-            return money;
-        }
 
         List<Dish> GetMostSelling(Type type)
         {
