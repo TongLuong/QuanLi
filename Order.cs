@@ -22,13 +22,17 @@ namespace QuanLi
     {
         #region Feature
         List<KeyValuePair<Order, int>> orders; public List<KeyValuePair<Order, int>> Orders { get => orders; set => orders = value; }
-        double total; public double Total { get => total; set => total = value; }
+        double total; public double Total { get => total; set => total = value; } // total money of this Bill
+        int id; public int ID { get => id; }
         #endregion
         #region Constructor
-        public Bill() 
+        public Bill()
         {
             orders = new List<KeyValuePair<Order, int>>();
             total = 0;
+            id = (Convert.ToInt32(DateTime.Now.Day) 
+                + Convert.ToInt32(DateTime.Now.Month) * 100 
+                + Convert.ToInt32(DateTime.Now.Year) * 10000);
         }
         #endregion
         #region Function
@@ -44,11 +48,13 @@ namespace QuanLi
                 string  newName = name[i].Text.ToString();
                 int  newAmount = Convert.ToInt32(amount[i].Text);
                 double newPrice = Convert.ToDouble(price[i].Text);
-                Order tmp = new Order(newName, newPrice);
+
+                Order tmp = new Order(newName, newPrice/newAmount); //cal single price
                 KeyValuePair<Order, int> newOrder = new KeyValuePair<Order, int>(tmp,newAmount);
                 orders.Add(newOrder);
-                total += newAmount * newPrice;
+                total += newPrice;
             }
+            id = ListBill.Instance.Bills.Count*(100000000)+ id;
 
         }
         #endregion
@@ -57,16 +63,20 @@ namespace QuanLi
     public class ListBill
     {
         List<Bill> bills; public List<Bill> Bills { get => bills; set => bills = value; }
-        public static ListBill Instance { get; set; }
+        private static ListBill instance = null;
         
-        public ListBill()
+        private ListBill()
         {
             bills = new List<Bill>();
-            Instance = this;
         }
-        public void AddBill(Bill bill)
+
+        public static ListBill Instance
         {
-            bills.Add(bill);
+            get 
+            {
+                if(instance == null) instance = new ListBill();
+                return instance;
+            } 
         }
     }
 }

@@ -30,6 +30,7 @@ namespace QuanLi
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             MenuButton = new System.Windows.Forms.Button();
             pictureBox1 = new System.Windows.Forms.PictureBox();
             pictureBox3 = new System.Windows.Forms.PictureBox();
@@ -97,7 +98,6 @@ namespace QuanLi
             label1.Size = new System.Drawing.Size(721, 177);
             label1.TabIndex = 4;
             label1.Text = "WELCOME";
-            label1.Click += label1_Click;
             // 
             // pictureBox2
             // 
@@ -178,8 +178,9 @@ namespace QuanLi
             MaximumSize = new System.Drawing.Size(1140, 784);
             MinimumSize = new System.Drawing.Size(1140, 784);
             Name = "FormMain";
+            StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             Text = "FormMain";
-            Load += FormMain_Load;
+            FormClosing += FormMain_FormClosing;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();

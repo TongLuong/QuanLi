@@ -17,11 +17,6 @@ namespace QuanLi
             this.StartPosition = FormStartPosition.CenterScreen;
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void MenuButton_MouseEnter(object sender, EventArgs e)
         {
             ((Button)sender).FlatAppearance.MouseOverBackColor = ((Button)sender).BackColor;
@@ -37,11 +32,6 @@ namespace QuanLi
         {
             this.MenuButton.BackgroundImage = ((System.Drawing.Image)(Properties.Resources.MenuDown));
             this.MenuButton.FlatAppearance.MouseDownBackColor = this.MenuButton.BackColor;
-        }
-
-        private void FormMain_Load(object sender, EventArgs e)
-        {
-
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -74,20 +64,20 @@ namespace QuanLi
 
         private void RevenueButton_Click(object sender, EventArgs e)
         {
-            OpenRevenue();
+            OpenStatistics();
         }
 
         //---------------------------func-------------
 
         private void OpenMenu()
         {
-            Form1 form1 = new Form1();
+            FormMenu form1 = FormMenu.Instance;
             form1.Show();
         }
 
-        private void OpenRevenue()
+        private void OpenStatistics()
         {
-            Form2 form2 = new Form2();
+            FormStatistics form2 = new FormStatistics();
             form2.Show();
         }
     }
