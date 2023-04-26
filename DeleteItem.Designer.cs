@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DeleteItem));
             MenuAll = new System.Windows.Forms.DataGridView();
             DeleteBtn = new System.Windows.Forms.Button();
             CancelBtn = new System.Windows.Forms.Button();
@@ -75,6 +76,7 @@
             Controls.Add(CancelBtn);
             Controls.Add(DeleteBtn);
             Controls.Add(MenuAll);
+            Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
             Name = "DeleteItem";
             StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             Text = "Xóa Món";

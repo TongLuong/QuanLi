@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fBS));
             dtgvBS = new System.Windows.Forms.DataGridView();
             FoodName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             Sell = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -50,7 +51,6 @@
             dtgvBS.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dtgvBS.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dtgvBS.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { FoodName, Sell, Profit });
-            dtgvBS.Enabled = false;
             dtgvBS.EnableHeadersVisualStyles = false;
             dtgvBS.Location = new System.Drawing.Point(13, 15);
             dtgvBS.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
@@ -91,8 +91,13 @@
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             ClientSize = new System.Drawing.Size(896, 497);
             Controls.Add(dtgvBS);
+            Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
             Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            MaximizeBox = false;
+            MaximumSize = new System.Drawing.Size(914, 544);
+            MinimumSize = new System.Drawing.Size(914, 544);
             Name = "fBS";
+            StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             Text = "fBS";
             ((System.ComponentModel.ISupportInitialize)dtgvBS).EndInit();
             ResumeLayout(false);
