@@ -31,6 +31,7 @@ namespace QuanLi
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fBSFood));
             dtgvBSFood = new System.Windows.Forms.DataGridView();
             FoodName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             Sell = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -88,6 +89,7 @@ namespace QuanLi
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             ClientSize = new System.Drawing.Size(887, 489);
             Controls.Add(dtgvBSFood);
+            Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
             Margin = new System.Windows.Forms.Padding(2);
             Name = "fBSFood";
             StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

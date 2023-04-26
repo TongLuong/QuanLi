@@ -404,6 +404,7 @@ namespace QuanLi
             {
                 this.basePrice = basePrice;
                 mediator = null;
+                this.Font = new Font("Segoe UI", 12);
             }
 
             public void ChangeText(string newText)
@@ -720,7 +721,7 @@ namespace QuanLi
             //Save Bill
             if (Convert.ToDouble(TotalPrice.Text) == 0)
             {
-                MessageBox.Show("Unavailable Bill !!");
+                MessageBox.Show("Không có món cần thanh toán !!");
                 return;
             }
             Bill newBill = new Bill();
@@ -778,18 +779,23 @@ namespace QuanLi
             }
 
             CustomNumericUpDown val = memento.RestoreState();
-            val.LabelsVisibling = true;
+            if (val.Value != 0)
+                val.LabelsVisibling = true;
             int index = memento.GetIndex();
-            List<Control> temp = val.Mediator.GetControls();
-            CustomLabel name = (CustomLabel)temp[0];
-            CustomLabel amount = (CustomLabel)temp[1];
-            CustomLabel price = (CustomLabel)temp[2];
 
-            if (index >= 0)
+            if (val.Mediator != null)
             {
-                flowOrderName.Controls.SetChildIndex(name, index);
-                flowOrderAmount.Controls.SetChildIndex(amount, index);
-                flowOrderPrice.Controls.SetChildIndex(price, index);
+                List<Control> temp = val.Mediator.GetControls();
+                CustomLabel name = (CustomLabel)temp[0];
+                CustomLabel amount = (CustomLabel)temp[1];
+                CustomLabel price = (CustomLabel)temp[2];
+
+                if (index >= 0)
+                {
+                    flowOrderName.Controls.SetChildIndex(name, index);
+                    flowOrderAmount.Controls.SetChildIndex(amount, index);
+                    flowOrderPrice.Controls.SetChildIndex(price, index);
+                }
             }
         }
         #endregion

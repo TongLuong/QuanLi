@@ -528,7 +528,7 @@ namespace QuanLi
             Total.AutoSize = true;
             Total.BackColor = System.Drawing.Color.FromArgb(213, 255, 115);
             Total.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            Total.Location = new System.Drawing.Point(856, 676);
+            Total.Location = new System.Drawing.Point(856, 673);
             Total.Name = "Total";
             Total.Size = new System.Drawing.Size(203, 41);
             Total.TabIndex = 49;
@@ -538,7 +538,7 @@ namespace QuanLi
             // 
             TotalPrice.BackColor = System.Drawing.Color.FromArgb(213, 255, 115);
             TotalPrice.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            TotalPrice.Location = new System.Drawing.Point(1065, 676);
+            TotalPrice.Location = new System.Drawing.Point(1065, 673);
             TotalPrice.Name = "TotalPrice";
             TotalPrice.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             TotalPrice.Size = new System.Drawing.Size(295, 41);
