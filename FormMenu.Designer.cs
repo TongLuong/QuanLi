@@ -514,7 +514,7 @@ namespace QuanLi
             AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             BackColor = System.Drawing.Color.White;
-            ClientSize = new System.Drawing.Size(1404, 738);
+            ClientSize = new System.Drawing.Size(1404, 726);
             Controls.Add(deleteDish);
             Controls.Add(WelcomeLabel);
             Controls.Add(RefreshBut);
@@ -545,6 +545,7 @@ namespace QuanLi
             Controls.Add(pictureBox7);
             FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
+            MaximizeBox = false;
             Name = "FormMenu";
             StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             FormClosing += FormMenu_FormClosing;
