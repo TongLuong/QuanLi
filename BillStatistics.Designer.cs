@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             dtgvBills = new System.Windows.Forms.DataGridView();
             billID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             billIncome = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -47,14 +47,14 @@
             dtgvBills.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
             dtgvBills.BorderStyle = System.Windows.Forms.BorderStyle.None;
             dtgvBills.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(255, 128, 128);
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.InfoText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            dtgvBills.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(255, 128, 128);
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.InfoText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            dtgvBills.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dtgvBills.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dtgvBills.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { billID, billIncome });
             dtgvBills.EnableHeadersVisualStyles = false;
@@ -161,9 +161,11 @@
             Controls.Add(panel1);
             Controls.Add(dtgvBills);
             Margin = new System.Windows.Forms.Padding(2);
+            MaximizeBox = false;
             Name = "BillStatistics";
             StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             Text = "Thống kê hoá hơn trong ngày";
+            Load += BillStatistics_Load;
             ((System.ComponentModel.ISupportInitialize)dtgvBills).EndInit();
             panel1.ResumeLayout(false);
             ResumeLayout(false);

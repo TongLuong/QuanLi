@@ -3,12 +3,9 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Reflection;
-using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Windows.Forms;
-using static QuanLi.FormMenu;
 
 namespace QuanLi
 {
@@ -62,7 +59,7 @@ namespace QuanLi
             if (addItemForm.Abort)
                 return;
 
-            Dish dish = new Dish(addItemForm.itemName, addItemForm.itemPrice, addItemForm.itemExpense, addItemForm.itemType, addItemForm.ImageName);
+            Dish dish = new Dish(addItemForm.ItemName, addItemForm.ItemPrice, addItemForm.ItemExpense, addItemForm.ItemType, addItemForm.ImageName);
             if (!Menu.Instance.AddDish(dish))
             {
                 return;
@@ -97,78 +94,16 @@ namespace QuanLi
             timeThread.Start();
         }
 
-        private void close_MouseEnter(object sender, EventArgs e)
+        private void FormMenu_FormClosing(object sender, FormClosingEventArgs e)
         {
-            timer1.Start(); // timer1 handles effect for close button
-        }
-
-        private void close_MouseMove(object sender, MouseEventArgs e)
-        {
-            timer1.Start(); // timer1 handles effect for close button
-        }
-
-        private void close_Click(object sender, EventArgs e)
-        {
-            //this.Close(); // close the form
+            e.Cancel = true;
             this.Hide();
         }
 
-        private bool MouseIsOverControl(Control c)
-        => c.ClientRectangle.Contains(c.PointToClient(Cursor.Position));
-
-        private void timer1_Tick(object sender, EventArgs e)
+        private void Stat_Click(object sender, EventArgs e)
         {
-            if (!MouseIsOverControl(close))
-            {
-                close.BorderStyle = BorderStyle.None; // remove effect if mouse leave the control
-                timer1.Stop();
-            }
-            else
-                close.BorderStyle = BorderStyle.FixedSingle; // add effect if mouse leave the control
-        }
-
-        private void minimize_Click(object sender, EventArgs e)
-        {
-            this.WindowState = FormWindowState.Minimized; // minimized the form
-        }
-
-        private void minimize_MouseEnter(object sender, EventArgs e)
-        {
-            timer2.Start(); // timer2 handles effect for minimize button
-        }
-
-        private void minimize_MouseMove(object sender, MouseEventArgs e)
-        {
-            timer2.Start(); // timer2 handles effect for minize button
-        }
-
-        private void timer2_Tick(object sender, EventArgs e)
-        {
-            if (!MouseIsOverControl(minimize))
-            {
-                minimize.BorderStyle = BorderStyle.None; // remove effect if mouse leave the control
-                timer2.Stop();
-            }
-            else
-                minimize.BorderStyle = BorderStyle.FixedSingle; // add effect if mouse is in the control
-        }
-
-        private void Form1_MouseDown(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left)
-            {
-                MouseDownLocation = e.Location; // get the current location of mouse if left mouse button is pressed
-            }
-        }
-
-        private void Form1_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left)
-            {
-                // calculate new location for the form after drag-and-drop operation
-                this.Left = this.Left + (e.X - MouseDownLocation.X);
-                this.Top = this.Top + (e.Y - MouseDownLocation.Y);
-            }
+            FormStatistics form2 = new FormStatistics();
+            form2.Show();
         }
 
         public void ApplicationClosing(ref FormClosingEventArgs e)
@@ -218,33 +153,25 @@ namespace QuanLi
 
         private void UpdateTime()
         {
+            TimeSpan currTime = DateTime.Now.TimeOfDay;
+            TimeSpan morning = new TimeSpan(5, 30, 0);
+            TimeSpan afternoon = new TimeSpan(12, 0, 0);
+            TimeSpan evening = new TimeSpan(18, 0, 0);
             while (true)
             {
                 try
                 {
-                    if (CurrTime.IsHandleCreated) // check if the control was created/existed
-                    {
-                        CurrTime.Invoke(new Action(() =>
-                        {
-                            CurrTime.Text = DateTime.Now.ToString("hh:mm:ss tt \n") + DateTime.Now.ToString("dd/MM/yyyy");
-                        })); // method for sharing data between threads
-                    }
-
+                    string time = DateTime.Now.ToString("hh:mm:ss tt, ") + DateTime.Now.ToString("dd/MM/yyyy");
                     if (WelcomeLabel.IsHandleCreated)
                     {
-                        TimeSpan currTime = DateTime.Now.TimeOfDay;
-                        TimeSpan morning = new TimeSpan(5, 30, 0);
-                        TimeSpan afternoon = new TimeSpan(12, 0, 0);
-                        TimeSpan evening = new TimeSpan(18, 0, 0);
-
                         WelcomeLabel.Invoke(new Action(() =>
                         {
                             if (currTime >= morning && currTime < afternoon)
-                                WelcomeLabel.Text = "Chào buổi sáng";
+                                WelcomeLabel.Text = "Chào buổi sáng, bây giờ là " + time;
                             else if (currTime >= afternoon && currTime < evening)
-                                WelcomeLabel.Text = "Chào buổi chiều";
+                                WelcomeLabel.Text = "Chào buổi chiều, bây giờ là " + time;
                             else if (currTime >= evening || currTime < morning)
-                                WelcomeLabel.Text = "Chào buổi tối";
+                                WelcomeLabel.Text = "Chào buổi tối, bây giờ là " + time;
                         })); // method for sharing data between threads
                     }
                 }
@@ -296,7 +223,7 @@ namespace QuanLi
                 {
                     this.amount.ChangeText(mes);
                     double newPrice = Convert.ToDouble(this.price.BasePrice) * Convert.ToDouble(mes);
-                    this.price.ChangeText(newPrice.ToString());
+                    this.price.ChangeText(newPrice.ToString("#,##0"));
                 }
             }
 
@@ -399,6 +326,7 @@ namespace QuanLi
             {
                 this.basePrice = basePrice;
                 mediator = null;
+                this.Font = new Font("Segoe UI", 12);
             }
 
             public void ChangeText(string newText)
@@ -457,6 +385,7 @@ namespace QuanLi
                 lblName.AutoSize = false;
                 lblName.Text = name;
                 lblName.TextAlign = ContentAlignment.MiddleCenter;
+                lblName.Font = new Font("Segoe UI", lblName.Font.Size + 2);
                 return lblName;
             }
             public Label BuildLabelPrice(int w, int h, int x, int y, double price)
@@ -465,8 +394,9 @@ namespace QuanLi
                 lblPrice.Size = new Size(w, h);
                 lblPrice.Location = new Point(x, y);
                 lblPrice.AutoSize = false;
-                lblPrice.Text = price.ToString();
+                lblPrice.Text = price.ToString("#,##0") + " VND";
                 lblPrice.TextAlign = ContentAlignment.MiddleCenter;
+                lblPrice.Font = new Font("Segoe UI", lblPrice.Font.Size + 2);
                 return lblPrice;
             }
             public CustomNumericUpDown BuildUpDown(int w, int h, int x, int y, int i, Dish dish)
@@ -554,7 +484,7 @@ namespace QuanLi
                 // add price
                 CustomLabel price = new CustomLabel();
                 price.BasePrice = dish.Price; // set base price
-                price.Text = (dish.Price * (double)cnup.Value).ToString();
+                price.Text = (dish.Price * (double)cnup.Value).ToString("#,##0");
                 price.AutoSize = true;
                 price.Name = dish.ID.ToString() + ",Price";
                 form1.flowOrderPrice.Controls.Add(price);
@@ -715,7 +645,7 @@ namespace QuanLi
             //Save Bill
             if (Convert.ToDouble(TotalPrice.Text) == 0)
             {
-                MessageBox.Show("Unavailable Bill !!");
+                MessageBox.Show("Không có món cần thanh toán !!");
                 return;
             }
             Bill newBill = new Bill();
@@ -755,7 +685,7 @@ namespace QuanLi
                 double newPrice = Convert.ToDouble(price[i].Text);
                 total += newPrice;
             }
-            TotalPrice.Text = Convert.ToString(total);
+            TotalPrice.Text = total.ToString("#,##0");
         }
         #endregion
 
@@ -773,18 +703,23 @@ namespace QuanLi
             }
 
             CustomNumericUpDown val = memento.RestoreState();
-            val.LabelsVisibling = true;
+            if (val.Value != 0)
+                val.LabelsVisibling = true;
             int index = memento.GetIndex();
-            List<Control> temp = val.Mediator.GetControls();
-            CustomLabel name = (CustomLabel)temp[0];
-            CustomLabel amount = (CustomLabel)temp[1];
-            CustomLabel price = (CustomLabel)temp[2];
 
-            if (index >= 0)
+            if (val.Mediator != null)
             {
-                flowOrderName.Controls.SetChildIndex(name, index);
-                flowOrderAmount.Controls.SetChildIndex(amount, index);
-                flowOrderPrice.Controls.SetChildIndex(price, index);
+                List<Control> temp = val.Mediator.GetControls();
+                CustomLabel name = (CustomLabel)temp[0];
+                CustomLabel amount = (CustomLabel)temp[1];
+                CustomLabel price = (CustomLabel)temp[2];
+
+                if (index >= 0)
+                {
+                    flowOrderName.Controls.SetChildIndex(name, index);
+                    flowOrderAmount.Controls.SetChildIndex(amount, index);
+                    flowOrderPrice.Controls.SetChildIndex(price, index);
+                }
             }
         }
         #endregion
@@ -819,7 +754,7 @@ namespace QuanLi
     #region Memento Design Pattern (2)
     public interface IMemento
     {
-        public CustomNumericUpDown RestoreState();
+        public FormMenu.CustomNumericUpDown RestoreState();
         public int GetIndex();
         public void SetValueNIndex(decimal value, int index);
     }
@@ -866,7 +801,7 @@ namespace QuanLi
             mementos = new List<IMemento>();
         }
 
-        public void Backup(CustomNumericUpDown control)
+        public void Backup(FormMenu.CustomNumericUpDown control)
         {
             mementos.Add(originator.Save(control));
         }

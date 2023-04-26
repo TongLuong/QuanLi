@@ -33,15 +33,15 @@
             label2 = new System.Windows.Forms.Label();
             label3 = new System.Windows.Forms.Label();
             label4 = new System.Windows.Forms.Label();
-            ItemName = new System.Windows.Forms.TextBox();
-            ItemPrice = new System.Windows.Forms.TextBox();
-            ItemExpense = new System.Windows.Forms.TextBox();
+            this.itemName = new System.Windows.Forms.TextBox();
+            this.itemPrice = new System.Windows.Forms.TextBox();
+            this.itemExpense = new System.Windows.Forms.TextBox();
             Cancel = new System.Windows.Forms.Button();
             Accept = new System.Windows.Forms.Button();
             label5 = new System.Windows.Forms.Label();
-            ItemType = new System.Windows.Forms.ComboBox();
-            addImage = new System.Windows.Forms.Button();
-            ItemImage = new System.Windows.Forms.TextBox();
+            this.itemType = new System.Windows.Forms.ComboBox();
+            this.addImage = new System.Windows.Forms.Button();
+            itemImage = new System.Windows.Forms.TextBox();
             label6 = new System.Windows.Forms.Label();
             SuspendLayout();
             // 
@@ -49,7 +49,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new System.Drawing.Font("Cambria", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            label1.Location = new System.Drawing.Point(8, 49);
+            label1.Location = new System.Drawing.Point(8, 46);
             label1.Name = "label1";
             label1.Size = new System.Drawing.Size(35, 20);
             label1.TabIndex = 0;
@@ -59,7 +59,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new System.Drawing.Font("Cambria", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            label2.Location = new System.Drawing.Point(8, 92);
+            label2.Location = new System.Drawing.Point(8, 89);
             label2.Name = "label2";
             label2.Size = new System.Drawing.Size(64, 20);
             label2.TabIndex = 1;
@@ -69,7 +69,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new System.Drawing.Font("Cambria", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            label3.Location = new System.Drawing.Point(8, 136);
+            label3.Location = new System.Drawing.Point(8, 133);
             label3.Name = "label3";
             label3.Size = new System.Drawing.Size(60, 20);
             label3.TabIndex = 2;
@@ -79,39 +79,39 @@
             // 
             label4.AutoSize = true;
             label4.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            label4.Location = new System.Drawing.Point(13, 9);
+            label4.Location = new System.Drawing.Point(13, 6);
             label4.Name = "label4";
             label4.Size = new System.Drawing.Size(315, 23);
             label4.TabIndex = 3;
             label4.Text = "Nhập thông tin cho sản phẩm mới";
             // 
-            // ItemName
+            // itemName
             // 
-            ItemName.Font = new System.Drawing.Font("Cambria", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            ItemName.Location = new System.Drawing.Point(90, 46);
-            ItemName.Name = "ItemName";
-            ItemName.Size = new System.Drawing.Size(243, 25);
-            ItemName.TabIndex = 4;
+            this.itemName.Font = new System.Drawing.Font("Cambria", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.itemName.Location = new System.Drawing.Point(90, 43);
+            this.itemName.Name = "itemName";
+            this.itemName.Size = new System.Drawing.Size(243, 25);
+            this.itemName.TabIndex = 4;
             // 
-            // ItemPrice
+            // itemPrice
             // 
-            ItemPrice.Font = new System.Drawing.Font("Cambria", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            ItemPrice.Location = new System.Drawing.Point(90, 89);
-            ItemPrice.Name = "ItemPrice";
-            ItemPrice.Size = new System.Drawing.Size(243, 25);
-            ItemPrice.TabIndex = 5;
+            this.itemPrice.Font = new System.Drawing.Font("Cambria", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.itemPrice.Location = new System.Drawing.Point(90, 86);
+            this.itemPrice.Name = "itemPrice";
+            this.itemPrice.Size = new System.Drawing.Size(243, 25);
+            this.itemPrice.TabIndex = 5;
             // 
-            // ItemExpense
+            // itemExpense
             // 
-            ItemExpense.Font = new System.Drawing.Font("Cambria", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            ItemExpense.Location = new System.Drawing.Point(90, 133);
-            ItemExpense.Name = "ItemExpense";
-            ItemExpense.Size = new System.Drawing.Size(243, 25);
-            ItemExpense.TabIndex = 6;
+            this.itemExpense.Font = new System.Drawing.Font("Cambria", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.itemExpense.Location = new System.Drawing.Point(90, 130);
+            this.itemExpense.Name = "itemExpense";
+            this.itemExpense.Size = new System.Drawing.Size(243, 25);
+            this.itemExpense.TabIndex = 6;
             // 
             // Cancel
             // 
-            Cancel.Location = new System.Drawing.Point(228, 260);
+            Cancel.Location = new System.Drawing.Point(228, 257);
             Cancel.Name = "Cancel";
             Cancel.Size = new System.Drawing.Size(105, 40);
             Cancel.TabIndex = 7;
@@ -121,7 +121,7 @@
             // 
             // Accept
             // 
-            Accept.Location = new System.Drawing.Point(117, 260);
+            Accept.Location = new System.Drawing.Point(117, 257);
             Accept.Name = "Accept";
             Accept.Size = new System.Drawing.Size(105, 40);
             Accept.TabIndex = 8;
@@ -133,48 +133,48 @@
             // 
             label5.AutoSize = true;
             label5.Font = new System.Drawing.Font("Cambria", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            label5.Location = new System.Drawing.Point(8, 179);
+            label5.Location = new System.Drawing.Point(8, 176);
             label5.Name = "label5";
             label5.Size = new System.Drawing.Size(76, 20);
             label5.TabIndex = 9;
             label5.Text = "Phân loại";
             // 
-            // ItemType
+            // itemType
             // 
-            ItemType.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            ItemType.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            ItemType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            ItemType.Font = new System.Drawing.Font("Cambria", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            ItemType.FormattingEnabled = true;
-            ItemType.Location = new System.Drawing.Point(90, 176);
-            ItemType.Name = "ItemType";
-            ItemType.Size = new System.Drawing.Size(125, 25);
-            ItemType.TabIndex = 10;
+            this.itemType.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.itemType.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.itemType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.itemType.Font = new System.Drawing.Font("Cambria", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.itemType.FormattingEnabled = true;
+            this.itemType.Location = new System.Drawing.Point(90, 173);
+            this.itemType.Name = "itemType";
+            this.itemType.Size = new System.Drawing.Size(125, 25);
+            this.itemType.TabIndex = 10;
             // 
-            // addImage
+            // AddImage
             // 
-            addImage.Location = new System.Drawing.Point(8, 260);
-            addImage.Name = "addImage";
-            addImage.Size = new System.Drawing.Size(105, 40);
-            addImage.TabIndex = 11;
-            addImage.Text = "Thêm Ảnh";
-            addImage.UseVisualStyleBackColor = true;
-            addImage.Click += addImage_Click;
+            this.addImage.Location = new System.Drawing.Point(8, 257);
+            this.addImage.Name = "AddImage";
+            this.addImage.Size = new System.Drawing.Size(105, 40);
+            this.addImage.TabIndex = 11;
+            this.addImage.Text = "Thêm Ảnh";
+            this.addImage.UseVisualStyleBackColor = true;
+            this.addImage.Click += this.AddImage_Click;
             // 
-            // ItemImage
+            // itemImage
             // 
-            ItemImage.Enabled = false;
-            ItemImage.Font = new System.Drawing.Font("Cambria", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            ItemImage.Location = new System.Drawing.Point(90, 221);
-            ItemImage.Name = "ItemImage";
-            ItemImage.Size = new System.Drawing.Size(243, 25);
-            ItemImage.TabIndex = 12;
+            itemImage.Enabled = false;
+            itemImage.Font = new System.Drawing.Font("Cambria", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            itemImage.Location = new System.Drawing.Point(90, 218);
+            itemImage.Name = "itemImage";
+            itemImage.Size = new System.Drawing.Size(243, 25);
+            itemImage.TabIndex = 12;
             // 
             // label6
             // 
             label6.AutoSize = true;
             label6.Font = new System.Drawing.Font("Cambria", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            label6.Location = new System.Drawing.Point(8, 224);
+            label6.Location = new System.Drawing.Point(8, 221);
             label6.Name = "label6";
             label6.Size = new System.Drawing.Size(74, 20);
             label6.TabIndex = 13;
@@ -184,26 +184,26 @@
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(340, 307);
+            ClientSize = new System.Drawing.Size(340, 304);
             ControlBox = false;
             Controls.Add(label6);
-            Controls.Add(ItemImage);
-            Controls.Add(addImage);
-            Controls.Add(ItemType);
+            Controls.Add(itemImage);
+            Controls.Add(this.addImage);
+            Controls.Add(this.itemType);
             Controls.Add(label5);
             Controls.Add(Accept);
             Controls.Add(Cancel);
-            Controls.Add(ItemExpense);
-            Controls.Add(ItemPrice);
-            Controls.Add(ItemName);
+            Controls.Add(this.itemExpense);
+            Controls.Add(this.itemPrice);
+            Controls.Add(this.itemName);
             Controls.Add(label4);
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
             Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
             MaximizeBox = false;
-            MaximumSize = new System.Drawing.Size(358, 325);
-            MinimumSize = new System.Drawing.Size(358, 325);
+            MaximumSize = new System.Drawing.Size(358, 322);
+            MinimumSize = new System.Drawing.Size(358, 322);
             Name = "AddItem";
             StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             Load += AddItem_Load;
@@ -217,15 +217,15 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox ItemName;
-        private System.Windows.Forms.TextBox ItemPrice;
-        private System.Windows.Forms.TextBox ItemExpense;
+        private System.Windows.Forms.TextBox itemName;
+        private System.Windows.Forms.TextBox itemPrice;
+        private System.Windows.Forms.TextBox itemExpense;
         private System.Windows.Forms.Button Cancel;
         private System.Windows.Forms.Button Accept;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ComboBox ItemType;
+        private System.Windows.Forms.ComboBox itemType;
         private System.Windows.Forms.Button addImage;
-        private System.Windows.Forms.TextBox ItemImage;
+        private System.Windows.Forms.TextBox itemImage;
         private System.Windows.Forms.Label label6;
     }
 }

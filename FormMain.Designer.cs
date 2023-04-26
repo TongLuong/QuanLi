@@ -95,7 +95,7 @@ namespace QuanLi
             label1.ForeColor = System.Drawing.SystemColors.WindowText;
             label1.Location = new System.Drawing.Point(35, 124);
             label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(673, 177);
+            label1.Size = new System.Drawing.Size(721, 177);
             label1.TabIndex = 4;
             label1.Text = "WELCOME";
             // 
@@ -165,7 +165,7 @@ namespace QuanLi
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             BackColor = System.Drawing.Color.Chocolate;
             BackgroundImage = Properties.Resources.CircleTile;
-            ClientSize = new System.Drawing.Size(1122, 737);
+            ClientSize = new System.Drawing.Size(1122, 735);
             Controls.Add(RevenueButton);
             Controls.Add(Date);
             Controls.Add(Time);
@@ -177,8 +177,8 @@ namespace QuanLi
             Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
             Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             MaximizeBox = false;
-            MaximumSize = new System.Drawing.Size(1140, 784);
-            MinimumSize = new System.Drawing.Size(1140, 784);
+            MaximumSize = new System.Drawing.Size(1140, 782);
+            MinimumSize = new System.Drawing.Size(1140, 723);
             Name = "FormMain";
             StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             Text = "FormMain";

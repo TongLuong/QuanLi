@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -46,9 +45,14 @@ namespace QuanLi
             numberOfBills.Text = "Tổng số hoá đơn : " + bills.Count.ToString();
 
             mostValueBillID.Text = "Mã hoá đơn : " + maxBill.ID.ToString();
-            mostValueBillPrice.Text = "Doanh thu : " + maxBill.Total.ToString("#,##0");
+            mostValueBillPrice.Text = "Doanh thu : " + maxBill.Total.ToString();
 
-            averagePrice.Text = "Doanh thu trung bình : " + (totalPrice / bills.Count).ToString("#,##0");
+            averagePrice.Text = "Doanh thu trung bình : " + (totalPrice / bills.Count).ToString();
+        }
+
+        private void BillStatistics_Load(object sender, EventArgs e)
+        {
+            this.MaximumSize = this.Size;
         }
     }
 }

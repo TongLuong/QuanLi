@@ -14,31 +14,37 @@ namespace QuanLi
 {
     public partial class AddItem : Form
     {
+        private string baseDir;
+
         private string name;
-        public string itemName
+        public string ItemName
         {
             get => name;
             set => name = value;
         }
 
         private double price;
-        public double itemPrice
+        public double ItemPrice
         {
             get => price;
             set => price = value;
         }
 
         private double expense;
-        public double itemExpense
+        public double ItemExpense
         {
             get => expense;
             set => expense = value;
         }
-        private string imageName; public string ImageName { get => imageName; set => imageName = value; }
-        private string baseDir;
+        private string imageName;
+        public string ImageName
+        {
+            get => imageName; 
+            set => imageName = value;
+        }
 
         private Type type;
-        public Type itemType
+        public Type ItemType
         {
             get => type;
             set => type = value;
@@ -66,11 +72,11 @@ namespace QuanLi
 
         private void Accept_Click(object sender, EventArgs e)
         {
-            name = ItemName.Text;
+            name = itemName.Text;
             try
             {
-                price = Convert.ToDouble(ItemPrice.Text);
-                expense = Convert.ToDouble(ItemExpense.Text);
+                price = Convert.ToDouble(itemPrice.Text);
+                expense = Convert.ToDouble(itemExpense.Text);
             }
             catch (Exception exc)
             {
@@ -82,8 +88,7 @@ namespace QuanLi
                 return;
             }
 
-            Enum.TryParse(ItemType.SelectedItem.ToString(), out type);
-
+            Enum.TryParse(itemType.SelectedItem.ToString(), out type);
 
             this.Close();
         }
@@ -96,35 +101,34 @@ namespace QuanLi
 
         private void AddItem_Load(object sender, EventArgs e)
         {
-            ItemName.Text = "";
-            ItemPrice.Text = "";
-            ItemExpense.Text = "";
-            ItemImage.Text = "";
+            itemName.Text = "";
+            itemPrice.Text = "";
+            itemExpense.Text = "";
+            itemImage.Text = "";
             imageName = "";
-            if (ItemType.Items.Count == 0)
+            if (itemType.Items.Count == 0)
             {
                 foreach (string t in Enum.GetNames(typeof(Type)))
                 {
-                    ItemType.Items.Add(t);
+                    itemType.Items.Add(t);
                 }
             }
-            ItemType.SelectedIndex = 0;
+            itemType.SelectedIndex = 0;
         }
 
-        private void addImage_Click(object sender, EventArgs e)
+        private void AddImage_Click(object sender, EventArgs e)
         {
             OpenFileDialog ofd = new OpenFileDialog();
             ofd.Filter = "*.png | *.jpg";
             if (ofd.ShowDialog() == DialogResult.OK)
             {
                 imageName = Path.GetFileName(ofd.FileName);
-                ItemImage.Text = Path.GetFullPath(ofd.FileName);
-
+                itemImage.Text = Path.GetFullPath(ofd.FileName);
             }
         }
         public void AddImage()
         {
-            if (ItemImage.Text != "") File.Copy(ItemImage.Text, baseDir + imageName, true);
+            if (itemImage.Text != "") File.Copy(itemImage.Text, baseDir + imageName, true);
         }
     }
 }
