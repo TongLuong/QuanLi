@@ -14,7 +14,7 @@ using ScottPlot;
 
 namespace QuanLi
 {
-    public partial class Form2 : Form
+    public partial class FormStatistics : Form
     {
         #region lists
         List<Dish> all = null;
@@ -33,7 +33,7 @@ namespace QuanLi
         fBSSpecial specialForm = null;
         #endregion
 
-        public Form2()
+        public FormStatistics()
         {
             InitializeComponent();
             ChartInitialize();

@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace QuanLi
 {
-    partial class Form2
+    partial class FormStatistics
     {
         /// <summary>
         /// Required designer variable.
@@ -34,7 +34,7 @@ namespace QuanLi
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form2));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormStatistics));
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             panelFull = new Panel();
             statisticsTypeLabel = new Label();

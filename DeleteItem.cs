@@ -95,7 +95,7 @@ namespace QuanLi
                 if (MenuAll.Rows[index].Cells[6].Value.ToString() != "") File.Delete(imagesDir);
                 MenuAll.Rows.RemoveAt(index);
                 Database.Instance.WriteCSV<Dish>(Menu.Instance.GetAllDishes(), false,true);
-                Form1.Instance.ReLoadMenu(type);
+                FormMenu.Instance.ReLoadMenu(type);
                 abort = false;
                 this.Close();
             }

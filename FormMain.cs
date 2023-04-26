@@ -71,13 +71,13 @@ namespace QuanLi
 
         private void OpenMenu()
         {
-            Form1 form1 = Form1.Instance;
+            FormMenu form1 = FormMenu.Instance;
             form1.Show();
         }
 
         private void OpenRevenue()
         {
-            Form2 form2 = new Form2();
+            FormStatistics form2 = new FormStatistics();
             form2.Show();
         }
     }
