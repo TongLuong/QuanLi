@@ -3,12 +3,9 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Reflection;
-using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Windows.Forms;
-using static QuanLi.FormMenu;
 
 namespace QuanLi
 {
@@ -97,78 +94,10 @@ namespace QuanLi
             timeThread.Start();
         }
 
-        private void close_MouseEnter(object sender, EventArgs e)
+        private void FormMenu_FormClosing(object sender, FormClosingEventArgs e)
         {
-            timer1.Start(); // timer1 handles effect for close button
-        }
-
-        private void close_MouseMove(object sender, MouseEventArgs e)
-        {
-            timer1.Start(); // timer1 handles effect for close button
-        }
-
-        private void close_Click(object sender, EventArgs e)
-        {
-            //this.Close(); // close the form
+            e.Cancel = true;
             this.Hide();
-        }
-
-        private bool MouseIsOverControl(Control c)
-        => c.ClientRectangle.Contains(c.PointToClient(Cursor.Position));
-
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            if (!MouseIsOverControl(close))
-            {
-                close.BorderStyle = BorderStyle.None; // remove effect if mouse leave the control
-                timer1.Stop();
-            }
-            else
-                close.BorderStyle = BorderStyle.FixedSingle; // add effect if mouse leave the control
-        }
-
-        private void minimize_Click(object sender, EventArgs e)
-        {
-            this.WindowState = FormWindowState.Minimized; // minimized the form
-        }
-
-        private void minimize_MouseEnter(object sender, EventArgs e)
-        {
-            timer2.Start(); // timer2 handles effect for minimize button
-        }
-
-        private void minimize_MouseMove(object sender, MouseEventArgs e)
-        {
-            timer2.Start(); // timer2 handles effect for minize button
-        }
-
-        private void timer2_Tick(object sender, EventArgs e)
-        {
-            if (!MouseIsOverControl(minimize))
-            {
-                minimize.BorderStyle = BorderStyle.None; // remove effect if mouse leave the control
-                timer2.Stop();
-            }
-            else
-                minimize.BorderStyle = BorderStyle.FixedSingle; // add effect if mouse is in the control
-        }
-
-        private void Form1_MouseDown(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left)
-            {
-                MouseDownLocation = e.Location; // get the current location of mouse if left mouse button is pressed
-            }
-        }
-
-        private void Form1_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left)
-            {
-                // calculate new location for the form after drag-and-drop operation
-                this.Left = this.Left + (e.X - MouseDownLocation.X);
-                this.Top = this.Top + (e.Y - MouseDownLocation.Y);
-            }
         }
 
         private void Stat_Click(object sender, EventArgs e)
@@ -232,24 +161,17 @@ namespace QuanLi
             {
                 try
                 {
-                    if (CurrTime.IsHandleCreated) // check if the control was created/existed
-                    {
-                        CurrTime.Invoke(new Action(() =>
-                        {
-                            CurrTime.Text = DateTime.Now.ToString("hh:mm:ss tt \n") + DateTime.Now.ToString("dd/MM/yyyy");
-                        })); // method for sharing data between threads
-                    }
-
+                    string time = DateTime.Now.ToString("hh:mm:ss tt, ") + DateTime.Now.ToString("dd/MM/yyyy");
                     if (WelcomeLabel.IsHandleCreated)
                     {
                         WelcomeLabel.Invoke(new Action(() =>
                         {
                             if (currTime >= morning && currTime < afternoon)
-                                WelcomeLabel.Text = "Chào buổi sáng";
+                                WelcomeLabel.Text = "Chào buổi sáng, bây giờ là " + time;
                             else if (currTime >= afternoon && currTime < evening)
-                                WelcomeLabel.Text = "Chào buổi chiều";
+                                WelcomeLabel.Text = "Chào buổi chiều, bây giờ là " + time;
                             else if (currTime >= evening || currTime < morning)
-                                WelcomeLabel.Text = "Chào buổi tối";
+                                WelcomeLabel.Text = "Chào buổi tối, bây giờ là " + time;
                         })); // method for sharing data between threads
                     }
                 }
@@ -830,7 +752,7 @@ namespace QuanLi
     #region Memento Design Pattern (2)
     public interface IMemento
     {
-        public CustomNumericUpDown RestoreState();
+        public FormMenu.CustomNumericUpDown RestoreState();
         public int GetIndex();
         public void SetValueNIndex(decimal value, int index);
     }
@@ -877,7 +799,7 @@ namespace QuanLi
             mementos = new List<IMemento>();
         }
 
-        public void Backup(CustomNumericUpDown control)
+        public void Backup(FormMenu.CustomNumericUpDown control)
         {
             mementos.Add(originator.Save(control));
         }

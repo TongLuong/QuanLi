@@ -29,7 +29,6 @@ namespace QuanLi
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMenu));
             Food = new System.Windows.Forms.Button();
             Drinks = new System.Windows.Forms.Button();
@@ -47,16 +46,10 @@ namespace QuanLi
             label5 = new System.Windows.Forms.Label();
             flowOrderAmount = new System.Windows.Forms.FlowLayoutPanel();
             flowOrderPrice = new System.Windows.Forms.FlowLayoutPanel();
-            close = new System.Windows.Forms.PictureBox();
-            minimize = new System.Windows.Forms.PictureBox();
             pictureBox7 = new System.Windows.Forms.PictureBox();
-            timer1 = new System.Windows.Forms.Timer(components);
-            timer2 = new System.Windows.Forms.Timer(components);
             Stat = new System.Windows.Forms.Button();
             WelcomeLabel = new System.Windows.Forms.Label();
-            pictureBox1 = new System.Windows.Forms.PictureBox();
             AddDish = new System.Windows.Forms.Button();
-            CurrTime = new System.Windows.Forms.Label();
             menuFood = new System.Windows.Forms.Panel();
             FoodLabel = new System.Windows.Forms.Button();
             menuDrink = new System.Windows.Forms.Panel();
@@ -72,10 +65,7 @@ namespace QuanLi
             ((System.ComponentModel.ISupportInitialize)pbMenu).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pbOrder).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox11).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)close).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)minimize).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox7).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             menuFood.SuspendLayout();
             menuDrink.SuspendLayout();
             menuTopping.SuspendLayout();
@@ -93,7 +83,7 @@ namespace QuanLi
             Food.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             Food.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             Food.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            Food.Location = new System.Drawing.Point(0, 69);
+            Food.Location = new System.Drawing.Point(0, 59);
             Food.Name = "Food";
             Food.Size = new System.Drawing.Size(90, 40);
             Food.TabIndex = 6;
@@ -112,7 +102,7 @@ namespace QuanLi
             Drinks.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             Drinks.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             Drinks.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            Drinks.Location = new System.Drawing.Point(0, 109);
+            Drinks.Location = new System.Drawing.Point(0, 99);
             Drinks.Name = "Drinks";
             Drinks.Size = new System.Drawing.Size(90, 40);
             Drinks.TabIndex = 7;
@@ -131,7 +121,7 @@ namespace QuanLi
             Topping.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             Topping.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             Topping.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            Topping.Location = new System.Drawing.Point(0, 149);
+            Topping.Location = new System.Drawing.Point(0, 139);
             Topping.Name = "Topping";
             Topping.Size = new System.Drawing.Size(90, 40);
             Topping.TabIndex = 8;
@@ -150,7 +140,7 @@ namespace QuanLi
             Special.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             Special.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             Special.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            Special.Location = new System.Drawing.Point(0, 29);
+            Special.Location = new System.Drawing.Point(0, 19);
             Special.Name = "Special";
             Special.Size = new System.Drawing.Size(90, 40);
             Special.TabIndex = 9;
@@ -161,7 +151,7 @@ namespace QuanLi
             // pbMenu
             // 
             pbMenu.BackColor = System.Drawing.Color.FromArgb(247, 23, 59);
-            pbMenu.Location = new System.Drawing.Point(90, 29);
+            pbMenu.Location = new System.Drawing.Point(90, 19);
             pbMenu.Name = "pbMenu";
             pbMenu.Size = new System.Drawing.Size(718, 707);
             pbMenu.TabIndex = 11;
@@ -174,7 +164,7 @@ namespace QuanLi
             label1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             label1.Font = new System.Drawing.Font("Cambria", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             label1.ForeColor = System.Drawing.Color.White;
-            label1.Location = new System.Drawing.Point(372, 40);
+            label1.Location = new System.Drawing.Point(372, 30);
             label1.Name = "label1";
             label1.Size = new System.Drawing.Size(141, 30);
             label1.TabIndex = 12;
@@ -183,7 +173,7 @@ namespace QuanLi
             // pbOrder
             // 
             pbOrder.BackColor = System.Drawing.Color.FromArgb(128, 255, 128);
-            pbOrder.Location = new System.Drawing.Point(806, 29);
+            pbOrder.Location = new System.Drawing.Point(806, 19);
             pbOrder.Name = "pbOrder";
             pbOrder.Size = new System.Drawing.Size(598, 707);
             pbOrder.TabIndex = 13;
@@ -198,7 +188,7 @@ namespace QuanLi
             Pay.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(255, 128, 128);
             Pay.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             Pay.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            Pay.Location = new System.Drawing.Point(672, 674);
+            Pay.Location = new System.Drawing.Point(672, 664);
             Pay.Name = "Pay";
             Pay.Size = new System.Drawing.Size(117, 51);
             Pay.TabIndex = 23;
@@ -211,7 +201,7 @@ namespace QuanLi
             label2.AutoSize = true;
             label2.BackColor = System.Drawing.Color.FromArgb(128, 255, 128);
             label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            label2.Location = new System.Drawing.Point(984, 36);
+            label2.Location = new System.Drawing.Point(984, 26);
             label2.Name = "label2";
             label2.Size = new System.Drawing.Size(263, 28);
             label2.TabIndex = 24;
@@ -220,7 +210,7 @@ namespace QuanLi
             // pictureBox11
             // 
             pictureBox11.BackColor = System.Drawing.Color.FromArgb(213, 255, 115);
-            pictureBox11.Location = new System.Drawing.Point(840, 70);
+            pictureBox11.Location = new System.Drawing.Point(840, 60);
             pictureBox11.Name = "pictureBox11";
             pictureBox11.Size = new System.Drawing.Size(536, 654);
             pictureBox11.TabIndex = 25;
@@ -231,7 +221,7 @@ namespace QuanLi
             flowOrderName.AutoScroll = true;
             flowOrderName.BackColor = System.Drawing.Color.FromArgb(213, 255, 115);
             flowOrderName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            flowOrderName.Location = new System.Drawing.Point(856, 116);
+            flowOrderName.Location = new System.Drawing.Point(856, 106);
             flowOrderName.Name = "flowOrderName";
             flowOrderName.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
             flowOrderName.Size = new System.Drawing.Size(233, 546);
@@ -242,7 +232,7 @@ namespace QuanLi
             label3.AutoSize = true;
             label3.BackColor = System.Drawing.Color.FromArgb(213, 255, 115);
             label3.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            label3.Location = new System.Drawing.Point(860, 79);
+            label3.Location = new System.Drawing.Point(860, 69);
             label3.Name = "label3";
             label3.Size = new System.Drawing.Size(117, 35);
             label3.TabIndex = 27;
@@ -253,7 +243,7 @@ namespace QuanLi
             label4.AutoSize = true;
             label4.BackColor = System.Drawing.Color.FromArgb(213, 255, 115);
             label4.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            label4.Location = new System.Drawing.Point(1088, 79);
+            label4.Location = new System.Drawing.Point(1088, 69);
             label4.Name = "label4";
             label4.Size = new System.Drawing.Size(121, 35);
             label4.TabIndex = 28;
@@ -264,7 +254,7 @@ namespace QuanLi
             label5.AutoSize = true;
             label5.BackColor = System.Drawing.Color.FromArgb(213, 255, 115);
             label5.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            label5.Location = new System.Drawing.Point(1306, 79);
+            label5.Location = new System.Drawing.Point(1306, 69);
             label5.Name = "label5";
             label5.Size = new System.Drawing.Size(53, 35);
             label5.TabIndex = 29;
@@ -275,7 +265,7 @@ namespace QuanLi
             flowOrderAmount.AutoScroll = true;
             flowOrderAmount.BackColor = System.Drawing.Color.FromArgb(213, 255, 115);
             flowOrderAmount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            flowOrderAmount.Location = new System.Drawing.Point(1086, 116);
+            flowOrderAmount.Location = new System.Drawing.Point(1086, 106);
             flowOrderAmount.Name = "flowOrderAmount";
             flowOrderAmount.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
             flowOrderAmount.Size = new System.Drawing.Size(148, 546);
@@ -286,60 +276,20 @@ namespace QuanLi
             flowOrderPrice.AutoScroll = true;
             flowOrderPrice.BackColor = System.Drawing.Color.FromArgb(213, 255, 115);
             flowOrderPrice.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            flowOrderPrice.Location = new System.Drawing.Point(1231, 116);
+            flowOrderPrice.Location = new System.Drawing.Point(1231, 106);
             flowOrderPrice.Name = "flowOrderPrice";
             flowOrderPrice.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
             flowOrderPrice.Size = new System.Drawing.Size(129, 546);
             flowOrderPrice.TabIndex = 27;
             // 
-            // close
-            // 
-            close.BackColor = System.Drawing.Color.Transparent;
-            close.BackgroundImage = (System.Drawing.Image)resources.GetObject("close.BackgroundImage");
-            close.Image = (System.Drawing.Image)resources.GetObject("close.Image");
-            close.Location = new System.Drawing.Point(1371, -1);
-            close.Name = "close";
-            close.Size = new System.Drawing.Size(33, 30);
-            close.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            close.TabIndex = 35;
-            close.TabStop = false;
-            close.Click += close_Click;
-            close.MouseMove += close_MouseMove;
-            // 
-            // minimize
-            // 
-            minimize.BackColor = System.Drawing.Color.FromArgb(0, 0, 1);
-            minimize.BackgroundImage = (System.Drawing.Image)resources.GetObject("minimize.BackgroundImage");
-            minimize.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            minimize.Image = (System.Drawing.Image)resources.GetObject("minimize.Image");
-            minimize.Location = new System.Drawing.Point(1338, -1);
-            minimize.Name = "minimize";
-            minimize.Size = new System.Drawing.Size(33, 30);
-            minimize.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            minimize.TabIndex = 36;
-            minimize.TabStop = false;
-            minimize.Click += minimize_Click;
-            minimize.MouseEnter += minimize_MouseEnter;
-            minimize.MouseMove += minimize_MouseMove;
-            // 
             // pictureBox7
             // 
             pictureBox7.BackColor = System.Drawing.Color.FromArgb(128, 255, 255);
-            pictureBox7.Location = new System.Drawing.Point(0, 29);
+            pictureBox7.Location = new System.Drawing.Point(0, 19);
             pictureBox7.Name = "pictureBox7";
-            pictureBox7.Size = new System.Drawing.Size(90, 674);
+            pictureBox7.Size = new System.Drawing.Size(90, 707);
             pictureBox7.TabIndex = 37;
             pictureBox7.TabStop = false;
-            // 
-            // timer1
-            // 
-            timer1.Interval = 10;
-            timer1.Tick += timer1_Tick;
-            // 
-            // timer2
-            // 
-            timer2.Interval = 10;
-            timer2.Tick += timer2_Tick;
             // 
             // Stat
             // 
@@ -352,7 +302,7 @@ namespace QuanLi
             Stat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             Stat.Font = new System.Drawing.Font("Cambria", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             Stat.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            Stat.Location = new System.Drawing.Point(806, -1);
+            Stat.Location = new System.Drawing.Point(840, 19);
             Stat.Name = "Stat";
             Stat.Size = new System.Drawing.Size(90, 30);
             Stat.TabIndex = 38;
@@ -366,24 +316,13 @@ namespace QuanLi
             WelcomeLabel.AutoSize = true;
             WelcomeLabel.BackColor = System.Drawing.Color.White;
             WelcomeLabel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            WelcomeLabel.Font = new System.Drawing.Font("Cambria", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            WelcomeLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             WelcomeLabel.ForeColor = System.Drawing.Color.Black;
-            WelcomeLabel.Location = new System.Drawing.Point(90, 5);
+            WelcomeLabel.Location = new System.Drawing.Point(0, -1);
             WelcomeLabel.Name = "WelcomeLabel";
-            WelcomeLabel.Size = new System.Drawing.Size(60, 20);
+            WelcomeLabel.Size = new System.Drawing.Size(56, 20);
             WelcomeLabel.TabIndex = 39;
             WelcomeLabel.Text = "Chào...";
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.BackgroundImage = (System.Drawing.Image)resources.GetObject("pictureBox1.BackgroundImage");
-            pictureBox1.Image = (System.Drawing.Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new System.Drawing.Point(25, 1);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new System.Drawing.Size(40, 27);
-            pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            pictureBox1.TabIndex = 40;
-            pictureBox1.TabStop = false;
             // 
             // AddDish
             // 
@@ -394,7 +333,7 @@ namespace QuanLi
             AddDish.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(255, 128, 128);
             AddDish.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             AddDish.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            AddDish.Location = new System.Drawing.Point(265, 674);
+            AddDish.Location = new System.Drawing.Point(265, 664);
             AddDish.Name = "AddDish";
             AddDish.Size = new System.Drawing.Size(117, 51);
             AddDish.TabIndex = 43;
@@ -402,21 +341,12 @@ namespace QuanLi
             AddDish.UseVisualStyleBackColor = false;
             AddDish.Click += AddDish_Click;
             // 
-            // CurrTime
-            // 
-            CurrTime.Font = new System.Drawing.Font("Cambria", 7.20000029F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            CurrTime.Location = new System.Drawing.Point(0, 704);
-            CurrTime.Name = "CurrTime";
-            CurrTime.Size = new System.Drawing.Size(90, 32);
-            CurrTime.TabIndex = 44;
-            CurrTime.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // menuFood
             // 
             menuFood.AutoScroll = true;
             menuFood.BackColor = System.Drawing.Color.Coral;
             menuFood.Controls.Add(FoodLabel);
-            menuFood.Location = new System.Drawing.Point(111, 79);
+            menuFood.Location = new System.Drawing.Point(111, 69);
             menuFood.Name = "menuFood";
             menuFood.Size = new System.Drawing.Size(678, 587);
             menuFood.TabIndex = 45;
@@ -444,7 +374,7 @@ namespace QuanLi
             menuDrink.AutoScroll = true;
             menuDrink.BackColor = System.Drawing.Color.Coral;
             menuDrink.Controls.Add(DrinkLabel);
-            menuDrink.Location = new System.Drawing.Point(111, 79);
+            menuDrink.Location = new System.Drawing.Point(111, 69);
             menuDrink.Name = "menuDrink";
             menuDrink.Size = new System.Drawing.Size(678, 587);
             menuDrink.TabIndex = 46;
@@ -472,7 +402,7 @@ namespace QuanLi
             menuTopping.AutoScroll = true;
             menuTopping.BackColor = System.Drawing.Color.Coral;
             menuTopping.Controls.Add(ToppingLable);
-            menuTopping.Location = new System.Drawing.Point(111, 79);
+            menuTopping.Location = new System.Drawing.Point(111, 69);
             menuTopping.Name = "menuTopping";
             menuTopping.Size = new System.Drawing.Size(678, 587);
             menuTopping.TabIndex = 47;
@@ -500,7 +430,7 @@ namespace QuanLi
             menuSpecial.AutoScroll = true;
             menuSpecial.BackColor = System.Drawing.Color.Coral;
             menuSpecial.Controls.Add(SpecialLabel);
-            menuSpecial.Location = new System.Drawing.Point(111, 79);
+            menuSpecial.Location = new System.Drawing.Point(111, 69);
             menuSpecial.Name = "menuSpecial";
             menuSpecial.Size = new System.Drawing.Size(678, 587);
             menuSpecial.TabIndex = 48;
@@ -528,7 +458,7 @@ namespace QuanLi
             Total.AutoSize = true;
             Total.BackColor = System.Drawing.Color.FromArgb(213, 255, 115);
             Total.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            Total.Location = new System.Drawing.Point(856, 673);
+            Total.Location = new System.Drawing.Point(856, 663);
             Total.Name = "Total";
             Total.Size = new System.Drawing.Size(203, 41);
             Total.TabIndex = 49;
@@ -538,7 +468,7 @@ namespace QuanLi
             // 
             TotalPrice.BackColor = System.Drawing.Color.FromArgb(213, 255, 115);
             TotalPrice.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            TotalPrice.Location = new System.Drawing.Point(1065, 673);
+            TotalPrice.Location = new System.Drawing.Point(1065, 663);
             TotalPrice.Name = "TotalPrice";
             TotalPrice.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             TotalPrice.Size = new System.Drawing.Size(295, 41);
@@ -554,7 +484,7 @@ namespace QuanLi
             RefreshBut.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(255, 128, 128);
             RefreshBut.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             RefreshBut.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            RefreshBut.Location = new System.Drawing.Point(534, 674);
+            RefreshBut.Location = new System.Drawing.Point(534, 664);
             RefreshBut.Name = "RefreshBut";
             RefreshBut.Size = new System.Drawing.Size(117, 51);
             RefreshBut.TabIndex = 51;
@@ -571,7 +501,7 @@ namespace QuanLi
             deleteDish.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(255, 128, 128);
             deleteDish.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             deleteDish.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            deleteDish.Location = new System.Drawing.Point(398, 674);
+            deleteDish.Location = new System.Drawing.Point(398, 664);
             deleteDish.Name = "deleteDish";
             deleteDish.Size = new System.Drawing.Size(117, 51);
             deleteDish.TabIndex = 52;
@@ -584,23 +514,18 @@ namespace QuanLi
             AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             BackColor = System.Drawing.Color.White;
-            ClientSize = new System.Drawing.Size(1404, 736);
-            ControlBox = false;
+            ClientSize = new System.Drawing.Size(1404, 738);
             Controls.Add(deleteDish);
+            Controls.Add(WelcomeLabel);
             Controls.Add(RefreshBut);
+            Controls.Add(Stat);
             Controls.Add(TotalPrice);
             Controls.Add(Total);
             Controls.Add(menuSpecial);
             Controls.Add(menuDrink);
             Controls.Add(menuTopping);
             Controls.Add(menuFood);
-            Controls.Add(CurrTime);
             Controls.Add(AddDish);
-            Controls.Add(pictureBox1);
-            Controls.Add(WelcomeLabel);
-            Controls.Add(Stat);
-            Controls.Add(minimize);
-            Controls.Add(close);
             Controls.Add(flowOrderPrice);
             Controls.Add(flowOrderAmount);
             Controls.Add(label5);
@@ -618,22 +543,16 @@ namespace QuanLi
             Controls.Add(Food);
             Controls.Add(pbMenu);
             Controls.Add(pictureBox7);
-            FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
-            MaximizeBox = false;
             Name = "FormMenu";
             StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            Text = "Form1";
+            FormClosing += FormMenu_FormClosing;
             Load += Form1_Load;
-            MouseDown += Form1_MouseDown;
-            MouseMove += Form1_MouseMove;
             ((System.ComponentModel.ISupportInitialize)pbMenu).EndInit();
             ((System.ComponentModel.ISupportInitialize)pbOrder).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox11).EndInit();
-            ((System.ComponentModel.ISupportInitialize)close).EndInit();
-            ((System.ComponentModel.ISupportInitialize)minimize).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox7).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             menuFood.ResumeLayout(false);
             menuDrink.ResumeLayout(false);
             menuTopping.ResumeLayout(false);
@@ -659,16 +578,10 @@ namespace QuanLi
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.FlowLayoutPanel flowOrderAmount;
         private System.Windows.Forms.FlowLayoutPanel flowOrderPrice;
-        private System.Windows.Forms.PictureBox close;
-        private System.Windows.Forms.PictureBox minimize;
         private System.Windows.Forms.PictureBox pictureBox7;
-        private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.Timer timer2;
         private System.Windows.Forms.Button Stat;
         private System.Windows.Forms.Label WelcomeLabel;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button AddDish;
-        private System.Windows.Forms.Label CurrTime;
         private System.Windows.Forms.Panel menuFood;
         private System.Windows.Forms.Panel menuDrink;
         private System.Windows.Forms.Panel menuTopping;
