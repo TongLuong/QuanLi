@@ -251,11 +251,11 @@ namespace QuanLi
             dtgvStatistic.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dtgvStatistic.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dtgvStatistic.Columns.AddRange(new DataGridViewColumn[] { Dish, Type, Sell, Price, Profit });
-            dtgvStatistic.Enabled = false;
             dtgvStatistic.EnableHeadersVisualStyles = false;
             dtgvStatistic.Location = new System.Drawing.Point(16, 20);
             dtgvStatistic.Margin = new Padding(2, 3, 2, 3);
             dtgvStatistic.Name = "dtgvStatistic";
+            dtgvStatistic.ReadOnly = true;
             dtgvStatistic.RowHeadersWidth = 62;
             dtgvStatistic.RowTemplate.Height = 33;
             dtgvStatistic.Size = new System.Drawing.Size(555, 387);
@@ -267,6 +267,7 @@ namespace QuanLi
             Dish.HeaderText = "Món";
             Dish.MinimumWidth = 8;
             Dish.Name = "Dish";
+            Dish.ReadOnly = true;
             // 
             // Type
             // 
@@ -274,6 +275,7 @@ namespace QuanLi
             Type.HeaderText = "Loại";
             Type.MinimumWidth = 8;
             Type.Name = "Type";
+            Type.ReadOnly = true;
             // 
             // Sell
             // 
@@ -281,6 +283,7 @@ namespace QuanLi
             Sell.HeaderText = "Số lượng";
             Sell.MinimumWidth = 8;
             Sell.Name = "Sell";
+            Sell.ReadOnly = true;
             // 
             // Price
             // 
@@ -288,6 +291,7 @@ namespace QuanLi
             Price.HeaderText = "Giá";
             Price.MinimumWidth = 8;
             Price.Name = "Price";
+            Price.ReadOnly = true;
             // 
             // Profit
             // 
@@ -295,6 +299,7 @@ namespace QuanLi
             Profit.HeaderText = "Lợi nhuận";
             Profit.MinimumWidth = 8;
             Profit.Name = "Profit";
+            Profit.ReadOnly = true;
             // 
             // plTotalProfit
             // 
@@ -400,7 +405,7 @@ namespace QuanLi
             // 
             chart.Enabled = false;
             chart.Location = new System.Drawing.Point(37, 45);
-            chart.Margin = new Padding(5, 5, 5, 5);
+            chart.Margin = new Padding(5);
             chart.Name = "chart";
             chart.Size = new System.Drawing.Size(600, 349);
             chart.TabIndex = 0;
