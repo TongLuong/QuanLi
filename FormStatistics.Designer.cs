@@ -437,7 +437,7 @@ namespace QuanLi
             // 
             oneMonthButton.BackColor = System.Drawing.Color.Azure;
             oneMonthButton.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            oneMonthButton.Location = new System.Drawing.Point(0, 75);
+            oneMonthButton.Location = new System.Drawing.Point(0, 74);
             oneMonthButton.Margin = new Padding(3, 2, 3, 2);
             oneMonthButton.Name = "oneMonthButton";
             oneMonthButton.Size = new System.Drawing.Size(219, 38);
@@ -450,7 +450,7 @@ namespace QuanLi
             // 
             todayButton.BackColor = System.Drawing.Color.Azure;
             todayButton.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            todayButton.Location = new System.Drawing.Point(0, 38);
+            todayButton.Location = new System.Drawing.Point(0, 37);
             todayButton.Margin = new Padding(3, 2, 3, 2);
             todayButton.Name = "todayButton";
             todayButton.Size = new System.Drawing.Size(219, 38);
