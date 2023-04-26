@@ -113,19 +113,19 @@ namespace QuanLi
                     if (dish.Name == idx.Value)
                     {
                         DataGridViewRow row = dtgvStatistic.Rows[idx.Key];
-                        row.Cells[2].Value = (int)row.Cells[2].Value + dish.NumberOfSells;
-                        row.Cells[3].Value = (int)row.Cells[3].Value + dish.NumberOfSells * (int)dish.Price;
-                        row.Cells[4].Value = (int)row.Cells[4].Value + dish.NumberOfSells * (int)(dish.Price - dish.ProdExpense);
+                        row.Cells[2].Value = (Int64)row.Cells[2].Value + dish.NumberOfSells;
+                        row.Cells[3].Value = (Int64)row.Cells[3].Value + dish.NumberOfSells * (Int64)dish.Price;
+                        row.Cells[4].Value = (Int64)row.Cells[4].Value + dish.NumberOfSells * (Int64)(dish.Price - dish.ProdExpense);
                     }
                 }
             }
-            Int32 totalIncome = (Int32)Menu.Instance.TotalIncome();
-            Int32 totalInvestment = (Int32)Menu.Instance.TotalProdExpense();
-            Int32 totalProfit = totalIncome - totalInvestment;
+            Int64 totalIncome = (Int64)Menu.Instance.TotalIncome();
+            Int64 totalInvestment = (Int64)Menu.Instance.TotalProdExpense();
+            Int64 totalProfit = totalIncome - totalInvestment;
 
-            totalIncomeLabel.Text = (totalIncome > Int32.MaxValue) ? "Số tiền quá lớn" : totalIncome.ToString("#,##0");
-            totalInvestmentLabel.Text = (totalInvestment > Int32.MaxValue) ? "Số tiền quá lớn" : totalInvestment.ToString("#,##0");
-            totalProfitLabel.Text = (totalProfit > Int32.MaxValue) ? "Số tiền quá lớn" : totalProfit.ToString("#,##0");
+            totalIncomeLabel.Text = (totalIncome > Int64.MaxValue) ? "Số tiền quá lớn" : totalIncome.ToString("#,##0");
+            totalInvestmentLabel.Text = (totalInvestment > Int64.MaxValue) ? "Số tiền quá lớn" : totalInvestment.ToString("#,##0");
+            totalProfitLabel.Text = (totalProfit > Int64.MaxValue) ? "Số tiền quá lớn" : totalProfit.ToString("#,##0");
 
             food = Menu.Instance.GetMostSelling(QuanLi.Type.FOOD, food);
             drink = Menu.Instance.GetMostSelling(QuanLi.Type.DRINK, drink);
@@ -151,20 +151,20 @@ namespace QuanLi
                     if (dish.Name == idx.Value)
                     {
                         DataGridViewRow row = dtgvStatistic.Rows[idx.Key];
-                        row.Cells[2].Value = (Int32)row.Cells[2].Value + dish.NumberOfSells;
-                        row.Cells[3].Value = (Int32)row.Cells[3].Value + dish.NumberOfSells * (Int32)dish.Price;
-                        row.Cells[4].Value = (Int32)row.Cells[4].Value + dish.NumberOfSells * (Int32)(dish.Price - dish.ProdExpense);
+                        row.Cells[2].Value = (Int64)row.Cells[2].Value + dish.NumberOfSells;
+                        row.Cells[3].Value = (Int64)row.Cells[3].Value + dish.NumberOfSells * (Int64)dish.Price;
+                        row.Cells[4].Value = (Int64)row.Cells[4].Value + dish.NumberOfSells * (Int64)(dish.Price - dish.ProdExpense);
                     }
                 }
 
             }
-            Int32 totalIncome = (Int32)Menu.Instance.TotalIncome();
-            Int32 totalInvestment = (Int32)Menu.Instance.TotalProdExpense();
-            Int32 totalProfit = totalIncome - totalInvestment;
+            Int64 totalIncome = (Int64)Menu.Instance.TotalIncome();
+            Int64 totalInvestment = (Int64)Menu.Instance.TotalProdExpense();
+            Int64 totalProfit = totalIncome - totalInvestment;
 
-            totalIncomeLabel.Text = (totalIncome > Int32.MaxValue) ? "Số tiền quá lớn" : totalIncome.ToString("#,##0");
-            totalInvestmentLabel.Text = (totalInvestment > Int32.MaxValue) ? "Số tiền quá lớn" : totalInvestment.ToString("#,##0");
-            totalProfitLabel.Text = (totalProfit > Int32.MaxValue) ? "Số tiền quá lớn" : totalProfit.ToString("#,##0");
+            totalIncomeLabel.Text = (totalIncome > Int64.MaxValue) ? "Số tiền quá lớn" : totalIncome.ToString("#,##0");
+            totalInvestmentLabel.Text = (totalInvestment > Int64.MaxValue) ? "Số tiền quá lớn" : totalInvestment.ToString("#,##0");
+            totalProfitLabel.Text = (totalProfit > Int64.MaxValue) ? "Số tiền quá lớn" : totalProfit.ToString("#,##0");
 
             chart.Visible = false;
 
@@ -194,7 +194,7 @@ namespace QuanLi
             {
                 List<Dish> dishInDay = Database.Instance.ReadCSVToList<Dish>(
                     ((i > 9) ? i.ToString() : ("0" + i.ToString())) + "-" + ((month > 9) ? month.ToString() : ("0" + month.ToString())) + "-" + year.ToString());
-                Int32 dayProfit = 0;
+                Int64 dayProfit = 0;
                 if (dishInDay != null)
                 {
 
@@ -202,7 +202,7 @@ namespace QuanLi
 
                     foreach (Dish dish in dishInDay)
                     {
-                        dayProfit += (Int32)(dish.Price - dish.ProdExpense) * dish.NumberOfSells;
+                        dayProfit += (Int64)(dish.Price - dish.ProdExpense) * dish.NumberOfSells;
                     }
                 }
                 x[i - 1] = i;
@@ -230,8 +230,9 @@ namespace QuanLi
         {
             all = Database.Instance.ReadCSVAllDate<Dish>();
             int month = 0, year = 0;
-            List<Int32> profits = null;
-            Int32 monthProfit = 0;
+            List<Int64> profits = new List<Int64>();
+            profits.Clear();
+            Int64 monthProfit = 0;
             foreach (Dish dish in all)
             {
 
@@ -241,18 +242,18 @@ namespace QuanLi
                 {
                     if (dt.Month == month && dt.Year == year)
                     {
-                        monthProfit += dish.NumberOfSells * (Int32)(dish.Price - dish.ProdExpense);
+                        monthProfit += dish.NumberOfSells * (Int64)(dish.Price - dish.ProdExpense);
                     }
                     else
                     {
                         if ((month != 0 && year != 0) || dish == all[all.Count - 1])
                         {
-                            if (profits == null)
-                                profits = new List<Int32>(monthProfit);
-                            else
+                            //if (profits == null)
+                            //    profits = new List<Int64>(monthProfit);
+                            //else
                                 profits.Add(monthProfit);
                         }
-                        monthProfit = dish.NumberOfSells * (Int32)(dish.Price - dish.ProdExpense);
+                        monthProfit = dish.NumberOfSells * (Int64)(dish.Price - dish.ProdExpense);
                         month = dt.Month;
                         year = dt.Year;
                     }
@@ -292,7 +293,7 @@ namespace QuanLi
         {
             RefreshDataGridView();
 
-            Int32 totalIncome = 0, totalInvestment = 0, totalProfit;
+            Int64 totalIncome = 0, totalInvestment = 0, totalProfit;
             foreach (Dish dish in all)
             {
                 foreach (KeyValuePair<int, string> idx in indexInDtgv)
@@ -300,19 +301,19 @@ namespace QuanLi
                     if (dish.Name == idx.Value)
                     {
                         DataGridViewRow row = dtgvStatistic.Rows[idx.Key];
-                        row.Cells[2].Value = (Int32)row.Cells[2].Value + dish.NumberOfSells;
-                        row.Cells[3].Value = (Int32)row.Cells[3].Value + dish.NumberOfSells * (Int32)dish.Price;
-                        row.Cells[4].Value = (Int32)row.Cells[4].Value + dish.NumberOfSells * (Int32)(dish.Price - dish.ProdExpense);
+                        row.Cells[2].Value = (Int64)row.Cells[2].Value + dish.NumberOfSells;
+                        row.Cells[3].Value = (Int64)row.Cells[3].Value + dish.NumberOfSells * (Int64)dish.Price;
+                        row.Cells[4].Value = (Int64)row.Cells[4].Value + dish.NumberOfSells * (Int64)(dish.Price - dish.ProdExpense);
                     }
                 }
 
-                totalIncome += (Int32)dish.Price * dish.NumberOfSells;
-                totalInvestment += (Int32)dish.ProdExpense * dish.NumberOfSells;
+                totalIncome += (Int64)dish.Price * dish.NumberOfSells;
+                totalInvestment += (Int64)dish.ProdExpense * dish.NumberOfSells;
             }
             totalProfit = totalIncome - totalInvestment;
-            totalIncomeLabel.Text = (totalIncome > Int32.MaxValue) ? "Số tiền quá lớn" : totalIncome.ToString("#,##0");
-            totalInvestmentLabel.Text = (totalInvestment > Int32.MaxValue) ? "Số tiền quá lớn" : totalInvestment.ToString("#,##0");
-            totalProfitLabel.Text = (totalProfit > Int32.MaxValue) ? "Số tiền quá lớn" : totalProfit.ToString("#,##0");
+            totalIncomeLabel.Text = (totalIncome > Int64.MaxValue) ? "Số tiền quá lớn" : totalIncome.ToString("#,##0");
+            totalInvestmentLabel.Text = (totalInvestment > Int64.MaxValue) ? "Số tiền quá lớn" : totalInvestment.ToString("#,##0");
+            totalProfitLabel.Text = (totalProfit > Int64.MaxValue) ? "Số tiền quá lớn" : totalProfit.ToString("#,##0");
 
             food.Clear();
             drink.Clear();
@@ -341,14 +342,14 @@ namespace QuanLi
             List<Dish> dishes = Menu.Instance.getListByType(type);
             List<Dish> mostSellingDishes = new List<Dish>();
             mostSellingDishes.Clear();
-            Int32 maxProfit = 0;
+            Int64 maxProfit = 0;
             foreach (Dish dish in dishes)
             {
                 foreach (KeyValuePair<int, string> idx in indexInDtgv)
                 {
                     if (dish.Name == idx.Value)
                     {
-                        Int32 profit = (Int32)dtgvStatistic.Rows[idx.Key].Cells[4].Value;
+                        Int64 profit = (Int64)dtgvStatistic.Rows[idx.Key].Cells[4].Value;
 
                         Dish tempDish = new Dish(
                             dish.ID,
