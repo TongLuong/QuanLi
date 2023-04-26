@@ -417,7 +417,7 @@ namespace QuanLi
             dropdownPanel.MaximumSize = new System.Drawing.Size(219, 150);
             dropdownPanel.MinimumSize = new System.Drawing.Size(219, 38);
             dropdownPanel.Name = "dropdownPanel";
-            dropdownPanel.Size = new System.Drawing.Size(219, 38);
+            dropdownPanel.Size = new System.Drawing.Size(219, 37);
             dropdownPanel.TabIndex = 5;
             // 
             // allTimeButton
@@ -466,7 +466,7 @@ namespace QuanLi
             dropdownButton.Location = new System.Drawing.Point(0, 0);
             dropdownButton.Margin = new Padding(3, 2, 3, 2);
             dropdownButton.Name = "dropdownButton";
-            dropdownButton.Size = new System.Drawing.Size(219, 38);
+            dropdownButton.Size = new System.Drawing.Size(219, 37);
             dropdownButton.TabIndex = 0;
             dropdownButton.Text = "Loại thống kê";
             dropdownButton.UseVisualStyleBackColor = false;
