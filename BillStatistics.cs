@@ -21,7 +21,7 @@ namespace QuanLi
         void LoadData()
         {
             List<Bill> bills = ListBill.Instance.Bills;
-            if (bills == null) return;
+            if (bills.Count == 0) return;
 
             Bill maxBill = null;
 
