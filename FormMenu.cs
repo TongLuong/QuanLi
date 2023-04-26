@@ -59,7 +59,7 @@ namespace QuanLi
             if (addItemForm.Abort)
                 return;
 
-            Dish dish = new Dish(addItemForm.itemName, addItemForm.itemPrice, addItemForm.itemExpense, addItemForm.itemType, addItemForm.ImageName);
+            Dish dish = new Dish(addItemForm.ItemName, addItemForm.ItemPrice, addItemForm.ItemExpense, addItemForm.ItemType, addItemForm.ImageName);
             if (!Menu.Instance.AddDish(dish))
             {
                 return;
@@ -385,6 +385,7 @@ namespace QuanLi
                 lblName.AutoSize = false;
                 lblName.Text = name;
                 lblName.TextAlign = ContentAlignment.MiddleCenter;
+                lblName.Font = new Font("Segoe UI", lblName.Font.Size + 2);
                 return lblName;
             }
             public Label BuildLabelPrice(int w, int h, int x, int y, double price)
@@ -393,8 +394,9 @@ namespace QuanLi
                 lblPrice.Size = new Size(w, h);
                 lblPrice.Location = new Point(x, y);
                 lblPrice.AutoSize = false;
-                lblPrice.Text = price.ToString();
+                lblPrice.Text = price.ToString("#,##0") + " VND";
                 lblPrice.TextAlign = ContentAlignment.MiddleCenter;
+                lblPrice.Font = new Font("Segoe UI", lblPrice.Font.Size + 2);
                 return lblPrice;
             }
             public CustomNumericUpDown BuildUpDown(int w, int h, int x, int y, int i, Dish dish)
