@@ -30,6 +30,7 @@ namespace QuanLi
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             MenuButton = new System.Windows.Forms.Button();
             pictureBox1 = new System.Windows.Forms.PictureBox();
             pictureBox3 = new System.Windows.Forms.PictureBox();
@@ -173,6 +174,7 @@ namespace QuanLi
             Controls.Add(pictureBox3);
             Controls.Add(pictureBox1);
             Controls.Add(MenuButton);
+            Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
             Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             MaximizeBox = false;
             MaximumSize = new System.Drawing.Size(1140, 784);

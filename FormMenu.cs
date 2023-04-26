@@ -8,13 +8,13 @@ using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Windows.Forms;
-using static QuanLi.Form1;
+using static QuanLi.FormMenu;
 
 namespace QuanLi
 {
-    public partial class Form1 : Form
+    public partial class FormMenu : Form
     {
-        private static Form1 instance;
+        private static FormMenu instance;
         private Point MouseDownLocation;
         private Thread timeThread;
         private Database database;
@@ -22,7 +22,7 @@ namespace QuanLi
         private DeleteItem deleteItemForm;
         private Caretaker caretaker;
 
-        private Form1()
+        private FormMenu()
         {
             InitializeComponent();
             database = Database.Instance;
@@ -40,15 +40,16 @@ namespace QuanLi
             LoadMenu(Type.SPECIAL, menuSpecial);
         }
 
-        public static Form1 Instance
+        public static FormMenu Instance
         {
             get
             {
                 if (instance == null)
-                    instance = new Form1();
+                    instance = new FormMenu();
                 return instance;
             }
         }
+
         #region add and delete button
         private void AddDish_Click(object sender, EventArgs e)
         {
@@ -87,6 +88,7 @@ namespace QuanLi
             MessageBox.Show("Đã xóa món thành công !", "Thông báo");
         }
         #endregion
+
         #region Events Handling
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -227,6 +229,24 @@ namespace QuanLi
                             CurrTime.Text = DateTime.Now.ToString("hh:mm:ss tt \n") + DateTime.Now.ToString("dd/MM/yyyy");
                         })); // method for sharing data between threads
                     }
+
+                    if (WelcomeLabel.IsHandleCreated)
+                    {
+                        TimeSpan currTime = DateTime.Now.TimeOfDay;
+                        TimeSpan morning = new TimeSpan(5, 30, 0);
+                        TimeSpan afternoon = new TimeSpan(12, 0, 0);
+                        TimeSpan evening = new TimeSpan(18, 0, 0);
+
+                        WelcomeLabel.Invoke(new Action(() =>
+                        {
+                            if (currTime >= morning && currTime < afternoon)
+                                WelcomeLabel.Text = "Chào buổi sáng";
+                            else if (currTime >= afternoon && currTime < evening)
+                                WelcomeLabel.Text = "Chào buổi chiều";
+                            else if (currTime >= evening || currTime < morning)
+                                WelcomeLabel.Text = "Chào buổi tối";
+                        })); // method for sharing data between threads
+                    }
                 }
                 catch
                 {
@@ -348,14 +368,14 @@ namespace QuanLi
             public override void UpButton()
             {
                 // save state before chaging value
-                Form1.Instance.caretaker.Backup(this);
+                FormMenu.Instance.caretaker.Backup(this);
                 base.UpButton();
             }
 
             public override void DownButton()
             {
                 // save state before chaging value
-                Form1.Instance.caretaker.Backup(this);
+                FormMenu.Instance.caretaker.Backup(this);
                 base.DownButton();
             }
         }
@@ -424,7 +444,7 @@ namespace QuanLi
                 pb.BackColor = Color.White;
                 pb.Image = pb.InitialImage;
                 pb.SizeMode = PictureBoxSizeMode.StretchImage;
-                
+
                 if (imagePath != null && File.Exists(imagePath))
                     pb.Image = Image.FromFile(imagePath); // commented until we have images
                 return pb;
@@ -470,7 +490,7 @@ namespace QuanLi
                 if (cnup == null || cnup.CurrDish.Equals(null))
                     return;
 
-                Form1 form1 = Form1.Instance;
+                FormMenu form1 = FormMenu.Instance;
 
                 decimal prevVal = Convert.ToDecimal(((UpDownBase)sender).Text); // value on textbox usually updates after value property
                 if (prevVal == cnup.Value) // so if it's value equals to the current value property, that means user has input value by hand
@@ -488,14 +508,14 @@ namespace QuanLi
                     form1.flowOrderPrice.Controls.Remove(controls[2]);
                     cnup.LabelsVisibling = false;
 
-                    Form1.Instance.CalToTal();
+                    FormMenu.Instance.CalToTal();
                     return;
                 }
 
                 if (cnup.LabelsVisibling && cnup.Mediator != null) // if this object has initialized mediator already
                 {
                     cnup.ChangeValue(); // then we just change the current text
-                    Form1.Instance.CalToTal();
+                    FormMenu.Instance.CalToTal();
                     return;
                 }
                 else if (!cnup.LabelsVisibling && cnup.Mediator != null)
@@ -506,7 +526,7 @@ namespace QuanLi
                     form1.flowOrderPrice.Controls.Add(controls[2]);
 
                     cnup.ChangeValue();
-                    Form1.Instance.CalToTal();
+                    FormMenu.Instance.CalToTal();
 
                     return;
                 }
@@ -544,7 +564,7 @@ namespace QuanLi
                 // init mediator
                 new ConcreteMediator(cnup, name, amount, price);
                 cnup.LabelsVisibling = true;
-                Form1.Instance.CalToTal();
+                FormMenu.Instance.CalToTal();
             }
             public void MergeAll(Panel panelDishes, PictureBox pb, Label lblName, Label lblPrice, CustomNumericUpDown numUpDown)
             {
@@ -753,6 +773,7 @@ namespace QuanLi
             }
 
             CustomNumericUpDown val = memento.RestoreState();
+            val.LabelsVisibling = true;
             int index = memento.GetIndex();
             List<Control> temp = val.Mediator.GetControls();
             CustomLabel name = (CustomLabel)temp[0];
@@ -791,7 +812,7 @@ namespace QuanLi
     {
         private void FormMain_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Form1.Instance.ApplicationClosing(ref e);
+            FormMenu.Instance.ApplicationClosing(ref e);
         }
     }
 
@@ -805,18 +826,18 @@ namespace QuanLi
 
     public class ConcreteMemento : IMemento
     {
-        private Form1.CustomNumericUpDown control;
+        private FormMenu.CustomNumericUpDown control;
         private decimal value;
         private int index;
 
-        public ConcreteMemento(Form1.CustomNumericUpDown control)
+        public ConcreteMemento(FormMenu.CustomNumericUpDown control)
         {
             this.control = control;
             this.value = control.Value;
             this.index = control.GetIndex();
         }
 
-        public Form1.CustomNumericUpDown RestoreState()
+        public FormMenu.CustomNumericUpDown RestoreState()
         {
             control.Value = value;
             return control;
@@ -837,9 +858,9 @@ namespace QuanLi
     public class Caretaker
     {
         private List<IMemento> mementos;
-        private Form1 originator;
+        private FormMenu originator;
 
-        public Caretaker(Form1 originator)
+        public Caretaker(FormMenu originator)
         {
             this.originator = originator;
             mementos = new List<IMemento>();

@@ -14,7 +14,7 @@ using ScottPlot;
 
 namespace QuanLi
 {
-    public partial class Form2 : Form
+    public partial class FormStatistics : Form
     {
         #region lists
         List<Dish> all = null;
@@ -33,7 +33,7 @@ namespace QuanLi
         fBSSpecial specialForm = null;
         #endregion
 
-        public Form2()
+        public FormStatistics()
         {
             InitializeComponent();
             ChartInitialize();
@@ -81,7 +81,7 @@ namespace QuanLi
             dropdownPanel.Enabled = false;
             if (listOpened)
             {
-                dropdownPanel.Height -= 15;
+                dropdownPanel.Height -= 20;
                 if (dropdownPanel.Size == dropdownPanel.MinimumSize)
                 {
                     dropdownTimer.Stop();
@@ -91,7 +91,7 @@ namespace QuanLi
             }
             else
             {
-                dropdownPanel.Height += 15;
+                dropdownPanel.Height += 20;
                 if (dropdownPanel.Size == dropdownPanel.MaximumSize)
                 {
                     dropdownTimer.Stop();

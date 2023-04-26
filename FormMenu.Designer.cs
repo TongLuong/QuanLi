@@ -1,7 +1,7 @@
 ﻿
 namespace QuanLi
 {
-    partial class Form1
+    partial class FormMenu
     {
         /// <summary>
         ///  Required designer variable.
@@ -30,7 +30,7 @@ namespace QuanLi
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMenu));
             Food = new System.Windows.Forms.Button();
             Drinks = new System.Windows.Forms.Button();
             Topping = new System.Windows.Forms.Button();
@@ -53,7 +53,7 @@ namespace QuanLi
             timer1 = new System.Windows.Forms.Timer(components);
             timer2 = new System.Windows.Forms.Timer(components);
             Stat = new System.Windows.Forms.Button();
-            label6 = new System.Windows.Forms.Label();
+            WelcomeLabel = new System.Windows.Forms.Label();
             pictureBox1 = new System.Windows.Forms.PictureBox();
             AddDish = new System.Windows.Forms.Button();
             CurrTime = new System.Windows.Forms.Label();
@@ -360,18 +360,18 @@ namespace QuanLi
             Stat.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             Stat.UseVisualStyleBackColor = false;
             // 
-            // label6
+            // WelcomeLabel
             // 
-            label6.AutoSize = true;
-            label6.BackColor = System.Drawing.Color.White;
-            label6.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            label6.Font = new System.Drawing.Font("Cambria", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            label6.ForeColor = System.Drawing.Color.Black;
-            label6.Location = new System.Drawing.Point(90, 5);
-            label6.Name = "label6";
-            label6.Size = new System.Drawing.Size(146, 20);
-            label6.TabIndex = 39;
-            label6.Text = "Xin chào User123";
+            WelcomeLabel.AutoSize = true;
+            WelcomeLabel.BackColor = System.Drawing.Color.White;
+            WelcomeLabel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            WelcomeLabel.Font = new System.Drawing.Font("Cambria", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            WelcomeLabel.ForeColor = System.Drawing.Color.Black;
+            WelcomeLabel.Location = new System.Drawing.Point(90, 5);
+            WelcomeLabel.Name = "WelcomeLabel";
+            WelcomeLabel.Size = new System.Drawing.Size(60, 20);
+            WelcomeLabel.TabIndex = 39;
+            WelcomeLabel.Text = "Chào...";
             // 
             // pictureBox1
             // 
@@ -578,7 +578,7 @@ namespace QuanLi
             deleteDish.UseVisualStyleBackColor = false;
             deleteDish.Click += deleteDish_Click;
             // 
-            // Form1
+            // FormMenu
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -596,7 +596,7 @@ namespace QuanLi
             Controls.Add(CurrTime);
             Controls.Add(AddDish);
             Controls.Add(pictureBox1);
-            Controls.Add(label6);
+            Controls.Add(WelcomeLabel);
             Controls.Add(Stat);
             Controls.Add(minimize);
             Controls.Add(close);
@@ -618,8 +618,9 @@ namespace QuanLi
             Controls.Add(pbMenu);
             Controls.Add(pictureBox7);
             FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
             MaximizeBox = false;
-            Name = "Form1";
+            Name = "FormMenu";
             StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             Text = "Form1";
             Load += Form1_Load;
@@ -663,7 +664,7 @@ namespace QuanLi
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Timer timer2;
         private System.Windows.Forms.Button Stat;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label WelcomeLabel;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button AddDish;
         private System.Windows.Forms.Label CurrTime;
