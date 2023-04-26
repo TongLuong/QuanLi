@@ -62,6 +62,7 @@
             dtgvBills.Location = new System.Drawing.Point(11, 10);
             dtgvBills.Margin = new System.Windows.Forms.Padding(2);
             dtgvBills.Name = "dtgvBills";
+            dtgvBills.ReadOnly = true;
             dtgvBills.RowHeadersWidth = 62;
             dtgvBills.RowTemplate.Height = 33;
             dtgvBills.Size = new System.Drawing.Size(449, 260);
@@ -73,6 +74,7 @@
             billID.HeaderText = "Mã hoá đơn";
             billID.MinimumWidth = 8;
             billID.Name = "billID";
+            billID.ReadOnly = true;
             // 
             // billIncome
             // 
@@ -80,6 +82,7 @@
             billIncome.HeaderText = "Doanh thu";
             billIncome.MinimumWidth = 8;
             billIncome.Name = "billIncome";
+            billIncome.ReadOnly = true;
             // 
             // panel1
             // 

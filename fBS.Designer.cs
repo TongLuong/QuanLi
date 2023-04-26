@@ -51,11 +51,11 @@
             dtgvBS.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dtgvBS.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dtgvBS.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { FoodName, Sell, Profit });
-            dtgvBS.Enabled = false;
             dtgvBS.EnableHeadersVisualStyles = false;
             dtgvBS.Location = new System.Drawing.Point(13, 15);
             dtgvBS.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             dtgvBS.Name = "dtgvBS";
+            dtgvBS.ReadOnly = true;
             dtgvBS.RowHeadersWidth = 62;
             dtgvBS.RowTemplate.Height = 33;
             dtgvBS.Size = new System.Drawing.Size(869, 469);
@@ -67,6 +67,7 @@
             FoodName.HeaderText = "Tên món ăn";
             FoodName.MinimumWidth = 8;
             FoodName.Name = "FoodName";
+            FoodName.ReadOnly = true;
             // 
             // Sell
             // 
@@ -74,6 +75,7 @@
             Sell.HeaderText = "Số đĩa bán được";
             Sell.MinimumWidth = 8;
             Sell.Name = "Sell";
+            Sell.ReadOnly = true;
             // 
             // Profit
             // 
@@ -81,6 +83,7 @@
             Profit.HeaderText = "Lợi nhuận";
             Profit.MinimumWidth = 8;
             Profit.Name = "Profit";
+            Profit.ReadOnly = true;
             // 
             // fBS
             // 
