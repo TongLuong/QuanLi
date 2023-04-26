@@ -218,6 +218,10 @@ namespace QuanLi
 
         private void UpdateTime()
         {
+            TimeSpan currTime = DateTime.Now.TimeOfDay;
+            TimeSpan morning = new TimeSpan(5, 30, 0);
+            TimeSpan afternoon = new TimeSpan(12, 0, 0);
+            TimeSpan evening = new TimeSpan(18, 0, 0);
             while (true)
             {
                 try
@@ -232,11 +236,6 @@ namespace QuanLi
 
                     if (WelcomeLabel.IsHandleCreated)
                     {
-                        TimeSpan currTime = DateTime.Now.TimeOfDay;
-                        TimeSpan morning = new TimeSpan(5, 30, 0);
-                        TimeSpan afternoon = new TimeSpan(12, 0, 0);
-                        TimeSpan evening = new TimeSpan(18, 0, 0);
-
                         WelcomeLabel.Invoke(new Action(() =>
                         {
                             if (currTime >= morning && currTime < afternoon)
