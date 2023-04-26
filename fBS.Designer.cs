@@ -51,6 +51,7 @@
             dtgvBS.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dtgvBS.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dtgvBS.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { FoodName, Sell, Profit });
+            dtgvBS.Enabled = false;
             dtgvBS.EnableHeadersVisualStyles = false;
             dtgvBS.Location = new System.Drawing.Point(13, 15);
             dtgvBS.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
