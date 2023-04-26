@@ -16,7 +16,7 @@ namespace QuanLi
         {
             InitializeComponent();
         }
-        public void LoadData(List<Dish> dishes,string strName)
+        public void LoadData(List<Dish> dishes, string strName)
         {
             while (dtgvBS.Rows.Count > 1)
                 dtgvBS.Rows.RemoveAt(1);

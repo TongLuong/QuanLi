@@ -76,7 +76,7 @@ namespace QuanLi
 
                 //get infor
                 int index = MenuAll.SelectedRows[0].Index;
-                imagesDir = baseDir.Substring(0, baseDir.IndexOf("bin")) + "Images\\Form1\\"+ MenuAll.Rows[index].Cells[6].Value.ToString();
+                imagesDir = baseDir.Substring(0, baseDir.IndexOf("bin")) + "Images\\Form1\\" + MenuAll.Rows[index].Cells[6].Value.ToString();
                 string id = MenuAll.Rows[index].Cells[0].Value.ToString();
                 //get dish
                 List<Dish> all = Menu.Instance.GetAllDishes();
@@ -94,7 +94,7 @@ namespace QuanLi
                 if (!Menu.Instance.RemoveDish(delDish)) return;
                 if (MenuAll.Rows[index].Cells[6].Value.ToString() != "") File.Delete(imagesDir);
                 MenuAll.Rows.RemoveAt(index);
-                Database.Instance.WriteCSV<Dish>(Menu.Instance.GetAllDishes(), false,true);
+                Database.Instance.WriteCSV<Dish>(Menu.Instance.GetAllDishes(), false, true);
                 FormMenu.Instance.ReLoadMenu(type);
                 abort = false;
                 this.Close();
