@@ -23,7 +23,6 @@
 
   <ItemGroup>
     <Folder Include="Images\Form1\" />
-    <Folder Include="Data\" />
   </ItemGroup>
 
   <ItemGroup>
