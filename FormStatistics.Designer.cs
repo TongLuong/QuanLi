@@ -35,7 +35,7 @@ namespace QuanLi
         {
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormStatistics));
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             panelFull = new Panel();
             statisticsTypeLabel = new Label();
             updateTimeLabel = new Label();
@@ -63,13 +63,14 @@ namespace QuanLi
             totalIncomeLabel = new Label();
             lbTotalIncome = new Label();
             plProfitChart = new Panel();
-            chart = new FormsPlot();
+            allTimeChart = new FormsPlot();
             dropdownPanel = new Panel();
             allTimeButton = new Button();
             oneMonthButton = new Button();
             todayButton = new Button();
             dropdownButton = new Button();
             dropdownTimer = new Timer(components);
+            oneMonthChart = new FormsPlot();
             panelFull.SuspendLayout();
             bestSellingPanel.SuspendLayout();
             plStatistic.SuspendLayout();
@@ -241,14 +242,14 @@ namespace QuanLi
             dtgvStatistic.BackgroundColor = System.Drawing.SystemColors.ActiveBorder;
             dtgvStatistic.BorderStyle = BorderStyle.None;
             dtgvStatistic.CellBorderStyle = DataGridViewCellBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Lime;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.InfoText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dtgvStatistic.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Lime;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.InfoText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dtgvStatistic.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dtgvStatistic.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dtgvStatistic.Columns.AddRange(new DataGridViewColumn[] { Dish, Type, Sell, Price, Profit });
             dtgvStatistic.EnableHeadersVisualStyles = false;
@@ -394,21 +395,39 @@ namespace QuanLi
             // plProfitChart
             // 
             plProfitChart.BackColor = System.Drawing.Color.IndianRed;
-            plProfitChart.Controls.Add(chart);
+            plProfitChart.Controls.Add(oneMonthChart);
+            plProfitChart.Controls.Add(allTimeChart);
             plProfitChart.Location = new System.Drawing.Point(0, 52);
             plProfitChart.Margin = new Padding(2, 3, 2, 3);
             plProfitChart.Name = "plProfitChart";
             plProfitChart.Size = new System.Drawing.Size(674, 429);
             plProfitChart.TabIndex = 0;
             // 
-            // chart
+            // allTimeChart
             // 
-            chart.Enabled = false;
-            chart.Location = new System.Drawing.Point(37, 45);
-            chart.Margin = new Padding(5);
-            chart.Name = "chart";
-            chart.Size = new System.Drawing.Size(600, 349);
-            chart.TabIndex = 0;
+            allTimeChart.Enabled = false;
+            allTimeChart.Location = new System.Drawing.Point(37, 45);
+            allTimeChart.Margin = new Padding(5);
+            allTimeChart.Name = "allTimeChart";
+            allTimeChart.Size = new System.Drawing.Size(600, 349);
+            allTimeChart.TabIndex = 0;
+            allTimeChart.Plot.Style(Style.Seaborn);
+            allTimeChart.Plot.Palette = ScottPlot.Palette.Amber;
+            allTimeChart.Plot.YLabel("Doanh thu");
+            allTimeChart.Visible = false;
+            // 
+            // oneMonthChart
+            // 
+            oneMonthChart.Enabled = false;
+            oneMonthChart.Location = new System.Drawing.Point(37, 45);
+            oneMonthChart.Margin = new Padding(5);
+            oneMonthChart.Name = "oneMonthChart";
+            oneMonthChart.Size = new System.Drawing.Size(600, 349);
+            oneMonthChart.TabIndex = 0;
+            oneMonthChart.Plot.Style(Style.Seaborn);
+            oneMonthChart.Plot.Palette = ScottPlot.Palette.Amber;
+            oneMonthChart.Plot.YLabel("Doanh thu");
+            oneMonthChart.Visible = false;
             // 
             // dropdownPanel
             // 
@@ -519,7 +538,7 @@ namespace QuanLi
         private System.Windows.Forms.Label lbTotalIncome;
         private System.Windows.Forms.Panel plProfitChart;
         private System.Windows.Forms.DataGridView dtgvStatistic;
-        private ScottPlot.FormsPlot chart;
+        private ScottPlot.FormsPlot allTimeChart;
         private System.Windows.Forms.DataGridViewTextBoxColumn Dish;
         private System.Windows.Forms.DataGridViewTextBoxColumn Type;
         private System.Windows.Forms.DataGridViewTextBoxColumn Sell;
@@ -543,5 +562,6 @@ namespace QuanLi
         private Button btnBestSellingSpecial;
         private Label statisticsTypeLabel;
         private Button billBtn;
+        private FormsPlot oneMonthChart;
     }
 }

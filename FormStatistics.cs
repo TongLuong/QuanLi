@@ -31,7 +31,6 @@ namespace QuanLi
         public FormStatistics()
         {
             InitializeComponent();
-            ChartInitialize();
             FormInit();
         }
 
@@ -166,7 +165,8 @@ namespace QuanLi
             totalInvestmentLabel.Text = (totalInvestment > Int64.MaxValue) ? "Số tiền quá lớn" : totalInvestment.ToString("#,##0");
             totalProfitLabel.Text = (totalProfit > Int64.MaxValue) ? "Số tiền quá lớn" : totalProfit.ToString("#,##0");
 
-            chart.Visible = false;
+            allTimeChart.Visible = false;
+            oneMonthChart.Visible = false;
 
             food = Menu.Instance.GetMostSelling(QuanLi.Type.FOOD, food);
             drink = Menu.Instance.GetMostSelling(QuanLi.Type.DRINK, drink);
@@ -193,7 +193,7 @@ namespace QuanLi
             List<Int64> profits = new List<Int64>();
             idx.Clear();
             profits.Clear();
-            for (int i = 1; i <= DateTime.DaysInMonth(year,month); i++)
+            for (int i = 1; i <= DateTime.DaysInMonth(year, month); i++)
             {
                 List<Dish> dishInDay = Database.Instance.ReadCSVToList<Dish>(
                     ((i > 9) ? i.ToString() : ("0" + i.ToString())) + "-" + ((month > 9) ? month.ToString() : ("0" + month.ToString())) + "-" + year.ToString());
@@ -213,15 +213,17 @@ namespace QuanLi
 
             }
 
-            double[] x = idx.Select(a=>(double)a).ToArray();
+            double[] x = idx.Select(a => (double)a).ToArray();
             double[] y = profits.Select(a => Convert.ToDouble(a)).ToArray();
-            chart.Plot.Clear();
-            chart.Plot.AddScatter(x, y, Color.Red);
-            chart.Plot.XAxis.ManualTickSpacing(1);
-            chart.Plot.SetAxisLimits(1, DateTime.DaysInMonth(year, month), 0);
-            chart.Plot.XLabel("Số ngày");
-            chart.Refresh();
-            chart.Visible = true;
+
+            oneMonthChart.Plot.Clear();
+            oneMonthChart.Plot.AddScatter(x, y, Color.Red);
+            oneMonthChart.Plot.XAxis.ManualTickSpacing(1);
+            oneMonthChart.Plot.SetAxisLimits(1, DateTime.DaysInMonth(year, month), 0);
+            oneMonthChart.Plot.XLabel("Số ngày");
+            oneMonthChart.Refresh();
+            oneMonthChart.Visible = true;
+            allTimeChart.Visible = false;
             all.ToList();
 
             #endregion
@@ -241,14 +243,14 @@ namespace QuanLi
             List<string> dates = new List<string>();
             dates.Clear();
             Int64 monthProfit = 0;
-            for (int i=0; i<all.Count; i++)
+            for (int i = 0; i < all.Count; i++)
             {
                 Dish dish = all[i];
                 #region convert to date time
                 DateTime dt;
                 if (DateTime.TryParseExact(dish.Time, "dd-MM-yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out dt))
                 {
-                    
+
                     if (dt.Month == month && dt.Year == year)
                     {
                         monthProfit += dish.NumberOfSells * (Int64)(dish.Price - dish.ProdExpense);
@@ -298,17 +300,18 @@ namespace QuanLi
                 {
                     x[i] = i + 1;
                 }
-                chart.Plot.Clear();
-                chart.Plot.AddScatter(x, y, Color.Red);
-                chart.Plot.XAxis.ManualTickPositions(x, dates.ToArray());
-                chart.Plot.SetAxisLimits(1, profits.Count, 0);
-                chart.Plot.XLabel("Số tháng");
-                chart.Refresh();
-                chart.Visible = true;
+                allTimeChart.Plot.Clear();
+                allTimeChart.Plot.AddScatter(x, y, Color.Red);
+                allTimeChart.Plot.XAxis.ManualTickPositions(x, dates.ToArray());
+                allTimeChart.Plot.SetAxisLimits(1, profits.Count, 0);
+                allTimeChart.Plot.XLabel("Số tháng");
+                allTimeChart.Refresh();
+                allTimeChart.Visible = true;
+                oneMonthChart.Visible = false;
                 #endregion
             }
             else
-                chart.Visible = false;
+                allTimeChart.Visible = false;
 
             Operation();
 
@@ -407,15 +410,6 @@ namespace QuanLi
                 row.Cells[3].Value = (Int64)0;
                 row.Cells[4].Value = (Int64)0;
             }
-        }
-
-        void ChartInitialize()
-        {
-            chart.Plot.Style(Style.Seaborn);
-            chart.Plot.Palette = ScottPlot.Palette.Amber;
-            chart.Plot.YLabel("Doanh thu");
-            chart.Visible = false;
-            chart.Plot.Clear();
         }
 
         private void billBtn_Click(object sender, EventArgs e)
