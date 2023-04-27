@@ -1,17 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 
 namespace QuanLi
 {
-
     public enum Type
     {
         NONE,
@@ -20,7 +17,7 @@ namespace QuanLi
         TOPPING,
         SPECIAL,
     }
-    public class Dish
+    public class Dish : IComparable
     {
         private string path = "";
         #region Feature
@@ -157,6 +154,24 @@ namespace QuanLi
         public string GetImagePath()
         {
             return path + imageName;
+        }
+
+        int IComparable.CompareTo(object obj)
+        {
+            Dish d = (Dish)obj;
+
+            DateTime datetime1;
+            DateTime.TryParseExact(this.Time, "dd-MM-yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out datetime1);
+
+            DateTime datetime2;
+            DateTime.TryParseExact(d.Time, "dd-MM-yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out datetime2);
+
+            if (datetime1 < datetime2)
+                return -1;
+            else if (datetime1 > datetime2)
+                return 1;
+            else
+                return 0;
         }
         #endregion
     }
