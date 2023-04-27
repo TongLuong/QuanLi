@@ -189,8 +189,11 @@ namespace QuanLi
             int year = now.Year;
             int day = now.Day;
             all.Clear();
-            double[] x = new double[day - 1], y = new double[day - 1];
-            for (int i = 1; i < day; i++)
+            List<int> idx = new List<int>();
+            List<Int64> profits = new List<Int64>();
+            idx.Clear();
+            profits.Clear();
+            for (int i = 1; i < DateTime.DaysInMonth(year,month); i++)
             {
                 List<Dish> dishInDay = Database.Instance.ReadCSVToList<Dish>(
                     ((i > 9) ? i.ToString() : ("0" + i.ToString())) + "-" + ((month > 9) ? month.ToString() : ("0" + month.ToString())) + "-" + year.ToString());
@@ -205,11 +208,13 @@ namespace QuanLi
                         dayProfit += (Int64)(dish.Price - dish.ProdExpense) * dish.NumberOfSells;
                     }
                 }
-                x[i - 1] = i;
-                y[i - 1] = dayProfit;
+                idx.Add(i);
+                profits.Add(dayProfit);
 
             }
 
+            double[] x = idx.Select(a=>(double)a).ToArray();
+            double[] y = profits.Select(a => Convert.ToDouble(a)).ToArray();
             chart.Plot.Clear();
             chart.Plot.AddScatter(x, y, Color.Red);
             chart.Plot.XAxis.ManualTickSpacing(1);
