@@ -235,7 +235,6 @@ namespace QuanLi
             Int64 monthProfit = 0;
             foreach (Dish dish in all)
             {
-
                 #region convert to date time
                 DateTime dt;
                 if (DateTime.TryParseExact(dish.Time, "dd-MM-yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out dt))
