@@ -234,7 +234,7 @@ namespace QuanLi
             List<Int64> profits = new List<Int64>();
             profits.Clear();
             Int64 monthProfit = 0;
-            for (int i=0;i<all.Count;i++)
+            for (int i=0; i<all.Count; i++)
             {
                 Dish dish = all[i];
                 #region convert to date time
@@ -250,7 +250,7 @@ namespace QuanLi
                     {
                         if (month != 0 && year != 0)
                         {
-                                profits.Add(monthProfit);
+                            profits.Add(monthProfit);
                         }
                         monthProfit = dish.NumberOfSells * (Int64)(dish.Price - dish.ProdExpense);
                         month = dt.Month;
