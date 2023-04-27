@@ -12,7 +12,6 @@ namespace QuanLi
     public partial class FormMenu : Form
     {
         private static FormMenu instance;
-        private Point MouseDownLocation;
         private Thread timeThread;
         private Database database;
         private AddItem addItemForm;
