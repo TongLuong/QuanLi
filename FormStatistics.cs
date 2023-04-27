@@ -190,7 +190,7 @@ namespace QuanLi
             int day = now.Day;
             all.Clear();
             double[] x = new double[day - 1], y = new double[day - 1];
-            for (int i = 1; i < day; i++)
+            for (int i = 1; i < DateTime.DaysInMonth(year,month); i++)
             {
                 List<Dish> dishInDay = Database.Instance.ReadCSVToList<Dish>(
                     ((i > 9) ? i.ToString() : ("0" + i.ToString())) + "-" + ((month > 9) ? month.ToString() : ("0" + month.ToString())) + "-" + year.ToString());
