@@ -229,7 +229,6 @@ namespace QuanLi
         private void allTimeButton_Click(object sender, EventArgs e)
         {
             all = Database.Instance.ReadCSVAllDate<Dish>();
-            all.Sort();
             int month = 0, year = 0;
             List<Int64> profits = new List<Int64>();
             profits.Clear();
