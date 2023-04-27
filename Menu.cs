@@ -17,7 +17,7 @@ namespace QuanLi
         TOPPING,
         SPECIAL,
     }
-    public class Dish /*: IComparable*/
+    public class Dish 
     {
         private string path = "";
         #region Feature
