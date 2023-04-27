@@ -235,27 +235,30 @@ namespace QuanLi
             Int64 monthProfit = 0;
             foreach (Dish dish in all)
             {
-
+                Debug.Print(dish.Time);
                 #region convert to date time
                 DateTime dt;
                 if (DateTime.TryParseExact(dish.Time, "dd-MM-yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out dt))
                 {
+                    //Debug.Print(dt.ToString("dd-MM-yyyy"));
                     if (dt.Month == month && dt.Year == year)
                     {
                         monthProfit += dish.NumberOfSells * (Int64)(dish.Price - dish.ProdExpense);
                     }
                     else
                     {
-                        if ((month != 0 && year != 0) || dish == all[all.Count - 1])
+                        if (month != 0 && year != 0)
                         {
-                            //if (profits == null)
-                            //    profits = new List<Int64>(monthProfit);
-                            //else
                                 profits.Add(monthProfit);
                         }
                         monthProfit = dish.NumberOfSells * (Int64)(dish.Price - dish.ProdExpense);
                         month = dt.Month;
                         year = dt.Year;
+                    }
+                    if (dish == all[all.Count - 1])
+                    {
+                        profits.Add(monthProfit);
+                        break;
                     }
                 }
                 #endregion
@@ -325,11 +328,6 @@ namespace QuanLi
             topping = GetMostSelling(QuanLi.Type.TOPPING);
             special = GetMostSelling(QuanLi.Type.SPECIAL);
 
-            foreach (Dish dish in food)
-            {
-                Debug.Print(dish.Name + " " + dish.NumberOfSells.ToString());
-            }
-
             DateTime updateTime = DateTime.Now;
             updateTimeLabel.Text = "Cập nhật lần cuối:  " + updateTime.ToString("HH : mm : ss     dd/MM/yyyy");
 
@@ -360,7 +358,6 @@ namespace QuanLi
                             dish.Type,
                             dish.ImageName);
 
-                        Debug.Print(profit.ToString());
                         if (profit > maxProfit)
                         {
                             mostSellingDishes.Clear();
