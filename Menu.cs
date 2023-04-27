@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -11,7 +13,6 @@ using System.Windows.Forms;
 
 namespace QuanLi
 {
-
     public enum Type
     {
         NONE,
@@ -20,7 +21,7 @@ namespace QuanLi
         TOPPING,
         SPECIAL,
     }
-    public class Dish
+    public class Dish : IComparable
     {
         private string path = "";
         #region Feature
@@ -157,6 +158,51 @@ namespace QuanLi
         public string GetImagePath()
         {
             return path + imageName;
+        }
+
+        /*private class Ascending : IComparer
+        {
+            int IComparer.Compare(object x, object y)
+            {
+                Dish d1 = (Dish)x;
+                Dish d2 = (Dish)y;
+
+                DateTime datetime1;
+                DateTime.TryParseExact(d1.Time, "dd-MM-yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out datetime1);
+
+                DateTime datetime2;
+                DateTime.TryParseExact(d2.Time, "dd-MM-yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out datetime2);
+
+                if (datetime1 < datetime2)
+                    return -1;
+                else if (datetime1 > datetime2)
+                    return 1;
+                else
+                    return 0;
+            }
+        }
+
+        public static IComparer SortDateAscending()
+        {
+            return (IComparer)new Ascending();
+        }*/
+
+        int IComparable.CompareTo(object obj)
+        {
+            Dish d = (Dish)obj;
+
+            DateTime datetime1;
+            DateTime.TryParseExact(this.Time, "dd-MM-yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out datetime1);
+
+            DateTime datetime2;
+            DateTime.TryParseExact(d.Time, "dd-MM-yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out datetime2);
+
+            if (datetime1 < datetime2)
+                return -1;
+            else if (datetime1 > datetime2)
+                return 1;
+            else
+                return 0;
         }
         #endregion
     }
