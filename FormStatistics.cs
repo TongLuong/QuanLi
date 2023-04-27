@@ -259,27 +259,17 @@ namespace QuanLi
                         {
                             profits.Add(monthProfit);
 
-                            Int32 timeDistance = (dt.Year - year) * 12 + dt.Month - month - 1;
-                            int tempMonth = month + 1, tempYear = year;
-                            while (timeDistance-->0)
-                            {
-                                if (tempMonth > 12)
-                                {
-                                    tempMonth = 1;
-                                    tempYear++;
-                                }    
-                                profits.Add(0);
-                                dates.Add(new DateTime(tempYear, tempMonth++, 1).ToString("MM - yyyy"));
-                            }
-                            //int monthRange = dt.Month - month;
-                            //int yearRange = dt.Year - year;
-                            //for (int yearDistance = 0;yearDistance<=yearRange;yearDistance++)
+                            //Int32 timeDistance = (dt.Year - year) * 12 + dt.Month - month - 1;
+                            //int tempMonth = month + 1, tempYear = year;
+                            //while (timeDistance-->0)
                             //{
-                            //    for (int monthDistance = 1;monthDistance<monthRange;i++)
+                            //    if (tempMonth > 12)
                             //    {
-                            //        profits.Add(0);
-                            //        dates.Add(new DateTime(year + yearDistance, month + monthDistance,1));
+                            //        tempMonth = 1;
+                            //        tempYear++;
                             //    }    
+                            //    profits.Add(0);
+                            //    dates.Add(new DateTime(tempYear, tempMonth++, 1).ToString("MM - yyyy"));
                             //}
                         }
 
