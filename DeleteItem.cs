@@ -25,8 +25,18 @@ namespace QuanLi
             InitializeComponent();
             baseDir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             int index = baseDir.IndexOf("bin");
-            dataDir = baseDir.Substring(0, index) + "Data\\Dish.csv";
-            imagesDir = baseDir.Substring(0, index) + "Images\\Form1\\";
+
+            if (Directory.Exists(baseDir + "\\Images\\Form1"))
+            {
+                dataDir = baseDir + "\\Data\\Dish.csv";
+                imagesDir = baseDir + "\\Images\\Form1\\";
+            }
+            else
+            {
+                dataDir = baseDir.Substring(0, index) + "Data\\Dish.csv";
+                imagesDir = baseDir.Substring(0, index) + "Images\\Form1\\";
+            }
+
             dt = new DataTable();
             dt.Columns.Add("ID");
             dt.Columns.Add("Tên Món");
@@ -76,7 +86,16 @@ namespace QuanLi
 
                 //get infor
                 int index = MenuAll.SelectedRows[0].Index;
-                imagesDir = baseDir.Substring(0, baseDir.IndexOf("bin")) + "Images\\Form1\\" + MenuAll.Rows[index].Cells[6].Value.ToString();
+
+                if (Directory.Exists(baseDir + "\\Images\\Form1"))
+                {
+                    imagesDir = baseDir + "\\Images\\Form1\\" + MenuAll.Rows[index].Cells[6].Value.ToString();
+                }
+                else
+                {
+                    imagesDir = baseDir.Substring(0, baseDir.IndexOf("bin")) + "Images\\Form1\\" + MenuAll.Rows[index].Cells[6].Value.ToString();
+                }
+
                 string id = MenuAll.Rows[index].Cells[0].Value.ToString();
                 //get dish
                 List<Dish> all = Menu.Instance.GetAllDishes();

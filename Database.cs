@@ -43,8 +43,16 @@ namespace QuanLi
         private void initPath()
         {
             string baseDir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            int index = baseDir.IndexOf("bin");
-            baseDataDir = baseDir.Substring(0, index) + "Data\\";
+
+            if (Directory.Exists(baseDir + "\\Data"))
+            {
+                baseDataDir = baseDir + "\\Data\\";
+            }
+            else
+            {
+                int index = baseDir.IndexOf("bin");
+                baseDataDir = baseDir.Substring(0, index) + "Data\\";
+            }
             extension = ".csv";
         }
 

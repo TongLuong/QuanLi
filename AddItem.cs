@@ -66,8 +66,16 @@ namespace QuanLi
             imageName = null;
             type = Type.NONE;
             baseDir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            int index = baseDir.IndexOf("bin");
-            baseDir = baseDir.Substring(0, index) + "Images\\Form1\\";
+
+            if (Directory.Exists(baseDir + "\\Images\\Form1"))
+            {
+                baseDir = baseDir + "\\Images\\Form1\\";
+            }
+            else
+            {
+                int index = baseDir.IndexOf("bin");
+                baseDir = baseDir.Substring(0, index) + "Images\\Form1\\";
+            }
         }
 
         private void Accept_Click(object sender, EventArgs e)

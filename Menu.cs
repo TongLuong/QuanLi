@@ -159,8 +159,16 @@ namespace QuanLi
         private void InitImagePath()
         {
             string baseDir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            int index = baseDir.IndexOf("bin");
-            path = baseDir.Substring(0, index) + "Images\\Form1\\";
+
+            if (Directory.Exists(baseDir + "\\Images\\Form1"))
+            {
+                path = baseDir + "\\Images\\Form1\\";
+            }
+            else
+            {
+                int index = baseDir.IndexOf("bin");
+                path = baseDir.Substring(0, index) + "Images\\Form1\\";
+            }
         }
 
         public string GetImagePath()
