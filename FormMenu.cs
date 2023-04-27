@@ -11,6 +11,15 @@ namespace QuanLi
 {
     public partial class FormMenu : Form
     {
+        public class CustomPanel : Panel
+        {
+            protected override Point ScrollToControl(Control activeControl)
+            {
+                // return the current location, prevent panel automatically scroll to the active control
+                return this.DisplayRectangle.Location;
+            }
+        }
+
         private static FormMenu instance;
         private Thread timeThread;
         private Database database;
@@ -409,8 +418,14 @@ namespace QuanLi
                 numUpDown.Name = i.ToString();
                 numUpDown.Enabled = true;
                 numUpDown.ValueChanged += NumUpDown_ValueChanged;
+                numUpDown.MouseWheel += NumUpDown_MouseWheel;
                 numUpDown.AttachDish(dish);
                 return numUpDown;
+            }
+
+            private void NumUpDown_MouseWheel(object sender, MouseEventArgs e)
+            {
+                ((HandledMouseEventArgs)e).Handled = true;
             }
 
             private void NumUpDown_ValueChanged(object sender, EventArgs e)

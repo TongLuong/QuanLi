@@ -50,13 +50,13 @@ namespace QuanLi
             Stat = new System.Windows.Forms.Button();
             WelcomeLabel = new System.Windows.Forms.Label();
             AddDish = new System.Windows.Forms.Button();
-            menuFood = new System.Windows.Forms.Panel();
+            menuFood = new FormMenu.CustomPanel();
             FoodLabel = new System.Windows.Forms.Button();
-            menuDrink = new System.Windows.Forms.Panel();
+            menuDrink = new FormMenu.CustomPanel();
             DrinkLabel = new System.Windows.Forms.Button();
-            menuTopping = new System.Windows.Forms.Panel();
+            menuTopping = new FormMenu.CustomPanel();
             ToppingLable = new System.Windows.Forms.Button();
-            menuSpecial = new System.Windows.Forms.Panel();
+            menuSpecial = new FormMenu.CustomPanel();
             SpecialLabel = new System.Windows.Forms.Button();
             Total = new System.Windows.Forms.Label();
             TotalPrice = new System.Windows.Forms.Label();
@@ -360,7 +360,7 @@ namespace QuanLi
             FoodLabel.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(128, 255, 128);
             FoodLabel.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(255, 128, 128);
             FoodLabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            FoodLabel.Font = new System.Drawing.Font("Cambria", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            FoodLabel.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             FoodLabel.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             FoodLabel.Location = new System.Drawing.Point(3, 3);
             FoodLabel.Name = "FoodLabel";
@@ -388,7 +388,7 @@ namespace QuanLi
             DrinkLabel.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(128, 255, 128);
             DrinkLabel.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(255, 128, 128);
             DrinkLabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            DrinkLabel.Font = new System.Drawing.Font("Cambria", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            DrinkLabel.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             DrinkLabel.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             DrinkLabel.Location = new System.Drawing.Point(3, 3);
             DrinkLabel.Name = "DrinkLabel";
@@ -416,7 +416,7 @@ namespace QuanLi
             ToppingLable.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(128, 255, 128);
             ToppingLable.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(255, 128, 128);
             ToppingLable.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            ToppingLable.Font = new System.Drawing.Font("Cambria", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            ToppingLable.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             ToppingLable.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             ToppingLable.Location = new System.Drawing.Point(3, 3);
             ToppingLable.Name = "ToppingLable";
