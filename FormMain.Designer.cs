@@ -181,7 +181,6 @@ namespace QuanLi
             MinimumSize = new System.Drawing.Size(1140, 723);
             Name = "FormMain";
             StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            Text = "FormMain";
             FormClosing += FormMain_FormClosing;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();

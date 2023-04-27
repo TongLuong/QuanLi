@@ -5,6 +5,8 @@ VisualStudioVersion = 17.5.33516.290
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QuanLi", "QuanLi.csproj", "{93441778-C414-4783-B3C6-8303AE8F4AC8}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "CoffeeApp", "..\SetupQuanLi\CoffeeApp\CoffeeApp.vdproj", "{6954AAC1-FD1E-46F9-A4D9-2A0F1C2EEC59}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,8 @@ Global
 		{93441778-C414-4783-B3C6-8303AE8F4AC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{93441778-C414-4783-B3C6-8303AE8F4AC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{93441778-C414-4783-B3C6-8303AE8F4AC8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6954AAC1-FD1E-46F9-A4D9-2A0F1C2EEC59}.Debug|Any CPU.ActiveCfg = Debug
+		{6954AAC1-FD1E-46F9-A4D9-2A0F1C2EEC59}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
