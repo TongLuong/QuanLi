@@ -189,7 +189,10 @@ namespace QuanLi
             int year = now.Year;
             int day = now.Day;
             all.Clear();
-            double[] x = new double[day - 1], y = new double[day - 1];
+            List<int> idx = new List<int>();
+            List<Int64> profits = new List<Int64>();
+            idx.Clear();
+            profits.Clear();
             for (int i = 1; i < DateTime.DaysInMonth(year,month); i++)
             {
                 List<Dish> dishInDay = Database.Instance.ReadCSVToList<Dish>(
@@ -205,11 +208,13 @@ namespace QuanLi
                         dayProfit += (Int64)(dish.Price - dish.ProdExpense) * dish.NumberOfSells;
                     }
                 }
-                x[i - 1] = i;
-                y[i - 1] = dayProfit;
+                idx.Add(i);
+                profits.Add(dayProfit);
 
             }
 
+            double[] x = idx.Select(a=>(double)a).ToArray();
+            double[] y = profits.Select(a => Convert.ToDouble(a)).ToArray();
             chart.Plot.Clear();
             chart.Plot.AddScatter(x, y, Color.Red);
             chart.Plot.XAxis.ManualTickSpacing(1);
@@ -254,27 +259,17 @@ namespace QuanLi
                         {
                             profits.Add(monthProfit);
 
-                            Int32 timeDistance = (dt.Year - year) * 12 + dt.Month - month - 1;
-                            int tempMonth = month + 1, tempYear = year;
-                            while (timeDistance-->0)
-                            {
-                                if (tempMonth > 12)
-                                {
-                                    tempMonth = 1;
-                                    tempYear++;
-                                }    
-                                profits.Add(0);
-                                dates.Add(new DateTime(tempYear, tempMonth++, 1).ToString("MM - yyyy"));
-                            }
-                            //int monthRange = dt.Month - month;
-                            //int yearRange = dt.Year - year;
-                            //for (int yearDistance = 0;yearDistance<=yearRange;yearDistance++)
+                            //Int32 timeDistance = (dt.Year - year) * 12 + dt.Month - month - 1;
+                            //int tempMonth = month + 1, tempYear = year;
+                            //while (timeDistance-->0)
                             //{
-                            //    for (int monthDistance = 1;monthDistance<monthRange;i++)
+                            //    if (tempMonth > 12)
                             //    {
-                            //        profits.Add(0);
-                            //        dates.Add(new DateTime(year + yearDistance, month + monthDistance,1));
+                            //        tempMonth = 1;
+                            //        tempYear++;
                             //    }    
+                            //    profits.Add(0);
+                            //    dates.Add(new DateTime(tempYear, tempMonth++, 1).ToString("MM - yyyy"));
                             //}
                         }
 
