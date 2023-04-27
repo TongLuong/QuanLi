@@ -222,7 +222,7 @@ namespace QuanLi
             #endregion
             Operation();
 
-            statisticsTypeLabel.Text = "Thống kê theo tháng hiện tại";
+            statisticsTypeLabel.Text = "Thống kê theo tháng " + now.ToString("MM - yyyy");
 
         }
 
@@ -233,6 +233,8 @@ namespace QuanLi
             int month = 0, year = 0;
             List<Int64> profits = new List<Int64>();
             profits.Clear();
+            List<string> dates = new List<string>();
+            dates.Clear();
             Int64 monthProfit = 0;
             for (int i=0; i<all.Count; i++)
             {
@@ -251,10 +253,36 @@ namespace QuanLi
                         if (month != 0 && year != 0)
                         {
                             profits.Add(monthProfit);
+
+                            Int32 timeDistance = (dt.Year - year) * 12 + dt.Month - month - 1;
+                            int tempMonth = month + 1, tempYear = year;
+                            while (timeDistance-->0)
+                            {
+                                if (tempMonth > 12)
+                                {
+                                    tempMonth = 1;
+                                    tempYear++;
+                                }    
+                                profits.Add(0);
+                                dates.Add(new DateTime(tempYear, tempMonth++, 1).ToString("MM - yyyy"));
+                            }
+                            //int monthRange = dt.Month - month;
+                            //int yearRange = dt.Year - year;
+                            //for (int yearDistance = 0;yearDistance<=yearRange;yearDistance++)
+                            //{
+                            //    for (int monthDistance = 1;monthDistance<monthRange;i++)
+                            //    {
+                            //        profits.Add(0);
+                            //        dates.Add(new DateTime(year + yearDistance, month + monthDistance,1));
+                            //    }    
+                            //}
                         }
+
                         monthProfit = dish.NumberOfSells * (Int64)(dish.Price - dish.ProdExpense);
                         month = dt.Month;
                         year = dt.Year;
+
+                        dates.Add(new DateTime(year, month, 1).ToString("MM - yyyy"));
                     }
                     if (i == all.Count - 1)
                     {
@@ -269,16 +297,15 @@ namespace QuanLi
             {
                 #region convert to double[] and draw chart
                 double[] x = new double[profits.Count];
-                double[] y = new double[profits.Count];
+                double[] y = profits.Select(x => Convert.ToDouble(x)).ToArray();
 
                 for (int i = 0; i < profits.Count; i++)
                 {
                     x[i] = i + 1;
-                    y[i] = profits[i];
                 }
                 chart.Plot.Clear();
                 chart.Plot.AddScatter(x, y, Color.Red);
-                chart.Plot.XAxis.ManualTickSpacing(1);
+                chart.Plot.XAxis.ManualTickPositions(x, dates.ToArray());
                 chart.Plot.SetAxisLimits(1, profits.Count, 0);
                 chart.Plot.XLabel("Số tháng");
                 chart.Refresh();
