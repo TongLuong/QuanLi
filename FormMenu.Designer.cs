@@ -50,13 +50,13 @@ namespace QuanLi
             Stat = new System.Windows.Forms.Button();
             WelcomeLabel = new System.Windows.Forms.Label();
             AddDish = new System.Windows.Forms.Button();
-            menuFood = new System.Windows.Forms.Panel();
+            menuFood = new CustomPanel();
             FoodLabel = new System.Windows.Forms.Button();
-            menuDrink = new System.Windows.Forms.Panel();
+            menuDrink = new CustomPanel();
             DrinkLabel = new System.Windows.Forms.Button();
-            menuTopping = new System.Windows.Forms.Panel();
+            menuTopping = new CustomPanel();
             ToppingLable = new System.Windows.Forms.Button();
-            menuSpecial = new System.Windows.Forms.Panel();
+            menuSpecial = new CustomPanel();
             SpecialLabel = new System.Windows.Forms.Button();
             Total = new System.Windows.Forms.Label();
             TotalPrice = new System.Windows.Forms.Label();
@@ -584,10 +584,6 @@ namespace QuanLi
         private System.Windows.Forms.Button Stat;
         private System.Windows.Forms.Label WelcomeLabel;
         private System.Windows.Forms.Button AddDish;
-        private System.Windows.Forms.Panel menuFood;
-        private System.Windows.Forms.Panel menuDrink;
-        private System.Windows.Forms.Panel menuTopping;
-        private System.Windows.Forms.Panel menuSpecial;
         private System.Windows.Forms.Button FoodLabel;
         private System.Windows.Forms.Button DrinkLabel;
         private System.Windows.Forms.Button ToppingLable;
@@ -596,6 +592,10 @@ namespace QuanLi
         private System.Windows.Forms.Label TotalPrice;
         private System.Windows.Forms.Button RefreshBut;
         private System.Windows.Forms.Button deleteDish;
+        private CustomPanel menuFood;
+        private CustomPanel menuDrink;
+        private CustomPanel menuTopping;
+        private CustomPanel menuSpecial;
     }
 }
 

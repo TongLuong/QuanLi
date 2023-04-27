@@ -340,6 +340,14 @@ namespace QuanLi
                 return this.Parent.Controls.IndexOf(this); // parent of this CustomLabel usually is FlowPanel
             }
         }
+        public class CustomPanel : Panel
+        {
+            protected override Point ScrollToControl(Control activeControl)
+            {
+                // return the current location, prevent panel automatically scroll to the active control
+                return this.DisplayRectangle.Location;
+            }
+        }
         #endregion
 
         #region load menu function (using Builder Design Pattern)

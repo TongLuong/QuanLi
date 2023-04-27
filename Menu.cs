@@ -109,7 +109,7 @@ namespace QuanLi
                 return false;
         }
 
-        public static Dish operator +(Dish dish, int val) //maybe not necessary cause of modifying by using value in textBox GUI
+        public static Dish operator +(Dish dish, int val)
         {
             dish.numberOfSells += val;
             return dish;
@@ -121,7 +121,7 @@ namespace QuanLi
             return dish;
         }
 
-        public static Dish operator ++(Dish dish) //maybe not necessary cause of modifying by using value in textBox GUI
+        public static Dish operator ++(Dish dish) 
         {
             dish.numberOfSells++;
             return dish;
@@ -132,30 +132,6 @@ namespace QuanLi
             dish.numberOfSells--;
             return dish;
         }
-        #endregion
-        #region Function
-        public void modify() //maybe create a button modify a dish if it exit or create a new dish if it's unavailable ??
-        {
-
-        }
-
-        private long NewId()
-        {
-            return DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
-        }
-
-        private void InitImagePath()
-        {
-            string baseDir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            int index = baseDir.IndexOf("bin");
-            path = baseDir.Substring(0, index) + "Images\\Form1\\";
-        }
-
-        public string GetImagePath()
-        {
-            return path + imageName;
-        }
-
         int IComparable.CompareTo(object obj)
         {
             Dish d = (Dish)obj;
@@ -172,6 +148,24 @@ namespace QuanLi
                 return 1;
             else
                 return 0;
+        }
+        #endregion
+        #region Function
+        private long NewId()
+        {
+            return DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
+        }
+
+        private void InitImagePath()
+        {
+            string baseDir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            int index = baseDir.IndexOf("bin");
+            path = baseDir.Substring(0, index) + "Images\\Form1\\";
+        }
+
+        public string GetImagePath()
+        {
+            return path + imageName;
         }
         #endregion
     }
@@ -298,45 +292,6 @@ namespace QuanLi
             MessageBox.Show("Unvailable dish !!");
             return false;
         }
-
-        public void SortMenu(Type type) 
-        {
-            List<Dish> refList = getListByType(type);
-            refList.Sort((a, b) => a > b ? -1 : 0); // sort lagest to smallest
-        }
-        // 2 functions below maybe useless (remove if useless !!)
-        public void IncreaseSell(Dish dish, int val)
-        {
-            List<Dish> refList = getListByType(dish.Type);
-            if (refList.Contains(dish))
-            {
-                dish += val;
-            }
-            else
-            {
-                MessageBox.Show("Unvailable dish !!");
-            }
-        }
-
-        public void DecreaseSell(Dish dish, int val)
-        {
-            List<Dish> refList = getListByType(dish.Type);
-            if (refList.Contains(dish))
-            {
-                dish -= val;
-            }
-            else
-            {
-                MessageBox.Show("Unvailable dish !!");
-            }
-        }
-        
-        //instead of increase or decrease Sell, assign new value from textBox
-        public void ModifySell(Dish dish, int newValue)
-        {
-            dish.NumberOfSells = newValue;
-        }
-
         public double TotalProdExpense()
         {
             double total = 0;
@@ -362,29 +317,6 @@ namespace QuanLi
             }
             return total;
 
-        }
-        public List<Dish> GetMostSelling(List<Dish> mostSellingDishes)
-        {
-            mostSellingDishes.Clear();
-            if (count == 0) return mostSellingDishes;
-            List<Dish> dishes = GetAllDishes();
-            dishes.Sort((a, b) => a > b ? -1 : 0);
-            IEnumerator<Dish> it = dishes.GetEnumerator ();
-            int mostSelling = 0;
-            while(it.MoveNext())
-            {
-                Dish dish = it.Current;
-                if (dish.NumberOfSells >= mostSelling)
-                {
-                    mostSellingDishes.Add(dish);
-                    mostSelling = dish.NumberOfSells;
-                }
-                else
-                {
-                    break;
-                }
-            }
-            return mostSellingDishes;
         }
         public List<Dish> GetMostSelling(Type type,List<Dish> mostSellingDishes)
         {
