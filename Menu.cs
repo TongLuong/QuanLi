@@ -17,7 +17,7 @@ namespace QuanLi
         TOPPING,
         SPECIAL,
     }
-    public class Dish 
+    public class Dish : IComparable
     {
         private string path = "";
         #region Feature
@@ -131,6 +131,23 @@ namespace QuanLi
         {
             dish.numberOfSells--;
             return dish;
+        }
+        int IComparable.CompareTo(object obj)
+        {
+            Dish d = (Dish)obj;
+
+            DateTime datetime1;
+            DateTime.TryParseExact(this.Time, "dd-MM-yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out datetime1);
+
+            DateTime datetime2;
+            DateTime.TryParseExact(d.Time, "dd-MM-yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out datetime2);
+
+            if (datetime1 < datetime2)
+                return -1;
+            else if (datetime1 > datetime2)
+                return 1;
+            else
+                return 0;
         }
         #endregion
         #region Function
