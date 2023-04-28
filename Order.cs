@@ -23,16 +23,16 @@ namespace QuanLi
         #region Feature
         List<KeyValuePair<Order, int>> orders; public List<KeyValuePair<Order, int>> Orders { get => orders; set => orders = value; }
         double total; public double Total { get => total; set => total = value; } // total money of this Bill
-        int id; public int ID { get => id; }
+        long id; public long ID { get => id; }
         #endregion
         #region Constructor
         public Bill()
         {
             orders = new List<KeyValuePair<Order, int>>();
             total = 0;
-            id = (Convert.ToInt32(DateTime.Now.Day) 
-                + Convert.ToInt32(DateTime.Now.Month) * 100 
-                + Convert.ToInt32(DateTime.Now.Year) * 10000);
+            id = (Convert.ToInt64(DateTime.Now.Day) 
+                + Convert.ToInt64(DateTime.Now.Month) * 100 
+                + Convert.ToInt64(DateTime.Now.Year) * 10000);
         }
         #endregion
         #region Function
