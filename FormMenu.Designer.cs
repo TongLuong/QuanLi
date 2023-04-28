@@ -549,6 +549,7 @@ namespace QuanLi
             MaximizeBox = false;
             Name = "FormMenu";
             StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            Text = "Thực đơn";
             FormClosing += FormMenu_FormClosing;
             Load += Form1_Load;
             ((System.ComponentModel.ISupportInitialize)pbMenu).EndInit();
