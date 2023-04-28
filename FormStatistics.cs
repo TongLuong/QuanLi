@@ -207,7 +207,7 @@ namespace QuanLi
                 if (dishInDay != null) lastDayContainData = i;
             }
 
-            for (int i=0;i<lastDayContainData;i++)
+            for (int i = 0; i < lastDayContainData; i++)
             {
                 List<Dish> dishInDay = listDish[i];
                 Int64 dayProfit = 0;
