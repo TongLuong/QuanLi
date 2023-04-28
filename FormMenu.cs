@@ -522,7 +522,7 @@ namespace QuanLi
         private void switchVisible(Panel temp)
         {
             temp.Visible = true;
-            FoodLabel.Visible = DrinkLabel.Visible = ToppingLable.Visible = SpecialLabel.Visible = true;
+            FoodLabel.Visible = DrinkLabel.Visible = ToppingLabel.Visible = SpecialLabel.Visible = true;
             temp.BringToFront();
             if (menuFood != temp) if (menuFood != null)
                 {
@@ -537,7 +537,7 @@ namespace QuanLi
             if (menuTopping != temp) if (menuTopping != null)
                 {
                     menuTopping.Visible = false;
-                    ToppingLable.Visible = false;
+                    ToppingLabel.Visible = false;
                 }
             if (menuSpecial != temp) if (menuSpecial != null)
                 {
