@@ -73,6 +73,7 @@ namespace QuanLi
 
         private void Accept_Click(object sender, EventArgs e)
         {
+            abort = false;
             name = itemName.Text;
             try
             {
