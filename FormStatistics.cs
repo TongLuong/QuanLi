@@ -219,10 +219,10 @@ namespace QuanLi
                     {
                         dayProfit += (Int64)(dish.Price - dish.ProdExpense) * dish.NumberOfSells;
                     }
-
-                    idx.Add(i+1);
-                    profits.Add(dayProfit);
                 }
+
+                idx.Add(i + 1);
+                profits.Add(dayProfit);
             }
 
             double[] x = idx.Select(a => (double)a).ToArray();
