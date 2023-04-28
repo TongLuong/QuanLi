@@ -192,10 +192,24 @@ namespace QuanLi
             List<Int64> profits = new List<Int64>();
             idx.Clear();
             profits.Clear();
+
+            List<List<Dish>> listDish = new List<List<Dish>>();
+            listDish.Clear();
+
+            int lastDayContainData = 0;
+
             for (int i = 1; i <= DateTime.DaysInMonth(year, month); i++)
             {
                 List<Dish> dishInDay = Database.Instance.ReadCSVToList<Dish>(
-                    ((i > 9) ? i.ToString() : ("0" + i.ToString())) + "-" + ((month > 9) ? month.ToString() : ("0" + month.ToString())) + "-" + year.ToString());
+                   ((i > 9) ? i.ToString() : ("0" + i.ToString())) + "-" + ((month > 9) ? month.ToString() : ("0" + month.ToString())) + "-" + year.ToString());
+                listDish.Add(dishInDay);
+
+                if (dishInDay != null) lastDayContainData = i;
+            }
+
+            for (int i=0;i<lastDayContainData;i++)
+            {
+                List<Dish> dishInDay = listDish[i];
                 Int64 dayProfit = 0;
                 if (dishInDay != null)
                 {
@@ -206,7 +220,7 @@ namespace QuanLi
                         dayProfit += (Int64)(dish.Price - dish.ProdExpense) * dish.NumberOfSells;
                     }
 
-                    idx.Add(i);
+                    idx.Add(i+1);
                     profits.Add(dayProfit);
                 }
             }
