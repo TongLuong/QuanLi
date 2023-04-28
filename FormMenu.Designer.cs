@@ -66,10 +66,6 @@ namespace QuanLi
             ((System.ComponentModel.ISupportInitialize)pbOrder).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox11).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox7).BeginInit();
-            menuFood.SuspendLayout();
-            menuDrink.SuspendLayout();
-            menuTopping.SuspendLayout();
-            menuSpecial.SuspendLayout();
             SuspendLayout();
             // 
             // Food
@@ -345,7 +341,6 @@ namespace QuanLi
             // 
             menuFood.AutoScroll = true;
             menuFood.BackColor = System.Drawing.Color.Coral;
-            menuFood.Controls.Add(FoodLabel);
             menuFood.Location = new System.Drawing.Point(111, 69);
             menuFood.Name = "menuFood";
             menuFood.Size = new System.Drawing.Size(678, 587);
@@ -362,18 +357,18 @@ namespace QuanLi
             FoodLabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             FoodLabel.Font = new System.Drawing.Font("Cambria", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             FoodLabel.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            FoodLabel.Location = new System.Drawing.Point(3, 3);
+            FoodLabel.Location = new System.Drawing.Point(111, 26);
             FoodLabel.Name = "FoodLabel";
             FoodLabel.Size = new System.Drawing.Size(90, 40);
             FoodLabel.TabIndex = 47;
             FoodLabel.Text = "Đồ ăn";
             FoodLabel.UseVisualStyleBackColor = false;
+            FoodLabel.Visible = false;
             // 
             // menuDrink
             // 
             menuDrink.AutoScroll = true;
             menuDrink.BackColor = System.Drawing.Color.Coral;
-            menuDrink.Controls.Add(DrinkLabel);
             menuDrink.Location = new System.Drawing.Point(111, 69);
             menuDrink.Name = "menuDrink";
             menuDrink.Size = new System.Drawing.Size(678, 587);
@@ -390,18 +385,18 @@ namespace QuanLi
             DrinkLabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             DrinkLabel.Font = new System.Drawing.Font("Cambria", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             DrinkLabel.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            DrinkLabel.Location = new System.Drawing.Point(3, 3);
+            DrinkLabel.Location = new System.Drawing.Point(111, 26);
             DrinkLabel.Name = "DrinkLabel";
             DrinkLabel.Size = new System.Drawing.Size(90, 40);
             DrinkLabel.TabIndex = 48;
             DrinkLabel.Text = "Đồ uống";
             DrinkLabel.UseVisualStyleBackColor = false;
+            DrinkLabel.Visible = false;
             // 
             // menuTopping
             // 
             menuTopping.AutoScroll = true;
             menuTopping.BackColor = System.Drawing.Color.Coral;
-            menuTopping.Controls.Add(ToppingLable);
             menuTopping.Location = new System.Drawing.Point(111, 69);
             menuTopping.Name = "menuTopping";
             menuTopping.Size = new System.Drawing.Size(678, 587);
@@ -418,18 +413,18 @@ namespace QuanLi
             ToppingLable.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             ToppingLable.Font = new System.Drawing.Font("Cambria", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             ToppingLable.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            ToppingLable.Location = new System.Drawing.Point(3, 3);
+            ToppingLable.Location = new System.Drawing.Point(111, 26);
             ToppingLable.Name = "ToppingLable";
             ToppingLable.Size = new System.Drawing.Size(90, 40);
             ToppingLable.TabIndex = 49;
             ToppingLable.Text = "Topping";
             ToppingLable.UseVisualStyleBackColor = false;
+            ToppingLable.Visible = false;
             // 
             // menuSpecial
             // 
             menuSpecial.AutoScroll = true;
             menuSpecial.BackColor = System.Drawing.Color.Coral;
-            menuSpecial.Controls.Add(SpecialLabel);
             menuSpecial.Location = new System.Drawing.Point(111, 69);
             menuSpecial.Name = "menuSpecial";
             menuSpecial.Size = new System.Drawing.Size(678, 587);
@@ -446,12 +441,13 @@ namespace QuanLi
             SpecialLabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             SpecialLabel.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             SpecialLabel.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            SpecialLabel.Location = new System.Drawing.Point(3, 3);
+            SpecialLabel.Location = new System.Drawing.Point(111, 26);
             SpecialLabel.Name = "SpecialLabel";
             SpecialLabel.Size = new System.Drawing.Size(90, 40);
             SpecialLabel.TabIndex = 7;
             SpecialLabel.Text = "Đặc biệt";
             SpecialLabel.UseVisualStyleBackColor = false;
+            SpecialLabel.Visible = false;
             // 
             // Total
             // 
@@ -516,15 +512,19 @@ namespace QuanLi
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             BackColor = System.Drawing.Color.White;
             ClientSize = new System.Drawing.Size(1404, 726);
+            Controls.Add(menuSpecial);
+            Controls.Add(menuDrink);
+            Controls.Add(menuTopping);
+            Controls.Add(FoodLabel);
+            Controls.Add(ToppingLable);
+            Controls.Add(DrinkLabel);
+            Controls.Add(SpecialLabel);
             Controls.Add(deleteDish);
             Controls.Add(WelcomeLabel);
             Controls.Add(RefreshBut);
             Controls.Add(Stat);
             Controls.Add(TotalPrice);
             Controls.Add(Total);
-            Controls.Add(menuSpecial);
-            Controls.Add(menuDrink);
-            Controls.Add(menuTopping);
             Controls.Add(menuFood);
             Controls.Add(AddDish);
             Controls.Add(flowOrderPrice);
@@ -556,10 +556,6 @@ namespace QuanLi
             ((System.ComponentModel.ISupportInitialize)pbOrder).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox11).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox7).EndInit();
-            menuFood.ResumeLayout(false);
-            menuDrink.ResumeLayout(false);
-            menuTopping.ResumeLayout(false);
-            menuSpecial.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }

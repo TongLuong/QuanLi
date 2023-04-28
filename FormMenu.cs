@@ -522,11 +522,28 @@ namespace QuanLi
         private void switchVisible(Panel temp)
         {
             temp.Visible = true;
+            FoodLabel.Visible = DrinkLabel.Visible = ToppingLable.Visible = SpecialLabel.Visible = true;
             temp.BringToFront();
-            if (menuFood != temp) if (menuFood != null) menuFood.Visible = false;
-            if (menuDrink != temp) if (menuDrink != null) menuDrink.Visible = false;
-            if (menuTopping != temp) if (menuTopping != null) menuTopping.Visible = false;
-            if (menuSpecial != temp) if (menuSpecial != null) menuSpecial.Visible = false;
+            if (menuFood != temp) if (menuFood != null)
+                {
+                    menuFood.Visible = false;
+                    FoodLabel.Visible = false;
+                }
+            if (menuDrink != temp) if (menuDrink != null)
+                {
+                    menuDrink.Visible = false;
+                    DrinkLabel.Visible = false;
+                }
+            if (menuTopping != temp) if (menuTopping != null)
+                {
+                    menuTopping.Visible = false;
+                    ToppingLable.Visible = false;
+                }
+            if (menuSpecial != temp) if (menuSpecial != null)
+                {
+                    menuSpecial.Visible = false;
+                    SpecialLabel.Visible = false;
+                }
         }
         private void LoadMenu(Type type, Panel panelDishes)
         {
