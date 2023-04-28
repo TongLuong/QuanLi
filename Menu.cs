@@ -266,7 +266,7 @@ namespace QuanLi
         {
             if(dish.Type == Type.NONE)
             {
-                MessageBox.Show("Unvalid Type !");
+                MessageBox.Show("Invalid Type !");
                 return false;
             }
             List<Dish> refList = getListByType(dish.Type);

@@ -92,9 +92,9 @@ namespace QuanLi
             Enum.TryParse(itemType.SelectedItem.ToString(), out type);
 
             if (!File.Exists(itemImage.Text))
-                return;
+                imageName = "";
             else if (Path.GetExtension(itemImage.Text).ToLower() != ".png" && Path.GetExtension(itemImage.Text).ToLower() != ".jpg")
-                return;
+                imageName = "";
 
             this.Close();
         }
