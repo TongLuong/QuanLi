@@ -199,17 +199,16 @@ namespace QuanLi
                 Int64 dayProfit = 0;
                 if (dishInDay != null)
                 {
-
                     all = all.Concat(dishInDay).ToList();
 
                     foreach (Dish dish in dishInDay)
                     {
                         dayProfit += (Int64)(dish.Price - dish.ProdExpense) * dish.NumberOfSells;
                     }
-                }
-                idx.Add(i);
-                profits.Add(dayProfit);
 
+                    idx.Add(i);
+                    profits.Add(dayProfit);
+                }
             }
 
             double[] x = idx.Select(a => (double)a).ToArray();
