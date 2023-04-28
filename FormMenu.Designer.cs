@@ -55,7 +55,7 @@ namespace QuanLi
             menuDrink = new CustomPanel();
             DrinkLabel = new System.Windows.Forms.Button();
             menuTopping = new CustomPanel();
-            ToppingLable = new System.Windows.Forms.Button();
+            ToppingLabel = new System.Windows.Forms.Button();
             menuSpecial = new CustomPanel();
             SpecialLabel = new System.Windows.Forms.Button();
             Total = new System.Windows.Forms.Label();
@@ -402,24 +402,24 @@ namespace QuanLi
             menuTopping.Size = new System.Drawing.Size(678, 587);
             menuTopping.TabIndex = 47;
             // 
-            // ToppingLable
+            // ToppingLabel
             // 
-            ToppingLable.BackColor = System.Drawing.Color.FromArgb(237, 205, 26);
-            ToppingLable.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            ToppingLable.FlatAppearance.BorderSize = 0;
-            ToppingLable.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(128, 255, 128);
-            ToppingLable.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(128, 255, 128);
-            ToppingLable.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(255, 128, 128);
-            ToppingLable.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            ToppingLable.Font = new System.Drawing.Font("Cambria", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            ToppingLable.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            ToppingLable.Location = new System.Drawing.Point(111, 26);
-            ToppingLable.Name = "ToppingLable";
-            ToppingLable.Size = new System.Drawing.Size(90, 40);
-            ToppingLable.TabIndex = 49;
-            ToppingLable.Text = "Topping";
-            ToppingLable.UseVisualStyleBackColor = false;
-            ToppingLable.Visible = false;
+            ToppingLabel.BackColor = System.Drawing.Color.FromArgb(237, 205, 26);
+            ToppingLabel.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            ToppingLabel.FlatAppearance.BorderSize = 0;
+            ToppingLabel.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(128, 255, 128);
+            ToppingLabel.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(128, 255, 128);
+            ToppingLabel.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(255, 128, 128);
+            ToppingLabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            ToppingLabel.Font = new System.Drawing.Font("Cambria", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            ToppingLabel.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            ToppingLabel.Location = new System.Drawing.Point(111, 26);
+            ToppingLabel.Name = "ToppingLable";
+            ToppingLabel.Size = new System.Drawing.Size(90, 40);
+            ToppingLabel.TabIndex = 49;
+            ToppingLabel.Text = "Topping";
+            ToppingLabel.UseVisualStyleBackColor = false;
+            ToppingLabel.Visible = false;
             // 
             // menuSpecial
             // 
@@ -439,7 +439,7 @@ namespace QuanLi
             SpecialLabel.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(128, 255, 128);
             SpecialLabel.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(255, 128, 128);
             SpecialLabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            SpecialLabel.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            SpecialLabel.Font = new System.Drawing.Font("Cambria", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             SpecialLabel.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             SpecialLabel.Location = new System.Drawing.Point(111, 26);
             SpecialLabel.Name = "SpecialLabel";
@@ -516,7 +516,7 @@ namespace QuanLi
             Controls.Add(menuDrink);
             Controls.Add(menuTopping);
             Controls.Add(FoodLabel);
-            Controls.Add(ToppingLable);
+            Controls.Add(ToppingLabel);
             Controls.Add(DrinkLabel);
             Controls.Add(SpecialLabel);
             Controls.Add(deleteDish);
@@ -583,7 +583,7 @@ namespace QuanLi
         private System.Windows.Forms.Button AddDish;
         private System.Windows.Forms.Button FoodLabel;
         private System.Windows.Forms.Button DrinkLabel;
-        private System.Windows.Forms.Button ToppingLable;
+        private System.Windows.Forms.Button ToppingLabel;
         private System.Windows.Forms.Button SpecialLabel;
         private System.Windows.Forms.Label Total;
         private System.Windows.Forms.Label TotalPrice;
