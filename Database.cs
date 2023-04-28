@@ -82,8 +82,10 @@ namespace QuanLi
 
             StringBuilder csvStr = new StringBuilder();
 
-            using (StreamWriter writer = new StreamWriter(new FileStream(filePath, overrideOld ? FileMode.Create : FileMode.Append, FileAccess.Write), Encoding.UTF8))
+            using (StreamWriter writer = new StreamWriter(new FileStream(filePath, overrideOld ? FileMode.Create : FileMode.Append, FileAccess.Write, FileShare.None), 
+                                                                        Encoding.UTF8))
             {
+                int num = 0;
                 foreach (object objItem in obj)
                 {
                     StringBuilder newLine = new StringBuilder();
@@ -111,7 +113,10 @@ namespace QuanLi
 
                     newLine.Remove(0, 1);
 
-                    writer.WriteLine(newLine.ToString());
+                    if (++num < obj.Count)
+                        writer.WriteLine(newLine.ToString());
+                    else
+                        writer.Write(newLine.ToString());
                 }
             }
         }

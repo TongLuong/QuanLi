@@ -381,7 +381,12 @@ namespace QuanLi
                 pb.SizeMode = PictureBoxSizeMode.StretchImage;
 
                 if (imagePath != null && File.Exists(imagePath))
-                    pb.Image = Image.FromFile(imagePath); // commented until we have images
+                {
+                    using (Bitmap temp = new Bitmap(imagePath))
+                    {
+                        pb.Image = new Bitmap(temp);
+                    }
+                }
                 return pb;
             }
             public Label BuildLabelName(int w, int h, int x, int y, string name)
