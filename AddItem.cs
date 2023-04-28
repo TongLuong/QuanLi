@@ -90,6 +90,11 @@ namespace QuanLi
             }
 
             Enum.TryParse(itemType.SelectedItem.ToString(), out type);
+            if (type == Type.NONE)
+            {
+                MessageBox.Show("Vui lòng phân loại cho sản phẩm mới!");
+                return;
+            }
 
             if (!File.Exists(itemImage.Text))
                 imageName = "";
