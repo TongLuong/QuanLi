@@ -33,14 +33,14 @@
             label2 = new System.Windows.Forms.Label();
             label3 = new System.Windows.Forms.Label();
             label4 = new System.Windows.Forms.Label();
-            this.itemName = new System.Windows.Forms.TextBox();
-            this.itemPrice = new System.Windows.Forms.TextBox();
-            this.itemExpense = new System.Windows.Forms.TextBox();
+            itemName = new System.Windows.Forms.TextBox();
+            itemPrice = new System.Windows.Forms.TextBox();
+            itemExpense = new System.Windows.Forms.TextBox();
             Cancel = new System.Windows.Forms.Button();
             Accept = new System.Windows.Forms.Button();
             label5 = new System.Windows.Forms.Label();
-            this.itemType = new System.Windows.Forms.ComboBox();
-            this.addImage = new System.Windows.Forms.Button();
+            itemType = new System.Windows.Forms.ComboBox();
+            addImage = new System.Windows.Forms.Button();
             itemImage = new System.Windows.Forms.TextBox();
             label6 = new System.Windows.Forms.Label();
             SuspendLayout();
@@ -87,27 +87,27 @@
             // 
             // itemName
             // 
-            this.itemName.Font = new System.Drawing.Font("Cambria", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.itemName.Location = new System.Drawing.Point(90, 43);
-            this.itemName.Name = "itemName";
-            this.itemName.Size = new System.Drawing.Size(243, 25);
-            this.itemName.TabIndex = 4;
+            itemName.Font = new System.Drawing.Font("Cambria", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            itemName.Location = new System.Drawing.Point(90, 43);
+            itemName.Name = "itemName";
+            itemName.Size = new System.Drawing.Size(243, 25);
+            itemName.TabIndex = 4;
             // 
             // itemPrice
             // 
-            this.itemPrice.Font = new System.Drawing.Font("Cambria", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.itemPrice.Location = new System.Drawing.Point(90, 86);
-            this.itemPrice.Name = "itemPrice";
-            this.itemPrice.Size = new System.Drawing.Size(243, 25);
-            this.itemPrice.TabIndex = 5;
+            itemPrice.Font = new System.Drawing.Font("Cambria", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            itemPrice.Location = new System.Drawing.Point(90, 86);
+            itemPrice.Name = "itemPrice";
+            itemPrice.Size = new System.Drawing.Size(243, 25);
+            itemPrice.TabIndex = 5;
             // 
             // itemExpense
             // 
-            this.itemExpense.Font = new System.Drawing.Font("Cambria", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.itemExpense.Location = new System.Drawing.Point(90, 130);
-            this.itemExpense.Name = "itemExpense";
-            this.itemExpense.Size = new System.Drawing.Size(243, 25);
-            this.itemExpense.TabIndex = 6;
+            itemExpense.Font = new System.Drawing.Font("Cambria", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            itemExpense.Location = new System.Drawing.Point(90, 130);
+            itemExpense.Name = "itemExpense";
+            itemExpense.Size = new System.Drawing.Size(243, 25);
+            itemExpense.TabIndex = 6;
             // 
             // Cancel
             // 
@@ -141,29 +141,28 @@
             // 
             // itemType
             // 
-            this.itemType.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.itemType.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.itemType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.itemType.Font = new System.Drawing.Font("Cambria", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.itemType.FormattingEnabled = true;
-            this.itemType.Location = new System.Drawing.Point(90, 173);
-            this.itemType.Name = "itemType";
-            this.itemType.Size = new System.Drawing.Size(125, 25);
-            this.itemType.TabIndex = 10;
+            itemType.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            itemType.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            itemType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            itemType.Font = new System.Drawing.Font("Cambria", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            itemType.FormattingEnabled = true;
+            itemType.Location = new System.Drawing.Point(90, 173);
+            itemType.Name = "itemType";
+            itemType.Size = new System.Drawing.Size(125, 25);
+            itemType.TabIndex = 10;
             // 
-            // AddImage
+            // addImage
             // 
-            this.addImage.Location = new System.Drawing.Point(8, 257);
-            this.addImage.Name = "AddImage";
-            this.addImage.Size = new System.Drawing.Size(105, 40);
-            this.addImage.TabIndex = 11;
-            this.addImage.Text = "Thêm Ảnh";
-            this.addImage.UseVisualStyleBackColor = true;
-            this.addImage.Click += this.AddImage_Click;
+            addImage.Location = new System.Drawing.Point(8, 257);
+            addImage.Name = "addImage";
+            addImage.Size = new System.Drawing.Size(105, 40);
+            addImage.TabIndex = 11;
+            addImage.Text = "Thêm Ảnh";
+            addImage.UseVisualStyleBackColor = true;
+            addImage.Click += AddImage_Click;
             // 
             // itemImage
             // 
-            itemImage.Enabled = false;
             itemImage.Font = new System.Drawing.Font("Cambria", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             itemImage.Location = new System.Drawing.Point(90, 218);
             itemImage.Name = "itemImage";
@@ -188,14 +187,14 @@
             ControlBox = false;
             Controls.Add(label6);
             Controls.Add(itemImage);
-            Controls.Add(this.addImage);
-            Controls.Add(this.itemType);
+            Controls.Add(addImage);
+            Controls.Add(itemType);
             Controls.Add(label5);
             Controls.Add(Accept);
             Controls.Add(Cancel);
-            Controls.Add(this.itemExpense);
-            Controls.Add(this.itemPrice);
-            Controls.Add(this.itemName);
+            Controls.Add(itemExpense);
+            Controls.Add(itemPrice);
+            Controls.Add(itemName);
             Controls.Add(label4);
             Controls.Add(label3);
             Controls.Add(label2);

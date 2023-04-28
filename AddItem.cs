@@ -1,13 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace QuanLi
@@ -39,7 +32,7 @@ namespace QuanLi
         private string imageName;
         public string ImageName
         {
-            get => imageName; 
+            get => imageName;
             set => imageName = value;
         }
 
@@ -97,6 +90,11 @@ namespace QuanLi
             }
 
             Enum.TryParse(itemType.SelectedItem.ToString(), out type);
+
+            if (!File.Exists(itemImage.Text))
+                return;
+            else if (Path.GetExtension(itemImage.Text).ToLower() != ".png" && Path.GetExtension(itemImage.Text).ToLower() != ".jpg")
+                return;
 
             this.Close();
         }

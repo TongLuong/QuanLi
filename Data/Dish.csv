@@ -1,44 +1,44 @@
-﻿1,Cà phê đá xay,25000,18000,0,DRINK,12.png
-2,Espresso,20000,16000,0,DRINK,22.png
-3,Cappucchino,25000,15000,0,DRINK,32.png
-4,Latte,25000,15000,0,DRINK,42.png
-5,Bạc xỉu,22000,17000,0,DRINK,52.png
-6,Cà phê nguyên chất,18000,15000,0,DRINK,62.png
-7,Nước ép cam,20000,16000,0,DRINK,72.png
-8,Nước ép bưởi,20000,16000,0,DRINK,82.png
-9,Nước ép táo,20000,16000,0,DRINK,92.png
-10,Nước ép dưa lưới,20000,16000,0,DRINK,102.png
-11,Trà vài,20000,16000,0,DRINK,112.png
-12,Trà đào,20000,16000,0,DRINK,122.png
-13,Trà tắc,20000,16000,0,DRINK,132.png
-14,Chanh dây,20000,15000,0,DRINK,142.png
-15,Cacao nóng,25000,18000,0,DRINK,152.png
-16,Cacao bạc hà,25000,18000,0,DRINK,162.png
-17,Sinh tố dâu,20000,16000,0,DRINK,172.png
-18,Sinh tố việt quất,20000,16000,0,DRINK,182.png
-19,Matcha kem tươi,25000,20000,0,DRINK,192.png
-20,Matcha nóng,20000,16000,0,DRINK,202.png
-21,Matcha lạnh,20000,16000,0,DRINK,212.png
-22,Matcha sữa tươi,25000,20000,0,DRINK,222.png
-23,Bánh tráng trứng,20000,15000,0,FOOD,231.png
-24,Tokbokki,30000,25000,0,FOOD,241.png
-25,Takoyaki,30000,25000,0,FOOD,251.png
-26,Bánh tráng trộn,20000,15000,0,FOOD,261.png
-27,Bánh gato,40000,32000,0,FOOD,271.png
-28,Bánh donut,30000,25000,0,FOOD,281.png
-29,Bánh phồng tôm,12000,8000,0,FOOD,291.png
-30,Cá viên chiên,15000,12000,0,FOOD,301.png
-31,Bò viên chiên,15000,12000,0,FOOD,311.png
-32,Xúc xích chiên,20000,15000,0,FOOD,321.png
-33,Bò khô,15000,12000,0,FOOD,331.png
-34,Bún đậu mắm tôm,25000,12000,0,SPECIAL,344.png
-35,Chả cuốn,5000,1000,0,SPECIAL,354.png
-36,Bánh cuốn,15000,5000,0,SPECIAL,364.png
-37,Hột vịt lộn,5000,2000,0,SPECIAL,374.png
-38,Cháo lòng,25000,10000,0,SPECIAL,384.png
-39,Cà phê chồn,800000,100000,0,SPECIAL,394.png
-40,Trân châu,5000,2000,0,TOPPING,403.png
-41,Thạch,5000,2000,0,TOPPING,413.png
-42,Topping Cream,3000,1000,0,TOPPING,423.png
-43,Milk foam,3000,1000,0,TOPPING,433.png
-1681969818081,Mì gói,10000,3000,10,FOOD,16819698180811.png
+﻿23,Bánh tráng trứng,20000,15000,0,FOOD,231.png,
+24,Tokbokki,30000,25000,0,FOOD,241.png,
+25,Takoyaki,30000,25000,0,FOOD,251.png,
+26,Bánh tráng trộn,20000,15000,0,FOOD,261.png,
+27,Bánh gato,40000,32000,0,FOOD,271.png,
+28,Bánh donut,30000,25000,0,FOOD,281.png,
+29,Bánh phồng tôm,12000,8000,0,FOOD,291.png,
+30,Cá viên chiên,15000,12000,0,FOOD,301.png,
+31,Bò viên chiên,15000,12000,0,FOOD,311.png,
+32,Xúc xích chiên,20000,15000,0,FOOD,321.png,
+33,Bò khô,15000,12000,0,FOOD,331.png,
+1681969818081,Mì gói,10000,3000,10,FOOD,16819698180811.png,
+1,Cà phê đá xay,25000,18000,0,DRINK,12.png,
+2,Espresso,20000,16000,0,DRINK,22.png,
+3,Cappucchino,25000,15000,0,DRINK,32.png,
+4,Latte,25000,15000,0,DRINK,42.png,
+5,Bạc xỉu,22000,17000,0,DRINK,52.png,
+6,Cà phê nguyên chất,18000,15000,0,DRINK,62.png,
+7,Nước ép cam,20000,16000,0,DRINK,72.png,
+8,Nước ép bưởi,20000,16000,0,DRINK,82.png,
+9,Nước ép táo,20000,16000,0,DRINK,92.png,
+10,Nước ép dưa lưới,20000,16000,0,DRINK,102.png,
+11,Trà vài,20000,16000,0,DRINK,112.png,
+12,Trà đào,20000,16000,0,DRINK,122.png,
+13,Trà tắc,20000,16000,0,DRINK,132.png,
+14,Chanh dây,20000,15000,0,DRINK,142.png,
+15,Cacao nóng,25000,18000,0,DRINK,152.png,
+16,Cacao bạc hà,25000,18000,0,DRINK,162.png,
+17,Sinh tố dâu,20000,16000,0,DRINK,172.png,
+18,Sinh tố việt quất,20000,16000,0,DRINK,182.png,
+19,Matcha kem tươi,25000,20000,0,DRINK,192.png,
+20,Matcha nóng,20000,16000,0,DRINK,202.png,
+21,Matcha lạnh,20000,16000,0,DRINK,212.png,
+22,Matcha sữa tươi,25000,20000,0,DRINK,222.png,
+40,Trân châu,5000,2000,0,TOPPING,403.png,
+41,Thạch,5000,2000,0,TOPPING,413.png,
+42,Topping Cream,3000,1000,0,TOPPING,423.png,
+43,Milk foam,3000,1000,0,TOPPING,433.png,
+34,Bún đậu mắm tôm,25000,12000,0,SPECIAL,344.png,
+35,Chả cuốn,5000,1000,0,SPECIAL,354.png,
+36,Bánh cuốn,15000,5000,0,SPECIAL,364.png,
+37,Hột vịt lộn,5000,2000,0,SPECIAL,374.png,
+38,Cháo lòng,25000,10000,0,SPECIAL,384.png,
+39,Cà phê chồn,800000,100000,0,SPECIAL,394.png,
