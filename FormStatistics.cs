@@ -155,7 +155,6 @@ namespace QuanLi
                         row.Cells[4].Value = (Int64)row.Cells[4].Value + dish.NumberOfSells * (Int64)(dish.Price - dish.ProdExpense);
                     }
                 }
-
             }
             Int64 totalIncome = (Int64)Menu.Instance.TotalIncome();
             Int64 totalInvestment = (Int64)Menu.Instance.TotalProdExpense();
