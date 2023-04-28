@@ -130,7 +130,7 @@ namespace QuanLi
         private IEnumerable<string[]> ReadCSV<T>(string filePath)
         { 
             using (FileStream fs = new FileStream(filePath, FileMode.Open,
-                                FileAccess.Read, FileShare.None, 65536,
+                                FileAccess.Read, FileShare.None, 4096,
                                 FileOptions.SequentialScan))
             {
                 using (StreamReader sReader = new StreamReader(fs))
